@@ -1,0 +1,69 @@
+.navbar {
+    background: linear-gradient(to right, rgb(28, 76, 197), #ff4081);
+    height: 80px;
+}
+
+.high-tech-navbar {
+    // background-color: rgb(34, 82, 199);
+    background: linear-gradient(to right, rgb(28, 76, 197), #ff4081);
+}
+.navbar-brand,
+.nav-link,
+.nav-icon {
+    color: white;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    width: 90px;
+    font-size: large;
+    background-color: #0361ec;
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+    width: 90px;
+    font-size: large;
+    background-color: rgb(110, 52, 226);
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.logged-user {
+    background-color: white;
+    border-radius: 15px;
+}
+
+// mobile
+mat-toolbar {
+    position: fixed;
+    z-index: 2;
+}
+mat-sidenav {
+    top: 56px;
+    width: 200px;
+}
+mat-sidenav-content {
+    top: 56px;
+}
+mat-sidenav-container {
+    height: 100vh;
+}
+
+

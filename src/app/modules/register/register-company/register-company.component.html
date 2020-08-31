@@ -1,0 +1,109 @@
+<div class="center">
+  <div class="column background-filter border-box" *ngIf="!confirmPassword">
+    <div class="row register-header">
+      Create company account
+    </div>
+    <div class="row full-width">
+      <div class="width-50">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Company name</mat-label>
+          <input matInput placeholder="Name">
+        </mat-form-field>
+      </div>
+      <div class="width-50">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Company sector</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let city of locations" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row full-width">
+      <div class="width-50">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Country</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let city of locations" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="width-50">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>City</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let city of locations" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row full-width">
+        <div class="width-50">
+            <mat-form-field class="form-field" appearance="outline">
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Name">
+            </mat-form-field>
+          </div>
+      <div class="width-50">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Zip Code</mat-label>
+          <input matInput placeholder="Name">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row full-width">
+        <div class="width-50">
+            <mat-form-field class="form-field" appearance="outline">
+              <mat-label>Phone number</mat-label>
+              <input matInput placeholder="Name">
+            </mat-form-field>
+          </div>
+      <div class="width-50">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Name">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row full-width">
+        <div class="width-50">
+            <mat-form-field class="form-field" appearance="outline">
+              <mat-label>Contact person name</mat-label>
+              <input matInput placeholder="Name">
+            </mat-form-field>
+          </div>
+      <div class="width-50">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Job title</mat-label>
+          <input matInput placeholder="Name">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <button class="full-width register-btn" mat-raised-button color="primary" (click)="confirmPasswordDialog()"> Continue </button>
+    </div>
+  </div>
+  <div class="column background-filter border-box-no-height" *ngIf="confirmPassword">
+    <div class="row">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Name">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Confirm password</mat-label>
+        <input matInput placeholder="Name">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <button class="full-width register-btn" mat-raised-button color="primary" (click)="confirmPasswordDialog()"> Create account </button>
+    </div>
+  </div>
+</div>

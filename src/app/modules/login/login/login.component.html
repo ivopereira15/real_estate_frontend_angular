@@ -1,0 +1,26 @@
+<form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+  <div class="center">
+    <div class="column background-filter login">
+      <div>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input [(ngModel)]="email" matInput formControlName="email" placeholder="Type you email">
+          <mat-error>
+            Email required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Passowrd</mat-label>
+          <input [(ngModel)]="password" matInput type="password" formControlName="password" placeholder="Type your password">
+          <mat-error>
+            Password required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" type="submit" class="mat-button"> Login </button>
+      <button mat-raised-button color="accent" class="mat-button"> Forgot? </button>
+    </div>
+  </div>
+</form>

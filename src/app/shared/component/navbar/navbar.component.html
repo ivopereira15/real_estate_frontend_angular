@@ -1,0 +1,76 @@
+<!--DESKTOP NAVIGATION-->
+<div *ngIf="!isMobile">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"><h3>High-Tech Contracting</h3></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">About us<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">FAQ<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav margin-left">
+        <li class="nav-item">
+          <a class="nav-link">Upload your CV</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Post a Job</a>
+        </li>
+        <li class="nav-item register" *ngIf="!authenticated">
+          <a class="nav-link" [routerLink]="['/register']">Register</a>
+        </li>
+        <li class="nav-item login" *ngIf="!authenticated">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+
+        <div class="profile" *ngIf="authenticated">
+          <button class="logged-user" mat-button [matMenuTriggerFor]="menu">Brad</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/userboard']">Profile</button>
+            <button mat-menu-item>Messages</button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+          </mat-menu>
+        </div>
+      </ul>
+    </div>
+  </nav>
+  <ng-container *ngTemplateOutlet="template"></ng-container>
+  <app-footer></app-footer>
+</div>
+<!--MOBILE-->
+<div *ngIf="isMobile">
+  <mat-toolbar class="high-tech-navbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon class="nav-icon">menu</mat-icon>
+    </button>
+    <h1 class="navbar-brand">High-Tech Contracting</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #snav>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/admin']">Search Jobs & People</a>
+        <a mat-list-item [routerLink]="['']">About us</a>
+        <a mat-list-item [routerLink]="['/admin']">FAQ</a>
+        <a mat-list-item [routerLink]="['']">Upload your CV</a>
+        <a mat-list-item [routerLink]="['']">Post a Job</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <ng-container *ngTemplateOutlet="template"></ng-container>
+      <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<ng-template #template>
+  <router-outlet>
+  </router-outlet>
+</ng-template>

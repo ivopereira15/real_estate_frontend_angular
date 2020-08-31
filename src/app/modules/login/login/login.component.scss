@@ -1,0 +1,16 @@
+.login {
+    padding: 15px;
+    width: 30%;
+    height: 36%;
+    > div,
+    button {
+        margin: 5px;
+    }
+}
+
+.mat-button {
+    height: 50px;
+    border-radius: 15px;
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

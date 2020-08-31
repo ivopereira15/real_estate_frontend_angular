@@ -1,0 +1,75 @@
+.devs-card-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.devs-card-job-title{
+    font-weight: bold;
+    color: royalblue;
+}
+
+.devs-card-header-developer-location {
+    color: grey;
+}
+
+.devs-card-header-name {
+    font-weight: bold;
+    font-size: large;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    > img {
+        border-radius: 30px;
+    }
+}
+
+.card {
+    padding: 5px;
+    width: 100%;
+}
+
+.apply-button {
+    width: 30%;
+    border-radius: 20px;
+    margin-left: auto;
+}
+
+.skill-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill {
+    color: grey;
+    font-weight: bold;
+    background-color: rgb(235, 235, 235);
+    border-radius: 12px;
+    
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.devs-card-content {
+    >div {
+        margin-left: 2px;
+    }
+}
+
+.date-posted {
+    color: grey;
+    display: flex;
+    align-items: center;
+}
+
+.view-profile {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #0361ec;
+    margin-left: auto;
+    border-radius: 20px;
+    margin-bottom: 2px;
+}

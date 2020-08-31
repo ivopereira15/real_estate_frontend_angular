@@ -1,0 +1,44 @@
+.center-align {
+  justify-content: space-between;
+  > div {
+    margin: 5px;
+  }
+}
+
+.submit-button {
+  //width: 30%;
+  margin-left: auto;
+  padding-bottom: 25px;
+  > button {
+    width: 100%;
+  }
+}
+
+.search {
+  border-radius: 15px;
+  height: 50px;
+  font-size: larger;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(110, 52, 226);
+  color: white;
+}
+
+.border-margins {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.row-space-around {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.width25 {
+  width: 25%;
+}
+
+::ng-deep mat-expansion-panel.mat-expansion-panel {
+  border-radius: 15px !important;
+}

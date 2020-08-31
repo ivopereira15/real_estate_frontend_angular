@@ -1,0 +1,172 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+.row-nomargin {
+    display: flex;
+    flex-direction: row;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-top: -10%;
+}
+
+.margin-left {
+    margin-left: auto;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.width-5 {
+    width: 5%;
+}
+
+.width-10 {
+    width: 10%;
+}
+
+.width-15 {
+    width: 15%;
+}
+
+.width-20 {
+    width: 20%;
+}
+
+.width-25 {
+    width: 25%;
+}
+
+.width-30 {
+    width: 30%;
+}
+
+.width-35 {
+    width: 35%;
+}
+
+.width-40 {
+    width: 40%;
+}
+
+.width-50 {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.width-50_2{
+    width: 50%;
+}
+
+.width-60 {
+    width: 60%;
+}
+
+.width-70 {
+    width: 70%;
+}
+
+.width-75 {
+    width: 75%;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.width-90 {
+    width: 90%;
+}
+
+.width-95 {
+    width: 95%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.margin-left {
+    margin-left: auto !important;
+}
+
+.half-width {
+    width: 50%;
+    padding: 2px;
+}
+
+.wrap {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+// Box shodow
+.background-filter {
+   border-radius: 15px;
+   // box-shadow: 0 10px 6px -6px #777;
+   box-shadow: 0 10px 60px -6px #777, 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.mat-form-field-infix {
+    width: unset !important;
+}
+
+// mat button override
+
+.mat-button {
+    height: 50px !important;
+    border-radius: 15px !important;
+    font-size: larger !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+
+.button-wrapper {
+    padding: 5px !important;
+}
+
+// Title
+
+.section-title {
+    margin-left: 30px !important;
+    font-size: larger !important;
+    font-weight: bold !important;
+    margin-bottom: 20px !important;
+}
+
+// mat radio 
+

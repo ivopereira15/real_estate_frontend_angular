@@ -1,0 +1,71 @@
+<div>
+  <div class="full-width border-margins row-space-around">
+    <div style="width: 50%;">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="C#, Java, Mongo...">
+      </mat-form-field>
+    </div>
+    <div class="border-margins width-25">
+      <mat-form-field appearance="outline" class="width-100">
+        <mat-label>Category</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let city of locations" [value]="city">
+            {{city}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="border-margins width25">
+      <div class="submit-button">
+        <button mat-raised-button class="search"> Search </button>
+      </div>
+    </div>
+  </div>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Advanced filter
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row center-align border-margins width-100">
+
+        <mat-form-field appearance="outline" class="width-30">
+          <mat-label>City</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let city of locations" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="width-30">
+          <mat-label>Job Title</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let city of locations" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="width-30">
+          <mat-label>Years of experience</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let city of locations" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+
+    </div>
+    <div class="row align-items-center border-margins">
+      <mat-form-field appearance="outline" class="width-30">
+        <mat-label>Choose technologies</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let technology of technologies" [value]="technology">{{technology}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+</div>

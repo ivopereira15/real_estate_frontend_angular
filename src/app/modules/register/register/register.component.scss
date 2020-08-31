@@ -1,0 +1,30 @@
+
+.div-btn{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.register-btn {
+    width: 95%; 
+    height: 50px;
+    border-radius: 15px;
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    //font-weight: bold;
+}
+
+.register-column {
+    padding: 25px;
+    width: 40%;
+}
+
+.far.fa-user {
+    font-size: 68px;
+    color: rgb(197, 196, 196);
+}
+
+.far.fa-building {
+    font-size: 68px;
+    color: rgb(197, 196, 196);
+}

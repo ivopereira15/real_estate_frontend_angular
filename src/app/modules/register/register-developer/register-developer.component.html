@@ -1,0 +1,76 @@
+<div class="center">
+  <!--FIRST WINDOW-->
+  <div class="column background-filter" [ngClass]="[isMobile ? 'border-box-mobile' : 'border-box']"   *ngIf="!confirmPassword">
+    <form (ngSubmit)="next()" [formGroup]="userForm" novalidate>
+      <div class="row register-header">
+        Create an account and find a job
+      </div>
+      <div class="row full-width">
+        <div class="width-100">
+          <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" formControlName="firstname" required [(ngModel)]="newUser.name">
+            <mat-error>
+              First Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row full-width">
+        <div class="width-100">
+          <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" formControlName="lastname" required [(ngModel)]="newUser.surname">
+            <mat-error>
+              Last Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row full-width">
+        <div class="width-100">
+          <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" required [(ngModel)]="newUser.email">
+            <mat-error>
+              Email is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <button class="full-width register-btn" mat-raised-button color="primary" type="submit"> Continue
+        </button>
+      </div>
+    </form>
+  </div>
+  <!--NEXT WINDOW-->
+  <div class="column background-filter border-box-no-height" *ngIf="confirmPassword">
+    <form (ngSubmit)="createAccount()" [formGroup]="passwordForm" novalidate>
+      <div class="row">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" required [(ngModel)]="newUser.password">
+          <mat-error>
+            Password required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Confirm password</mat-label>
+          <input type="password" matInput formControlName="confirmPassword" required [(ngModel)]="confirmPasswordInput">
+          <mat-error *ngIf="passwordForm.controls.confirmPassword.hasError('notmatch')">
+            Passwords don't match
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <button class="full-width register-btn" mat-raised-button color="primary"> Create account
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

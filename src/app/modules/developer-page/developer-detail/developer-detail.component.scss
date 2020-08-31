@@ -1,0 +1,187 @@
+.header-box,
+.headline-body {
+    margin-left: 30px;
+}
+
+.divider {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    > img {
+        border-radius: 75px;
+    }
+    > span {
+        margin-top: 10px;
+    }
+}
+
+.bordered {
+    background-color: rgb(241, 241, 241);
+    border-radius: 15px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.first-name,
+.last-name {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    color: royalblue;
+    font-size: larger;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.job-position {
+    margin-left: 10px;
+    font-size: larger;
+    font-weight: bold;
+    //margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.body-position {
+    margin-left: 5px;
+    color: rgb(114, 24, 179);
+    font-weight: bold;
+    font-size: large;
+}
+
+.body-course {
+    margin-left: 5px;
+    color: royalblue;
+    font-weight: bold;
+    font-size: large;
+}
+
+.job-date,
+.job-location,
+.education-date,
+.education-location {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: grey;
+}
+
+.body-company,
+.body-university {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.body-degree {
+    margin-left: 5px;
+}
+
+.job-details,
+.education-details {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.logo {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+.far.fa-building,
+.fas.fa-university {
+    font-size: 68px;
+    color: rgb(197, 196, 196);
+}
+
+.location {
+    margin-left: 10px;
+    font-size: larger;
+    //margin-right: 5px;
+    color: grey;
+    margin-bottom: 10px;
+}
+
+.similiar-developers {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: larger;
+    color: grey;
+    font-weight: bold;
+}
+.devlist {
+    overflow-y: auto;
+    > .card {
+        margin: 10px;
+    }
+}
+
+.skill {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.language {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+mat-radio-group {
+    padding-top: 5px !important;
+    padding-left: 5px !important;;
+    padding-right: 5px !important;
+    background-color: rgb(250, 242, 242) !important;
+    border-radius: 10px !important;
+    pointer-events: none;
+
+    mat-radio-button {
+        pointer-events: none;
+        margin-left: 5px !important;
+    }
+}
+
+::ng-deep mat-radio-button.level-1 .mat-radio-inner-circle {
+    background-color: yellow !important;
+}
+::ng-deep mat-radio-button.level-1 .mat-radio-outer-circle {
+    border-color: yellow !important;
+}
+
+::ng-deep mat-radio-button.level-2 .mat-radio-inner-circle {
+    background-color: rgb(255, 208, 0) !important;
+}
+::ng-deep mat-radio-button.level-2 .mat-radio-outer-circle {
+    border-color: rgb(255, 208, 0) !important;
+}
+
+::ng-deep mat-radio-button.level-3 .mat-radio-inner-circle {
+    background-color: rgb(255, 174, 0) !important;
+}
+::ng-deep mat-radio-button.level-3 .mat-radio-outer-circle {
+    border-color: rgb(255, 174, 0) !important;
+}
+
+::ng-deep mat-radio-button.level-4 .mat-radio-inner-circle {
+    background-color: rgb(255, 123, 0) !important;
+}
+::ng-deep mat-radio-button.level-4 .mat-radio-outer-circle {
+    border-color: rgb(255, 123, 0) !important;
+}
+
+::ng-deep mat-radio-button.level-5 .mat-radio-inner-circle {
+    background-color: rgb(255, 72, 0) !important;
+}
+::ng-deep mat-radio-button.level-5 .mat-radio-outer-circle {
+    border-color: rgb(255, 72, 0) !important;
+}
+
+
+

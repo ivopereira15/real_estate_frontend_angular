@@ -1,0 +1,41 @@
+<div class="background-filter card">
+  <div class="devs-card-header">
+    <div class="image">
+      <img [src]="image" width="60" height="60">
+    </div>
+    <div class="column">
+      <div class="devs-card-header-name">
+        {{user.name}}
+      </div>
+      <div class="devs-card-job-title">
+        {{user.headline}}
+      </div>
+      <div class="devs-card-header-developer-location">
+        {{user.city}}, {{user.coutry}}
+      </div>
+    </div>
+  </div>
+  <div class="devs-card-content column">
+    <div class="row">
+      <div class="skill-title">Skills:</div>
+      <div class="row" *ngFor="let skill of userTechnologies">
+       <div class="skill">{{skill}}</div> 
+      </div>
+      <!--TO change in parent skills-->
+    </div>
+    <div class="row-nomargin">
+      Experience: 2 years
+      <!--TO change total expericene-->
+    </div>
+    <div class="row-nomargin"> 
+      <div class="date-posted">
+        Posted 2 weeks ago
+        <!--TO change to add in fron ent date createion-->
+      </div>
+      <button mat-raised-button color="primary" class="view-profile" 
+      [routerLink]="['/developer-detail', user.email ]">View Profile</button>
+    </div>
+  
+
+  </div>
+</div>
