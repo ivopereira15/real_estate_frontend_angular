@@ -9,8 +9,6 @@ import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility
   styleUrls: ['./filter-container.component.scss']
 })
 export class FilterContainerComponent implements OnInit, OnDestroy {
-  // @Output() public toogJobs = new EventEmitter<boolean>();
-  // @Output() public toogDevs = new EventEmitter<boolean>();
   toogleJobs = false;
   toogleDevelopers = true;
   public isMobile: boolean = false;
@@ -21,8 +19,6 @@ export class FilterContainerComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    // this.toogJobs.emit(false);
-    // this.toogDevs.emit(true);
     this.windowChangeSubscription = this.mobileUtilityService.getWindowObservable().subscribe((windowChange: IWindowData) => {
       this.isMobile = !windowChange.isBiggerAsLaptop;
     });
@@ -36,13 +32,9 @@ export class FilterContainerComponent implements OnInit, OnDestroy {
     if (type === 'jobs') {
       this.toogleJobs = true;
       this.toogleDevelopers = false;
-      // this.toogJobs.emit(true);
-      // this.toogDevs.emit(false);
     } else if (type === 'developers') {
       this.toogleJobs = false;
       this.toogleDevelopers = true;
-      // this.toogJobs.emit(false);
-      // this.toogDevs.emit(true);
     }
   }
 
