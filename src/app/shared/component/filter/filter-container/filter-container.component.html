@@ -1,20 +1,9 @@
 <div class="column background">
     <div class="center-filter">
-        <div class="column background-filter white-background" [ngClass]="[isMobile ? 'full-width' : 'half-width']">
-            <div class="row">
-                <div class="wrap">
-                    <button mat-raised-button color="primary" class="searchjobs full-width btn" (click)="toogleFilter('jobs')">Search for jobs</button>
-                    <button mat-raised-button color="primary" class="searchdevs full-width btn" (click)="toogleFilter('developers')">Search for developers</button>
-                </div>
-            </div>
+        <div class="column background-filter white-background" [ngClass]="[isMobile ? 'full-width' : 'threefourth-width']">
             <div class="row" *ngIf="toogleDevelopers">
                 <div class="full-width">
-                    <app-filter-devs></app-filter-devs>
-                </div>
-            </div>
-            <div class="row" *ngIf="toogleJobs">
-                <div class="full-width">
-                    <app-filter-jobs></app-filter-jobs>
+                    <app-filter-property></app-filter-property>
                 </div>
             </div>
         </div>

@@ -3,11 +3,11 @@ import { User } from '../../models/user/user';
 import { Technology } from '../../models/user/technologies';
 
 @Component({
-  selector: 'app-devs-frame',
-  templateUrl: './devs-frame.component.html',
-  styleUrls: ['./devs-frame.component.scss']
+  selector: 'app-property-frame',
+  templateUrl: './property-frame.component.html',
+  styleUrls: ['./property-frame.component.scss']
 })
-export class DevsFrameComponent implements OnInit {
+export class PropertyFrameComponent implements OnInit {
 
   @Input() public user: User;
 

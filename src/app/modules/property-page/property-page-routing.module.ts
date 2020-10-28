@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DeveloperDetailComponent } from './developer-detail/developer-detail.component';
+import { PropertyDetailComponent } from './property-detail/property-detail.component';
 
 
 const routes: Routes = [
-  { path: 'developer-detail/:email', component: DeveloperDetailComponent }
+  { path: 'developer-detail/:email', component: PropertyDetailComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DeveloperPageRoutingModule { }
+export class PropertyPageRoutingModule { }

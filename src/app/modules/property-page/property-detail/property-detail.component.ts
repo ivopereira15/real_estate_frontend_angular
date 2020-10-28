@@ -11,11 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-developer-detail',
-  templateUrl: './developer-detail.component.html',
-  styleUrls: ['./developer-detail.component.scss']
+  selector: 'app-property-detail',
+  templateUrl: './property-detail.component.html',
+  styleUrls: ['./property-detail.component.scss']
 })
-export class DeveloperDetailComponent implements OnInit {
+export class PropertyDetailComponent implements OnInit {
 
   searchPagination: SearchPagination<SearchUser> = new SearchPagination<SearchUser>();
   public users: User[];

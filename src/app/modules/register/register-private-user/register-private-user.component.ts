@@ -10,11 +10,11 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility';
 
 @Component({
-  selector: 'app-register-developer',
-  templateUrl: './register-developer.component.html',
-  styleUrls: ['./register-developer.component.scss']
+  selector: 'app-register-private-user',
+  templateUrl: './register-private-user.component.html',
+  styleUrls: ['./register-private-user.component.scss']
 })
-export class RegisterDeveloperComponent implements OnInit, OnDestroy {
+export class RegisterPrivateUserComponent implements OnInit, OnDestroy {
 
   public locations: string[] = ['Lisboa', 'Porto'];
   public confirmPassword = false;

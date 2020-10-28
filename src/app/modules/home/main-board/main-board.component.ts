@@ -7,11 +7,11 @@ import { shareReplay } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user/user';
 
 @Component({
-  selector: 'app-devs-board',
-  templateUrl: './devs-board.component.html',
-  styleUrls: ['./devs-board.component.scss']
+  selector: 'app-main-board',
+  templateUrl: './main-board.component.html',
+  styleUrls: ['./main-board.component.scss']
 })
-export class DevsBoardComponent implements OnInit, OnDestroy {
+export class MainBoardComponent implements OnInit, OnDestroy {
 
   public users: User[];
 

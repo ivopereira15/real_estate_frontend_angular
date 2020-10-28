@@ -12,7 +12,7 @@ import { RegisterModule } from './modules/register/register.module';
 import { LoginModule } from './modules/login/login.module';
 import { PrivateModule } from './modules/private/private.module';
 import { HttpClientModule } from '@angular/common/http';
-import { DeveloperPageModule } from './modules/developer-page/developer-page.module';
+import { PropertyPageModule } from './modules/property-page/property-page.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { DeveloperPageModule } from './modules/developer-page/developer-page.mod
     RegisterModule,
     LoginModule,
     BrowserAnimationsModule,
-    DeveloperPageModule
+    PropertyPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

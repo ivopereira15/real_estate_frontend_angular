@@ -12,8 +12,8 @@ export class RegisterComponent implements OnInit {
 
   public ngOnInit(): void {
   }
-  public goToDeveloper(): void {
-    this.router.navigateByUrl('register/developer');
+  public goToPrivateUser(): void {
+    this.router.navigateByUrl('register/private-user');
   }
   public goToCompany(): void {
     this.router.navigateByUrl('register/company');

@@ -15,9 +15,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  public toogJobs(event) {
-    this.toogleJobs = event;
-  }
+  // public toogJobs(event) {
+  //   this.toogleJobs = event;
+  // }
 
   public toogDevs(event) {
     this.toogleDevs = event;
