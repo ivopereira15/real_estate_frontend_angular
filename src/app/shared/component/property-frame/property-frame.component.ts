@@ -13,7 +13,7 @@ export class PropertyFrameComponent implements OnInit {
 
   public userTechnologies: string[];
   public skills = [".NET", "Angular", "C#", "Java"];
-  public image = "https://akns-images.eonline.com/eol_images/Entire_Site/2011822/425.sevenyears.lc.092211.jpg?fit=around|600:467&crop=600:467;center,top&output-quality=90";
+  public image = "https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/0082534543178d83e75145f292ada892-full.webp";
 
   constructor() { }
 
