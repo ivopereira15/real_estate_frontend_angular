@@ -1,11 +1,16 @@
+.register-private-user {
+    display: flex;
+    justify-content: center;
+    margin-top: -10%;
+}
+
 .form-field {
     width: 95%;
 }
 
 .border-box {
-    margin-top: 100px;
+    margin-top: 80px;
     padding: 15px;
-    width: 30%;
 }
 
 .border-box-mobile {
@@ -14,12 +19,12 @@
     width: 100%;
 }
 
-.border-box-no-height{
+.border-box-no-height {
     padding: 15px;
     width: 30%;
 }
 
-.register-header{
+.register-header {
     justify-content: center;
     font-weight: bold;
     font-size: x-large;
@@ -35,10 +40,16 @@
 
 // Material Override PLACE TO STYLES
 
-::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
-::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+    padding: 0.4em 0px !important;
+}
+::ng-deep .mat-form-field-label-wrapper {
+    top: -1.5em;
+}
 
-::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-    transform: translateY(-1.1em) scale(.75);
+::ng-deep
+    .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+    .mat-form-field-label {
+    transform: translateY(-1.1em) scale(0.75);
     width: 133.33333%;
 }

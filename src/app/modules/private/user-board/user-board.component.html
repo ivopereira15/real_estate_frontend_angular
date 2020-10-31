@@ -1,10 +1,6 @@
 <div class="row top-margin">
   <div class="width-15"></div>
   <div class="width-70">
-    <div class="preview">
-      <div *ngIf="!active" class="status">*User not Activated. Fill your information and at least one job</div>
-      <button mat-raised-button color="primary" class="mat-button margin-left">Preview</button>
-    </div>
   </div>
 </div>
 <div class="board-container">
@@ -13,10 +9,11 @@
       <button mat-raised-button color="primary" class="mat-button width-100">Messages</button>
     </div>
     <div class="button-wrapper">
-      <button mat-raised-button color="primary" class="mat-button width-100" [routerLink]="['/settings']">Settings</button>
+      <button mat-raised-button color="primary" class="mat-button width-100"
+        [routerLink]="['/settings']">Settings</button>
     </div>
     <div class="button-wrapper">
-      <button mat-raised-button color="primary" class="mat-button width-100">Saved Jobs</button>
+      <button mat-raised-button color="primary" class="mat-button width-100">My Listings</button>
     </div>
   </div>
   <div class="column width-70">
@@ -77,242 +74,6 @@
 
       </div>
     </div>
-    <div class="row width-50 title">
-      Professional Experience
-    </div>
-    <!--JOB-->
-    <div class="row row-margin" *ngFor="let job of user.jobs; let i=index">
-      <div class="margin-left delete" (click)="deleteJob(job)"><i class="fas fa-times-circle"></i></div>
-      <div class="column width-100 background-filter">
-        <div class="row width-100">
-          <div class="cell width-40">
-            <mat-form-field class="width-100" appearance="outline">
-              <mat-label>Job Position</mat-label>
-              <input matInput [(ngModel)]="job.position" required>
-              <mat-error>
-                Job Position is required
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="cell width-20">
-            <mat-form-field appearance="outline">
-              <mat-label>Company</mat-label>
-              <input matInput [(ngModel)]="job.company" [ngModelOptions]="{standalone: true}">
-            </mat-form-field>
-          </div>
-          <!--DatePicker-->
-          <div class="cell width-20">
-            <mat-form-field appearance="outline">
-              <mat-label>From</mat-label>
-              <input matInput [(ngModel)]="job.from" [matDatepicker]="pickerjobfrom" id="pickerjobfrom" [ngModelOptions]="{standalone: true}">
-              <mat-datepicker-toggle matSuffix [for]="pickerjobfrom"></mat-datepicker-toggle>
-              <mat-datepicker #pickerjobfrom></mat-datepicker>
-            </mat-form-field>
-          </div>
-          <!--DatePicker-->
-          <div class="cell width-20">
-            <mat-form-field appearance="outline">
-              <mat-label>To</mat-label>
-              <input matInput [(ngModel)]="job.to" [matDatepicker]="pickerjobto" id="pickerjobto" [ngModelOptions]="{standalone: true}" >
-              <mat-datepicker-toggle matSuffix [for]="pickerjobto"></mat-datepicker-toggle>
-              <mat-datepicker #pickerjobto></mat-datepicker>
-            </mat-form-field>
-          </div>
-
-        </div>
-        <div class="row width-100">
-
-          <div class="cell width-60">
-            <mat-form-field class="textearea" appearance="outline">
-              <textarea matInput placeholder="Experience details"  cols="40" rows="5"
-                [(ngModel)]="job.experienceDetails" [ngModelOptions]="{standalone: true}"></textarea>
-            </mat-form-field>
-          </div>
-          <div class="cell width-40">
-            <div class="column">
-              <div class="row">
-                <div class="cell ">
-                  <mat-form-field appearance="outline">
-                    <mat-label>City</mat-label>
-                    <input matInput [(ngModel)]="job.city" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </div>
-                <div class="cell ">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Country</mat-label>
-                    <input matInput [(ngModel)]="job.coutry" [ngModelOptions]="{standalone: true}">
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="cell width-40  margin-left">
-        <button class="width-100 mat-button" mat-raised-button color="primary" (click)="addJob()"> Add
-          position </button>
-      </div>
-    </div>
-    <div class="row width-50 title">
-      Education
-    </div>
-    <!--EDUCATION-->
-    <div class="row row-margin" *ngFor="let education of user.educations">
-      <div class="margin-left delete" (click)="deleteEducation(education)"><i class="fas fa-times-circle"></i></div>
-      <div class="column width-100 background-filter">
-        <div class="row">
-          <div class="cell width-20">
-            <mat-form-field class="width-100" appearance="outline">
-              <mat-label>University</mat-label>
-              <input matInput [(ngModel)]="education.university" [ngModelOptions]="{standalone: true}" required>
-            </mat-form-field>
-          </div>
-          <div class="cell width-20">
-            <mat-form-field class="width-100" appearance="outline">
-              <mat-label>Course name</mat-label>
-              <input matInput [(ngModel)]="education.course" [ngModelOptions]="{standalone: true}" required>
-            </mat-form-field>
-          </div>
-          <div class="cell width-20">
-            <mat-form-field class="width-100" appearance="outline">
-              <mat-label>Degree</mat-label>
-              <input matInput [(ngModel)]="education.degree" [ngModelOptions]="{standalone: true}">
-            </mat-form-field>
-          </div>
-          <!--Datepicker-->
-          <div class="cell width-20">
-            <mat-form-field class="width-100" appearance="outline">
-              <mat-label>From</mat-label>
-              <input matInput [(ngModel)]="education.from" [matDatepicker]="pickereducationfrom"
-                id="pickereducationfrom" [ngModelOptions]="{standalone: true}">
-              <mat-datepicker-toggle matSuffix [for]="pickereducationfrom"></mat-datepicker-toggle>
-              <mat-datepicker #pickereducationfrom></mat-datepicker>
-            </mat-form-field>
-          </div>
-          <div class="cell width-20">
-            <mat-form-field class="width-100" appearance="outline">
-              <mat-label>To</mat-label>
-              <input matInput [(ngModel)]="education.to" [matDatepicker]="pickereducationto" id="pickereducationto"
-              [ngModelOptions]="{standalone: true}">
-              <mat-datepicker-toggle matSuffix [for]="pickereducationto"></mat-datepicker-toggle>
-              <mat-datepicker #pickereducationto></mat-datepicker>
-            </mat-form-field>
-          </div>
-
-        </div>
-        <div class="row width-100">
-          <div class="cell width-60">
-            <mat-form-field class="textearea" appearance="outline">
-              <textarea matInput placeholder="Education details" cols="40" rows="5"
-                [(ngModel)]="education.educationDetails" [ngModelOptions]="{standalone: true}"></textarea>
-            </mat-form-field>
-          </div>
-
-          <div class="cell width-40">
-            <div class="column"></div>
-            <div class="row">
-              <div class="cell">
-                <mat-form-field appearance="outline">
-                  <mat-label>City</mat-label>
-                  <input matInput [(ngModel)]="education.city" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </div>
-              <div class="cell">
-                <mat-form-field appearance="outline">
-                  <mat-label>Country</mat-label>
-                  <input matInput [(ngModel)]="education.coutry" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="cell width-40 margin-left">
-        <button class="width-100 mat-button" mat-raised-button color="primary" (click)="addEducation()"> Add
-          education
-        </button>
-      </div>
-    </div>
-    <div class="row width-50 title">
-      Skills
-    </div>
-    <!--SKILLS-->
-    <div class="row row-margin" *ngFor="let technology of user.technologies">
-      <div class="margin-left delete" (click)="deleteTechnology(technology)"><i class="fas fa-times-circle"></i></div>
-      <div class="row width-100 background-filter">
-        <mat-form-field appearance="outline" class="cell width-30">
-          <mat-label>Your technologies</mat-label>
-          <mat-select [(ngModel)]="technology.name" [ngModelOptions]="{standalone: true}" required>
-            <mat-option *ngFor="let technologyExample of technologiesExample" [value]="technologyExample">
-              {{technologyExample}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="cell width-30">
-          <mat-label>Years of experience</mat-label>
-          <mat-select [(ngModel)]="technology.years" [ngModelOptions]="{standalone: true}">
-            <mat-option *ngFor="let year of technologyYears" [value]="year">
-              {{year}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div class="radio  width-35">
-          <mat-label>Your level</mat-label>
-          <mat-radio-group>
-            <mat-radio-button class="level-1" value="1"></mat-radio-button>
-            <mat-radio-button class="level-2" value="2"></mat-radio-button>
-            <mat-radio-button class="level-3" value="3"></mat-radio-button>
-            <mat-radio-button class="level-4" value="4"></mat-radio-button>
-            <mat-radio-button class="level-5" value="5"></mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="cell width-40 margin-left">
-        <button class="width-100 mat-button" mat-raised-button color="primary" (click)="addTechnology()"> Add
-          Skills
-        </button>
-      </div>
-    </div>
-    <div class="row width-50 title">
-      Languages
-    </div>
-    <!--LANGUAGES-->
-    <div class="row row-margin" *ngFor="let language of user.languages">
-      <div class="margin-left delete" (click)="deleteLanguage(language)"><i class="fas fa-times-circle"></i></div>
-      <div class="row width-100 background-filter">
-        <mat-form-field appearance="outline" class="cell width-30">
-          <mat-label>Your langauges</mat-label>
-          <mat-select [(ngModel)]="language.name" [ngModelOptions]="{standalone: true}" required>
-            <mat-option *ngFor="let technologyExample of technologiesExample" [value]="technologyExample">
-              {{technologyExample}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="cell width-30">
-          <mat-label>Your Level</mat-label>
-          <mat-select [(ngModel)]="language.level" [ngModelOptions]="{standalone: true}">
-            <mat-option *ngFor="let technologyExample of technologiesExample" [value]="technologyExample">
-              {{technologyExample}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="cell width-40 margin-left">
-        <button class="width-100 mat-button" mat-raised-button color="primary" (click)="addLanguage()"> Add
-          Language
-        </button>
-      </div>
-    </div>
     <div class="row row-margin">
       <div class="cell width-25 margin-left">
         <button class="width-100 mat-button" mat-raised-button color="accent" (click)="save()"> Save </button>
@@ -320,4 +81,3 @@
     </div>
   </div>
 </div>
-<!-- </div> -->

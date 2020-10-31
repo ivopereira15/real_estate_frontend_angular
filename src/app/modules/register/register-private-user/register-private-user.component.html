@@ -1,9 +1,9 @@
-<div class="center">
+<div class="register-private-user">
   <!--FIRST WINDOW-->
-  <div class="column background-filter" [ngClass]="[isMobile ? 'border-box-mobile' : 'border-box']"   *ngIf="!confirmPassword">
+  <div class="column width-75" [ngClass]="[isMobile ? 'border-box-mobile' : 'border-box']"   *ngIf="!confirmPassword">
     <form (ngSubmit)="next()" [formGroup]="userForm" novalidate>
       <div class="row register-header">
-        New Account
+        New Private User Account
       </div>
       <div class="row full-width">
         <div class="width-100">

@@ -1,5 +1,5 @@
-<div class="center">
-  <div class="column background-filter border-box" *ngIf="!confirmPassword">
+<div class="register-company">
+  <div class="column border-box" *ngIf="!confirmPassword">
     <div class="row register-header">
       Create professional account
     </div>
@@ -89,7 +89,7 @@
       <button class="full-width register-btn" mat-raised-button color="primary" (click)="confirmPasswordDialog()"> Continue </button>
     </div>
   </div>
-  <div class="column background-filter border-box-no-height" *ngIf="confirmPassword">
+  <div class="column border-box" *ngIf="confirmPassword">
     <div class="row">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Password</mat-label>

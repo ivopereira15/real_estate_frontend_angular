@@ -1,7 +1,41 @@
 <div class="board-container">
-  <div class="row container-row" *ngFor="let chunk of chunkArray">
-    <div *ngFor="let user of chunk">
-      <app-property-frame [user]="user"></app-property-frame>
+
+  <!--Promoted-->
+  <div class="container-promoted">
+    <div class="text">
+      <div class="title">Promoted</div>
+      <div class="seemore">See more(1987)</div>
+    </div>
+    <div class="row container-row">
+      <div *ngFor="let property of promotedProperties">
+        <app-property-frame [user]="property"></app-property-frame>
+      </div>
     </div>
   </div>
+
+  <!--New Listings-->
+  <div class="container-new-listings">
+    <div class=text>
+      <div class="title">New Listings</div>
+      <div class="seemore">See more(1987)</div>
+    </div>
+    <div class="row container-row">
+      <div *ngFor="let property of promotedProperties">
+        <app-property-frame [user]="property"></app-property-frame>
+      </div>
+    </div>
+  </div>
+
+  <!--All Listings-->
+  <div class="container-all-listings">
+    <div class=text-all-listings>
+      <div class="title-all-listings">All Listings</div>
+    </div>
+    <div class="row container-row" *ngFor="let chunk of chunkArray">
+      <div *ngFor="let user of chunk">
+        <app-property-frame [user]="user"></app-property-frame>
+      </div>
+    </div>
+  </div>
+
 </div>

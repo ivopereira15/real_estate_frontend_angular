@@ -8,15 +8,17 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  privateUser: boolean = true;
+
   constructor(private router: Router) { }
 
   public ngOnInit(): void {
   }
   public goToPrivateUser(): void {
-    this.router.navigateByUrl('register/private-user');
+    this.privateUser = true;
   }
   public goToCompany(): void {
-    this.router.navigateByUrl('register/company');
+    this.privateUser = false;
   }
 
 }

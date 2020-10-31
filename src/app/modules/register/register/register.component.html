@@ -1,9 +1,5 @@
-<div class="center">
-  <div class="column register-column background-filter">
-    <div class="row full-width">
-      <div class="width-50"><i class="far fa-user"></i></div>
-      <div class="width-50"><i class="far fa-building"></i></div>
-    </div>
+<div class="register">
+  <div class="register-column background-filter">
     <div class="row full-width">
       <div class="div-btn">
         <button class="register-btn" mat-raised-button color="primary" (click)="goToPrivateUser()">Private User</button>
@@ -12,5 +8,11 @@
         <button class="register-btn" mat-raised-button color="accent" (click)="goToCompany()">Professional</button>
       </div>
     </div>
+    <div class="full-width">
+      <app-register-private-user *ngIf="privateUser"></app-register-private-user>
+      <app-register-company *ngIf="!privateUser"></app-register-company>
+    </div>
+
   </div>
+
 </div>

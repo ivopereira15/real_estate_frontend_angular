@@ -5,6 +5,7 @@ import { SearchUser } from 'src/app/shared/models/search/search-user';
 import { Subscription, Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user/user';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-main-board',
@@ -18,6 +19,7 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   searchPagination: SearchPagination<SearchUser> = new SearchPagination<SearchUser>();
   subscriptions: Subscription = new Subscription();
   chunkArray: Array<User[]> = [];
+  promotedProperties: any;
 
   constructor(@Inject(UserService) private userService: UserService) { }
 
@@ -34,8 +36,11 @@ export class MainBoardComponent implements OnInit, OnDestroy {
         if (res.isValid) {
           console.log(res);
           this.users = res.data;
+          //
+          this.promotedProperties = this.users.slice(0, 4);
+
           var i, j, array, chunk = 4;
-          for (i = 0, j = this.users.length; i < j; i += chunk) {
+          for (i = 0, j = 8; i < j; i += chunk) {
             array = this.users.slice(i, i + chunk);
             this.chunkArray.push(array);
           }
