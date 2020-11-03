@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../models/user/user';
-import { Technology } from '../../models/user/technologies';
 
 @Component({
   selector: 'app-property-frame',
@@ -18,19 +17,7 @@ export class PropertyFrameComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.fillTechnologies(this.user.technologies);
   }
 
-  fillTechnologies(technologies: Technology[]) {
-    this.userTechnologies = [];
-    let technologiesArray = [...technologies];
-    if (technologies.length > 4) {
-      technologiesArray = technologiesArray.slice(0, 4);
-    }
-    for (const tech of technologiesArray) {
-
-      this.userTechnologies.push(tech.name);
-    }
-  }
 
 }

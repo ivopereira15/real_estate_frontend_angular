@@ -21,8 +21,8 @@
           <!--ROW 2 HEADLINE-->
           <div class="row">
             <div clas="column">
-              <div class="section-title">Headline</div>
-              <div class="headline-body">{{user.headline}}</div>
+              <div class="section-title">Address</div>
+              <div class="headline-body">{{user.address}}</div>
             </div>
           </div>
           <!--ROW 3 JOBS-->
@@ -30,34 +30,7 @@
             <div class="column width-100">
               <mat-divider class="divider"></mat-divider>
               <div class="section-title">Professional experience</div>
-              <div *ngFor="let job of user.jobs">
-                <div class="row bordered">
-                  <div class="logo">
-                    <i class="far fa-building"></i>
-                  </div>
-                  <div class="column job-box">
-                    <div class="row-nomargin">
-                      <div class="body-position"> {{job.position}}</div>
-                    </div>
-                    <div class="row-nomargin">
-                      <div class="body-company">{{job.company}}</div>
-                    </div>
-                    <div class="row-nomargin">
-                      <div class="job-date">2005 -</div>
-                      <!--{{job.from}}-->
-                      <div class="job-date">2022</div>
-                      <!--{{job.to}}-->
-                    </div>
-                    <div class="row-nomargin">
-                      <div class="job-location">{{job.city}},</div>
-                      <div class="job-location">{{job.country}}</div>
-                    </div>
-                    <div class="row-nomargin">
-                      <div class="job-details">{{job.experienceDetails}}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
           <!--ROW 4 EDUCATIONS-->
@@ -65,37 +38,7 @@
             <div class="column width-100">
               <mat-divider class="divider"></mat-divider>
               <div class="section-title">Education</div>
-              <div *ngFor="let education of user.educations">
-                <div class="row bordered">
-                  <div class="logo">
-                    <i class="fas fa-university"></i>
-                  </div>
-                  <div class="column job-box">
-                    <div class="row-nomargin">
-                      <div class="body-course"> {{education.course}}</div>
-                    </div>
-                    <div class="row-nomargin">
-                      <div class="body-degree">{{education.degree}}</div>
-                    </div>
-                    <div class="row-nomargin">
-                      <div class="body-university">{{education.university}}</div>
-                    </div>
-                    <div class="row-nomargin">
-                      <div class="education-date">2005 -</div>
-                      <!--{{job.from}}-->
-                      <div class="education-date">2022</div>
-                      <!--{{job.to}}-->
-                    </div>
-                    <div class="row-nomargin">
-                      <div class="education-location">{{education.city}},</div>
-                      <div class="education-location">{{education.country}}</div>
-                    </div>
-                    <div class="row-nomargin">
-                      <div class="education-details">{{education.educationDetails}}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+           
             </div>
           </div>
           <!--ROW 5 SKILLS-->
@@ -103,7 +46,7 @@
             <div class="column width-100">
               <mat-divider class="divider"></mat-divider>
               <div class="section-title">Skills</div>
-              <div *ngFor="let technology of user.technologies">
+         <!--      <div *ngFor="let technology of user.technologies">
                 <div class="row bordered skill">
                   <div>{{technology.name}}</div>
                   <div>{{technology.years}} Years</div>
@@ -117,7 +60,7 @@
                     </mat-radio-group>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
           <!--ROW 6 LANGUAGES-->
@@ -125,13 +68,13 @@
             <div class="column width-100">
               <mat-divider class="divider"></mat-divider>
               <div class="section-title">Languages</div>
-              <div *ngFor="let language of user.languages">
+      <!--         <div *ngFor="let language of user.languages">
                 <div class="row bordered language">
                   <div>{{language.name}}</div>
                   <div>{{language.level}}</div>
                   <div></div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

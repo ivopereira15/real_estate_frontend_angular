@@ -3,8 +3,6 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { UserService } from 'src/app/core/services/api/user.service';
 import { AppContextService } from 'src/app/core/services/app-context.service';
 import { User } from 'src/app/shared/models/user/user';
-import { Job } from 'src/app/shared/models/user/job';
-import { Education } from 'src/app/shared/models/user/education';
 import { SearchPagination } from 'src/app/shared/models/search/search-paginations';
 import { SearchUser } from 'src/app/shared/models/search/search-user';
 import { ActivatedRoute } from '@angular/router';
@@ -62,12 +60,6 @@ export class PropertyDetailComponent implements OnInit {
 
   initializeEmptyUser() {
     this.user = new User();
-    const job: Job = new Job();
-    this.user.jobs = [];
-    this.user.jobs.push(job);
-    const education: Education = new Education();
-    this.user.educations = [];
-    this.user.educations.push(education);
   }
 
 }

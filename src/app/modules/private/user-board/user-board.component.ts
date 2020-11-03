@@ -1,12 +1,8 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { User } from 'src/app/shared/models/user/user';
-import { Job } from 'src/app/shared/models/user/job';
-import { Education } from 'src/app/shared/models/user/education';
 import { UserService } from 'src/app/core/services/api/user.service';
 import { AppContextService } from 'src/app/core/services/app-context.service';
 import { Subscription } from 'rxjs';
-import { Technology } from 'src/app/shared/models/user/technologies';
-import { Language } from 'src/app/shared/models/user/language';
 import { FormGroup, FormArray, FormBuilder, ValidatorFn, Validators, FormControl } from '@angular/forms';
 
 @Component({
@@ -40,11 +36,6 @@ export class UserBoardComponent implements OnInit, OnDestroy {
 
           this.user = res.data;
           this.active = this.user.active;
-          if (this.user.jobs.length === 0) {
-            const job: Job = new Job();
-            this.user.jobs = [];
-            this.user.jobs.push(job);
-          }
         }
 
       })
@@ -58,59 +49,6 @@ export class UserBoardComponent implements OnInit, OnDestroy {
 
   initializeEmptyUser() {
     this.user = new User();
-
-    const job: Job = new Job();
-    this.user.jobs = [];
-    this.user.jobs.push(job);
-  }
-
-  addJob(): void {
-    const job: Job = new Job();
-    this.user.jobs.push(job);
-  }
-
-  addEducation(): void {
-    const education: Education = new Education();
-    this.user.educations.push(education);
-  }
-
-  addTechnology(): void {
-    const technology: Technology = new Technology();
-    this.user.technologies.push(technology);
-  }
-
-  addLanguage(): void {
-    const language: Language = new Language();
-    this.user.languages.push(language);
-  }
-
-
-  deleteJob(job: Job): void {
-    const index = this.user.jobs.indexOf(job, 0);
-    if (index > -1) {
-      this.user.jobs.splice(index, 1);
-    }
-  }
-
-  deleteEducation(education: Education): void {
-    const index = this.user.educations.indexOf(education, 0);
-    if (index > -1) {
-      this.user.educations.splice(index, 1);
-    }
-  }
-
-  deleteTechnology(technology: Technology): void {
-    const index = this.user.technologies.indexOf(technology, 0);
-    if (index > -1) {
-      this.user.technologies.splice(index, 1);
-    }
-  }
-
-  deleteLanguage(language: Language): void {
-    const index = this.user.languages.indexOf(language, 0);
-    if (index > -1) {
-      this.user.languages.splice(index, 1);
-    }
   }
 
   save(): void {
@@ -144,10 +82,6 @@ export class UserBoardComponent implements OnInit, OnDestroy {
     if (this.user.coutry === undefined || this.user.coutry === '') {
       return false;
     }
-
-    if (this.user.jobs === undefined || this.user.jobs === [] || this.user.jobs === null) {
-      return false;
-    }
     return true;
   }
 
@@ -164,46 +98,7 @@ export class UserBoardComponent implements OnInit, OnDestroy {
     if (this.user.coutry === undefined || this.user.coutry === '') {
       return false;
     }
-    let jobCheck = true;
-    this.user.jobs.forEach(job => {
-      if (job.position === undefined || job.position === '') {
-        jobCheck = false;
-      }
-    });
-    if (!jobCheck) {
-      return false;
-    }
-
-    let educationCheck = true;
-    this.user.educations.forEach(education => {
-      if (education.course === undefined || education.course === '') {
-        educationCheck = false;
-      }
-    });
-    if (!educationCheck) {
-      return false;
-    }
-
-    let technologyCheck = true;
-    this.user.technologies.forEach(technology => {
-      if (technology.name === undefined || technology.name === '') {
-        technologyCheck = false;
-      }
-    });
-    if (!technologyCheck) {
-      return false;
-    }
-
-    let languageCheck = true;
-    this.user.languages.forEach(language => {
-      if (language.name === undefined || language.name === '') {
-        languageCheck = false;
-      }
-    });
-    if (!languageCheck) {
-      return false;
-    }
-
+    
     return true;
   }
 

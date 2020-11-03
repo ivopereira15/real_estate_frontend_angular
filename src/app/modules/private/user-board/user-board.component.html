@@ -26,6 +26,7 @@
         </span>
       </div>
       <div class="column width-40 ">
+
         <div class="row">
           <div class="cell">
             <mat-form-field class="form-field" appearance="outline">
@@ -47,10 +48,10 @@
           </div>
         </div>
         <div class="row width-100">
-          <div class="cell width-95">
+          <div class="cell full-width">
             <mat-form-field class="form-field width-100" appearance="outline">
-              <mat-label>Headline</mat-label>
-              <input matInput [(ngModel)]="user.headline" [ngModelOptions]="{standalone: true}">
+              <mat-label>Address</mat-label>
+              <input matInput [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
           </div>
 
@@ -68,6 +69,19 @@
             <mat-form-field class="form-field" appearance="outline">
               <mat-label>Country</mat-label>
               <input matInput [(ngModel)]="user.coutry" [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="cell">
+            <mat-form-field class="form-field" appearance="outline">
+              <mat-label>Tax Number</mat-label>
+              <input matInput [(ngModel)]="user.surname" [ngModelOptions]="{standalone: true}" required>
+              <mat-error>
+                Last Name is required
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
