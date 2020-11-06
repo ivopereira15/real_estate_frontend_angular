@@ -11,10 +11,19 @@ export class AuthService {
 
   authChanged: EventEmitter<any> = new EventEmitter();
 
-  private isAuthenticatedTracker;
-  private message: string;
+  public loggedInSubject: BehaviorSubject<boolean>;
+  public loggedInObservable: Observable<boolean>;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.loggedInSubject = new BehaviorSubject(localStorage.getItem('High-Tech_Token') != null);
+    this.loggedInObservable = this.loggedInSubject.asObservable();
+   }
+
+   // Basically this was done not to have an subscription in the jwt interceptor
+   // I think it would affect the performance...
+  public get loggedInValue(): boolean {
+    return this.loggedInSubject.value;
+  }
 
   /**
    * this is used to clear anything that needs to be removed
@@ -39,23 +48,12 @@ export class AuthService {
     return false;
   }
 
-  loginAdmin(): void {
-    localStorage.setItem('token', `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1MzMyNzM5NjksImV4cCI6MTU2NDgxMDAwNSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoiVGVzdCBHdWFyZCIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJyb2xlIjoiQWRtaW4ifQ.rEkg53_IeCLzGHlmaHTEO8KF5BNfl6NEJ8w-VEq2PkE`);
-
-    this.router.navigate(['/dashboard']);
-  }
-
-  login(): void {
-    localStorage.setItem('token', `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1MzMyNzM5NjksImV4cCI6MTU2NDgxMDAwNSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoiVGVzdCBHdWFyZCIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20ifQ.GA0Y9gYIjmx1jLwuRHuBgZ8m6o-NgkD84nO0ym68CWo`);
-
-    this.router.navigate(['/dashboard']);
-  }
-
   /**
    * this is used to clear local storage and also the route to login
    */
   logout(): void {
-    this.authChanged.emit(false);
+    this.loggedInSubject.next(false);
+    // this.authChanged.emit(false);
     this.clear();
     this.router.navigate(['/login']);
   }

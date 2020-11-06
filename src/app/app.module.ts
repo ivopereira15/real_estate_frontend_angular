@@ -11,8 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterModule } from './modules/register/register.module';
 import { LoginModule } from './modules/login/login.module';
 import { PrivateModule } from './modules/private/private.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PropertyPageModule } from './modules/property-page/property-page.module';
+import { JwtInterceptor} from '../app/core/authentication/jwt-interceptor';
+import { ErrorInterceptor} from '../app/core/authentication/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import { PropertyPageModule } from './modules/property-page/property-page.module
     BrowserAnimationsModule,
     PropertyPageModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

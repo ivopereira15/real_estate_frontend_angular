@@ -23,29 +23,31 @@ export class LoginComponent implements OnInit {
       Validators.required])
   });
 
-  constructor(private accountService: AccountService,
-              private appContext: AppContextService,
-              private authService: AuthService,
-              private router: Router) { }
+  constructor(
+    private accountService: AccountService,
+    private appContext: AppContextService,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
   public login(): void {
     if (this.loginForm.valid) {
-      // change username to email
       this.accountService.getJwtToken(this.email, this.password).subscribe(
         (resultMessage: ResultMessage<string>) => {
           if (resultMessage.isValid) {
             const token: string = resultMessage.data;
             this.appContext.setToken(token);
-            this.authService.authChanged.emit(true);
+
+            this.authService.loggedInSubject.next(true);
+            // this.authService.authChanged.emit(true);
+
             // TODO call here GetThisUserAsync()
             this.appContext.setUserEmail(this.email);
 
             this.router.navigate(['/userboard']);
           }
-          // else { this.errors = resultMessage.Errors; }
         },
         (httpErrorResponse: HttpErrorResponse) => {
           console.log(httpErrorResponse);

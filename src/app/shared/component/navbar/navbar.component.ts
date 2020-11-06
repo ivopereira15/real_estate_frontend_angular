@@ -18,14 +18,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     @Inject(MobileUtilityService) private mobileUtilityService: MobileUtilityService) {
-      this.authService.authChanged
+      this.authService.loggedInObservable
       .subscribe((res) => {
         this.authenticated = res;
       });
      }
 
   ngOnInit() {
-    this.authService.isAuthenticatedObservable().subscribe(res => this.authenticated = res);
+    this.authenticated = this.authService.loggedInValue;
+    // this.authService.isAuthenticatedObservable().subscribe(res => this.authenticated = res);
+
     this.windowChangeSubscription = this.mobileUtilityService.getWindowObservable().subscribe((windowChange: IWindowData) => {
 
       this.isMobile = !windowChange.isBiggerAsLaptop;
