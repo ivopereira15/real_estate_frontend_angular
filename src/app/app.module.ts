@@ -15,6 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PropertyPageModule } from './modules/property-page/property-page.module';
 import { JwtInterceptor} from '../app/core/authentication/jwt-interceptor';
 import { ErrorInterceptor} from '../app/core/authentication/http-interceptor';
+import { AddListingModule } from './modules/add-listing/add-listing.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ErrorInterceptor} from '../app/core/authentication/http-interceptor';
     RegisterModule,
     LoginModule,
     BrowserAnimationsModule,
-    PropertyPageModule
+    PropertyPageModule,
+    AddListingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

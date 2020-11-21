@@ -22,7 +22,7 @@ export class UserBoardComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(FormBuilder) private formBuilder: FormBuilder,
     @Inject(UserService) public userService: UserService, private appContext: AppContextService,
-  ) {}
+  ) { }
 
   ngOnInit() {
 
@@ -79,7 +79,7 @@ export class UserBoardComponent implements OnInit, OnDestroy {
     if (this.user.city === undefined || this.user.city === '') {
       return false;
     }
-    if (this.user.coutry === undefined || this.user.coutry === '') {
+    if (this.user.country === undefined || this.user.country === '') {
       return false;
     }
     return true;
@@ -95,10 +95,9 @@ export class UserBoardComponent implements OnInit, OnDestroy {
     if (this.user.city === undefined || this.user.city === '') {
       return false;
     }
-    if (this.user.coutry === undefined || this.user.coutry === '') {
+    if (this.user.country === undefined || this.user.country === '') {
       return false;
     }
-    
     return true;
   }
 

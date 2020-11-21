@@ -8,8 +8,8 @@ export class User {
 
     // EDIT PART
     public city: string;
-    public coutry: string;
+    public country: string;
     public address: string;
-    public taxnumber: string;
+    public taxNumber: string;
 
 }
