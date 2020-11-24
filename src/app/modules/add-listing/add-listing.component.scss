@@ -11,6 +11,10 @@
     background-color: #1c4cc5;
 }
 
+.sell-button.room {
+    background-color: #2cc22c !important;
+}
+
 .rent-button {
     margin: 10px;
     border-radius: 100px !important;
@@ -23,3 +27,8 @@
     color: white;
     background-color: #ff4081;
 }
+
+.rent-button.room {
+    background-color: #36ccfa !important;
+}
+

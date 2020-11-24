@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/authentication/auth.service';
 
 @Component({
   selector: 'app-add-listing-sell',
@@ -12,19 +13,31 @@ export class AddListingSellComponent implements OnInit {
   energyCertificate: string[] = ["A", "B", "C", "D"];
   thumbnails = [];
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   public uploadImage(image: any): void {
-    // let uploadedImage: File = image.target.files[0];
+    let uploadedImage: File = image.target.files[0];
     const reader: FileReader = new FileReader();
-    reader.readAsDataURL(image.target.files[0]);
+    reader.readAsDataURL(uploadedImage);
     reader.onload = (_event) => {
       let result = reader.result;
       this.thumbnails.push(result);
     };
+  }
+
+  publishListing() {
+    // Check if logged in. If yes, POST
+    const isAuthnticated = this.authService.isAuthenticated();
+    if (isAuthnticated) {
+      console.log("i am logged in");
+    }
+    if (!isAuthnticated) {
+
+    }
+    // If not cache the request, then update
   }
 
 }

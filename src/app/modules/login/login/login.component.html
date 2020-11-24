@@ -13,7 +13,8 @@
       <div>
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Passowrd</mat-label>
-          <input [(ngModel)]="password" matInput type="password" formControlName="password" placeholder="Type your password">
+          <input [(ngModel)]="password" matInput type="password" formControlName="password"
+            placeholder="Type your password">
           <mat-error>
             Password required
           </mat-error>
@@ -21,6 +22,7 @@
       </div>
       <button mat-raised-button color="primary" type="submit" class="mat-button"> Login </button>
       <button mat-raised-button color="accent" class="mat-button"> Forgot? </button>
+      <a class="link-new-user" [routerLink]="['/register']" routerLinkActive="active"> New User? Register here </a>
     </div>
   </div>
 </form>
