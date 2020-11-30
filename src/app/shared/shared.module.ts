@@ -8,12 +8,14 @@ import { RouterModule } from '@angular/router';
 import { PropertyFrameComponent } from './component/property-frame/property-frame.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './component/footer/footer.component';
+import { SellHouseComponent } from './component/sell-house/sell-house.component';
 
 const components = [
   NavbarComponent,
   FilterPropertyComponent,
   FilterContainerComponent,
-  PropertyFrameComponent
+  PropertyFrameComponent,
+  SellHouseComponent
 ];
 
 @NgModule({

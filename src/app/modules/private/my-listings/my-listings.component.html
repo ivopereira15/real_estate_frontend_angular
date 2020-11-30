@@ -1,0 +1,26 @@
+<div class="row custom">
+    <div class="column width-15">
+        <div class="button-wrapper">
+            <button mat-raised-button color="primary" class="mat-button width-100"
+                [routerLink]="['/userboard']">Back</button>
+        </div>
+    </div>
+    <div class="column width-70">
+
+        <div class=row>
+            <div class="card" *ngFor="let propery of listedProperties">
+                <div class="card-image">
+                    <img [src]="image" width="100%" height="100%">
+                </div>
+                <div> {{propery.price}}</div>
+                <div class=full-width>
+                    <button class="width-30 button-margin" mat-raised-button color="primary" (click)="edit(propery.id)"> Edit </button>
+                    <button class="width-30 button-margin" mat-raised-button color="primary"> Deactivate </button>
+                    <button class="width-30 button-margin" mat-raised-button color="accent"> Delete </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

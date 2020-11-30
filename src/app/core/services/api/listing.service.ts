@@ -1,0 +1,45 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AppContextService } from '../app-context.service';
+import { Observable } from 'rxjs';
+import { ResultMessage } from '../../../shared/models/result-message/result-message';
+import { PropertyType } from '../../../shared/models/listing/property-type';
+import { OperationType } from '../../../shared/models/listing/operation-type';
+import { SellHouse } from '../../../shared/models/listing/sell-house';
+import { PropertyBasic } from '../../../shared/models/listing/property-basic';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class ListingService {
+
+    private httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };
+
+
+    constructor(private http: HttpClient, private appContext: AppContextService) { }
+
+    public getPropertyTypes(): Observable<ResultMessage<OperationType[]>> {
+        return this.http
+            .get<ResultMessage<OperationType[]>>(this.appContext.getAPIUrl() + '/organization/Listing/propertyTypes');
+    }
+
+    public getOperationTypes(): Observable<ResultMessage<PropertyType[]>> {
+        return this.http
+            .get<ResultMessage<PropertyType[]>>(this.appContext.getAPIUrl() + '/organization/Listing/operationTypes');
+    }
+
+    public listSellHouse(listing: SellHouse): Observable<any> {
+        return this.http
+            .post<any>(this.appContext.getAPIUrl() + '/organization/Listing/listSellHouse', listing, this.httpOptions);
+    }
+
+    public getUserPropertiesBasic(userId: number): Observable<ResultMessage<PropertyBasic[]>> {
+        return this.http
+            .get<ResultMessage<PropertyBasic[]>>(this.appContext.getAPIUrl() + '/organization/Listing/getPropertiesByUserBasic/' + userId,
+            this.httpOptions);
+    }
+}

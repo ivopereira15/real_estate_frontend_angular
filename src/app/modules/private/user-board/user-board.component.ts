@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { User } from 'src/app/shared/models/user/user';
+import { User } from 'src/app/shared/models/user/user'
 import { UserService } from 'src/app/core/services/api/user.service';
 import { AppContextService } from 'src/app/core/services/app-context.service';
 import { Subscription } from 'rxjs';
@@ -21,7 +21,8 @@ export class UserBoardComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(FormBuilder) private formBuilder: FormBuilder,
-    @Inject(UserService) public userService: UserService, private appContext: AppContextService,
+    @Inject(UserService) private userService: UserService,
+    private appContext: AppContextService,
   ) { }
 
   ngOnInit() {
@@ -33,9 +34,11 @@ export class UserBoardComponent implements OnInit, OnDestroy {
       this.userService.getUserByEmail(userEmail).subscribe(res => {
 
         if (res.isValid) {
-
           this.user = res.data;
           this.active = this.user.active;
+
+          // TODO check how to move to login
+          this.appContext.setUserId(this.user.id);
         }
 
       })

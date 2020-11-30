@@ -36,4 +36,13 @@ export class AppContextService {
         return userEmail;
     }
 
+    public setUserId(id: number) {
+        localStorage.setItem('User-id', id.toString());
+    }
+
+    public getUserId(): number {
+        const userId = localStorage.getItem('User-id');
+        return +userId;
+    }
+
 }
