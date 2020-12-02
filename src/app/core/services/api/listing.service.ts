@@ -42,4 +42,18 @@ export class ListingService {
             .get<ResultMessage<PropertyBasic[]>>(this.appContext.getAPIUrl() + '/organization/Listing/getPropertiesByUserBasic/' + userId,
             this.httpOptions);
     }
+
+    public getPropertyByUserId(userId: number, propertyId: number): Observable<ResultMessage<SellHouse>> {
+        return this.http
+            .get<ResultMessage<SellHouse>>(this.appContext.getAPIUrl() +
+            '/organization/Listing/getPropertyByUser/' + userId + '/' + propertyId,
+            this.httpOptions);
+    }
+
+    public deletePropertyByUserId(userId: number, propertyId: number): Observable<ResultMessage<any>> {
+        return this.http
+            .delete<ResultMessage<any>>(this.appContext.getAPIUrl() +
+            '/organization/Listing/deletePropertyByUser/' + userId + '/' + propertyId,
+            this.httpOptions);
+    }
 }

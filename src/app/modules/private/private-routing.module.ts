@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'userboard', component: UserBoardComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: UserSettingsComponent, canActivate: [AuthGuard] },
   { path: 'my-listings', component: MyListingsComponent, canActivate: [AuthGuard] },
-  { path: 'my-listings/edit', component: EditListingComponent, canActivate: [AuthGuard] }
+  { path: 'my-listings/edit/:propertyId', component: EditListingComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
