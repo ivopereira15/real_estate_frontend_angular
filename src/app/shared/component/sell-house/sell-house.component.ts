@@ -1,14 +1,16 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit, OnChanges } from '@angular/core';
+
 import { OperationType } from '../../models/listing/operation-type';
 import { PropertyType } from '../../models/listing/property-type';
 import { SellHouse } from '../../models/listing/sell-house';
+import { MapPoint } from '../../models/map/map-point';
 
 @Component({
   selector: 'app-sell-house',
   templateUrl: './sell-house.component.html',
   styleUrls: ['./sell-house.component.scss']
 })
-export class SellHouseComponent implements OnInit {
+export class SellHouseComponent implements OnInit, OnChanges {
 
   @Input() public sellHouseForm: SellHouse;
   @Input() public operationTypes: OperationType[];
@@ -16,6 +18,7 @@ export class SellHouseComponent implements OnInit {
   @Input() public title: string;
   @Output() public publishListing: EventEmitter<any> = new EventEmitter<any>();
 
+  public mapPoint: MapPoint;
   typology: string[] = ["T0", "T1", "T2", "T3"];
   bathrooms: number[] = [1, 2, 3, 4, 5];
   floors: number[] = [1, 2, 3, 4, 5];
@@ -23,14 +26,16 @@ export class SellHouseComponent implements OnInit {
   countries: string[] = ["Italy", "Ukraine", "Portugal"];
   thumbnails = [];
 
-  // sellHouseForm: SellHouse;
-  // operationTypes: OperationType[];
-  // currentOperationType: OperationType;
-  // propertyTypes: PropertyType[];
-
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  ngOnChanges(){
+    this.mapPoint = new MapPoint();
+    this.mapPoint.latitude = this.sellHouseForm.latitude;
+    this.mapPoint.longitude = this.sellHouseForm.longitude;
   }
 
   public uploadImage(image: any): void {
@@ -41,6 +46,11 @@ export class SellHouseComponent implements OnInit {
       let result = reader.result;
       this.thumbnails.push(result);
     };
+  }
+
+  setCoordinates(e: any) {
+    this.sellHouseForm.latitude = e.latitude;
+    this.sellHouseForm.longitude = e.longitude;
   }
 
   publishListingSubmit() {

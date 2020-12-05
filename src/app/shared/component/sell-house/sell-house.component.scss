@@ -1,7 +1,7 @@
 .container-center {
     display: flex;
     align-items: center;
-    height: 130vh;
+    height: 200vh;
     flex-direction: column;
     width: 100%;
 }
@@ -90,6 +90,12 @@
 .checkbox {
     margin: 10px;
 }
+
+.height {
+    height: 500px;
+}
+
+
 
 // Material Override PLACE TO STYLES
 

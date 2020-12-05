@@ -6,6 +6,7 @@ import { AddListingComponent } from './add-listing.component';
 import { AddListingSellComponent } from './add-listing-sell/add-listing-sell.component';
 import { AddListingRentComponent } from './add-listing-rent/add-listing-rent.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
-    AddListingRoutingModule
+    AddListingRoutingModule,
+    LeafletModule
   ]
 })
 export class AddListingModule { }

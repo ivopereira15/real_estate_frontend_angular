@@ -9,6 +9,9 @@ import { PropertyFrameComponent } from './component/property-frame/property-fram
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './component/footer/footer.component';
 import { SellHouseComponent } from './component/sell-house/sell-house.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MapComponent } from './component/map-container/map/map.component';
+import { GeocodingComponent } from './component/map-container/geocoding/geocoding.component';
 
 const components = [
   NavbarComponent,
@@ -19,8 +22,8 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent],
-  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule],
+  declarations: [components, FooterComponent, MapComponent, GeocodingComponent],
+  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule]
 })
 export class SharedModule { }

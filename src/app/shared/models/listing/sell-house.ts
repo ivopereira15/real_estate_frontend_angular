@@ -16,6 +16,9 @@ export class SellHouse {
     public imagesUrl?: File[];
     public characteristics?: string;
 
+    public latitude: number;
+    public longitude: number;
+
     public propertyTypeId: number;
     public operationTypeId: number;
 }

@@ -61,7 +61,8 @@
             <div class="width-30 form">
                 <mat-form-field class="full-width form" appearance="outline">
                     <mat-label>Year of construction</mat-label>
-                    <input type="number" matInput placeholder="Year of construction" [(ngModel)]="sellHouseForm.yearOfConstruction">
+                    <input type="number" matInput placeholder="Year of construction"
+                        [(ngModel)]="sellHouseForm.yearOfConstruction">
                 </mat-form-field>
             </div>
             <div class="width-30 form">
@@ -85,7 +86,37 @@
                 </mat-form-field>
             </div>
         </div>
+
         <!--LINE 4-->
+        <!--LINE 5-->
+        <div class="row width-80">
+            <div class="title">
+                Descritpion
+            </div>
+        </div>
+        <div class="row width-80">
+            <textarea matInput class="textarea" [(ngModel)]="sellHouseForm.description"></textarea>
+        </div>
+        <!--LINE 6-->
+        <div class="row width-80">
+            <div class="title">
+                Photos (max 25)
+            </div>
+        </div>
+        <div class="row width-80">
+            <div class="photo">
+                <input type="file" hidden #uploader accept="image/*" (change)="uploadImage($event)">
+                <span class="material-icons" (click)="uploader.click()">
+                    add_photo_alternate
+                </span>
+            </div>
+            <div class="photo-inserted" *ngFor="let thumbnail of thumbnails">
+                <div class="fill">
+                    <img [src]="thumbnail">
+                </div>
+            </div>
+        </div>
+        <!--LOCATION-->
         <div class="row width-80">
             <div class="title">
                 Location
@@ -115,34 +146,14 @@
                 </mat-form-field>
             </div>
         </div>
-        <!--LINE 4-->
-        <!--LINE 5-->
-        <div class="row width-80">
-            <div class="title">
-                Descritpion
-            </div>
-        </div>
-        <div class="row width-80">
-            <textarea matInput class="textarea" [(ngModel)]="sellHouseForm.description"></textarea>
-        </div>
-        <!--LINE 6-->
-        <div class="row width-80">
-            <div class="title">
-                Photos (max 25)
-            </div>
-        </div>
-        <div class="row width-80">
-            <div class="photo">
-                <input type="file" hidden #uploader accept="image/*" (change)="uploadImage($event)">
-                <span class="material-icons" (click)="uploader.click()">
-                    add_photo_alternate
-                </span>
-            </div>
-            <div class="photo-inserted" *ngFor="let thumbnail of thumbnails">
-                <div class="fill">
-                    <img [src]="thumbnail">
+        <!--MAP-->
+        <div class="row width-80 height">
+            <div class="row width-80">
+                <div>
+                    Or set the location with the marker:
                 </div>
             </div>
+            <app-map (coordinates)="setCoordinates($event)" [mapPointInput]="mapPoint"></app-map>
         </div>
         <!--LINE 7-->
         <div class="row width-80">

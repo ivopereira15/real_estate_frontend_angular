@@ -7,6 +7,7 @@ import { OperationType } from 'src/app/shared/models/listing/operation-type';
 import { PropertyType } from 'src/app/shared/models/listing/property-type';
 import { SellHouse } from 'src/app/shared/models/listing/sell-house';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MapPoint } from '../../../shared/models/map/map-point';
 
 @Component({
   selector: 'app-edit-listing',
@@ -15,16 +16,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EditListingComponent implements OnInit, OnDestroy {
 
-
-  private readonly TYPE = 'Sell';
   public title = "Sell your apartment";
+  private readonly TYPE = 'Sell';
 
-  // typology: string[] = ["T0", "T1", "T2", "T3"];
-  // bathrooms: number[] = [1, 2, 3, 4, 5];
-  // floors: number[] = [1, 2, 3, 4, 5];
-  // energyCertificate: string[] = ["A", "B", "C", "D"];
-  // countries: string[] = ["Italy", "Ukraine", "Portugal"];
-  // thumbnails = [];
 
   sellHouseForm: SellHouse;
   operationTypes: OperationType[];
