@@ -13,10 +13,18 @@
                     <img [src]="image" width="100%" height="100%">
                 </div>
                 <div> {{property.price}}</div>
-                <div class=full-width>
-                    <button class="width-30 button-margin" mat-raised-button color="primary" (click)="edit(property.id)"> Edit </button>
-                    <button class="width-30 button-margin" mat-raised-button color="primary"> Deactivate </button>
-                    <button class="width-30 button-margin" mat-raised-button color="accent" (click)="delete(property.id, i)"> Delete </button>
+                <div class="full-width space-between">
+                    <div class="button-margin full-width">
+                        <button class="full-width" mat-raised-button color="primary"
+                            (click)="edit(property.id)"> Edit </button>
+                    </div>
+                    <div class="button-margin full-width">
+                        <button class="full-width" mat-raised-button color="primary"> Deactivate </button>
+                    </div>
+                    <div class="button-margin full-width">
+                        <button class="full-width" mat-raised-button color="accent"
+                            (click)="delete(property.id, i)"> Delete </button>
+                    </div>
                 </div>
             </div>
         </div>

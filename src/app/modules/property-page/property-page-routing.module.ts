@@ -4,7 +4,7 @@ import { PropertyDetailComponent } from './property-detail/property-detail.compo
 
 
 const routes: Routes = [
-  { path: 'developer-detail/:email', component: PropertyDetailComponent }
+  { path: 'property-detail/:propertyId', component: PropertyDetailComponent }
 ];
 
 @NgModule({

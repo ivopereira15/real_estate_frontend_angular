@@ -31,13 +31,13 @@ export class PropertyDetailComponent implements OnInit {
   ngOnInit() {
     this.initializeEmptyUser();
     this.route.params.subscribe(params => {
-      this.userId = params.email;
+      this.userId = params.propertyId;
       this.subscriptions.add(
-        this.userService.getUserByEmail(this.userId).subscribe(res => {
-          if (res.isValid) {
-            this.user = res.data;
-          }
-        })
+        // this.userService.getUserByEmail(this.userId).subscribe(res => {
+        //   if (res.isValid) {
+        //     this.user = res.data;
+        //   }
+        // })
       );
       console.log(this.userId);
     });

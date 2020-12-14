@@ -6,6 +6,7 @@
     width: 100%;
     height: 200px;
     width: 300px;
+    margin: 5px;
 }
 
 .card-image {
@@ -15,4 +16,11 @@
 .button-margin {
     margin-left: 3px;
     margin-right: 3px;
+}
+
+.space-between{
+    display: flex;
+    flex-direction: row;            
+    flex-wrap: nowrap;             
+    justify-content: space-between;
 }
