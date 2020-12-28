@@ -32,6 +32,7 @@ export class PropertyDetailComponent implements OnInit {
     this.initializeEmptyUser();
     this.route.params.subscribe(params => {
       this.userId = params.propertyId;
+      console.log(params.propertyId);
       this.subscriptions.add(
         // this.userService.getUserByEmail(this.userId).subscribe(res => {
         //   if (res.isValid) {

@@ -31,9 +31,9 @@
     <div class=text-all-listings>
       <div class="title-all-listings">All Listings</div>
     </div>
-    <div class="row container-row" *ngFor="let chunk of chunkArray">
-      <div *ngFor="let user of chunk">
-        <app-property-frame [user]="user"></app-property-frame>
+    <div class="row container-row">
+      <div *ngFor="let property of promotedProperties">
+        <app-property-frame [user]="property" [routerLink]="['/property-detail', property.dbId]"></app-property-frame>
       </div>
     </div>
   </div>

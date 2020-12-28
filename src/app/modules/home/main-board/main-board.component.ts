@@ -6,6 +6,9 @@ import { Subscription, Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { User } from 'src/app/shared/models/user/user';
 import { ThrowStmt } from '@angular/compiler';
+import { SearchProperty } from 'src/app/shared/models/search/search-property';
+import { ListingService } from 'src/app/core/services/api/listing.service';
+import { Property } from 'src/app/shared/models/listing/property';
 
 @Component({
   selector: 'app-main-board',
@@ -17,13 +20,34 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   public users: User[];
 
   searchPagination: SearchPagination<SearchUser> = new SearchPagination<SearchUser>();
+  searchProperties: SearchProperty = new SearchProperty();
   subscriptions: Subscription = new Subscription();
   chunkArray: Array<User[]> = [];
-  promotedProperties: any;
+  promotedProperties: Property[];
 
-  constructor(@Inject(UserService) private userService: UserService) { }
+  constructor(@Inject(UserService) private userService: UserService,
+    @Inject(ListingService) private listingService: ListingService) { }
 
   ngOnInit() {
+    // Properties search Init
+    this.searchProperties.criteria = "12";
+    this.subscriptions.add(
+      this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
+        console.log(res);
+        console.log(res.Result);
+        if (res.Result.IsValid) {
+          console.log(res);
+          this.promotedProperties = res.Result.Data;
+          // temporary hack
+          for (let item of this.promotedProperties) {
+            item.dbId = 1;
+          }
+          console.log(this.promotedProperties);
+        }
+      })
+    );
+
+
     // Test stuff search
     this.searchPagination.PageNumber = 1;
     this.searchPagination.RowsPerPage = 10;
@@ -37,12 +61,12 @@ export class MainBoardComponent implements OnInit, OnDestroy {
           console.log(res);
           this.users = res.data;
           //
-          this.promotedProperties = this.users.slice(0, 4);
+          // this.promotedProperties = this.users.slice(0, 4);
 
           var i, j, array, chunk = 4;
           for (i = 0, j = 8; i < j; i += chunk) {
             array = this.users.slice(i, i + chunk);
-            this.chunkArray.push(array);
+            // this.chunkArray.push(array);
           }
         }
       })
