@@ -41,16 +41,17 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.add(
       this.listingService.getOperationTypes().subscribe((result) => {
-        if (result.isValid) {
-          this.operationTypes = result.data;
-          this.currentOperationType = this.operationTypes.find(x => x.type === this.TYPE);
+        
+        if (result.IsValid) {
+          this.operationTypes = result.Data;
+          this.currentOperationType = this.operationTypes.find(x => x.Type === this.TYPE);
         }
       }));
 
     this.subscriptions.add(
       this.listingService.getPropertyTypes().subscribe((result) => {
-        if (result.isValid) {
-          this.propertyTypes = result.data;
+        if (result.IsValid) {
+          this.propertyTypes = result.Data;
         }
       }));
 
@@ -77,8 +78,8 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
     const isAuthnticated = this.authService.isAuthenticated();
     if (isAuthnticated) {
       console.log("i am logged in");
-      sellHouseForm.userId = this.userId;
-      sellHouseForm.operationTypeId = this.currentOperationType.id;
+      sellHouseForm.UserId = this.userId;
+      sellHouseForm.OperationTypeId = this.currentOperationType.Id;
       console.log(this.sellHouseForm);
       this.subscriptions.add(
        this.listingService.listSellHouse(sellHouseForm).subscribe());

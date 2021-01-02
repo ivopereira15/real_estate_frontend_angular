@@ -1,6 +1,6 @@
 export class ResultMessage<T> {
-    public isValid: boolean;
-    public correlationId: string;
-    public errors: any[]; // ValidationError[];
-    public data: T;
+    public IsValid: boolean;
+    public CorrelationId: string;
+    public Errors: any[]; // ValidationError[];
+    public Data: T;
 }

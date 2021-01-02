@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { UserService } from 'src/app/core/services/api/user.service';
 import { AppContextService } from 'src/app/core/services/app-context.service';
@@ -7,60 +7,49 @@ import { SearchPagination } from 'src/app/shared/models/search/search-pagination
 import { SearchUser } from 'src/app/shared/models/search/search-user';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Property } from 'src/app/shared/models/listing/property';
+import { ListingService } from 'src/app/core/services/api/listing.service';
 
 @Component({
   selector: 'app-property-detail',
   templateUrl: './property-detail.component.html',
   styleUrls: ['./property-detail.component.scss']
 })
-export class PropertyDetailComponent implements OnInit {
+export class PropertyDetailComponent implements OnInit, OnDestroy {
 
-  searchPagination: SearchPagination<SearchUser> = new SearchPagination<SearchUser>();
-  public users: User[];
-  public user: User;
-  public image = "https://akns-images.eonline.com/eol_images/Entire_Site/2011822/425.sevenyears.lc.092211.jpg?fit=around|600:467&crop=600:467;center,top&output-quality=90";
+  public image = "https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/0082534543178d83e75145f292ada892-full.webp";
   subscriptions: Subscription = new Subscription();
-
-  private userId: string;
+  property: Property = new Property();
+  private propertyId: number;
+  subscription: Subscription = new Subscription();
 
   constructor(
     @Inject(UserService) public userService: UserService,
+    @Inject(ListingService) private listingService: ListingService,
     private appContext: AppContextService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.initializeEmptyUser();
     this.route.params.subscribe(params => {
-      this.userId = params.propertyId;
-      console.log(params.propertyId);
-      this.subscriptions.add(
-        // this.userService.getUserByEmail(this.userId).subscribe(res => {
-        //   if (res.isValid) {
-        //     this.user = res.data;
-        //   }
-        // })
+      this.propertyId = params.propertyId;
+      console.log(this.propertyId);
+      this.subscription.add(
+        this.listingService.getPropertyByMySqlId(this.propertyId).subscribe((res: any) => {
+          console.log(res);
+          if(res.Result.IsValid){
+             this.property = res.Result.Data;
+             console.log(this.property);
+          }
+        })
       );
-      console.log(this.userId);
     });
+    // this.property = history.state.data;
+    // console.log(this.property)
 
-    // Test stuff search
-    this.searchPagination.PageNumber = 1;
-    this.searchPagination.RowsPerPage = 10;
-    this.searchPagination.OrderBy = "Email";
-    let testUser = { email: "", username: "", name: "" } as SearchUser;
-    this.searchPagination.RestrictionCriteria = testUser;
-
-    this.subscriptions.add(
-      this.userService.searchUsers(this.searchPagination).subscribe(res => {
-        if (res.isValid) {
-          this.users = res.data;
-        }
-      })
-    );
   }
 
-  initializeEmptyUser() {
-    this.user = new User();
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }

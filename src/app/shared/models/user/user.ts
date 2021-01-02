@@ -1,15 +1,15 @@
 export class User {
-    public id: number;
-    public name: string;
-    public surname: string;
-    public password: string;
-    public email: string;
-    public active: boolean;
+    public Id: number;
+    public Name: string;
+    public Surname: string;
+    public Password: string;
+    public Email: string;
+    public Active: boolean;
 
     // EDIT PART
-    public city: string;
-    public country: string;
-    public address: string;
-    public taxNumber: string;
+    public City: string;
+    public Country: string;
+    public Address: string;
+    public TaxNumber: string;
 
 }

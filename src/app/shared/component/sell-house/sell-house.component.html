@@ -11,19 +11,19 @@
             <div class="width-30 form">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Price</mat-label>
-                    <input type="number" matInput placeholder="Price" [(ngModel)]="sellHouseForm.price">
+                    <input type="number" matInput placeholder="Price" [(ngModel)]="sellHouseForm.Price">
                 </mat-form-field>
             </div>
             <div class="width-30 form">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Area m2</mat-label>
-                    <input type="number" matInput placeholder="Area m2" [(ngModel)]="sellHouseForm.netAream2">
+                    <input type="number" matInput placeholder="Area m2" [(ngModel)]="sellHouseForm.NetAream2">
                 </mat-form-field>
             </div>
             <div class="width-30 form">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Price/m2</mat-label>
-                    <input type="number" matInput placeholder="Price/m2" [(ngModel)]="sellHouseForm.priceNetAream2">
+                    <input type="number" matInput placeholder="Price/m2" [(ngModel)]="sellHouseForm.PriceNetAream2">
                 </mat-form-field>
             </div>
         </div>
@@ -32,15 +32,15 @@
             <div class="width-30 form">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Gross Area m2</mat-label>
-                    <input type="number" matInput placeholder="Gross Area m2" [(ngModel)]="sellHouseForm.grossAream2">
+                    <input type="number" matInput placeholder="Gross Area m2" [(ngModel)]="sellHouseForm.GrossAream2">
                 </mat-form-field>
             </div>
             <div class="width-30 form">
                 <mat-form-field class="width-100" appearance="outline">
                     <mat-label>Typology</mat-label>
-                    <mat-select [(ngModel)]="sellHouseForm.propertyTypeId">
-                        <mat-option *ngFor="let type of propertyTypes" [value]="type.id">
-                            {{type.type}}
+                    <mat-select [(ngModel)]="sellHouseForm.PropertyTypeId">
+                        <mat-option *ngFor="let type of propertyTypes" [value]="type.Id">
+                            {{type.Type}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -48,7 +48,7 @@
             <div class="width-30 form">
                 <mat-form-field class="width-100" appearance="outline">
                     <mat-label>Floor</mat-label>
-                    <mat-select [(ngModel)]="sellHouseForm.floor">
+                    <mat-select [(ngModel)]="sellHouseForm.Floor">
                         <mat-option *ngFor="let floor of floors" [value]="floor">
                             {{floor}}
                         </mat-option>
@@ -62,13 +62,13 @@
                 <mat-form-field class="full-width form" appearance="outline">
                     <mat-label>Year of construction</mat-label>
                     <input type="number" matInput placeholder="Year of construction"
-                        [(ngModel)]="sellHouseForm.yearOfConstruction">
+                        [(ngModel)]="sellHouseForm.YearOfConstruction">
                 </mat-form-field>
             </div>
             <div class="width-30 form">
                 <mat-form-field class="width-100 form" appearance="outline">
                     <mat-label>Nº Bathrooms</mat-label>
-                    <mat-select [(ngModel)]="sellHouseForm.numberOfBathrooms">
+                    <mat-select [(ngModel)]="sellHouseForm.NumberOfBathrooms">
                         <mat-option *ngFor="let bathroom of bathrooms" [value]="bathroom">
                             {{bathroom}}
                         </mat-option>
@@ -78,7 +78,7 @@
             <div class="width-30 form">
                 <mat-form-field class="width-100 form" appearance="outline">
                     <mat-label>Energy Certificate</mat-label>
-                    <mat-select [(ngModel)]="sellHouseForm.enerergyCertificate">
+                    <mat-select [(ngModel)]="sellHouseForm.EnerergyCertificate">
                         <mat-option *ngFor="let certificate of energyCertificate" [value]="certificate">
                             {{certificate}}
                         </mat-option>
@@ -95,7 +95,7 @@
             </div>
         </div>
         <div class="row width-80">
-            <textarea matInput class="textarea" [(ngModel)]="sellHouseForm.description"></textarea>
+            <textarea matInput class="textarea" [(ngModel)]="sellHouseForm.Description"></textarea>
         </div>
         <!--LINE 6-->
         <div class="row width-80">
@@ -126,7 +126,7 @@
             <div class="width-30 form">
                 <mat-form-field class="width-100 form" appearance="outline">
                     <mat-label>Country</mat-label>
-                    <mat-select [(ngModel)]="sellHouseForm.country">
+                    <mat-select [(ngModel)]="sellHouseForm.Country">
                         <mat-option *ngFor="let country of countries" [value]="country">
                             {{country}}
                         </mat-option>
@@ -136,13 +136,13 @@
             <div class="width-30 form">
                 <mat-form-field class="full-width form" appearance="outline">
                     <mat-label>City</mat-label>
-                    <input matInput placeholder="City" [(ngModel)]="sellHouseForm.city">
+                    <input matInput placeholder="City" [(ngModel)]="sellHouseForm.City">
                 </mat-form-field>
             </div>
             <div class="width-30 form">
                 <mat-form-field class="full-width form" appearance="outline">
                     <mat-label>Street and Nª</mat-label>
-                    <input matInput placeholder="Street and Nª" [(ngModel)]="sellHouseForm.address">
+                    <input matInput placeholder="Street and Nª" [(ngModel)]="sellHouseForm.Address">
                 </mat-form-field>
             </div>
         </div>

@@ -1,4 +1,4 @@
 export class OperationType {
-    id: number;
-    type: string;
+    Id: number;
+    Type: string;
 }

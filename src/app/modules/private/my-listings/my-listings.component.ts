@@ -28,8 +28,8 @@ export class MyListingsComponent implements OnInit, OnDestroy {
     this.userId = this.appContext.getUserId();
     this.subscriptions.add(
       this.listingService.getUserPropertiesBasic(this.userId).subscribe((result) => {
-        if (result.isValid) {
-          this.listedProperties = result.data;
+        if (result.IsValid) {
+          this.listedProperties = result.Data;
         }
       })
     );

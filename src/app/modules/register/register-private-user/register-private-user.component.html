@@ -9,7 +9,7 @@
         <div class="width-100">
           <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="First Name" formControlName="firstname" required [(ngModel)]="newUser.name">
+            <input matInput placeholder="First Name" formControlName="firstname" required [(ngModel)]="newUser.Name">
             <mat-error>
               First Name is required
             </mat-error>
@@ -21,7 +21,7 @@
         <div class="width-100">
           <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last Name" formControlName="lastname" required [(ngModel)]="newUser.surname">
+            <input matInput placeholder="Last Name" formControlName="lastname" required [(ngModel)]="newUser.Surname">
             <mat-error>
               Last Name is required
             </mat-error>
@@ -33,7 +33,7 @@
         <div class="width-100">
           <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
             <mat-label>Email</mat-label>
-            <input type="email" matInput formControlName="email" required [(ngModel)]="newUser.email">
+            <input type="email" matInput formControlName="email" required [(ngModel)]="newUser.Email">
             <mat-error>
               Email is required
             </mat-error>
@@ -52,7 +52,7 @@
       <div class="row">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Password</mat-label>
-          <input type="password" matInput formControlName="password" required [(ngModel)]="newUser.password">
+          <input type="password" matInput formControlName="password" required [(ngModel)]="newUser.Password">
           <mat-error>
             Password required
           </mat-error>

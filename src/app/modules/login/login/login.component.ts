@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.accountService.getJwtToken(this.email, this.password).subscribe(
         (resultMessage: ResultMessage<string>) => {
-          if (resultMessage.isValid) {
-            const token: string = resultMessage.data;
+          if (resultMessage.IsValid) {
+            const token: string = resultMessage.Data;
             this.appContext.setToken(token);
 
             this.authService.loggedInSubject.next(true);

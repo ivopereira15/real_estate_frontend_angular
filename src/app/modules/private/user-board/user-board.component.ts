@@ -32,13 +32,15 @@ export class UserBoardComponent implements OnInit, OnDestroy {
     const userEmail = this.appContext.getUserEmail();
     this.subscriptions.add(
       this.userService.getUserByEmail(userEmail).subscribe(res => {
+        console.log(res)
 
-        if (res.isValid) {
-          this.user = res.data;
-          this.active = this.user.active;
+        if (res.IsValid) {
+          console.log(res)
+          this.user = res.Data;
+          this.active = this.user.Active;
 
           // TODO check how to move to login
-          this.appContext.setUserId(this.user.id);
+          this.appContext.setUserId(this.user.Id);
         }
 
       })
@@ -56,15 +58,15 @@ export class UserBoardComponent implements OnInit, OnDestroy {
 
   save(): void {
     const validated = this.validationUser();
-    console.log(this.user.active);
-    if (!this.user.active) {
+    console.log(this.user.Active);
+    if (!this.user.Active) {
       const activated = this.validateActivation();
       if (activated) {
-        this.user.active = true;
+        this.user.Active = true;
         this.active = true;
       }
     }
-    console.log(this.user.active);
+    console.log(this.user.Active);
     if (validated) {
       console.log('sdsdsdsd');
       this.userService.updateUser(this.user).subscribe();
@@ -73,32 +75,32 @@ export class UserBoardComponent implements OnInit, OnDestroy {
   }
 
   private validateActivation() {
-    if (this.user.name === undefined || this.user.name === '') {
+    if (this.user.Name === undefined || this.user.Name === '') {
       return false;
     }
-    if (this.user.surname === undefined || this.user.surname === '') {
+    if (this.user.Surname === undefined || this.user.Surname === '') {
       return false;
     }
-    if (this.user.city === undefined || this.user.city === '') {
+    if (this.user.City === undefined || this.user.City === '') {
       return false;
     }
-    if (this.user.country === undefined || this.user.country === '') {
+    if (this.user.Country === undefined || this.user.Country === '') {
       return false;
     }
     return true;
   }
 
   private validationUser(): boolean {
-    if (this.user.name === undefined || this.user.name === '') {
+    if (this.user.Name === undefined || this.user.Name === '') {
       return false;
     }
-    if (this.user.surname === undefined || this.user.surname === '') {
+    if (this.user.Surname === undefined || this.user.Surname === '') {
       return false;
     }
-    if (this.user.city === undefined || this.user.city === '') {
+    if (this.user.City === undefined || this.user.City === '') {
       return false;
     }
-    if (this.user.country === undefined || this.user.country === '') {
+    if (this.user.Country === undefined || this.user.Country === '') {
       return false;
     }
     return true;

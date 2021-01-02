@@ -9,6 +9,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { SearchProperty } from 'src/app/shared/models/search/search-property';
 import { ListingService } from 'src/app/core/services/api/listing.service';
 import { Property } from 'src/app/shared/models/listing/property';
+import { PropertyBasic } from 'src/app/shared/models/listing/property-basic';
 
 @Component({
   selector: 'app-main-board',
@@ -23,14 +24,14 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   searchProperties: SearchProperty = new SearchProperty();
   subscriptions: Subscription = new Subscription();
   chunkArray: Array<User[]> = [];
-  promotedProperties: Property[];
+  promotedProperties: PropertyBasic[];
 
   constructor(@Inject(UserService) private userService: UserService,
     @Inject(ListingService) private listingService: ListingService) { }
 
   ngOnInit() {
     // Properties search Init
-    this.searchProperties.criteria = "12";
+    this.searchProperties.criteria = "15";
     this.subscriptions.add(
       this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
         console.log(res);
@@ -39,9 +40,9 @@ export class MainBoardComponent implements OnInit, OnDestroy {
           console.log(res);
           this.promotedProperties = res.Result.Data;
           // temporary hack
-          for (let item of this.promotedProperties) {
-            item.dbId = 1;
-          }
+          // for (let item of this.promotedProperties) {
+          //   item.mysqlid = 1;
+          // }
           console.log(this.promotedProperties);
         }
       })
@@ -57,9 +58,9 @@ export class MainBoardComponent implements OnInit, OnDestroy {
 
     this.subscriptions.add(
       this.userService.searchUsers(this.searchPagination).subscribe(res => {
-        if (res.isValid) {
+        if (res.IsValid) {
           console.log(res);
-          this.users = res.data;
+          this.users = res.Data;
           //
           // this.promotedProperties = this.users.slice(0, 4);
 

@@ -61,10 +61,10 @@ export class RegisterPrivateUserComponent implements OnInit, OnDestroy {
 
   public createAccount() {
     if (this.passwordForm.valid) {
-      if (this.newUser.password === this.confirmPasswordInput) {
+      if (this.newUser.Password === this.confirmPasswordInput) {
         this.userService.createNewUser(this.newUser).subscribe(
           (resultMessage: ResultMessage<string>) => {
-            if (resultMessage.isValid) {
+            if (resultMessage.IsValid) {
               this.router.navigate(['/login']);
             }
           },

@@ -52,6 +52,13 @@ export class ListingService {
                 this.httpOptions);
     }
 
+    public getPropertyByMySqlId(mySqlId: number): Observable<ResultMessage<Property>> {
+        return this.http
+            .get<ResultMessage<Property>>(this.appContext.getAPIUrl() +
+                '/organization/Listing/getProperyByDbId/' + mySqlId,
+                this.httpOptions);
+    }
+
     public deletePropertyByUserId(userId: number, propertyId: number): Observable<ResultMessage<any>> {
         return this.http
             .delete<ResultMessage<any>>(this.appContext.getAPIUrl() +
@@ -59,7 +66,7 @@ export class ListingService {
                 this.httpOptions);
     }
 
-    public searchProperties(searchTerm: SearchProperty): Observable<ResultMessage<Property[]>> {
-        return this.http.post<ResultMessage<Property[]>>(this.appContext.getAPIUrl() + '/organization/Listing/searchProperties', searchTerm, this.httpOptions)
+    public searchProperties(searchTerm: SearchProperty): Observable<ResultMessage<PropertyBasic[]>> {
+        return this.http.post<ResultMessage<PropertyBasic[]>>(this.appContext.getAPIUrl() + '/organization/Listing/searchProperties', searchTerm, this.httpOptions)
     }
 }

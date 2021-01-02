@@ -45,24 +45,24 @@ export class EditListingComponent implements OnInit, OnDestroy {
         this.subscriptions.add(
           this.listingService.getPropertyByUserId(this.userId, propertyId as number).subscribe((result) => {
             console.log(result)
-            if (result.isValid) {
-              this.sellHouseForm = result.data;
+            if (result.IsValid) {
+              this.sellHouseForm = result.Data;
             }
           })
         );
 
         this.subscriptions.add(
           this.listingService.getOperationTypes().subscribe((result) => {
-            if (result.isValid) {
-              this.operationTypes = result.data;
-              this.currentOperationType = this.operationTypes.find(x => x.type === this.TYPE);
+            if (result.IsValid) {
+              this.operationTypes = result.Data;
+              this.currentOperationType = this.operationTypes.find(x => x.Type === this.TYPE);
             }
           }));
 
         this.subscriptions.add(
           this.listingService.getPropertyTypes().subscribe((result) => {
-            if (result.isValid) {
-              this.propertyTypes = result.data;
+            if (result.IsValid) {
+              this.propertyTypes = result.Data;
             }
           }));
       }

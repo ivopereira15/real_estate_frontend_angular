@@ -34,8 +34,8 @@ export class SellHouseComponent implements OnInit, OnChanges {
 
   ngOnChanges(){
     this.mapPoint = new MapPoint();
-    this.mapPoint.latitude = this.sellHouseForm.latitude;
-    this.mapPoint.longitude = this.sellHouseForm.longitude;
+    this.mapPoint.latitude = this.sellHouseForm.Latitude;
+    this.mapPoint.longitude = this.sellHouseForm.Longitude;
   }
 
   public uploadImage(image: any): void {
@@ -49,8 +49,8 @@ export class SellHouseComponent implements OnInit, OnChanges {
   }
 
   setCoordinates(e: any) {
-    this.sellHouseForm.latitude = e.latitude;
-    this.sellHouseForm.longitude = e.longitude;
+    this.sellHouseForm.Latitude = e.latitude;
+    this.sellHouseForm.Longitude = e.longitude;
   }
 
   publishListingSubmit() {

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PropertyBasic } from '../../models/listing/property-basic';
 import { User } from '../../models/user/user';
 
 @Component({
@@ -8,7 +9,7 @@ import { User } from '../../models/user/user';
 })
 export class PropertyFrameComponent implements OnInit {
 
-  @Input() public user: User;
+  @Input() public property: PropertyBasic;
 
   public userTechnologies: string[];
   public skills = [".NET", "Angular", "C#", "Java"];
@@ -17,6 +18,7 @@ export class PropertyFrameComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 
