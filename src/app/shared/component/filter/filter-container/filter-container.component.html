@@ -1,7 +1,16 @@
 <div class="column background">
     <div class="center-filter">
-        <div class="column background-filter white-background" [ngClass]="[isMobile ? 'full-width' : 'threefourth-width']">
-            <div class="row" *ngIf="toogleDevelopers">
+        <div class="column background-filter black-background"
+            [ngClass]="[isMobile ? 'full-width' : 'threefourth-width']">
+            <div class="full-width">
+                <app-filter-search></app-filter-search>
+            </div>
+        </div>
+    </div>
+    <div class="center-filter">
+        <div class="column background-filter background-color"
+            [ngClass]="[isMobile ? 'full-width' : 'threefourth-width']">
+            <div class="row">
                 <div class="full-width">
                     <app-filter-property></app-filter-property>
                 </div>

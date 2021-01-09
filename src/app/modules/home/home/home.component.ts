@@ -6,23 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  public toogleJobs;
-  public toogleDevs;
-
   constructor() { }
 
   ngOnInit() {
   }
-
-  // public toogJobs(event) {
-  //   this.toogleJobs = event;
-  // }
-
-  public toogDevs(event) {
-    this.toogleDevs = event;
-  }
-
-  close(){}
 
 }

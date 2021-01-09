@@ -1,17 +1,6 @@
-<div>
   <div class="full-width border-margins row-space-around">
 
-    <div class="border-margins width-25">
-      <mat-form-field appearance="outline" class="width-100">
-        <mat-select [(value)]="propertyTypes[0]">
-          <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType">
-            {{propertyType}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div class="border-margins width-25">
+    <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-select [(value)]="purposeTypes[0]">
           <mat-option *ngFor="let purposeType of purposeTypes" [value]="purposeType">
@@ -21,38 +10,31 @@
       </mat-form-field>
     </div>
 
-    <div class="border-margins width25">
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Location</mat-label>
-        <input matInput placeholder="C#, Java, Mongo...">
+    <div class="border-margins width-100">
+      <mat-form-field appearance="outline" class="width-100">
+        <mat-select [(value)]="propertyTypes[0]">
+          <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType">
+            {{propertyType}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 
-
-    <div class="border-margins width25">
-      <div class="submit-button">
-        <button mat-raised-button class="search"> Search </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="full-width border-margins row-space-around">
-
-    <div class="border-margins width-20">
+    <div class="border-margins width-100">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Price From</mat-label>
         <input matInput placeholder="€">
       </mat-form-field>
     </div>
 
-    <div class="border-margins width-20">
+    <div class="border-margins width-100">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Price To</mat-label>
         <input matInput placeholder="€">
       </mat-form-field>
     </div>
 
-    <div class="border-margins width-20">
+    <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Bedrooms</mat-label>
         <mat-select>
@@ -63,7 +45,7 @@
       </mat-form-field>
     </div>
 
-    <div class="border-margins width-20">
+    <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Bathrooms</mat-label>
         <mat-select>
@@ -74,7 +56,14 @@
       </mat-form-field>
     </div>
 
-    <div class="border-margins width-20">
+
+
+
+  </div>
+
+  <div class="full-width border-margins row-space-around">
+
+    <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Conditions</mat-label>
         <mat-select>
@@ -85,26 +74,21 @@
       </mat-form-field>
     </div>
 
-
-  </div>
-
-  <div class="full-width border-margins row-space-around">
-
-    <div class="border-margins width-20">
+    <div class="border-margins width-100">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Size(m2) From</mat-label>
         <input matInput placeholder="€">
       </mat-form-field>
     </div>
 
-    <div class="border-margins width-20">
+    <div class="border-margins width-100">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Size(m2) To</mat-label>
         <input matInput placeholder="€">
       </mat-form-field>
     </div>
 
-    <div class="border-margins width-20">
+    <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Year Built From</mat-label>
         <mat-select>
@@ -115,7 +99,7 @@
       </mat-form-field>
     </div>
 
-    <div class="border-margins width-20">
+    <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Year Built To</mat-label>
         <mat-select>
@@ -126,7 +110,7 @@
       </mat-form-field>
     </div>
 
-    <div class="border-margins width-20">
+    <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Characteristics</mat-label>
         <mat-select>
@@ -140,4 +124,3 @@
 
   </div>
 
-</div>

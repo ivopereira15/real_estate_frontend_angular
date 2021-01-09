@@ -9,8 +9,6 @@ import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility
   styleUrls: ['./filter-container.component.scss']
 })
 export class FilterContainerComponent implements OnInit, OnDestroy {
-  toogleJobs = false;
-  toogleDevelopers = true;
   public isMobile: boolean = false;
   private windowChangeSubscription: Subscription;
 
@@ -26,16 +24,6 @@ export class FilterContainerComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.windowChangeSubscription.unsubscribe();
-  }
-
-  public toogleFilter(type: string) {
-    if (type === 'jobs') {
-      this.toogleJobs = true;
-      this.toogleDevelopers = false;
-    } else if (type === 'developers') {
-      this.toogleJobs = false;
-      this.toogleDevelopers = true;
-    }
   }
 
 }

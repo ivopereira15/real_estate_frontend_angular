@@ -3,8 +3,14 @@
     padding-bottom: 20px;
 }
 
-.white-background {
-    background: white;
+.black-background {
+    background: black;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.background-color {
+    background-color: white;
 }
 
 .center-filter {
@@ -12,6 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .btn {

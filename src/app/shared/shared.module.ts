@@ -12,6 +12,7 @@ import { SellHouseComponent } from './component/sell-house/sell-house.component'
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './component/map-container/map/map.component';
 import { GeocodingComponent } from './component/map-container/geocoding/geocoding.component';
+import { FilterSearchComponent } from './component/filter/filter-search/filter-search.component';
 
 const components = [
   NavbarComponent,
@@ -22,7 +23,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent, MapComponent, GeocodingComponent],
+  declarations: [components, FooterComponent, MapComponent, GeocodingComponent, FilterSearchComponent],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule]
 })

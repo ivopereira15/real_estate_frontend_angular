@@ -5,24 +5,6 @@
   }
 }
 
-.submit-button {
-  //width: 30%;
-  margin-left: auto;
-  padding-bottom: 25px;
-  > button {
-    width: 100%;
-  }
-}
-
-.search {
-  border-radius: 15px;
-  height: 50px;
-  font-size: larger;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: rgb(110, 52, 226);
-  color: white;
-}
-
 .border-margins {
   padding-left: 5px;
   padding-right: 5px;
@@ -35,8 +17,11 @@
   align-items: center;
 }
 
-.width25 {
-  width: 25%;
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  // color: blue;
+  // border-style: solid;
+  // border-width: 2px;
+  background-color: aliceblue;
 }
 
 // Material Override PLACE TO STYLES
