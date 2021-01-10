@@ -18,12 +18,12 @@ import { PropertyBasic } from 'src/app/shared/models/listing/property-basic';
 })
 export class MainBoardComponent implements OnInit, OnDestroy {
 
-  public users: User[];
+  // public users: User[];
 
   searchPagination: SearchPagination<SearchUser> = new SearchPagination<SearchUser>();
   searchProperties: SearchProperty = new SearchProperty();
   subscriptions: Subscription = new Subscription();
-  chunkArray: Array<User[]> = [];
+  // chunkArray: Array<User[]> = [];
   promotedProperties: PropertyBasic[];
 
   constructor(@Inject(UserService) private userService: UserService,
@@ -34,20 +34,15 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     this.searchProperties.criteria = "15";
     this.subscriptions.add(
       this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
-        console.log(res);
-        console.log(res.Result);
         if (res.Result.IsValid) {
-          console.log(res);
           this.promotedProperties = res.Result.Data;
           // temporary hack
           // for (let item of this.promotedProperties) {
           //   item.mysqlid = 1;
           // }
-          console.log(this.promotedProperties);
         }
       })
     );
-
 
     // Test stuff search
     this.searchPagination.PageNumber = 1;
@@ -56,22 +51,21 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     let testUser = { email: "", username: "", name: "" } as SearchUser;
     this.searchPagination.RestrictionCriteria = testUser;
 
-    this.subscriptions.add(
-      this.userService.searchUsers(this.searchPagination).subscribe(res => {
-        if (res.IsValid) {
-          console.log(res);
-          this.users = res.Data;
-          //
-          // this.promotedProperties = this.users.slice(0, 4);
+    // this.subscriptions.add(
+    //   this.userService.searchUsers(this.searchPagination).subscribe(res => {
+    //     if (res.IsValid) {
+    //       this.users = res.Data;
+    //       //
+    //       // this.promotedProperties = this.users.slice(0, 4);
 
-          var i, j, array, chunk = 4;
-          for (i = 0, j = 8; i < j; i += chunk) {
-            array = this.users.slice(i, i + chunk);
-            // this.chunkArray.push(array);
-          }
-        }
-      })
-    );
+    //       var i, j, array, chunk = 4;
+    //       for (i = 0, j = 8; i < j; i += chunk) {
+    //         array = this.users.slice(i, i + chunk);
+    //         // this.chunkArray.push(array);
+    //       }
+    //     }
+    //   })
+    // );
   }
 
   ngOnDestroy() {

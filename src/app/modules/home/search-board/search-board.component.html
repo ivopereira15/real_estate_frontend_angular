@@ -1,2 +1,18 @@
 <app-filter-container></app-filter-container>
-<p>search-board works!</p>
+<div class="row height">
+    <div class="width-50_2">
+        <div class="column">
+            <div class="row" *ngFor="let promotedProperties of chunkArray">
+                <div *ngFor="let property of promotedProperties" class="frame">
+                    <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+                    </app-property-frame>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="width-50_2">
+        <div class="row width-80 height-map">
+            <app-map [mapPointInput]="mapPoint"></app-map>
+        </div>
+    </div>
+</div>

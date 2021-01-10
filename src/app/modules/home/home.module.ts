@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MainBoardComponent } from './main-board/main-board.component';
 import { SearchBoardComponent } from './search-board/search-board.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SearchBoardComponent } from './search-board/search-board.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    LeafletModule
   ]
 })
 export class HomeModule { }

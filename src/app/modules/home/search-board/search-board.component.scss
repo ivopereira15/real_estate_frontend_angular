@@ -1,0 +1,22 @@
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.height {
+    height: 100vh;
+}
+.height-map {
+   // height: 1000px;
+}
+
+.frame {
+    width: 50%;
+    cursor: pointer;
+}
+
+app-map {
+    #map {
+        height: 100vh !important;
+    }
+}

@@ -19,11 +19,12 @@ const components = [
   FilterPropertyComponent,
   FilterContainerComponent,
   PropertyFrameComponent,
-  SellHouseComponent
+  SellHouseComponent,
+  MapComponent
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent, MapComponent, GeocodingComponent, FilterSearchComponent],
+  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule]
 })

@@ -19,6 +19,7 @@ export class MapComponent implements OnInit, OnChanges {
   mapPoint: MapPoint;
   options: MapOptions;
   lastLayer: any;
+  fullHeight: boolean = false;
 
   results: NominatimResponse[];
 
