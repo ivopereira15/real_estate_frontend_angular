@@ -13,6 +13,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './component/map-container/map/map.component';
 import { GeocodingComponent } from './component/map-container/geocoding/geocoding.component';
 import { FilterSearchComponent } from './component/filter/filter-search/filter-search.component';
+import { MapSearchComponent } from './component/map-container/map-search/map-search.component';
 
 const components = [
   NavbarComponent,
@@ -20,11 +21,12 @@ const components = [
   FilterContainerComponent,
   PropertyFrameComponent,
   SellHouseComponent,
-  MapComponent
+  MapComponent,
+  MapSearchComponent
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent],
+  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent ],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule]
 })

@@ -17,7 +17,7 @@ export class SearchBoardComponent implements OnInit, OnChanges {
   subscriptions: Subscription = new Subscription();
   promotedProperties: PropertyBasic[];
   chunkArray: Array<PropertyBasic[]> = [];
-  public mapPoint: MapPoint;
+  public mapPoints: MapPoint[];
 
   constructor(@Inject(UserService) private userService: UserService,
     @Inject(ListingService) private listingService: ListingService) { }
@@ -34,15 +34,22 @@ export class SearchBoardComponent implements OnInit, OnChanges {
             array = this.promotedProperties.slice(i, i + chunk);
             this.chunkArray.push(array);
           }
+         this.mapPoints = this.promotedProperties.map(x => {
+           let mapP = new MapPoint();
+           mapP.latitude = x.Latitude;
+           mapP.longitude = x.Longitude;
+           // mapP.name = x.Id.toString(); // TODO change this to Name?
+           return mapP;
+         } );
         }
       })
     );
   }
 
   ngOnChanges() {
-    this.mapPoint = new MapPoint();
-    this.mapPoint.latitude = 38.7166700;
-    this.mapPoint.longitude = -9.1333300;
+    // this.mapPoint = new MapPoint();
+    // this.mapPoint.latitude = 38.7166700;
+    // this.mapPoint.longitude = -9.1333300;
   }
 
 }

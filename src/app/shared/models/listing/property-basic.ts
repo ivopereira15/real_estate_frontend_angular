@@ -8,4 +8,7 @@ export class PropertyBasic {
     public NumberOfBathrooms: number;
     public Country: string;
     public City: string;
+    
+    public Latitude: number;
+    public Longitude: number;
 }
