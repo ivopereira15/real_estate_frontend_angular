@@ -2,7 +2,7 @@
 
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
-        <mat-select [(value)]="purposeTypes[0]">
+        <mat-select [(ngModel)]="purposeType" (ngModelChange)="purposeTypeChange.emit(purposeType)">
           <mat-option *ngFor="let purposeType of purposeTypes" [value]="purposeType">
             {{purposeType}}
           </mat-option>
@@ -12,7 +12,7 @@
 
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
-        <mat-select [(value)]="propertyTypes[0]">
+        <mat-select [(ngModel)]="propertyType" (ngModelChange)="propertyTypeChange.emit(propertyType)">
           <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType">
             {{propertyType}}
           </mat-option>
@@ -23,21 +23,21 @@
     <div class="border-margins width-100">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Price From</mat-label>
-        <input matInput placeholder="€">
+        <input matInput placeholder="€" [(ngModel)]="priceFrom" (ngModelChange)="priceFromChange.emit(priceFrom)">
       </mat-form-field>
     </div>
 
     <div class="border-margins width-100">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Price To</mat-label>
-        <input matInput placeholder="€">
+        <input matInput placeholder="€" [(ngModel)]="priceTo" (ngModelChange)="priceToChange.emit(priceTo)">
       </mat-form-field>
     </div>
 
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Bedrooms</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="bedrooms" (ngModelChange)="bedroomsChange.emit(bedrooms)">
           <mat-option *ngFor="let howmuch of bedroomsQuantity" [value]="howmuch">
             {{howmuch}}
           </mat-option>
@@ -48,7 +48,7 @@
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Bathrooms</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="bathrooms" (ngModelChange)="bathroomsChange.emit(bathrooms)">
           <mat-option *ngFor="let howmuch of bathroomsQuantity" [value]="howmuch">
             {{howmuch}}
           </mat-option>
@@ -66,7 +66,7 @@
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Conditions</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="conditions" (ngModelChange)="conditionsChange.emit(conditions)">
           <mat-option *ngFor="let condition of conditionTypes" [value]="condition">
             {{condition}}
           </mat-option>
@@ -77,21 +77,21 @@
     <div class="border-margins width-100">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Size(m2) From</mat-label>
-        <input matInput placeholder="€">
+        <input matInput placeholder="€" [(ngModel)]="sizeFrom" (ngModelChange)="sizeFromChange.emit(sizeFrom)">
       </mat-form-field>
     </div>
 
     <div class="border-margins width-100">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Size(m2) To</mat-label>
-        <input matInput placeholder="€">
+        <input matInput placeholder="€" [(ngModel)]="sizeTo" (ngModelChange)="sizeToChange.emit(sizeTo)">
       </mat-form-field>
     </div>
 
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Year Built From</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="yearBuiltFrom" (ngModelChange)="yearBuiltFromChange.emit(yearBuiltFrom)">
           <mat-option *ngFor="let howmuch of bedroomsQuantity" [value]="howmuch">
             {{howmuch}}
           </mat-option>
@@ -102,7 +102,7 @@
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Year Built To</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="yearBuiltTo" (ngModelChange)="yearBuiltToChange.emit(yearBuiltTo)">
           <mat-option *ngFor="let howmuch of bathroomsQuantity" [value]="howmuch">
             {{howmuch}}
           </mat-option>
@@ -113,9 +113,9 @@
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
         <mat-label>Characteristics</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let howmuch of bathroomsQuantity" [value]="howmuch">
-            {{howmuch}}
+        <mat-select [(ngModel)]="characteristics" (ngModelChange)="characteristicsChange.emit(characteristics)">
+          <mat-option *ngFor="let characteristics of bathroomsQuantity" [value]="characteristics">
+            {{characteristics}}
           </mat-option>
         </mat-select>
       </mat-form-field>

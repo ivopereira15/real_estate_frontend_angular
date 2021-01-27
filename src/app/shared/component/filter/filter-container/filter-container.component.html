@@ -3,7 +3,10 @@
         <div class="column background-filter black-background"
             [ngClass]="[isMobile ? 'full-width' : 'threefourth-width']">
             <div class="full-width">
-                <app-filter-search></app-filter-search>
+                <app-filter-search [purposeType]="purposeType" [propertyType]="propertyType" [priceFrom]="priceFrom"
+                    [priceTo]="priceTo" [bedrooms]="bedrooms" [bathrooms]="bathrooms" [conditions]="conditions"
+                    [sizeTo]="sizeTo" [sizeFrom]="sizeFrom" [yearBuiltFrom]="yearBuiltFrom" [yearBuiltTo]="yearBuiltTo"
+                    [characteristics]="characteristics"></app-filter-search>
             </div>
         </div>
     </div>
@@ -12,7 +15,15 @@
             [ngClass]="[isMobile ? 'full-width' : 'threefourth-width']">
             <div class="row">
                 <div class="full-width">
-                    <app-filter-property></app-filter-property>
+                    <app-filter-property (purposeTypeChange)="purposeTypeEvent($event)"
+                        (propertyTypeChange)="propertyTypeEvent($event)" (priceFromChange)="priceFromEvent($event)"
+                        (priceToChange)="priceToEvent($event)" (bedroomsChange)="bedroomsEvent($event)"
+                        (bathroomsChange)="bathroomsEvent($event)" (conditionsChange)="conditionsEvent($event)"
+                        (sizeToChange)="sizeToEvent($event)" (sizeFromChange)="sizeFromEvent($event)"
+                        (yearBuiltFromChange)="yearBuiltFromEvent($event)"
+                        (yearBuiltToChange)="yearBuiltToEvent($event)"
+                        (characteristicsChange)="characteristicsEvent($event)">
+                    </app-filter-property>
                 </div>
             </div>
         </div>
