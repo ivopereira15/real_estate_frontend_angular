@@ -8,7 +8,8 @@
     </div>
     <div class="row container-row">
       <div *ngFor="let property of promotedProperties">
-        <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]"></app-property-frame>
+        <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+        </app-property-frame>
       </div>
     </div>
   </div>
@@ -21,7 +22,8 @@
     </div>
     <div class="row container-row">
       <div *ngFor="let property of promotedProperties">
-        <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]"></app-property-frame>
+        <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+        </app-property-frame>
       </div>
     </div>
   </div>
@@ -33,8 +35,54 @@
     </div>
     <div class="row container-row">
       <div *ngFor="let property of promotedProperties">
-        <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]"></app-property-frame>
+        <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+        </app-property-frame>
       </div>
+    </div>
+  </div>
+
+  <div class="cubes">
+    <div class="card">
+      <mat-card>
+        <div class="icon">
+          <div class="material-icons">
+            apartment
+          </div>
+        </div>
+        <div class="title">Buy </div>
+        <div class="text-content">Find your dream home among our list of houses</div>
+        <div class="center-button">
+          <button mat-raised-button class="search" (click)="search()"> Buy your dream house</button>
+        </div>
+      </mat-card>
+    </div>
+    <div class="card">
+      <mat-card>
+        <div class="icon">
+          <div class="material-icons">
+            location_city
+          </div>
+        </div>
+        <div class="title">Sell</div>
+        <div class="text-content">Find the best seller for your home</div>
+        <div class="center-button">
+          <button mat-raised-button class="search" (click)="search()"> Sell at the best price</button>
+        </div>
+      </mat-card>
+    </div>
+    <div class="card">
+      <mat-card>
+        <div class="icon">
+          <div class="material-icons">
+            home
+          </div>
+        </div>
+        <div class="title">Rent</div>
+        <div class="text-content">Explore our best options in the market</div>
+        <div class="center-button">
+          <button mat-raised-button class="search" (click)="search()"> Find a room </button>
+        </div>
+      </mat-card>
     </div>
   </div>
 

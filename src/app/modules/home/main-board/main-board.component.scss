@@ -4,7 +4,7 @@
     padding-top: 2%;
     padding-left: 5%;
     padding-right: 5%;
-    height: 150vh;
+    height: 170vh;
 }
 
 .container-row {
@@ -52,6 +52,47 @@
             font-size: x-large;
         }
     }
+}
+
+.cubes {
+    width: 100%;
+    margin-top: 50px;
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+
+    .card {
+        width: 30%;
+    }
+
+    .title, .center-button  {
+        display: flex;
+        justify-content: center;
+    }
+
+    .text-content {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .icon {
+        display: flex;
+        justify-content: center;
+        
+        .material-icons {
+            font-size: 100px;
+        }
+    }
+
+    .search {
+        margin-top: 20px;
+        height: 40px;
+        font-size: larger;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: rgb(89, 142, 255);
+        color: white;
+      }
 }
 
 .statistics-container {
