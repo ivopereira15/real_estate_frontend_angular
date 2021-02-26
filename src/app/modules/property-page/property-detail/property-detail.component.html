@@ -1,7 +1,6 @@
 <div class="row">
   <div class="width-100">
     <div class="row">
-
       <div class="column background-filter width-75">
         <div class="row">
           <!--Images-->
@@ -30,7 +29,7 @@
             </div>
           </div>
           <!--Property description-->
-          <div class="column width-35">
+          <div class="column width-40 details">
             <!--Price-->
             <div class="price">{{property.Price}} €</div>
             <!--Address-->
@@ -44,19 +43,47 @@
               <!--Bathrooms-->
               <div class="bathrooms">2</div>
             </div>
+            <!--map-->
+            <div class="map-div">
+              <app-map [mapPointInput]="mapPoint"></app-map>
+            </div>
             <!--Description-->
             <div class="description">
+              <div>Overiview</div>
               {{property.Description}}
+            </div>
+            <!--Contact form-->
+            <div>
+              <div>Contact</div>
+              <div>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Name">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Phone</mat-label>
+                  <input matInput placeholder="Phone">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="Email">
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Description</mat-label>
+                  <input matInput placeholder="Description">
+                </mat-form-field>
+                <button>Send message</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="column background-filter width-20">
-        Lisbon, Cascais 250.000
+        <div *ngFor="let property of promotedProperties">
+          <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+          </app-property-frame>
+        </div>
       </div>
     </div>
   </div>
-
-
-
 </div>

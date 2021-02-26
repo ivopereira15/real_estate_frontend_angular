@@ -47,11 +47,11 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     );
 
     // Test stuff search
-    this.searchPagination.PageNumber = 1;
-    this.searchPagination.RowsPerPage = 10;
-    this.searchPagination.OrderBy = "Email";
-    let testUser = { email: "", username: "", name: "" } as SearchUser;
-    this.searchPagination.RestrictionCriteria = testUser;
+    // this.searchPagination.PageNumber = 1;
+    // this.searchPagination.RowsPerPage = 10;
+    // this.searchPagination.OrderBy = "Email";
+    // let testUser = { email: "", username: "", name: "" } as SearchUser;
+    // this.searchPagination.RestrictionCriteria = testUser;
 
     // this.subscriptions.add(
     //   this.userService.searchUsers(this.searchPagination).subscribe(res => {

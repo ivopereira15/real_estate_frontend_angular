@@ -9,6 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Property } from 'src/app/shared/models/listing/property';
 import { ListingService } from 'src/app/core/services/api/listing.service';
+import { PropertyBasic } from 'src/app/shared/models/listing/property-basic';
+import { SearchProperty } from 'src/app/shared/models/search/search-property';
+import { MapPoint } from 'src/app/shared/models/map/map-point';
 
 @Component({
   selector: 'app-property-detail',
@@ -19,9 +22,13 @@ export class PropertyDetailComponent implements OnInit, OnDestroy {
 
   public image = "https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/0082534543178d83e75145f292ada892-full.webp";
   subscriptions: Subscription = new Subscription();
+  searchProperties: SearchProperty = new SearchProperty();
   property: Property = new Property();
+  promotedProperties: PropertyBasic[];
+  public mapPoint: MapPoint;
   private propertyId: number;
-  subscription: Subscription = new Subscription();
+
+  // subscription: Subscription = new Subscription();
 
   constructor(
     @Inject(UserService) public userService: UserService,
@@ -33,7 +40,7 @@ export class PropertyDetailComponent implements OnInit, OnDestroy {
     this.route.params.subscribe(params => {
       this.propertyId = params.propertyId;
       console.log(this.propertyId);
-      this.subscription.add(
+      this.subscriptions.add(
         this.listingService.getPropertyByMySqlId(this.propertyId).subscribe((res: any) => {
           console.log(res);
           if(res.Result.IsValid){
@@ -43,13 +50,31 @@ export class PropertyDetailComponent implements OnInit, OnDestroy {
         })
       );
     });
-    // this.property = history.state.data;
-    // console.log(this.property)
+    
+    this.searchProperties.criteria = "15";
+    this.searchProperties.priceFrom = 15;
+    this.searchProperties.priceTo = 16;
+    this.subscriptions.add(
+      this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
+        if (res.Result.IsValid) {
+          this.promotedProperties = res.Result.Data;
+          // temporary hack
+          // for (let item of this.promotedProperties) {
+          //   item.mysqlid = 1;
+          // }
+        }
+      })
+    );
 
   }
 
   ngOnDestroy(){
-    this.subscription.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
+
+  // setCoordinates(e: any) {
+  //   this.property.Latitude = e.latitude;
+  //   this.property.Longitude = e.longitude;
+  // }
 
 }
