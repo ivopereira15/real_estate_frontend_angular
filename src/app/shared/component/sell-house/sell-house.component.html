@@ -6,24 +6,27 @@
                 {{title}}
             </div>
         </div>
+        <div class="row width-80">
+            Please enter the required information:
+        </div>
         <!--LINE 1-->
         <div class="row width-80">
             <div class="width-30 form">
+                <div>Price</div>
                 <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Price</mat-label>
-                    <input type="number" matInput placeholder="Price" [(ngModel)]="sellHouseForm.Price">
+                    <input type="number" matInput [(ngModel)]="sellHouseForm.Price">
                 </mat-form-field>
             </div>
             <div class="width-30 form">
+                <div>Area m2</div>
                 <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Area m2</mat-label>
-                    <input type="number" matInput placeholder="Area m2" [(ngModel)]="sellHouseForm.NetAream2">
+                    <input type="number" matInput [(ngModel)]="sellHouseForm.NetAream2">
                 </mat-form-field>
             </div>
             <div class="width-30 form">
+                <div>Price/m2</div>
                 <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Price/m2</mat-label>
-                    <input type="number" matInput placeholder="Price/m2" [(ngModel)]="sellHouseForm.PriceNetAream2">
+                    <input type="number" matInput [(ngModel)]="sellHouseForm.PriceNetAream2">
                 </mat-form-field>
             </div>
         </div>
@@ -102,6 +105,9 @@
             <div class="title">
                 Photos (max 25)
             </div>
+        </div>
+        <div class="row width-80">
+            Please add photos:
         </div>
         <div class="row width-80">
             <div class="photo">

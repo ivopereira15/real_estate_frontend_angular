@@ -1,7 +1,7 @@
 
 export const environment = {
   startupApiEnvironment: {
-    ApiUrl: 'https://localhost:22443/api',
+    ApiUrl: 'http://localhost:80/api',
     Name: 'DEV'
   },
   production: false,

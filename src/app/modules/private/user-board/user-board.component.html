@@ -21,10 +21,13 @@
     <!--USER INFO-->
     <div class="row row-margin background-filter">
       <div class="image width-20">
-        <img [src]="image" width="160" height="160">
-        <span class="material-icons">
-          photo_camera
-        </span>
+        <div><img [src]="image" width="160" height="160"></div>
+        <div>
+          <input type="file" hidden #uploader accept="image/*" (change)="uploadImage($event)">
+          <span class="material-icons" (click)="uploader.click()">
+            photo_camera
+          </span>
+        </div>
       </div>
       <div class="column width-80">
         <div class="row title-personal-info">Personal information</div>

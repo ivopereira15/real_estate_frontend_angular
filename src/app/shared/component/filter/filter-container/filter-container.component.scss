@@ -1,16 +1,35 @@
 .background {
-    background: linear-gradient(to right, rgb(28, 76, 197), #ff4081);
+    //background: linear-gradient(to right, rgb(28, 76, 197), #ff4081);
+    background-image: url('../../../../../assets//images/houselogo.jpg');
     padding-bottom: 20px;
+    background-repeat:no-repeat;
+
+    background-size:cover;
 }
 
+.welcome {
+    color: white;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: bold;
+
+}
+
+
 .black-background {
+    margin-top: 100px;
     background: black;
     padding-top: 7px;
     padding-bottom: 7px;
+    border-radius: 25px !important;
 }
 
 .background-color {
     background-color: white;
+    margin-bottom: 70px;
+    border-radius: 25px !important;
 }
 
 .center-filter {

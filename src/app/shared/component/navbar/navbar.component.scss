@@ -17,10 +17,12 @@
 .login {
     display: flex;
     justify-content: center;
-    width: 90px;
+    align-items: center;
+    width: 120px;
+    height: 35px;
     font-size: large;
     background-color: #0361ec;
-    border-radius: 15px;
+    border-radius: 25px;
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -28,12 +30,31 @@
 .register {
     display: flex;
     justify-content: center;
-    width: 90px;
+    align-items: center;
+    width: 120px;
+    height: 35px;
     font-size: large;
     background-color: rgb(110, 52, 226);
-    border-radius: 15px;
+    border-radius: 25px;
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.add-listing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 35px;
+    font-size: large;
+    //background-color: rgb(131, 241, 245);
+    background-color: white;
+    border-radius: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    .nav-link {
+        color: black !important;
+    }
 }
 
 .flex {

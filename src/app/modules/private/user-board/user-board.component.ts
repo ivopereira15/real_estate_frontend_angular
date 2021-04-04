@@ -4,6 +4,8 @@ import { UserService } from 'src/app/core/services/api/user.service';
 import { AppContextService } from 'src/app/core/services/app-context.service';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormArray, FormBuilder, ValidatorFn, Validators, FormControl } from '@angular/forms';
+import { UserProfileImage } from 'src/app/shared/models/images/user-profile-image';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-board',
@@ -12,7 +14,7 @@ import { FormGroup, FormArray, FormBuilder, ValidatorFn, Validators, FormControl
 })
 export class UserBoardComponent implements OnInit, OnDestroy {
 
-  public image = "https://akns-images.eonline.com/eol_images/Entire_Site/2011822/425.sevenyears.lc.092211.jpg?fit=around|600:467&crop=600:467;center,top&output-quality=90";
+  public image;//"https://akns-images.eonline.com/eol_images/Entire_Site/2011822/425.sevenyears.lc.092211.jpg?fit=around|600:467&crop=600:467;center,top&output-quality=90";
   public user: User;
   public technologiesExample: string[] = ['Java', 'C#', '.NET'];
   public active: boolean = true;
@@ -23,10 +25,10 @@ export class UserBoardComponent implements OnInit, OnDestroy {
     @Inject(FormBuilder) private formBuilder: FormBuilder,
     @Inject(UserService) private userService: UserService,
     private appContext: AppContextService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
-
     this.initializeEmptyUser();
     // TODO get data from DB to fullfill user.ts getThisUser();
     const userEmail = this.appContext.getUserEmail();
@@ -38,14 +40,60 @@ export class UserBoardComponent implements OnInit, OnDestroy {
           console.log(res)
           this.user = res.Data;
           this.active = this.user.Active;
-
+          if (this.user.ImagePath != undefined) {
+            this.setUserProfilePhotoFromCloud(this.user.ImagePath);
+          }
           // TODO check how to move to login
           this.appContext.setUserId(this.user.Id);
+
         }
 
       })
     );
+  }
 
+  public setUserProfilePhotoFromCloud(url: string) {
+    this.userService.downloadPhotoFromAzure(url).subscribe(profilePhoto => {
+      console.log(profilePhoto);
+      if (profilePhoto != undefined) {
+        const reader: FileReader = new FileReader();
+        reader.readAsDataURL(profilePhoto);
+        reader.onloadend = () => {
+          let base64data = reader.result;
+          this.image = this.sanitizer.bypassSecurityTrustUrl(base64data.toString());
+          //this.image = this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + base64data);
+          //this.image = base64data;
+        }
+      }
+    });
+  }
+
+  public uploadImage(image: any): void {
+
+    let uploadedImage: File = image.target.files[0];
+
+    const reader: FileReader = new FileReader();
+
+    reader.readAsDataURL(uploadedImage);
+
+    reader.onload = (_event) => {
+
+      let result = reader.result;
+
+      this.image = result;
+
+      const userProfileImage = new UserProfileImage();
+
+      userProfileImage.UserEmail = this.user.Email;
+
+      userProfileImage.ImageName = uploadedImage.name;
+
+      userProfileImage.FileMimeType = uploadedImage.type;
+
+      userProfileImage.Photo = uploadedImage;
+
+      this.userService.uploadUserProfilePhoto(userProfileImage).subscribe();
+    };
   }
 
   ngOnDestroy() {

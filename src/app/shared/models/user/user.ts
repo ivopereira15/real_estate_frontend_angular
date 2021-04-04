@@ -12,4 +12,7 @@ export class User {
     public Address: string;
     public TaxNumber: string;
 
+    public ImageName: string;
+    public ImagePath: string;
+
 }
