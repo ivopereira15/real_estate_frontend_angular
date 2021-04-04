@@ -21,6 +21,8 @@ export class UserBoardComponent implements OnInit, OnDestroy {
   technologyYears: number[] = [1, 2, 3, 4, 5];
   subscriptions: Subscription = new Subscription();
 
+  toogleName: boolean = true;
+
   constructor(
     @Inject(FormBuilder) private formBuilder: FormBuilder,
     @Inject(UserService) private userService: UserService,
@@ -120,6 +122,10 @@ export class UserBoardComponent implements OnInit, OnDestroy {
       this.userService.updateUser(this.user).subscribe();
     }
 
+  }
+
+  toogle_name() {
+    this.toogleName = !this.toogleName;
   }
 
   private validateActivation() {

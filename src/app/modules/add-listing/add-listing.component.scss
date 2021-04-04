@@ -1,34 +1,81 @@
-.sell-button {
-    margin: 10px;
-    border-radius: 100px !important;
-    width: 150px !important;
-    height: 150px !important;
-    border: black;
-    border-style: solid;
-    border-width: thin;
-    border-color: rgb(196, 194, 194);
+
+.row {
+width: 100%;
+}
+
+.align-items-center {
+    display: flex;
+    align-items: center;
+}
+// SELL HOUSE
+
+.sell-photo {
+    height: 300px;
+    width: 100%;
+    background-image: url('../../../assets/images/sell-house.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.sell-text {
+    background-color: black;
     color: white;
-    background-color: #1c4cc5;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 70px;
+    //font-weight: bold;
+    font-size: 30px;
 }
 
-.sell-button.room {
-    background-color: #2cc22c !important;
+// RENT HOUSE
+
+.rent-photo {
+    height: 300px;
+    width: 100%;
+    background-image: url('../../../assets/images/rent-house.jpg');
+    background-repeat:no-repeat;
+
+    background-size:cover;
+
 }
 
-.rent-button {
-    margin: 10px;
-    border-radius: 100px !important;
-    width: 150px !important;
-    height: 150px !important;
-    border: black;
-    border-style: solid;
-    border-width: thin;
-    border-color: rgb(196, 194, 194);
+.rent-text {
+    background-color: black;
     color: white;
-    background-color: #ff4081;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 70px;
+    //font-weight: bold;
+    font-size: 30px;
 }
 
-.rent-button.room {
-    background-color: #36ccfa !important;
+// RENT ROOM
+
+.rent-room-photo {
+    height: 300px;
+    width: 100%;
+    background-image: url('../../../assets/images/rent-room.jpg');
+    background-repeat:no-repeat;
+
+    background-size:cover;
+
 }
+
+.rent-room-text {
+    background-color: black;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 70px;
+    //font-weight: bold;
+    font-size: 30px;
+}
+
+.on-hover-click {
+    cursor: pointer;
+}
+
 

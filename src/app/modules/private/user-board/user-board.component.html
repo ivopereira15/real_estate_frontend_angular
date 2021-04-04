@@ -31,7 +31,19 @@
       </div>
       <div class="column width-80">
         <div class="row title-personal-info">Personal information</div>
-        <div class="row">
+
+        <!--REAL First Name and Last Name-->
+        <div class="main-title">First & Last Name</div>
+        <div class="column user-info" *ngIf="toogleName">
+          <div class="row">
+            <div class="common-text" *ngIf="user.Name">{{user.Name}}</div>
+            <div class="common-text" *ngIf="user.Surname">{{user.Surname}}</div>
+            <div class="common-text" *ngIf="user.Name==undefined && user.Surname==undefined">Not provided</div>
+            <button mat-raised-button color="primary" class="edit-button margin-left" (click)="toogle_name()">Edit</button>
+          </div>
+        </div>
+        <!--EDIT First Name and Last Name TODO ngif-->
+        <div class="row" *ngIf="!toogleName">
           <div class="cell">
             <mat-form-field class="form-field" appearance="outline">
               <mat-label>First Name</mat-label>
@@ -50,6 +62,7 @@
               </mat-error>
             </mat-form-field>
           </div>
+          <button mat-raised-button color="warn" class="edit-button margin-left" (click)="toogle_name()">Cancel</button>
         </div>
 
         <div class="row">

@@ -1,10 +1,17 @@
-<div class="center-column">
+<div class="center-column align-items-center">
     <div class="row">
-        <button class="sell-button" color="primary" mat-button [routerLink]="['/add-listing/sell']">Sell House</button>
-        <button class="rent-button" color="accent" mat-button [routerLink]="['/add-listing/rent']">Rent House</button>
-    </div>
-    <div class="row">
-        <button class="rent-button room" color="accent" mat-button>Rent Room</button>
+        <div class="col-md-4 on-hover-click" [routerLink]="['/add-listing/sell']">
+            <div class="sell-photo"></div>
+            <div class="sell-text">Sell Your House</div>
+        </div>
+        <div class="col-md-4 on-hover-click" [routerLink]="['/add-listing/rent']">
+            <div class="rent-photo"></div>
+            <div class="rent-text">Rent Your House</div>
+        </div>
+        <div class="col-md-4 on-hover-click">
+            <div class="rent-room-photo"></div>
+            <div class="rent-room-text">Rent Your Room</div>
+        </div>
     </div>
 
 </div>
