@@ -8,6 +8,20 @@
     margin-top: -10%;
 }
 
+.custom-form{
+    padding: 20px !important;
+    border-radius: 15px;
+    box-shadow: 0 10px 60px -6px #777, 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
+.small-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
 .border-box {
     margin-top: 80px;
     padding: 15px;
@@ -27,9 +41,11 @@
 
 .register-btn {
     height: 50px;
-    border-radius: 15px;
+    border-radius: 25px;
     font-size: larger;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #0361ec;
+    color: white;
 }
 
 // Material Override PLACE TO STYLES

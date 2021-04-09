@@ -1,92 +1,99 @@
 <div class="register-company">
   <div class="column border-box" *ngIf="!confirmPassword">
-    <div class="row register-header">
-      Create professional account
-    </div>
-    <div class="row full-width">
-      <div class="width-50">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Company name</mat-label>
-          <input matInput placeholder="Name">
-        </mat-form-field>
+    <div class="custom-form">
+      <div class="row register-header">
+        Create professional account
       </div>
-      <div class="width-50">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Company sector</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let city of locations" [value]="city">
-              {{city}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row full-width">
-      <div class="width-50">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Country</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let city of locations" [value]="city">
-              {{city}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="width-50">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>City</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let city of locations" [value]="city">
-              {{city}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row full-width">
+
+      <div class="row full-width ">
         <div class="width-50">
-            <mat-form-field class="form-field" appearance="outline">
-              <mat-label>Address</mat-label>
-              <input matInput placeholder="Name">
-            </mat-form-field>
-          </div>
-      <div class="width-50">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Zip Code</mat-label>
-          <input matInput placeholder="Name">
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row full-width">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Company name</mat-label>
+            <input matInput placeholder="Name">
+          </mat-form-field>
+        </div>
         <div class="width-50">
-            <mat-form-field class="form-field" appearance="outline">
-              <mat-label>Phone number</mat-label>
-              <input matInput placeholder="Name">
-            </mat-form-field>
-          </div>
-      <div class="width-50">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="Name">
-        </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Company sector</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let city of locations" [value]="city">
+                {{city}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
-    </div>
-    <div class="row full-width">
+      <div class="row full-width">
         <div class="width-50">
-            <mat-form-field class="form-field" appearance="outline">
-              <mat-label>Contact person name</mat-label>
-              <input matInput placeholder="Name">
-            </mat-form-field>
-          </div>
-      <div class="width-50">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Job title</mat-label>
-          <input matInput placeholder="Name">
-        </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Country</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let city of locations" [value]="city">
+                {{city}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="width-50">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>City</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let city of locations" [value]="city">
+                {{city}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <button class="full-width register-btn" mat-raised-button color="primary" (click)="confirmPasswordDialog()"> Continue </button>
+      <div class="row full-width">
+        <div class="width-50">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Name">
+          </mat-form-field>
+        </div>
+        <div class="width-50">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Zip Code</mat-label>
+            <input matInput placeholder="Name">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row full-width">
+        <div class="width-50">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input matInput placeholder="Name">
+          </mat-form-field>
+        </div>
+        <div class="width-50">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Name">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row full-width">
+        <div class="width-50">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Contact person name</mat-label>
+            <input matInput placeholder="Name">
+          </mat-form-field>
+        </div>
+        <div class="width-50">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Job title</mat-label>
+            <input matInput placeholder="Name">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <button class="full-width register-btn" mat-raised-button color="primary" (click)="confirmPasswordDialog()">
+          Continue </button>
+      </div>
+      <div class="row small-text">
+        By submitting, I accept ImoRental's <a href="">terms of use</a>.
+      </div>
     </div>
   </div>
   <div class="column border-box" *ngIf="confirmPassword">
@@ -103,7 +110,8 @@
       </mat-form-field>
     </div>
     <div class="row">
-      <button class="full-width register-btn" mat-raised-button color="primary" (click)="confirmPasswordDialog()"> Create account </button>
+      <button class="full-width register-btn" mat-raised-button color="primary" (click)="confirmPasswordDialog()">
+        Create account </button>
     </div>
   </div>
 </div>

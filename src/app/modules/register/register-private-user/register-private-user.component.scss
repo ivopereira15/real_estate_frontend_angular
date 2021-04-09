@@ -2,6 +2,13 @@
     display: flex;
     justify-content: center;
     margin-top: -10%;
+    
+}
+
+.custom-form{
+    padding: 20px !important;
+    border-radius: 15px;
+    box-shadow: 0 10px 60px -6px #777, 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 .form-field {
@@ -26,16 +33,35 @@
 
 .register-header {
     justify-content: center;
-    font-weight: bold;
-    font-size: x-large;
+    //font-weight: bold;
+    font-size: 20px;
     margin-bottom: 15px;
+}
+
+mat-divider {
+    margin-bottom: 7px;
+}
+
+.small-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.bold-text{
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 .register-btn {
     height: 50px;
-    border-radius: 15px;
+    border-radius: 25px;
     font-size: larger;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #0361ec;
+    color: white;
 }
 
 // Material Override PLACE TO STYLES

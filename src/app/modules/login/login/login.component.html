@@ -1,6 +1,11 @@
 <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
   <div class="center">
     <div class="column background-filter login">
+      <div class="welcome-header">
+        Welcome to ImoRentals
+      </div>
+     <mat-divider></mat-divider>
+      <div class="bold-text">Email</div>
       <div>
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Email</mat-label>
@@ -10,8 +15,9 @@
           </mat-error>
         </mat-form-field>
       </div>
+      <div class="bold-text">Password</div>
       <div>
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field class="full-width password" appearance="outline">
           <mat-label>Passowrd</mat-label>
           <input [(ngModel)]="password" matInput type="password" formControlName="password"
             placeholder="Type your password">
@@ -20,9 +26,8 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <button mat-raised-button color="primary" type="submit" class="mat-button"> Login </button>
-      <button mat-raised-button color="accent" class="mat-button"> Forgot? </button>
-      <a class="link-new-user" [routerLink]="['/register']" routerLinkActive="active"> New User? Register here </a>
+      <button mat-raised-button type="submit" class="login-btn"> Login </button>
+      <button mat-raised-button class="forgot-btn"> Forgot you password? </button>
     </div>
   </div>
 </form>

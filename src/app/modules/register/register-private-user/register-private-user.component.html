@@ -1,34 +1,36 @@
 <div class="register-private-user">
   <!--FIRST WINDOW-->
   <div class="column width-75" [ngClass]="[isMobile ? 'border-box-mobile' : 'border-box']"   *ngIf="!confirmPassword">
-    <form (ngSubmit)="next()" [formGroup]="userForm" novalidate>
+    <form class="custom-form" (ngSubmit)="next()" [formGroup]="userForm" novalidate>
       <div class="row register-header">
-        New Private User Account
+        Create your Account
       </div>
+     <mat-divider></mat-divider>
+      <div class="bold-text">First Name</div>
       <div class="row full-width">
         <div class="width-100">
           <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="First Name" formControlName="firstname" required [(ngModel)]="newUser.Name">
+            <input matInput formControlName="firstname" required [(ngModel)]="newUser.Name">
             <mat-error>
               First Name is required
             </mat-error>
           </mat-form-field>
         </div>
       </div>
-
+      <div class="bold-text">Last Name</div>
       <div class="row full-width">
         <div class="width-100">
           <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last Name" formControlName="lastname" required [(ngModel)]="newUser.Surname">
+            <input matInput formControlName="lastname" required [(ngModel)]="newUser.Surname">
             <mat-error>
               Last Name is required
             </mat-error>
           </mat-form-field>
         </div>
       </div>
-
+      <div class="bold-text">Email</div>
       <div class="row full-width">
         <div class="width-100">
           <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
@@ -41,8 +43,11 @@
         </div>
       </div>
       <div class="row">
-        <button class="full-width register-btn" mat-raised-button color="primary" type="submit"> Continue
+        <button class="full-width register-btn" mat-raised-button type="submit"> Continue
         </button>
+      </div>
+      <div class="row small-text">
+        By submitting, I accept ImoRental's <a href="">terms of use</a>.
       </div>
     </form>
   </div>

@@ -1,18 +1,42 @@
 .login {
     padding: 15px;
     width: 30%;
-    height: 36%;
+    //height: 34%;
     > div,
     button {
         margin: 5px;
     }
 }
 
-.mat-button {
-    height: 50px;
-    border-radius: 15px;
-    font-size: larger;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.welcome-header{
+    justify-content: center;
+    //font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px !important;
+    //font-weight: bold;
+    display: flex;
+}
+
+.password{
+    margin-bottom: 15px;
+}
+
+.bold-text{
+    font-weight: bold;
+    margin-left: 5px;
+    margin-bottom: unset !important;
+}
+
+.login-btn {
+    background-color: #0361ec;
+    color: white;
+    border-radius: 25px;
+}
+
+.forgot-btn {
+    background-color:rgb(110, 52, 226);
+    color:  white;
+    border-radius: 25px;
 }
 
 .link-new-user {
