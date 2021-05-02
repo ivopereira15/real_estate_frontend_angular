@@ -1,9 +1,49 @@
 .card-image {
-    height: 70%;
+  //  height: 70%;
 }
+
+.item {
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .container-image {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .container-image>div {
+    flex: 0 50%;
+  }
 
 .details {
     padding: 10px;
+    overflow-y: auto;
+    height: 120vh;
+}
+
+.photos{
+    overflow-y: auto;
+    height: 120vh;
+}
+
+.colored-box {
+    border-style: solid;
+    border-color: rgb(110, 52, 226);
+    border-radius: 25px;
+    padding: 5px;
+    background-color:white;
+    color:  rgb(110, 52, 226);
+}
+
+.propertyId {
+    color: gray;
+    font-size: 10px;
+    padding-top: 15px;
+}
+
+.material-icons{
+    margin-left: 10px;
 }
 
 .price {
@@ -12,18 +52,53 @@
     font-size:x-large;
 }
 
+.gray {
+    color: rgb(87, 85, 85);
+}
+
 .address {
-    font-weight: bold;
+    //font-weight: bold;
+    color: rgb(87, 85, 85);
+    margin-left: 10px;
 }
 
 .meters, .typology, .bathrooms {
-    font-weight: bold;
+    //font-weight: bold;
     margin-left: 5px;
     margin-right: 5px;
+    color: rgb(87, 85, 85);
+}
+
+.main-characteristics{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: unset;
+}
+
+.overview, .contact{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+
+    //color: rgb(133, 133, 133);
+}
+
+.contact-form {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgb(245, 243, 243);
+}
+
+.send-message-btn {
+    border-radius: 25px;
+    background-color: #0361ec;
+    color: white;
+    width: 100%;
 }
 
 .description {
-    color: rgb(88, 88, 88);
+    color: rgb(133, 133, 133);
 }
 
 app-property-frame {

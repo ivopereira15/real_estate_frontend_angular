@@ -28,13 +28,36 @@ export class PropertyDetailComponent implements OnInit, OnDestroy {
   public mapPoint: MapPoint;
   private propertyId: number;
 
+  //Image gallery---------
+  //items: string[] = [];
+  mainPhoto;
+  currentIndex: any = -1;
+  showFlag: any = false;
+
+  items: Array<{ image: string, thumbImage: string }> = [{
+    image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/5.jpg',
+    thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/5.jpg'
+  }, {
+    image: 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/0082534543178d83e75145f292ada892-full.webp',
+    thumbImage: 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/0082534543178d83e75145f292ada892-full.webp'
+  }, {
+    image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/4.jpg',
+    thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/4.jpg'
+  }];
+
   // subscription: Subscription = new Subscription();
 
   constructor(
     @Inject(UserService) public userService: UserService,
     @Inject(ListingService) private listingService: ListingService,
     private appContext: AppContextService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
+    // this.items.push(this.image);
+    // this.items.push(this.image);
+    // this.items.push(this.image);
+    // this.items.push(this.image);
+    // this.items.push(this.image);
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -43,14 +66,14 @@ export class PropertyDetailComponent implements OnInit, OnDestroy {
       this.subscriptions.add(
         this.listingService.getPropertyByMySqlId(this.propertyId).subscribe((res: any) => {
           console.log(res);
-          if(res.Result.IsValid){
-             this.property = res.Result.Data;
-             console.log(this.property);
+          if (res.Result.IsValid) {
+            this.property = res.Result.Data;
+            console.log(this.property);
           }
         })
       );
     });
-    
+
     this.searchProperties.criteria = "15";
     this.searchProperties.priceFrom = 15;
     this.searchProperties.priceTo = 16;
@@ -68,8 +91,18 @@ export class PropertyDetailComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscriptions.unsubscribe();
+  }
+
+  showLightbox(index) {
+    this.currentIndex = index;
+    this.showFlag = true;
+  }
+
+  closeEventHandler() {
+    this.showFlag = false;
+    this.currentIndex = -1;
   }
 
   // setCoordinates(e: any) {

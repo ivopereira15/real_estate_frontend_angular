@@ -22,6 +22,10 @@ export class UserBoardComponent implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
 
   toogleName: boolean = true;
+  toogleAddress: boolean = true;
+  toogleEmail: boolean = true;
+  tooglePhoneNumber: boolean = true;
+  tooglePassword: boolean = true;
 
   constructor(
     @Inject(FormBuilder) private formBuilder: FormBuilder,
@@ -71,29 +75,17 @@ export class UserBoardComponent implements OnInit, OnDestroy {
   }
 
   public uploadImage(image: any): void {
-
     let uploadedImage: File = image.target.files[0];
-
     const reader: FileReader = new FileReader();
-
     reader.readAsDataURL(uploadedImage);
-
     reader.onload = (_event) => {
-
       let result = reader.result;
-
       this.image = result;
-
       const userProfileImage = new UserProfileImage();
-
       userProfileImage.UserEmail = this.user.Email;
-
       userProfileImage.ImageName = uploadedImage.name;
-
       userProfileImage.FileMimeType = uploadedImage.type;
-
       userProfileImage.Photo = uploadedImage;
-
       this.userService.uploadUserProfilePhoto(userProfileImage).subscribe();
     };
   }
@@ -126,6 +118,22 @@ export class UserBoardComponent implements OnInit, OnDestroy {
 
   toogle_name() {
     this.toogleName = !this.toogleName;
+  }
+
+  toogle_address() {
+    this.toogleAddress = !this.toogleAddress;
+  }
+
+  toogle_email() {
+    this.toogleEmail = !this.toogleEmail;
+  }
+
+  toogle_phoneNumber() {
+    this.tooglePhoneNumber = !this.tooglePhoneNumber;
+  }
+
+  toogle_password(){
+    this.tooglePassword = !this.tooglePassword;
   }
 
   private validateActivation() {

@@ -33,11 +33,22 @@
     width: 30%;
 }
 
+.bold-text{
+    font-weight: bold;
+    margin-left: 5px;
+}
+
 .register-header{
     justify-content: center;
-    font-weight: bold;
-    font-size: x-large;
+    //font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
 }
+
+mat-divider {
+    margin-bottom: 7px;
+}
+
 
 .register-btn {
     height: 50px;

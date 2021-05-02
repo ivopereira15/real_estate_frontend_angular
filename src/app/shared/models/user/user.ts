@@ -12,6 +12,8 @@ export class User {
     public Address: string;
     public TaxNumber: string;
 
+    public PhoneNumber: string;
+
     public ImageName: string;
     public ImagePath: string;
 

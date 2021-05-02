@@ -6,7 +6,7 @@
     //margin-left: 15px;
     margin-bottom: 15px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .board-container {
@@ -22,6 +22,24 @@
 .edit-button {
     border-radius: 25px;
     height: 35px;
+    background-color:  #0361ec;
+    color: white;
+    margin-left: 5px;
+}
+
+.save-button {
+    border-radius: 25px;
+    height: 35px;
+    background-color: rgb(79, 212, 79);
+    color: white;
+    margin-left: 5px;
+}
+
+.delete-button {
+    border-radius: 25px;
+    height: 35px;
+    background-color: red;
+    color: white;
 }
 
 
@@ -44,6 +62,7 @@
 .main-title {
     margin-bottom: 10px;
     margin-left: 15px;
+    font-weight: bold;
 }
 
 .title {
@@ -57,16 +76,23 @@
 }
 
 .image {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    //justify-content: center;
     > span {
         margin-top: 10px;
     }
 }
 
-.user-info{
+mat-divider {
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.padding-left{
     padding-left: 15px;
 }
 

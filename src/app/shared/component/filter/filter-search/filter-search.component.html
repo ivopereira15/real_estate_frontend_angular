@@ -1,12 +1,17 @@
 <div class="full-width border-margins row-space-around colored-background">
-    <div class="border-margins width-75">
-      <mat-form-field class="full-width" appearance="outline">
-        <input matInput placeholder="Location" [ngModel]="location">
-      </mat-form-field>
-    </div>
-    <div class="border-margins width-25">
-      <div class="submit-button">
-        <button mat-raised-button class="search" (click)="search()"> Search </button>
-      </div>
+  <div class="border-margins width-75">
+    <mat-form-field class="full-width" appearance="outline">
+      <input matInput placeholder="Location" [ngModel]="location">
+    </mat-form-field>
+  </div>
+  <div class="border-margins width-25">
+    <div class="submit-button">
+      <button mat-raised-button class="search" (click)="search()">
+        <div class="material-icons">
+          search
+        </div>
+        Search
+      </button>
     </div>
   </div>
+</div>
