@@ -1,11 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ListingService } from '../../../core/services/api/listing.service';
+import { ImageService } from '../../../core/services/api/image.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { OperationType } from '../../../shared/models/listing/operation-type';
 import { PropertyType } from 'src/app/shared/models/listing/property-type';
 import { AppContextService } from 'src/app/core/services/app-context.service';
 import { SellHouse } from '../../../shared/models/listing/sell-house';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-add-listing-sell',
@@ -36,12 +38,13 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private listingService: ListingService,
+    private imageService: ImageService,
     private appContext: AppContextService) { }
 
   ngOnInit(): void {
     this.subscriptions.add(
       this.listingService.getOperationTypes().subscribe((result) => {
-        
+
         if (result.IsValid) {
           this.operationTypes = result.Data;
           this.currentOperationType = this.operationTypes.find(x => x.Type === this.TYPE);
@@ -63,17 +66,7 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  // public uploadImage(image: any): void {
-  //   let uploadedImage: File = image.target.files[0];
-  //   const reader: FileReader = new FileReader();
-  //   reader.readAsDataURL(uploadedImage);
-  //   reader.onload = (_event) => {
-  //     let result = reader.result;
-  //     this.thumbnails.push(result);
-  //   };
-  // }
-
-  publishListing(sellHouseForm: SellHouse) {
+  async publishListing(sellHouseForm: SellHouse) {
     // Check if logged in. If yes, POST
     const isAuthnticated = this.authService.isAuthenticated();
     if (isAuthnticated) {
@@ -81,8 +74,15 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
       sellHouseForm.UserId = this.userId;
       sellHouseForm.OperationTypeId = this.currentOperationType.Id;
       console.log(this.sellHouseForm);
-      this.subscriptions.add(
-       this.listingService.listSellHouse(sellHouseForm).subscribe());
+      console.log("sending photos");
+          this.imageService.AddPropertyPhoto(sellHouseForm.photos, 1).subscribe()
+      // this.listingService.listSellHouse(sellHouseForm).subscribe(res => {
+      //   console.log(res);
+      //   if (res.IsValid) {
+      //     console.log("sending photos");
+      //     this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe();
+      //   }
+      // });
     }
     if (!isAuthnticated) {
 

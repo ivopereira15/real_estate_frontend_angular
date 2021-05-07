@@ -21,4 +21,6 @@ export class SellHouse {
 
     public PropertyTypeId: number;
     public OperationTypeId: number;
+
+    public photos: any[];
 }

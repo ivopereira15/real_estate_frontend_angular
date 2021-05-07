@@ -33,7 +33,10 @@
           </li>
 
           <div class="profile" *ngIf="authenticated">
-            <button class="logged-user" mat-button [matMenuTriggerFor]="menu">Brad</button>
+            <!-- <button class="logged-user" mat-button [matMenuTriggerFor]="menu">Brad</button> -->
+            <span class="material-icons white-icon" [matMenuTriggerFor]="menu">
+              account_circle
+            </span>
             <mat-menu #menu="matMenu">
               <button mat-menu-item [routerLink]="['/userboard']">Profile</button>
               <button mat-menu-item>Messages</button>

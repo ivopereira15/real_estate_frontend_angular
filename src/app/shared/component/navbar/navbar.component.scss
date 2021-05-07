@@ -67,9 +67,13 @@
     align-items: center;
 }
 
-.logged-user {
+.white-icon {
     background-color: white;
-    border-radius: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 30px;
+    margin-left: 5px;
+    padding: 1px;
 }
 
 // mobile

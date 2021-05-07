@@ -40,6 +40,7 @@
     height: 35px;
     background-color: red;
     color: white;
+    width: 100px;
 }
 
 
@@ -153,52 +154,52 @@ img {
     }
 }
 
-mat-radio-group {
-    padding-top: 5px !important;
-    padding-left: 5px !important;;
-    padding-right: 5px !important;
-    background-color: rgb(250, 242, 242) !important;
-    border-radius: 10px !important;
+// mat-radio-group {
+//     padding-top: 5px !important;
+//     padding-left: 5px !important;;
+//     padding-right: 5px !important;
+//     background-color: rgb(250, 242, 242) !important;
+//     border-radius: 10px !important;
 
-    mat-radio-button {
-        margin-left: 5px !important;
-    }
-}
+//     mat-radio-button {
+//         margin-left: 5px !important;
+//     }
+// }
 
-::ng-deep mat-radio-button.level-1 .mat-radio-inner-circle {
-    background-color: yellow !important;
-}
-::ng-deep mat-radio-button.level-1 .mat-radio-outer-circle {
-    border-color: yellow !important;
-}
+// ::ng-deep mat-radio-button.level-1 .mat-radio-inner-circle {
+//     background-color: yellow !important;
+// }
+// ::ng-deep mat-radio-button.level-1 .mat-radio-outer-circle {
+//     border-color: yellow !important;
+// }
 
-::ng-deep mat-radio-button.level-2 .mat-radio-inner-circle {
-    background-color: rgb(255, 208, 0) !important;
-}
-::ng-deep mat-radio-button.level-2 .mat-radio-outer-circle {
-    border-color: rgb(255, 208, 0) !important;
-}
+// ::ng-deep mat-radio-button.level-2 .mat-radio-inner-circle {
+//     background-color: rgb(255, 208, 0) !important;
+// }
+// ::ng-deep mat-radio-button.level-2 .mat-radio-outer-circle {
+//     border-color: rgb(255, 208, 0) !important;
+// }
 
-::ng-deep mat-radio-button.level-3 .mat-radio-inner-circle {
-    background-color: rgb(255, 174, 0) !important;
-}
-::ng-deep mat-radio-button.level-3 .mat-radio-outer-circle {
-    border-color: rgb(255, 174, 0) !important;
-}
+// ::ng-deep mat-radio-button.level-3 .mat-radio-inner-circle {
+//     background-color: rgb(255, 174, 0) !important;
+// }
+// ::ng-deep mat-radio-button.level-3 .mat-radio-outer-circle {
+//     border-color: rgb(255, 174, 0) !important;
+// }
 
-::ng-deep mat-radio-button.level-4 .mat-radio-inner-circle {
-    background-color: rgb(255, 123, 0) !important;
-}
-::ng-deep mat-radio-button.level-4 .mat-radio-outer-circle {
-    border-color: rgb(255, 123, 0) !important;
-}
+// ::ng-deep mat-radio-button.level-4 .mat-radio-inner-circle {
+//     background-color: rgb(255, 123, 0) !important;
+// }
+// ::ng-deep mat-radio-button.level-4 .mat-radio-outer-circle {
+//     border-color: rgb(255, 123, 0) !important;
+// }
 
-::ng-deep mat-radio-button.level-5 .mat-radio-inner-circle {
-    background-color: rgb(255, 72, 0) !important;
-}
-::ng-deep mat-radio-button.level-5 .mat-radio-outer-circle {
-    border-color: rgb(255, 72, 0) !important;
-}
+// ::ng-deep mat-radio-button.level-5 .mat-radio-inner-circle {
+//     background-color: rgb(255, 72, 0) !important;
+// }
+// ::ng-deep mat-radio-button.level-5 .mat-radio-outer-circle {
+//     border-color: rgb(255, 72, 0) !important;
+// }
 
 // Material Override PLACE TO STYLES
 

@@ -25,6 +25,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
   energyCertificate: string[] = ["A", "B", "C", "D"];
   countries: string[] = ["Italy", "Ukraine", "Portugal"];
   thumbnails = [];
+  photos = [];
 
   constructor() { }
 
@@ -44,6 +45,9 @@ export class SellHouseComponent implements OnInit, OnChanges {
     reader.readAsDataURL(uploadedImage);
     reader.onload = (_event) => {
       let result = reader.result;
+
+      this.photos.push(result);
+
       this.thumbnails.push(result);
     };
   }
@@ -54,6 +58,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
   }
 
   publishListingSubmit() {
+    this.sellHouseForm.photos = this.photos;
     this.publishListing.emit(this.sellHouseForm);
   }
 

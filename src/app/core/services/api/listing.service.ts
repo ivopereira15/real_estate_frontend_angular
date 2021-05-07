@@ -34,9 +34,9 @@ export class ListingService {
             .get<ResultMessage<PropertyType[]>>(this.appContext.getAPIUrl() + '/organization/Listing/operationTypes');
     }
 
-    public listSellHouse(listing: SellHouse): Observable<any> {
+    public listSellHouse(listing: SellHouse): Observable<ResultMessage<number>> {
         return this.http
-            .post<any>(this.appContext.getAPIUrl() + '/organization/Listing/listSellHouse', listing, this.httpOptions);
+            .post<ResultMessage<number>>(this.appContext.getAPIUrl() + '/organization/Listing/listSellHouse', listing, this.httpOptions);
     }
 
     public getUserPropertiesBasic(userId: number): Observable<ResultMessage<PropertyBasic[]>> {
