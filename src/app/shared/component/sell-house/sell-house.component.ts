@@ -46,7 +46,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
     reader.onload = (_event) => {
       let result = reader.result;
 
-      this.photos.push(result);
+      this.photos.push(uploadedImage);
 
       this.thumbnails.push(result);
     };

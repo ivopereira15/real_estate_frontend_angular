@@ -11,7 +11,8 @@ export class ImageService {
 
     private httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/json' application/x-www-form-urlencoded
+            'Content-Type': 'application/octet-stream'
         })
     };
 
@@ -24,8 +25,9 @@ export class ImageService {
         //     formData.append("photos", photoData[i]);
         //     //  array.push(photoData[i]);
         // }
-        for (const file of photoData) {
-            formData.append('photos', file);
+        console.log(photoData);
+        for (var i = 0; i < photoData.length; i++) {
+            formData.append('files', photoData[i], photoData[i].name);
         }
         // formData.append("photos", JSON.stringify(array));
         // formData.append('propertyElasticId', elasticId.toString());
