@@ -34,16 +34,7 @@ export class PropertyDetailComponent implements OnInit, OnDestroy {
   currentIndex: any = -1;
   showFlag: any = false;
 
-  items: Array<{ image: string, thumbImage: string }> = [{
-    image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/5.jpg',
-    thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/5.jpg'
-  }, {
-    image: 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/0082534543178d83e75145f292ada892-full.webp',
-    thumbImage: 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/0082534543178d83e75145f292ada892-full.webp'
-  }, {
-    image: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/4.jpg',
-    thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/4.jpg'
-  }];
+  items: Array<{ image: string }> = [];
 
   // subscription: Subscription = new Subscription();
 
@@ -68,6 +59,13 @@ export class PropertyDetailComponent implements OnInit, OnDestroy {
           console.log(res);
           if (res.Result.IsValid) {
             this.property = res.Result.Data;
+            console.log(this.property.Images)
+            if (this.property.Images) {
+              console.log(this.property.Images)
+              this.property.Images.forEach(i => {
+                this.items.push({ image: i.ImageUrl });
+              })
+            }
             console.log(this.property);
           }
         })

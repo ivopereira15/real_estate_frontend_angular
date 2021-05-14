@@ -11,4 +11,6 @@ export class PropertyBasic {
     
     public Latitude: number;
     public Longitude: number;
+
+    public MainPhotoUrl: string;
 }

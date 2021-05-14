@@ -1,3 +1,5 @@
+import { PropertyImage } from "../images/property-image";
+
 export class Property {
     public MySqlId: number;
     public UserId: number;
@@ -22,4 +24,6 @@ export class Property {
 
     public PropertyTypeId: number;
     public OperationTypeId: number;
+
+    public Images: PropertyImage[];
 }

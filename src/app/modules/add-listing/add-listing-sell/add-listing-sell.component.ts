@@ -75,14 +75,14 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
       sellHouseForm.OperationTypeId = this.currentOperationType.Id;
       console.log(this.sellHouseForm);
       console.log("sending photos");
-          this.imageService.AddPropertyPhoto(sellHouseForm.photos, 1).subscribe()
-      // this.listingService.listSellHouse(sellHouseForm).subscribe(res => {
-      //   console.log(res);
-      //   if (res.IsValid) {
-      //     console.log("sending photos");
-      //     this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe();
-      //   }
-      // });
+          // this.imageService.AddPropertyPhoto(sellHouseForm.photos, 1).subscribe()
+      this.listingService.listSellHouse(sellHouseForm).subscribe(res => {
+        console.log(res);
+        if (res.IsValid) {
+          console.log("sending photos");
+          this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe();
+        }
+      });
     }
     if (!isAuthnticated) {
 
