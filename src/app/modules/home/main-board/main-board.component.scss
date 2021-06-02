@@ -7,9 +7,13 @@
     height: 170vh;
 }
 
+.mr-5 {
+    margin-right: 10px !important;
+}
+
 .container-row {
     width: 100%;
-    justify-content: space-between;
+    // justify-content: space-between;
     > div {
         width: 24%;
         cursor: pointer;

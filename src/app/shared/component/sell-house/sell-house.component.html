@@ -1,198 +1,195 @@
 <div class="container-center">
     <div class="container-center-column">
-            <!--TITLE-->
-            <div class="row width-80">
-                <div class="title">
-                    {{title}}
-                </div>
+        <!--TITLE-->
+        <div class="row width-80">
+            <div class="title">
+                {{title}}
             </div>
-            <div class="row width-80">
-                Please enter the required information:
+        </div>
+        <div class="row width-80">
+            Please enter the required information:
+        </div>
+        <!--LINE 1-->
+        <div class="row width-80">
+            <div class="width-30 form">
+                <div>Price*</div>
+                <mat-form-field class="full-width" appearance="outline">
+                    <input type="number" matInput [(ngModel)]="sellHouseForm.Price" required>
+                </mat-form-field>
             </div>
-            <!--LINE 1-->
-            <div class="row width-80">
-                <div class="width-30 form">
-                    <div>Price</div>
-                    <mat-form-field class="full-width" appearance="outline">
-                        <input type="number" matInput [(ngModel)]="sellHouseForm.Price">
-                    </mat-form-field>
-                </div>
-                <div class="width-30 form">
-                    <div>Area m2</div>
-                    <mat-form-field class="full-width" appearance="outline">
-                        <input type="number" matInput [(ngModel)]="sellHouseForm.NetAream2">
-                    </mat-form-field>
-                </div>
-                <div class="width-30 form">
-                    <div>Price/m2</div>
-                    <mat-form-field class="full-width" appearance="outline">
-                        <input type="number" matInput [(ngModel)]="sellHouseForm.PriceNetAream2">
-                    </mat-form-field>
-                </div>
+            <div class="width-30 form">
+                <div>Area m2*</div>
+                <mat-form-field class="full-width" appearance="outline">
+                    <input type="number" matInput [(ngModel)]="sellHouseForm.NetAream2" required>
+                </mat-form-field>
             </div>
-            <!--LINE 2-->
-            <div class="row width-80">
-                <div class="width-30 form">
-                    <div>Gross Area m2</div>
-                    <mat-form-field class="full-width" appearance="outline">
-                        <input type="number" matInput placeholder="Gross Area m2"
-                            [(ngModel)]="sellHouseForm.GrossAream2">
-                    </mat-form-field>
-                </div>
-                <div class="width-30 form">
-                    <div>Typology</div>
-                    <mat-form-field class="width-100" appearance="outline">
-                        <mat-select [(ngModel)]="sellHouseForm.PropertyTypeId">
-                            <mat-option *ngFor="let type of propertyTypes" [value]="type.Id">
-                                {{type.Type}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="width-30 form">
-                    <div>Floor</div>
-                    <mat-form-field class="width-100" appearance="outline">
-                        <mat-select [(ngModel)]="sellHouseForm.Floor">
-                            <mat-option *ngFor="let floor of floors" [value]="floor">
-                                {{floor}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
+            <div class="width-30 form">
+                <div>Price/m2</div>
+                <mat-form-field class="full-width" appearance="outline">
+                    <input type="number" matInput [(ngModel)]="sellHouseForm.PriceNetAream2" disabled>
+                </mat-form-field>
             </div>
-            <!--LINE 3-->
-            <div class="row width-80">
-                <div class="width-30 form">
-                    <div>Year of construction</div>
-                    <mat-form-field class="full-width form" appearance="outline">
-                        <input type="number" matInput placeholder="Year of construction"
-                            [(ngModel)]="sellHouseForm.YearOfConstruction">
-                    </mat-form-field>
-                </div>
-                <div class="width-30 form">
-                    <div>Nº Bathrooms</div>
-                    <mat-form-field class="width-100 form" appearance="outline">
-                        <mat-select [(ngModel)]="sellHouseForm.NumberOfBathrooms">
-                            <mat-option *ngFor="let bathroom of bathrooms" [value]="bathroom">
-                                {{bathroom}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="width-30 form">
-                    <div>Energy Certificate</div>
-                    <mat-form-field class="width-100 form" appearance="outline">
-                        <mat-select [(ngModel)]="sellHouseForm.EnerergyCertificate">
-                            <mat-option *ngFor="let certificate of energyCertificate" [value]="certificate">
-                                {{certificate}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
+        </div>
+        <!--LINE 2-->
+        <div class="row width-80">
+            <div class="width-30 form">
+                <div>Gross Area m2</div>
+                <mat-form-field class="full-width" appearance="outline">
+                    <input type="number" matInput [(ngModel)]="sellHouseForm.GrossAream2">
+                </mat-form-field>
             </div>
+            <div class="width-30 form">
+                <div>Typology*</div>
+                <mat-form-field class="width-100" appearance="outline">
+                    <mat-select [(ngModel)]="sellHouseForm.PropertyTypeId" required>
+                        <mat-option *ngFor="let type of propertyTypes" [value]="type.Id">
+                            {{type.Type}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="width-30 form">
+                <div>Floor</div>
+                <mat-form-field class="width-100" appearance="outline">
+                    <mat-select [(ngModel)]="sellHouseForm.Floor">
+                        <mat-option *ngFor="let floor of floors" [value]="floor">
+                            {{floor}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <!--LINE 3-->
+        <div class="row width-80">
+            <div class="width-30 form">
+                <div>Year of construction</div>
+                <mat-form-field class="full-width form" appearance="outline">
+                    <input type="number" matInput [(ngModel)]="sellHouseForm.YearOfConstruction">
+                </mat-form-field>
+            </div>
+            <div class="width-30 form">
+                <div>Nº Bathrooms*</div>
+                <mat-form-field class="width-100 form" appearance="outline">
+                    <mat-select [(ngModel)]="sellHouseForm.NumberOfBathrooms" required>
+                        <mat-option *ngFor="let bathroom of bathrooms" [value]="bathroom">
+                            {{bathroom}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="width-30 form">
+                <div>Energy Certificate</div>
+                <mat-form-field class="width-100 form" appearance="outline">
+                    <mat-select [(ngModel)]="sellHouseForm.EnerergyCertificate">
+                        <mat-option *ngFor="let certificate of energyCertificate" [value]="certificate">
+                            {{certificate}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
 
-            <!--LINE 4-->
-            <!--LINE 5-->
-            <div class="row width-80">
-                <div class="title">
-                    Add Descritpion
+        <!--LINE 4-->
+        <!--LINE 5-->
+        <div class="row width-80">
+            <div class="title">
+                Add Descritpion*
+            </div>
+        </div>
+        <div class="row width-80">
+            <textarea matInput class="textarea" [(ngModel)]="sellHouseForm.Description" required></textarea>
+        </div>
+        <!--LINE 6-->
+        <div class="row width-80">
+            <div class="title">
+                Add Photos (max 12)
+            </div>
+        </div>
+        <div class="row width-80">
+            Please add photos:
+        </div>
+        <div class="row width-80">
+            <div class="photo">
+                <input type="file" hidden #uploader accept="image/*" (change)="uploadImage($event)">
+                <span class="material-icons" (click)="uploader.click()">
+                    add_photo_alternate
+                </span>
+            </div>
+            <div class="photo-inserted" *ngFor="let thumbnail of thumbnails">
+                <div class="fill">
+                    <img [src]="thumbnail">
                 </div>
             </div>
-            <div class="row width-80">
-                <textarea matInput class="textarea" [(ngModel)]="sellHouseForm.Description"></textarea>
+        </div>
+        <!--LOCATION-->
+        <div class="row width-80">
+            <div class="title">
+                Location
             </div>
-            <!--LINE 6-->
+        </div>
+        <div class="row width-80">
+            <div class="width-30 form">
+                <div>Country*</div>
+                <mat-form-field class="width-100 form" appearance="outline">
+                    <mat-select [(ngModel)]="sellHouseForm.Country" required>
+                        <mat-option *ngFor="let country of countries" [value]="country">
+                            {{country}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="width-30 form">
+                <div>City*</div>
+                <mat-form-field class="full-width form" appearance="outline">
+                    <input matInput [(ngModel)]="sellHouseForm.City" required>
+                </mat-form-field>
+            </div>
+            <div class="width-30 form">
+                <div>Street and Nª*</div>
+                <mat-form-field class="full-width form" appearance="outline">
+                    <input matInput [(ngModel)]="sellHouseForm.Address" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <!--MAP-->
+        <div class="row width-80 height">
             <div class="row width-80">
-                <div class="title">
-                    Add Photos (max 25)
+                <div>
+                    Or set the location with the marker:
                 </div>
             </div>
-            <div class="row width-80">
-                Please add photos:
+            <app-map (coordinates)="setCoordinates($event)" [mapPointInput]="mapPoint"></app-map>
+        </div>
+        <!--LINE 7-->
+        <div class="row width-80">
+            <div class="title">
+                Charecteristics
             </div>
-            <div class="row width-80">
-                <div class="photo">
-                    <input type="file" hidden #uploader accept="image/*" (change)="uploadImage($event)">
-                    <span class="material-icons" (click)="uploader.click()">
-                        add_photo_alternate
-                    </span>
-                </div>
-                <div class="photo-inserted" *ngFor="let thumbnail of thumbnails">
-                    <div class="fill">
-                        <img [src]="thumbnail">
-                    </div>
-                </div>
-            </div>
-            <!--LOCATION-->
-            <div class="row width-80">
-                <div class="title">
-                    Location
-                </div>
-            </div>
-            <div class="row width-80">
-                <div class="width-30 form">
-                    <div>Country</div>
-                    <mat-form-field class="width-100 form" appearance="outline">
-                        <mat-select [(ngModel)]="sellHouseForm.Country">
-                            <mat-option *ngFor="let country of countries" [value]="country">
-                                {{country}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="width-30 form">
-                    <div>City</div>
-                    <mat-form-field class="full-width form" appearance="outline">
-                        <input matInput [(ngModel)]="sellHouseForm.City">
-                    </mat-form-field>
-                </div>
-                <div class="width-30 form">
-                    <div>Street and Nª</div>
-                    <mat-form-field class="full-width form" appearance="outline">
-                        <input matInput [(ngModel)]="sellHouseForm.Address">
-                    </mat-form-field>
-                </div>
-            </div>
-            <!--MAP-->
-            <div class="row width-80 height">
-                <div class="row width-80">
-                    <div>
-                        Or set the location with the marker:
-                    </div>
-                </div>
-                <app-map (coordinates)="setCoordinates($event)" [mapPointInput]="mapPoint"></app-map>
-            </div>
-            <!--LINE 7-->
-            <div class="row width-80">
-                <div class="title">
-                    Charecteristics
-                </div>
-            </div>
-            <div class="row width-80">
-                <mat-checkbox class="checkbox">Garage</mat-checkbox>
-                <mat-checkbox class="checkbox">Closed condominium</mat-checkbox>
-                <mat-checkbox class="checkbox">Lareira</mat-checkbox>
-                <mat-checkbox class="checkbox">Ar Condicionado</mat-checkbox>
-                <mat-checkbox class="checkbox">Vista de rio</mat-checkbox>
-                <mat-checkbox class="checkbox">Vista de mar</mat-checkbox>
-                <mat-checkbox class="checkbox">Elevador</mat-checkbox>
-                <mat-checkbox class="checkbox">Despensa</mat-checkbox>
-                <mat-checkbox class="checkbox">Elevador</mat-checkbox>
-                <mat-checkbox class="checkbox">Despensa</mat-checkbox>
-            </div>
-            <div class="row width-80">
-                <mat-checkbox class="checkbox">Jacuzzi</mat-checkbox>
-                <mat-checkbox class="checkbox">Gym</mat-checkbox>
-                <mat-checkbox class="checkbox">Terraço</mat-checkbox>
-                <mat-checkbox class="checkbox">Estores Eléctricos</mat-checkbox>
-                <mat-checkbox class="checkbox">Cozinha Equipada</mat-checkbox>
-                <mat-checkbox class="checkbox">Mobilado</mat-checkbox>
-                <mat-checkbox class="checkbox">Porta Blindada</mat-checkbox>
-                <mat-checkbox class="checkbox">Piscina</mat-checkbox>
-            </div>
-            <!--LINE 8-->
-            <div class="row width-80">
-                <button class="list" mat-raised-button (click)="publishListingSubmit()">Publish listing</button>
-            </div>
+        </div>
+        <div class="row width-80">
+            <mat-checkbox class="checkbox">Lareira</mat-checkbox>
+            <mat-checkbox class="checkbox">Ar Condicionado</mat-checkbox>
+            <mat-checkbox class="checkbox">Jacuzzi</mat-checkbox>
+            <mat-checkbox class="checkbox">Despensa</mat-checkbox>
+            <mat-checkbox class="checkbox">Terraço</mat-checkbox>
+        </div>
+        <div class="row width-80">
+            <mat-checkbox class="checkbox">Estores Eléctricos</mat-checkbox>
+            <mat-checkbox class="checkbox">Cozinha Equipada</mat-checkbox>
+            <mat-checkbox class="checkbox">Mobilado</mat-checkbox>
+            <mat-checkbox class="checkbox">Porta Blindada</mat-checkbox>
+            <mat-checkbox class="checkbox">Garage</mat-checkbox>
+        </div>
+        <div class="row width-80">
+            <mat-checkbox class="checkbox">Closed condominium</mat-checkbox>
+            <mat-checkbox class="checkbox">Elevador</mat-checkbox>
+            <mat-checkbox class="checkbox">Vista de mar</mat-checkbox>
+            <mat-checkbox class="checkbox">Gym</mat-checkbox>
+            <mat-checkbox class="checkbox">Piscina</mat-checkbox>
+        </div>
+        <!--LINE 8-->
+        <div class="row width-80">
+            <button class="list" mat-raised-button (click)="publishListingSubmit()">Publish listing</button>
+        </div>
     </div>
 </div>

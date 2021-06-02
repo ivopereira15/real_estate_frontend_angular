@@ -29,11 +29,16 @@
 
 .colored-box {
     border-style: solid;
-    border-color: rgb(110, 52, 226);
+    // border-color: rgb(110, 52, 226);
     border-radius: 25px;
-    padding: 5px;
-    background-color:white;
-    color:  rgb(110, 52, 226);
+    //height: 20px;
+    //padding-top: 2px;
+    //padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color:rgb(64, 66, 212);
+    color:  white;
+    margin-top: -5px;
 }
 
 .propertyId {
@@ -47,19 +52,24 @@
 }
 
 .price {
-    color: blue;
+    color: rgb(64, 66, 212);
     font-weight: bold;
     font-size:x-large;
+    //margin-top: -10px;
+}
+
+.meter-price{
+    margin-top: -20px;
 }
 
 .gray {
-    color: rgb(87, 85, 85);
+    color: cornflowerblue;
 }
 
 .address {
     //font-weight: bold;
     color: rgb(87, 85, 85);
-    margin-left: 10px;
+    //margin-left: 10px;
 }
 
 .meters, .typology, .bathrooms {
@@ -73,6 +83,15 @@
     margin-top: 10px;
     margin-bottom: 15px;
     margin-left: unset;
+}
+
+.characteristics {
+    font-weight: bold;
+}
+
+.characteristics-label {
+    margin-left: 5px;
+    margin-right: 3px;
 }
 
 .overview, .contact{

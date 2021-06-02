@@ -24,7 +24,9 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   searchProperties: SearchProperty = new SearchProperty();
   subscriptions: Subscription = new Subscription();
   // chunkArray: Array<User[]> = [];
-  promotedProperties: PropertyBasic[];
+  promotedProperties: PropertyBasic[] = [];
+  newListings: PropertyBasic[] = [];
+  allListings: PropertyBasic[] = [];
 
   constructor(@Inject(UserService) private userService: UserService,
     @Inject(ListingService) private listingService: ListingService) { }
@@ -37,11 +39,16 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
         if (res.Result.IsValid) {
-          this.promotedProperties = res.Result.Data;
-          // temporary hack
-          // for (let item of this.promotedProperties) {
-          //   item.mysqlid = 1;
-          // }
+          let result = res.Result.Data;
+          //Just first 4 properties in the row. Later to make an endpoint for that
+          for(let i: number = 0; i <= 3; i ++){
+            if(result[i] !== undefined){
+              this.promotedProperties.push(result[i]);
+              this.newListings.push(result[i]);
+              this.allListings.push(result[i]);
+            }
+          }
+ 
         }
       })
     );

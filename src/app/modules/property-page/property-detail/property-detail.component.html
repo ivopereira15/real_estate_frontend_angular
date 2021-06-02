@@ -6,12 +6,14 @@
           <!--Images-->
           <div class="column width-60 photos">
             <!--1x Main photo-->
-            <div class="card-image" *ngIf="items.length > 0">
+            <!-- <div class="card-image" *ngIf="items.length > 0">
               <img [src]="items[0].image" (click)="showLightbox(1)" width="100%" height="100%">
-            </div>
+            </div> -->
             <div class="container-image" *ngIf="items.length > 0">
-              <div *ngFor="let item of items; let i = index" class="item">
-                <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="100%" />
+              <div *ngFor="let item of items; let i = index">
+                <div [ngClass]="i == 0 ? 'card-image' : 'item'">
+                  <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="100%" />
+                </div>
               </div>
             </div>
             <!-- ng-image-fullscreen-view  -->
@@ -30,23 +32,45 @@
               </div>
             </div>
             <div class="row">
+              <div class="meter-price">1200 €/m2</div>
+            </div>
+            <div class="row">
               <div class="colored-box">For Sale</div>
             </div>
 
             <!--Address-->
-            <div class="address">{{property.City}}, {{property.Country}}</div>
+            <div class="row">
+              <div class="material-icons gray">place</div>
+              <div class="address">{{property.City}}, {{property.Country}} 2700-144</div>
+            </div>
             <!--Characteristics-->
-            <div class="row main-characteristics">
-              <!--Square meters-->
+            <div class="row">
+              <div class="characteristics">Characteristics</div>
+            </div>
+            <div class="row">
               <div class="material-icons gray">home</div>
+              <div class="characteristics-label">Square meters:</div>
               <div class="meters">75m</div>
-              <!--Typology-->
+            </div>
+            <div class="row">
               <div class="material-icons gray">hotel</div>
+              <div class="characteristics-label">Rooms:</div>
               <div class="typology">T2</div>
-              <!--Bathrooms-->
+            </div>
+            <div class="row">
               <div class="material-icons gray">hot_tub</div>
+              <div class="characteristics-label">Bathrooms:</div>
               <div class="bathrooms">2</div>
             </div>
+
+            <!-- <div class="row main-characteristics">
+              <div class="material-icons gray">home</div>
+              <div class="meters">75m</div>
+              <div class="material-icons gray">hotel</div>
+              <div class="typology">T2</div>
+              <div class="material-icons gray">hot_tub</div>
+              <div class="bathrooms">2</div>
+            </div> -->
             <!--map-->
             <div class="map-div">
               <app-map [mapPointInput]="mapPoint"></app-map>
@@ -56,7 +80,7 @@
               <div>934******</div>
               <!--Contact form-->
               <div>
-                <div class="contact">Contact</div>
+                <div class="contact">Contact announcer</div>
                 <div>
                   <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Your Name</mat-label>

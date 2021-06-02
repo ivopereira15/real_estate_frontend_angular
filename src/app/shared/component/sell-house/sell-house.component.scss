@@ -1,7 +1,8 @@
+:host { 
+
 .container-center {
     display: flex;
     align-items: center;
-    height: 200vh;
     flex-direction: column;
     width: 100%;
     height: 100%;
@@ -35,6 +36,7 @@
 .list {
     margin-top: 20px;
     margin-left: auto;
+    margin-bottom: 30px;
     border-radius: 15px;
     font-size: larger;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -90,24 +92,38 @@
 
 .checkbox {
     margin: 10px;
+    width: 170px;
 }
 
 .height {
     height: 500px;
 }
 
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-radius: 0 20px 20px 0 !important;
+    flex-grow: 1 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border-radius: 20px 0 0 20px !important;
+    flex-grow: 1 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: rgb(241, 241, 241);
+  }
 
 // Material Override PLACE TO STYLES
 
-::ng-deep .mat-form-field-flex > .mat-form-field-infix {
-    padding: 0.4em 0px !important;
-}
-::ng-deep .mat-form-field-label-wrapper {
-    top: -1.5em;
-}
+// ::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+//     padding: 0.4em 0px !important;
+// }
+// ::ng-deep .mat-form-field-label-wrapper {
+//     top: -1.5em;
+// }
 
-::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
-    .mat-form-field-label {
-    transform: translateY(-1.1em) scale(0.75);
-    width: 133.33333%;
+// ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+//     .mat-form-field-label {
+//     transform: translateY(-1.1em) scale(0.75);
+//     width: 133.33333%;
+// }
+
 }

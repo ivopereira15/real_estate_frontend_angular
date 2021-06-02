@@ -16,20 +16,10 @@
   <div class="column width-70">
     <!--USER INFO-->
     <div class="row row-margin background-filter">
-      <div class="image width-20">
-        <div><img [src]="image" width="160" height="160"></div>
-        <div>
-          <input type="file" hidden #uploader accept="image/*" (change)="uploadImage($event)">
-          <span class="material-icons" (click)="uploader.click()">
-            photo_camera
-          </span>
-        </div>
-      </div>
-      <div class="column width-80">
+      <div class="column padding width-80">
         <div class="row title-personal-info">Personal information</div>
 
         <!--REAL First Name and Last Name-->
-        <mat-divider></mat-divider>
         <div class="main-title">First & Last Name</div>
         <div class="column padding-left" *ngIf="toogleName">
           <div class="row">
@@ -65,7 +55,7 @@
           </div>
         </div>
         <!--EDIT ADDRESS-->
-        <mat-divider></mat-divider>
+        
         <div class="main-title">Address</div>
         <div class="padding-left" *ngIf="!toogleAddress">
           <div class="row">
@@ -117,7 +107,6 @@
           </div>
         </div>
         <!--REAL Email-->
-        <mat-divider></mat-divider>
         <div class="main-title">Email</div>
         <div class="column padding-left" *ngIf="toogleEmail">
           <div class="row">
@@ -143,7 +132,6 @@
           </div>
         </div>
         <!--REAL Phone number-->
-        <mat-divider></mat-divider>
         <div class="main-title">Phone number</div>
         <div class="column padding-left" *ngIf="tooglePhoneNumber">
           <div class="row">
@@ -169,7 +157,6 @@
           </div>
         </div>
         <!--REAL Password-->
-        <mat-divider></mat-divider>
         <div class="main-title">Password</div>
         <div class="column padding-left" *ngIf="tooglePassword">
           <div class="row">
@@ -207,12 +194,21 @@
           </div>
         </div>
         <!--REAL Email-->
-        <mat-divider></mat-divider>
         <div class="main-title">Delete Account</div>
-        <div class="column padding-left">
+        <div class="column padding-left-delete">
           <div class="row">
             <button mat-raised-button class="delete-button">Delete</button>
           </div>
+        </div>
+      </div>
+      <div class="image width-20">
+        <div class="row title-personal-info photo-padding">Your photo</div>
+        <div><img [src]="image" width="160" height="160"></div>
+        <div>
+          <input type="file" hidden #uploader accept="image/*" (change)="uploadImage($event)">
+          <span class="material-icons" (click)="uploader.click()">
+            photo_camera
+          </span>
         </div>
       </div>
     </div>

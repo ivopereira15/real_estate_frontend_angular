@@ -35,7 +35,7 @@
     </div>
 
     <div class="border-margins width-100">
-      <mat-form-field appearance="outline" class="width-100">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Bedrooms</mat-label>
         <mat-select [(ngModel)]="bedrooms" (ngModelChange)="bedroomsChange.emit(bedrooms)">
           <mat-option *ngFor="let howmuch of bedroomsQuantity" [value]="howmuch">
@@ -55,10 +55,6 @@
         </mat-select>
       </mat-form-field>
     </div>
-
-
-
-
   </div>
 
   <div class="full-width border-margins row-space-around">
