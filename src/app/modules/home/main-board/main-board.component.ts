@@ -35,7 +35,7 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     // Properties search Init
     this.searchProperties.criteria = "1";
     this.searchProperties.priceFrom = 1;
-    this.searchProperties.priceTo = 16;
+    this.searchProperties.priceTo = 200000;
     this.subscriptions.add(
       this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
         if (res.Result.IsValid) {

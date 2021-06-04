@@ -1,4 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ListingService } from 'src/app/core/services/api/listing.service';
+import { OperationType } from 'src/app/shared/models/listing/operation-type';
+import { PropertyType } from 'src/app/shared/models/listing/property-type';
 
 @Component({
   selector: 'app-filter-property',
@@ -7,11 +11,16 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class FilterPropertyComponent implements OnInit {
 
-public propertyTypes: string[] = ['Apartments', 'Houses'];
-public purposeTypes: string[] = ['Buy', 'Sell', 'Rent'];
+//public propertyTypes: string[] = ['Apartments', 'Houses'];
+//public purposeTypes: string[] = ['Buy', 'Sell', 'Rent'];
 public bedroomsQuantity: string[] = ['T0', 'T1', 'T2', 'T3', 'T4'];
 public bathroomsQuantity: string[] = ['1', '2', '3', '4', '5'];
 public conditionTypes: string[] = ['Old', 'New', 'Needs Reconstruction', 'Under Construction'];
+
+operationTypes: OperationType[];
+propertyTypes: PropertyType[];
+
+subscriptions: Subscription = new Subscription();
 
 public purposeType: any;
 public propertyType: any;
@@ -39,11 +48,27 @@ public characteristics: any;
 @Output() public yearBuiltToChange = new EventEmitter();
 @Output() public characteristicsChange = new EventEmitter();
 
-public technologies: string[] = ['Java', 'C#', '.NET'];
+  constructor(private listingService: ListingService) { }
 
-  constructor() { }
+  ngOnInit(): void {
+    this.subscriptions.add(
+      this.listingService.getOperationTypes().subscribe((result) => {
 
-  ngOnInit() {
+        if (result.IsValid) {
+          this.operationTypes = result.Data;
+        }
+      }));
+
+    this.subscriptions.add(
+      this.listingService.getPropertyTypes().subscribe((result) => {
+        if (result.IsValid) {
+          this.propertyTypes = result.Data;
+        }
+      }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
 }

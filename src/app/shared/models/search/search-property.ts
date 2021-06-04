@@ -12,6 +12,9 @@ export class SearchProperty {
     yearBuiltTo: any;
     characteristics: any;
 
+    propertyTypeId: number;
+    operationTypeId: number;
+
     criteria: string;
     field: string;
     page: number;

@@ -2,9 +2,10 @@
 
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
+        <mat-label>Sell</mat-label>
         <mat-select [(ngModel)]="purposeType" (ngModelChange)="purposeTypeChange.emit(purposeType)">
-          <mat-option *ngFor="let purposeType of purposeTypes" [value]="purposeType">
-            {{purposeType}}
+          <mat-option *ngFor="let purposeType of operationTypes" [value]="purposeType.Id">
+            {{purposeType.Type}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -12,9 +13,10 @@
 
     <div class="border-margins width-100">
       <mat-form-field appearance="outline" class="width-100">
+        <mat-label>Apartment</mat-label>
         <mat-select [(ngModel)]="propertyType" (ngModelChange)="propertyTypeChange.emit(propertyType)">
-          <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType">
-            {{propertyType}}
+          <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType.Id">
+            {{propertyType.Type}}
           </mat-option>
         </mat-select>
       </mat-form-field>

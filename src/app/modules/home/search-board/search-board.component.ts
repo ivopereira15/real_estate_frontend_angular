@@ -26,8 +26,8 @@ export class SearchBoardComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.searchProperties.purposeType = params["purposeType"];
-      this.searchProperties.propertyType = params["propertyType"];
+      this.searchProperties.operationTypeId = params["purposeType"] as number;
+      this.searchProperties.propertyTypeId = params["propertyType"] as number;
       this.searchProperties.priceFrom = params["priceFrom"];
       this.searchProperties.priceTo = params["priceTo"];
       this.searchProperties.bedrooms = params["bedrooms"];
