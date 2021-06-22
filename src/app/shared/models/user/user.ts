@@ -5,6 +5,7 @@ export class User {
     public Password: string;
     public Email: string;
     public Active: boolean;
+    public Type: any;
 
     // EDIT PART
     public City: string;

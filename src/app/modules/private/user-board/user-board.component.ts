@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { FormGroup, FormArray, FormBuilder, ValidatorFn, Validators, FormControl } from '@angular/forms';
 import { UserProfileImage } from 'src/app/shared/models/images/user-profile-image';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Store } from '@ngxs/store';
+import { AddUserType } from "src/app/core/ngxs-state-management/user.actions";
 
 @Component({
   selector: 'app-user-board',
@@ -31,7 +33,8 @@ export class UserBoardComponent implements OnInit, OnDestroy {
     @Inject(FormBuilder) private formBuilder: FormBuilder,
     @Inject(UserService) private userService: UserService,
     private appContext: AppContextService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private store: Store
   ) { }
 
   ngOnInit() {
@@ -51,7 +54,7 @@ export class UserBoardComponent implements OnInit, OnDestroy {
           }
           // TODO check how to move to login
           this.appContext.setUserId(this.user.Id);
-
+          this.store.dispatch(new AddUserType(this.user.Type));
         }
 
       })
@@ -132,7 +135,7 @@ export class UserBoardComponent implements OnInit, OnDestroy {
     this.tooglePhoneNumber = !this.tooglePhoneNumber;
   }
 
-  toogle_password(){
+  toogle_password() {
     this.tooglePassword = !this.tooglePassword;
   }
 

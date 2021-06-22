@@ -13,9 +13,15 @@ import { LoginModule } from './modules/login/login.module';
 import { PrivateModule } from './modules/private/private.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PropertyPageModule } from './modules/property-page/property-page.module';
-import { JwtInterceptor} from '../app/core/authentication/jwt-interceptor';
-import { ErrorInterceptor} from '../app/core/authentication/http-interceptor';
+import { JwtInterceptor } from '../app/core/authentication/jwt-interceptor';
+import { ErrorInterceptor } from '../app/core/authentication/http-interceptor';
 import { AddListingModule } from './modules/add-listing/add-listing.module';
+
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { UserState } from 'src/app/core/ngxs-state-management/user.state'
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,12 @@ import { AddListingModule } from './modules/add-listing/add-listing.module';
     AppRoutingModule,
     FontAwesomeModule,
     CoreModule,
+    NgxsModule.forRoot([UserState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot({
+      key: 'user'
+    }),
+    NgxsResetPluginModule.forRoot(),
     SharedModule,
     HomeModule,
     PrivateModule,
