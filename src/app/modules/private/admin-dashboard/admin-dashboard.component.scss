@@ -1,3 +1,38 @@
 .custom {
     height: 80vh;
 }
+.row-margin {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.full-height{
+  //  height: 100%;
+}
+
+.button-approve {
+    border-radius: 25px;
+    height: 35px;
+    background-color: blue;
+    color: white;
+    width: 150px;
+    margin-right: 5px;
+}
+
+.button-active {
+    border-radius: 25px;
+    height: 35px;
+    background-color: green;
+    color: white;
+    width: 150px;
+    margin-right: 5px;
+}
+
+.button-blocked {
+    border-radius: 25px;
+    height: 35px;
+    background-color: red;
+    color: white;
+    width: 150px;
+    margin-right: 5px;
+}

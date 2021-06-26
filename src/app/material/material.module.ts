@@ -16,7 +16,9 @@ import {
   MatMenuModule,
   MatRadioModule,
   MatCheckboxModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatPaginatorModule,
+  MatTableModule
 } from '@angular/material';
 
 const MaterialComponents = [MatFormFieldModule,
@@ -35,7 +37,9 @@ const MaterialComponents = [MatFormFieldModule,
     MatIconModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatAutocompleteModule];
+    MatAutocompleteModule,
+    MatPaginatorModule,
+    MatTableModule];
 
 
 @NgModule({

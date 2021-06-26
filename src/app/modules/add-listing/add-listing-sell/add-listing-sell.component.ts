@@ -16,7 +16,7 @@ import { forkJoin } from 'rxjs';
 })
 export class AddListingSellComponent implements OnInit, OnDestroy {
 
-  private readonly TYPE = 'Sell';
+  private readonly TYPE = 'Buy'; // Sell
   public title = "Sell your apartment";
 
   // typology: string[] = ["T0", "T1", "T2", "T3"];

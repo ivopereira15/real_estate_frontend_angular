@@ -9,6 +9,9 @@ import { SellHouse } from '../../../shared/models/listing/sell-house';
 import { PropertyBasic } from '../../../shared/models/listing/property-basic';
 import { Property } from '../../../shared/models/listing/property';
 import { SearchProperty } from '../../../shared/models/search/search-property';
+import { SearchPagination } from 'src/app/shared/models/search/search-paginations';
+import { SearchPropertyForAdminRequest } from "src/app/shared/models/listing/search-property-admin";
+import { PagedProperty } from "src/app/shared/models/listing/paged-property";
 
 @Injectable({
     providedIn: 'root'
@@ -68,5 +71,9 @@ export class ListingService {
 
     public searchProperties(searchTerm: SearchProperty): Observable<ResultMessage<PropertyBasic[]>> {
         return this.http.post<ResultMessage<PropertyBasic[]>>(this.appContext.getAPIUrl() + '/organization/Listing/searchProperties', searchTerm, this.httpOptions)
+    }
+
+    public searchPropertiesForAdmin(searchTerm: SearchPagination<SearchPropertyForAdminRequest>): Observable<ResultMessage<PagedProperty>> {
+        return this.http.post<ResultMessage<PagedProperty>>(this.appContext.getAPIUrl() + '/organization/Listing/admin/search', searchTerm, this.httpOptions)
     }
 }
