@@ -14,6 +14,7 @@ import { MapComponent } from './component/map-container/map/map.component';
 import { GeocodingComponent } from './component/map-container/geocoding/geocoding.component';
 import { FilterSearchComponent } from './component/filter/filter-search/filter-search.component';
 import { MapSearchComponent } from './component/map-container/map-search/map-search.component';
+import { MatButtonLoadingDirective } from './directives/button-loading.directive';
 
 const components = [
   NavbarComponent,
@@ -22,7 +23,8 @@ const components = [
   PropertyFrameComponent,
   SellHouseComponent,
   MapComponent,
-  MapSearchComponent
+  MapSearchComponent,
+  MatButtonLoadingDirective
 ];
 
 @NgModule({

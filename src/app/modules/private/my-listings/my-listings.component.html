@@ -1,8 +1,7 @@
 <div class="row custom">
     <div class="column width-15">
         <div class="button-wrapper">
-            <button mat-raised-button color="primary" class="mat-button width-100"
-                [routerLink]="['/userboard']">Back</button>
+            <button mat-raised-button class="button-main-menu width-100" [routerLink]="['/userboard']">Back</button>
         </div>
     </div>
     <div class="column width-70">
@@ -15,15 +14,15 @@
                 <div> {{property.Price}}</div>
                 <div class="full-width space-between">
                     <div class="button-margin full-width">
-                        <button class="full-width" mat-raised-button color="primary"
-                            (click)="edit(property.Id)"> Edit </button>
+                        <button class="full-width button-blue" mat-raised-button (click)="edit(property.Id)"> Edit
+                        </button>
                     </div>
                     <div class="button-margin full-width">
-                        <button class="full-width" mat-raised-button color="primary"> Deactivate </button>
+                        <button class="full-width button-orange" mat-raised-button> Deactivate </button>
                     </div>
                     <div class="button-margin full-width">
-                        <button class="full-width" mat-raised-button color="accent"
-                            (click)="delete(property.Id, i)"> Delete </button>
+                        <button class="full-width button-red" mat-raised-button (click)="delete(property.Id, i)"> Delete
+                        </button>
                     </div>
                 </div>
             </div>

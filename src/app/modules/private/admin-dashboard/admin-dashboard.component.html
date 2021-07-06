@@ -1,54 +1,108 @@
 <div class="row custom">
     <div class="column width-15">
         <div class="button-wrapper">
-            <button mat-raised-button color="primary" class="mat-button width-100"
-                [routerLink]="['/userboard']">Back</button>
+            <button mat-raised-button class="button-main-menu width-100" [routerLink]="['/userboard']">Back</button>
         </div>
     </div>
     <div class="column width-70">
         <div class="row row-margin background-filter full-height">
-            <div class=row>
-                <button class="button-approve" mat-raised-button (click)="onSubmit()">To Approve</button>
-                <button class="button-active" mat-raised-button>Active</button>
-                <button class="button-blocked" mat-raised-button>Blocked</button>
-            </div>
+            <div class="column width-100">
+                <div class=row>
+                    <div class="title">Manage application's properties</div>
+                </div>
+                <div class=row>
+                    <button [loading]="loadingButtonToApprove" class="button-approve" mat-raised-button (click)="onSubmit(1)">To Approve</button>
+                    <button [loading]="loadingButtonActive" class="button-active" mat-raised-button (click)="onSubmit(2)">Active</button>
+                    <button [loading]="loadingButtonBlocked" class="button-blocked" mat-raised-button (click)="onSubmit(3)">Blocked</button>
+                </div>
 
-            <div>
-                <div class="mat-elevation-z8">
-                    <table mat-table [dataSource]="dataSource">
-                        <!--Document Number-->
-                        <ng-container matColumnDef="mySqlId">
-                            <th mat-header-cell *matHeaderCellDef>Id</th>
-                            <td mat-cell *matCellDef="let properties">
-                                {{properties.mySqlId}}
-                            </td>
-                        </ng-container>
-                        <!--Document Type-->
-                        <ng-container matColumnDef="price">
-                            <th mat-header-cell *matHeaderCellDef>Price</th>
-                            <td mat-cell *matCellDef="let properties">
-                                {{properties.Price}}
-                            </td>
-                        </ng-container>
-                        <!--Delete Button-->
-                        <ng-container matColumnDef="deleteButton">
-                            <th mat-header-cell *matHeaderCellDef></th>
-                            <td mat-cell *matCellDef="let properties">
-                                <button mat-raised-button color="warn">Delete</button>
-                            </td>
-                        </ng-container>
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let properties; columns: displayedColumns;"></tr>
-                    </table>
-                    <!-- TOP ACTIONS AND PAGINATION -->
-                    <div>
-                        <mat-paginator #paginator [length]="length" [pageSize]="10" [pageSizeOptions]="[10,20,30]"
-                            (page)="pageChange($event)" [showFirstLastButtons]="true">
-                        </mat-paginator>
+                <div class="row width-100">
+                    <div class="mat-elevation-z8 width-100">
+                        <table mat-table [dataSource]="dataSource" class="width-100">
+                            <!--Id-->
+                            <ng-container matColumnDef="mySqlId">
+                                <th mat-header-cell *matHeaderCellDef>Id</th>
+                                <td mat-cell *matCellDef="let properties">
+                                    {{properties.Id}}
+                                </td>
+                            </ng-container>
+                            <!--User Id-->
+                            <ng-container matColumnDef="userid">
+                                <th mat-header-cell *matHeaderCellDef>User Id</th>
+                                <td mat-cell *matCellDef="let properties">
+                                    {{properties.UserId}}
+                                </td>
+                            </ng-container>
+                            <!--Price-->
+                            <ng-container matColumnDef="price">
+                                <th mat-header-cell *matHeaderCellDef>Price</th>
+                                <td mat-cell *matCellDef="let properties">
+                                    {{properties.Price}}
+                                </td>
+                            </ng-container>
+                            <!--Net Area M2-->
+                            <ng-container matColumnDef="netaream2">
+                                <th mat-header-cell *matHeaderCellDef>Area m2</th>
+                                <td mat-cell *matCellDef="let properties">
+                                    {{properties.NetAream2}}
+                                </td>
+                            </ng-container>
+                            <!--Typology-->
+                            <ng-container matColumnDef="typology">
+                                <th mat-header-cell *matHeaderCellDef>Typology</th>
+                                <td mat-cell *matCellDef="let properties">
+                                    {{properties.Typology}}
+                                </td>
+                            </ng-container>
+                            <!--Link-->
+                            <ng-container matColumnDef="link">
+                                <th mat-header-cell *matHeaderCellDef>Link</th>
+                                <td mat-cell *matCellDef="let properties">
+                                    <a href="">Link</a>
+                                </td>
+                            </ng-container>
+                            <!--Approve Button-->
+                            <ng-container matColumnDef="approvebutton">
+                                <th mat-header-cell *matHeaderCellDef></th>
+                                <td mat-cell *matCellDef="let properties">
+                                    <button mat-raised-button class="button-approve" (click)="approve(properties.Id)">Approve</button>
+                                </td>
+                            </ng-container>
+                            <!--Block Button-->
+                            <ng-container matColumnDef="blockbutton">
+                                <th mat-header-cell *matHeaderCellDef></th>
+                                <td mat-cell *matCellDef="let properties">
+                                    <button mat-raised-button class="button-blocked" (click)="block(properties.Id)">Block</button>
+                                </td>
+                            </ng-container>
+                            <!--Columns not approved-->
+                            <ng-container *ngIf="selectedType === 1">
+                                <tr mat-header-row *matHeaderRowDef="displayedColumnsNotApproved"></tr>
+                                <tr mat-row *matRowDef="let properties; columns: displayedColumnsNotApproved;"></tr>
+                            </ng-container>
+
+                            <!--Columns active-->
+                            <ng-container *ngIf="selectedType === 2">
+                                <tr mat-header-row *matHeaderRowDef="displayedColumnsActive"></tr>
+                                <tr mat-row *matRowDef="let properties; columns: displayedColumnsActive;"></tr>
+                            </ng-container>
+                            <!--Columns blocked-->
+                            <ng-container *ngIf="selectedType === 3">
+                                <tr mat-header-row *matHeaderRowDef="displayedColumnsBlocked"></tr>
+                                <tr mat-row *matRowDef="let properties; columns: displayedColumnsBlocked;"></tr>
+                            </ng-container>
+
+                        </table>
+                        <!-- TOP ACTIONS AND PAGINATION -->
+                        <div>
+                            <mat-paginator #paginator [length]="length" [pageSize]="10" [pageSizeOptions]="[10,20,30]"
+                                (page)="pageChange($event)" [showFirstLastButtons]="true">
+                            </mat-paginator>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
 
         </div>
     </div>

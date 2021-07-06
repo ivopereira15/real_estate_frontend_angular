@@ -179,5 +179,23 @@ body {
     margin-bottom: 20px !important;
 }
 
+.button-main-menu {
+    border-radius: 25px !important;
+    height: 35px !important;
+    color: white !important;
+    margin-right: 5px !important;
+    background-color: black !important;
+}
+
+.mat-loading .mat-button-wrapper {
+    visibility: hidden !important;
+  }
+  
+  .mat-loading .mat-progress-spinner {
+    position: absolute !important;
+    top: calc(50% - 10px) !important;
+    left: calc(50% - 10px) !important;
+  }
+
 
 

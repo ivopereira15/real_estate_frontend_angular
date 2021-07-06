@@ -76,4 +76,12 @@ export class ListingService {
     public searchPropertiesForAdmin(searchTerm: SearchPagination<SearchPropertyForAdminRequest>): Observable<ResultMessage<PagedProperty>> {
         return this.http.post<ResultMessage<PagedProperty>>(this.appContext.getAPIUrl() + '/organization/Listing/admin/search', searchTerm, this.httpOptions)
     }
+
+    public approveProperty(id: number): Observable<ResultMessage<any>> {
+        return this.http.post<ResultMessage<any>>(this.appContext.getAPIUrl() + '/organization/Listing/admin/approve/' + id, this.httpOptions)
+    }
+
+    public blockProperty(id: number): Observable<ResultMessage<any>> {
+        return this.http.post<ResultMessage<any>>(this.appContext.getAPIUrl() + '/organization/Listing/admin/block/'+ id, this.httpOptions)
+    }
 }

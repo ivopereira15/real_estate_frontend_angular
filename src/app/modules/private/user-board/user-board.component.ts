@@ -22,6 +22,7 @@ export class UserBoardComponent implements OnInit, OnDestroy {
   public active: boolean = true;
   technologyYears: number[] = [1, 2, 3, 4, 5];
   subscriptions: Subscription = new Subscription();
+  loading: boolean;
 
   toogleName: boolean = true;
   toogleAddress: boolean = true;
@@ -38,6 +39,7 @@ export class UserBoardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.loading = true;
     this.initializeEmptyUser();
     // TODO get data from DB to fullfill user.ts getThisUser();
     const userEmail = this.appContext.getUserEmail();
@@ -55,6 +57,7 @@ export class UserBoardComponent implements OnInit, OnDestroy {
           // TODO check how to move to login
           this.appContext.setUserId(this.user.Id);
           this.store.dispatch(new AddUserType(this.user.Type));
+          this.loading = false;
         }
 
       })

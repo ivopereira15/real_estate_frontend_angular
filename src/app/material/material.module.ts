@@ -18,7 +18,8 @@ import {
   MatCheckboxModule,
   MatAutocompleteModule,
   MatPaginatorModule,
-  MatTableModule
+  MatTableModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 const MaterialComponents = [MatFormFieldModule,
@@ -39,7 +40,8 @@ const MaterialComponents = [MatFormFieldModule,
     MatCheckboxModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-    MatTableModule];
+    MatTableModule,
+    MatProgressSpinnerModule];
 
 
 @NgModule({

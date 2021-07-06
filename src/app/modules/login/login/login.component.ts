@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [
       Validators.required])
   });
+  loadingButton: boolean = false;
 
   constructor(
     private accountService: AccountService,
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
 
   public login(): void {
     if (this.loginForm.valid) {
+      this.loadingButton = true;
       this.accountService.getJwtToken(this.email, this.password).subscribe(
         (resultMessage: ResultMessage<string>) => {
           if (resultMessage.IsValid) {
@@ -45,11 +47,12 @@ export class LoginComponent implements OnInit {
 
             // TODO call here GetThisUserAsync()
             this.appContext.setUserEmail(this.email);
-
+            this.loadingButton = false;
             this.router.navigate(['/userboard']);
           }
         },
         (httpErrorResponse: HttpErrorResponse) => {
+          this.loadingButton = false;
           console.log(httpErrorResponse);
           // TODO add errors to array and display
         });

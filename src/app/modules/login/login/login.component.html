@@ -26,7 +26,7 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <button mat-raised-button type="submit" class="login-btn"> Login </button>
+      <button mat-raised-button type="submit" [loading]="loadingButton" class="login-btn"> Login </button>
       <button mat-raised-button class="forgot-btn"> Forgot you password? </button>
     </div>
   </div>
