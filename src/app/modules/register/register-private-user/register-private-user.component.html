@@ -1,11 +1,11 @@
 <div class="register-private-user">
   <!--FIRST WINDOW-->
-  <div class="column width-75" [ngClass]="[isMobile ? 'border-box-mobile' : 'border-box']"   *ngIf="!confirmPassword">
+  <div class="column width-75" [ngClass]="[isMobile ? 'border-box-mobile' : 'border-box']" *ngIf="!confirmPassword">
     <form class="custom-form" (ngSubmit)="next()" [formGroup]="userForm" novalidate>
       <div class="row register-header">
         Create your Account
       </div>
-     <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
       <div class="bold-text">First Name</div>
       <div class="row full-width">
         <div class="width-100">
@@ -52,8 +52,11 @@
     </form>
   </div>
   <!--NEXT WINDOW-->
-  <div class="column background-filter border-box-no-height" *ngIf="confirmPassword">
-    <form (ngSubmit)="createAccount()" [formGroup]="passwordForm" novalidate>
+  <div class="column width-75" [ngClass]="[isMobile ? 'border-box-mobile' : 'border-box']" *ngIf="confirmPassword">
+    <form class="custom-form" (ngSubmit)="createAccount()" [formGroup]="passwordForm" novalidate>
+      <div class="row register-header">
+        Choose your password
+      </div>
       <div class="row">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Password</mat-label>

@@ -19,7 +19,8 @@ import {
   MatAutocompleteModule,
   MatPaginatorModule,
   MatTableModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatGridListModule
 } from '@angular/material';
 
 const MaterialComponents = [MatFormFieldModule,
@@ -41,7 +42,8 @@ const MaterialComponents = [MatFormFieldModule,
     MatAutocompleteModule,
     MatPaginatorModule,
     MatTableModule,
-    MatProgressSpinnerModule];
+    MatProgressSpinnerModule,
+    MatGridListModule];
 
 
 @NgModule({

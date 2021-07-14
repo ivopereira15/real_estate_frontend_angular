@@ -7,10 +7,12 @@ import { AddListingSellComponent } from './add-listing-sell/add-listing-sell.com
 import { AddListingRentComponent } from './add-listing-rent/add-listing-rent.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { PublishSuccessComponent } from './publish-success/publish-success.component';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 
 @NgModule({
-  declarations: [AddListingComponent, AddListingSellComponent, AddListingRentComponent],
+  declarations: [AddListingComponent, AddListingSellComponent, AddListingRentComponent, PublishSuccessComponent, AuthenticateComponent],
   imports: [
     CommonModule,
     SharedModule,

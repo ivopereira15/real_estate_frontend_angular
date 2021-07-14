@@ -59,7 +59,7 @@ export class FilterSearchComponent implements OnInit {
      this.suggestions$.subscribe(e => console.log(e));
   }
 
-  public search() {
+  public searchFunction() {
     console.log(this.purposeType);
     console.log(this.propertyType);
     console.log(this.priceFrom);

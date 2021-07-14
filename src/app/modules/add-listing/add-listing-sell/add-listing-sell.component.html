@@ -1,7 +1,11 @@
-<app-sell-house 
+<app-sell-house
+*ngIf=!loading
 [sellHouseForm]="sellHouseForm" 
 [operationTypes]="operationTypes" 
 [propertyTypes]="propertyTypes"
 [title]="title"
 (publishListing)="publishListing($event)">
 </app-sell-house>
+<div *ngIf=loading class="loading">
+    <mat-spinner ></mat-spinner>
+</div>

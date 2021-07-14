@@ -28,6 +28,10 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   newListings: PropertyBasic[] = [];
   allListings: PropertyBasic[] = [];
 
+  loadedPromtedProperties: boolean = false;
+  loadedNewListings: boolean = false;
+  loadedAllListings: boolean = false;
+
   constructor(@Inject(UserService) private userService: UserService,
     @Inject(ListingService) private listingService: ListingService) { }
 
@@ -41,14 +45,23 @@ export class MainBoardComponent implements OnInit, OnDestroy {
         if (res.Result.IsValid) {
           let result = res.Result.Data;
           //Just first 4 properties in the row. Later to make an endpoint for that
-          for(let i: number = 0; i <= 3; i ++){
-            if(result[i] !== undefined){
+          for (let i: number = 0; i <= 3; i++) {
+            if (result[i] !== undefined) {
+              this.loadedPromtedProperties = true;
               this.promotedProperties.push(result[i]);
+
+              this.loadedNewListings = true;
               this.newListings.push(result[i]);
+
+              this.loadedAllListings = true;
               this.allListings.push(result[i]);
             }
           }
- 
+
+        } else {
+          this.loadedAllListings = true;
+          this.loadedNewListings = true;
+          this.loadedPromtedProperties = true;
         }
       })
     );

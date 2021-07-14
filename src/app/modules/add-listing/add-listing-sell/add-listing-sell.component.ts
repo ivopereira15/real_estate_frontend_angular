@@ -8,6 +8,7 @@ import { PropertyType } from 'src/app/shared/models/listing/property-type';
 import { AppContextService } from 'src/app/core/services/app-context.service';
 import { SellHouse } from '../../../shared/models/listing/sell-house';
 import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-listing-sell',
@@ -18,6 +19,7 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
 
   private readonly TYPE = 'Buy'; // Sell
   public title = "Sell your apartment";
+  loading: boolean = false;
 
   // typology: string[] = ["T0", "T1", "T2", "T3"];
   // bathrooms: number[] = [1, 2, 3, 4, 5];
@@ -36,6 +38,7 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
 
   constructor(
+    private router: Router,
     private authService: AuthService,
     private listingService: ListingService,
     private imageService: ImageService,
@@ -67,25 +70,26 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
   }
 
   async publishListing(sellHouseForm: SellHouse) {
+    this.loading = true;
     // Check if logged in. If yes, POST
     const isAuthnticated = this.authService.isAuthenticated();
     if (isAuthnticated) {
-      console.log("i am logged in");
       sellHouseForm.UserId = this.userId;
       sellHouseForm.OperationTypeId = this.currentOperationType.Id;
-      console.log(this.sellHouseForm);
-      console.log("sending photos");
           // this.imageService.AddPropertyPhoto(sellHouseForm.photos, 1).subscribe()
       this.listingService.listSellHouse(sellHouseForm).subscribe(res => {
-        console.log(res);
         if (res.IsValid) {
-          console.log("sending photos");
-          this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe();
+          this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe(res => {
+            this.loading = false;
+            this.router.navigate(['/publish-success']);
+
+          });
         }
       });
     }
     if (!isAuthnticated) {
-
+      this.loading = false;
+      this.router.navigate(['/authenitcate']);
     }
     // If not cache the request, then update
   }

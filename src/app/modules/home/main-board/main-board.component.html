@@ -6,15 +6,18 @@
       <div class="title">Promoted</div>
       <div class="seemore">See more(1987)</div>
     </div>
-    <div class="row container-row">
-      <div *ngFor="let property of promotedProperties">
-        <div class="mr-5">
-          <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
-          </app-property-frame>
+    <mat-spinner *ngIf=!loadedPromtedProperties></mat-spinner>
+    <div *ngIf=loadedPromtedProperties>
+      <div class="row container-row">
+        <div *ngFor="let property of promotedProperties">
+          <div class="mr-5">
+            <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+            </app-property-frame>
+          </div>
         </div>
-
       </div>
     </div>
+
   </div>
 
   <!--New Listings-->
@@ -23,14 +26,19 @@
       <div class="title">New Listings</div>
       <div class="seemore">See more(1987)</div>
     </div>
-    <div class="row container-row">
-      <div *ngFor="let property of newListings">
-        <div class="mr-5">
-          <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
-          </app-property-frame>
+    <mat-spinner *ngIf=!loadedNewListings></mat-spinner>
+    <div *ngIf=loadedNewListings>
+      <div class="row container-row">
+        <div *ngFor="let property of newListings">
+          <div class="mr-5">
+            <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+            </app-property-frame>
+          </div>
         </div>
       </div>
     </div>
+
+
   </div>
 
   <!--All Listings-->

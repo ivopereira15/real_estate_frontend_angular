@@ -48,6 +48,10 @@ export class SearchBoardComponent implements OnInit, OnChanges {
       this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
         if (res.Result.IsValid) {
           this.promotedProperties = res.Result.Data;
+          // test
+          this.promotedProperties.push(res.Result.Data);
+          this.promotedProperties.push(res.Result.Data);
+
           var i, j, array, chunk = 2;
           for (i = 0, j = 8; i < j; i += chunk) {
             array = this.promotedProperties.slice(i, i + chunk);
