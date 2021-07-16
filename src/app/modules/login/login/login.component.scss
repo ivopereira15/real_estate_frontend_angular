@@ -1,4 +1,5 @@
 .login {
+    margin-top: 70px;
     padding: 15px;
     width: 30%;
     //height: 34%;
@@ -27,6 +28,11 @@
     margin-bottom: unset !important;
 }
 
+.middle {
+    display: flex;
+    justify-content: center;
+}
+
 .login-btn {
     background-color: #0361ec;
     color: white;
@@ -34,6 +40,12 @@
 }
 
 .forgot-btn {
+    background-color: #3f81e4;
+    color:  white;
+    border-radius: 25px;
+}
+
+.register-btn {
     background-color:rgb(110, 52, 226);
     color:  white;
     border-radius: 25px;

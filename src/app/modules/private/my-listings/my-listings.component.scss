@@ -7,10 +7,16 @@
     height: 200px;
     width: 300px;
     margin: 5px;
+    border-radius: 15px;
+    padding-bottom: 5px;
 }
 
 .card-image {
     height: 70%;
+    img {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
 }
 
 .button-margin {
@@ -36,7 +42,7 @@
 .button-orange {
     border-radius: 25px;
     height: 35px;
-    background-color: orange;
+    background-color: rgb(85, 85, 250);
     color: white;
     margin-right: 5px;
 }
@@ -44,7 +50,7 @@
 .button-red {
     border-radius: 25px;
     height: 35px;
-    background-color: red;
+    background-color: black;
     color: white;
     margin-right: 5px;
 }

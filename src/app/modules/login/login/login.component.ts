@@ -59,4 +59,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  goToResigter() {
+    this.router.navigate(['/register']);
+  }
+
 }
