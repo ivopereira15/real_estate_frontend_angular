@@ -50,7 +50,7 @@ export class MainBoardComponent implements OnInit, OnDestroy {
               this.loadedPromtedProperties = true;
               this.promotedProperties.push(result[i]);
 
-              this.loadedNewListings = true;
+              this.loadedNewListings = true;  console.log("Cenas");
               this.newListings.push(result[i]);
 
               this.loadedAllListings = true;
