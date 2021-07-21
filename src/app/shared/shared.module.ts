@@ -17,7 +17,7 @@ import { MapSearchComponent } from './component/map-container/map-search/map-sea
 import { MatButtonLoadingDirective } from './directives/button-loading.directive';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
-import { MainBoardComponent } from '../modules/home/main-board/main-board.component';
+
 
 const components = [
   NavbarComponent,

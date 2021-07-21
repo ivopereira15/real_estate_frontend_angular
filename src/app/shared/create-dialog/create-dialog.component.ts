@@ -30,8 +30,11 @@ export class CreateDialogComponent implements OnInit {
       // modalRef.componentInstance.id = id;
     modalRef.result.then(
       () => {},
-      () => {}
+      () => {
+        this.router.navigate(['..']);
+      }
       );
+
   }
 
 }

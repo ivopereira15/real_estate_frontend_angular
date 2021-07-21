@@ -11,10 +11,7 @@ import { CreateDialogComponent } from './shared/create-dialog/create-dialog.comp
 
 
 const routes: Routes = [
-  { path: '', component: MainBoardComponent},
-  {
-    path: 'details/:id', component: CreateDialogComponent
-  },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'register/private-user', component: RegisterPrivateUserComponent },
