@@ -9,5 +9,4 @@ export class AppComponent {
 
   title = 'direct-contracting-app';
 
-
 }

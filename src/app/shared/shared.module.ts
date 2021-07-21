@@ -15,6 +15,9 @@ import { GeocodingComponent } from './component/map-container/geocoding/geocodin
 import { FilterSearchComponent } from './component/filter/filter-search/filter-search.component';
 import { MapSearchComponent } from './component/map-container/map-search/map-search.component';
 import { MatButtonLoadingDirective } from './directives/button-loading.directive';
+import { PropertyDetailsComponent } from './property-details/property-details.component';
+import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+import { MainBoardComponent } from '../modules/home/main-board/main-board.component';
 
 const components = [
   NavbarComponent,
@@ -28,8 +31,9 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent ],
+  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent ],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule],
-  exports: [components, MaterialModule, FormsModule, ReactiveFormsModule]
+  exports: [components, MaterialModule, FormsModule, ReactiveFormsModule],
+  entryComponents: [PropertyDetailsComponent, CreateDialogComponent]
 })
 export class SharedModule { }

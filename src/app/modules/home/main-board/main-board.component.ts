@@ -10,6 +10,9 @@ import { SearchProperty } from 'src/app/shared/models/search/search-property';
 import { ListingService } from 'src/app/core/services/api/listing.service';
 import { Property } from 'src/app/shared/models/listing/property';
 import { PropertyBasic } from 'src/app/shared/models/listing/property-basic';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PropertyDetailsComponent } from 'src/app/shared/property-details/property-details.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-board',
@@ -32,8 +35,12 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   loadedNewListings: boolean = false;
   loadedAllListings: boolean = false;
 
-  constructor(@Inject(UserService) private userService: UserService,
-    @Inject(ListingService) private listingService: ListingService) { }
+  constructor(
+    @Inject(UserService) private userService: UserService,
+    @Inject(ListingService) private listingService: ListingService,
+    public modalService: NgbModal,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     // Properties search Init
@@ -50,7 +57,7 @@ export class MainBoardComponent implements OnInit, OnDestroy {
               this.loadedPromtedProperties = true;
               this.promotedProperties.push(result[i]);
 
-              this.loadedNewListings = true;  console.log("Cenas");
+              this.loadedNewListings = true;
               this.newListings.push(result[i]);
 
               this.loadedAllListings = true;
@@ -94,4 +101,15 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
+  public openModal(): void {
+  const modalRef = this.modalService.open(
+    PropertyDetailsComponent,
+    { size: 'xl', centered: true, windowClass: 'modal-simple' }
+    );
+    // modalRef.componentInstance.id = this.chat.job.id;
+  modalRef.result.then(
+    () => {},
+    () => {}
+    );
+    }
 }
