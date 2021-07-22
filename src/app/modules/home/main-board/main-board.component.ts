@@ -38,9 +38,7 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(UserService) private userService: UserService,
     @Inject(ListingService) private listingService: ListingService,
-    public modalService: NgbModal,
-    private router: Router,
-    private route: ActivatedRoute) { }
+    public modalService: NgbModal) { }
 
   ngOnInit() {
     // Properties search Init

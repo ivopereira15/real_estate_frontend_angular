@@ -18,6 +18,7 @@ import { MatButtonLoadingDirective } from './directives/button-loading.directive
 import { PropertyDetailsComponent } from './property-details/property-details.component';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view'; // ng-image-fullscreen-view
 
 const components = [
   NavbarComponent,
@@ -32,7 +33,7 @@ const components = [
 
 @NgModule({
   declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent ],
-  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule],
+  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, NgImageFullscreenViewModule],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule],
   entryComponents: [PropertyDetailsComponent, CreateDialogComponent]
 })

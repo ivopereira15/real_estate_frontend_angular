@@ -1,0 +1,12 @@
+.container-image{
+
+    :nth-child(even){
+        padding-left: 1px;
+        padding-bottom: 1px;
+    }
+    :nth-child(odd){
+        padding-right: 1px;
+        padding-bottom: 1px;
+    }
+     
+}

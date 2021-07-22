@@ -1,21 +1,17 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-            IMAGENS
-        </div>
+            <div class="row container-image" *ngIf="items.length > 0">
+                <div class="col-6" *ngFor="let item of items; let i = index">
+                    <div  [ngClass]="i == 0 ? 'card-image' : 'item'">
+                        <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="70%" />
+                    </div>
+                </div>
+            </div>
+            <!-- ng-image-fullscreen-view  -->
+            <ng-image-fullscreen-view [images]="items" [imageIndex]="currentIndex" [show]="showFlag"
+                (close)="closeEventHandler()" *ngIf="items.length > 0"></ng-image-fullscreen-view>
+            </div>
         <div class="col-4">
             <div class=row>PRICE</div>
             <div class=row>LOCATION</div>
