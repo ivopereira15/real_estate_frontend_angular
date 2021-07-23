@@ -1,9 +1,29 @@
 <div class="container">
+    <div class="row header">
+            <div class="location-icon">
+                <img src="/assets/icons/location.svg" width="60" />
+            </div>
+            <div class="header-location">  
+                <h3>{{property.City}} - {{property.Country}}</h3>
+                <span>{{property.Address}}</span>
+            </div>
+        <div class="share-buttons">
+            <div >
+                <img src="/assets/icons/save.svg" width="40" />
+            </div>
+            <div >
+                <img src="/assets/icons/share.svg" width="40" />
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-8">
             <div class="row container-image" *ngIf="items.length > 0">
-                <div class="col-6" *ngFor="let item of items; let i = index">
-                    <div  [ngClass]="i == 0 ? 'card-image' : 'item'">
+                <div class="col-6"  *ngFor="let item of items; let i = index">
+                    <div   *ngIf="i == 0"  [ngClass]="i == 0 ? 'card-image' : 'item'">
+                        <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="70%" />
+                    </div>
+                    <div  *ngIf="i >= 1" [ngClass]="i == 0 ? 'card-image' : 'item'">
                         <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="70%" />
                     </div>
                 </div>
@@ -13,73 +33,44 @@
                 (close)="closeEventHandler()" *ngIf="items.length > 0"></ng-image-fullscreen-view>
             </div>
         <div class="col-4">
-            <div class=row>PRICE</div>
-            <div class=row>LOCATION</div>
-            <div class=row>OVERVIEW</div>
-            Interior details
-    Bedrooms and bathrooms
-    Bedrooms: 3
-    Bathrooms: 2
-    Full bathrooms: 2
-    Basement
-    Basement: Finished,Partial
-    Heating
-    Heating features: Oil, Hot Water
-    Cooling
-    Cooling features: Central Air
-    Appliances
-    Appliances included: Dishwasher, Dryer, Oven, Refrigerator, Washer
-    Interior Features
-    Window features: Skylight(s)
-    Interior features: Den/Family Room, Eat-in Kitchen, Formal Dining Room
-    Other interior features
-    Common walls with other units/homes: No Common Walls
-    Total interior livable area: 2,400 sqft
-    Total number of fireplaces: 0
-    Fireplace features: Wood Burning Stove
-    Attic: Full,Pull Stairs
-    Property details
-    Parking
-    Parking features: Private, Attached, 1 Car Attached, Driveway
-    Garage spaces: 1
-    Attached garage: Yes
-    Property
-    Private pool: Yes
-    Pool features: Inground Pool
-    Exterior features: Sprinkler Lawn System
-    Patio and porch details: Patio
-    Fencing: Back Yard,Fenced
-    Lot
-    Lot size: 0.55 Acres
-    Lot size dimensions: .55
-    Other property information
-    Parcel number: 0200-668-00-02-00-008-001
-    Exclusions: Grill
-    Construction details
-    Type and style
-    Home type: SingleFamily
-    Architectural style: Split Level
-    Property subType: Single Family Residence
-    Material information
-    Construction materials: Frame
-    Condition
-    New construction: No
-    Year built: 2005
-    Utilities / Green Energy Details
-    Utility
-    Sewer information: Cesspool
-    Water information: Public
-    Green energy
-    Construction elements: Frame
-    Community and Neighborhood Details
-    Location
-    Region: Shirley
-    HOA and financial details
-    Other financial information
-    Tax assessed value: $350,649
-    Other
-    Other facts
-    Price Range: $525K - $525K
+            <div class="row">
+                <div class="col-8">
+                    <h4>Price: {{property.Price}}</h4>
+                </div>               
+            </div>
+            <div class="row main-characteristics">
+                <div class="col-2 d-flex">
+                    <img src="/assets/icons/house.svg" width="20" /> <p> {{property.GrossAream2}}</p>
+                </div>
+                <div class="col-2 d-flex">
+                    <img src="/assets/icons/bathroom.svg" width="20" /> <p> {{property.NumberOfBathrooms}}</p>
+                </div>
+                <div class="col-2 d-flex">
+                    <img src="/assets/icons/room.svg" width="20" /> <p> {{property.NumberOfBathrooms}}</p>
+                </div>
+                <div class="col-2 d-flex">
+                    <img src="/assets/icons/floor.svg" width="20" /> <p> {{property.Floor}}</p>
+                </div>                        
+            </div>
+            <div class="row property-content">
+                <div class="col-12">
+                    <div class="tab location">
+                        <app-map width="10px"   [mapPointInput]="mapPoint"></app-map>
+                    </div>
+                    <div class="tab"> 
+                        <h4>More About the House</h4>
+                        {{property.Description}}
+                    </div>
+                    <div class="tab"> 
+                        <h4>Aditional Features</h4>
+                        Table with icons
+                    </div>
+                    
+                    <div class="tab"> 
+                        <h4>Contacts</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     </div>

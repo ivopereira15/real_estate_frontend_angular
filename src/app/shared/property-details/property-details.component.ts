@@ -16,18 +16,20 @@ export class PropertyDetailsComponent implements OnInit {
   currentIndex: any = -1;
   showFlag: any = false;
   items: Array<{ image: string }> = [];
+  assetLink = 'assets/';
+  public mapPoint: MapPoint;
   constructor(
     public modalService: NgbModal,
     public route: ActivatedRoute,
     public router: Router) {
-
+      this.mapPoint = new MapPoint();
     }
   ngOnInit(): void {
-    if (this.property.Images) {
-      console.log(this.property.Images);
+
+    if (this.property) {
+      console.log(this.property.Price);
       this.property.Images.forEach(i => {
         this.items.push({ image: i.ImageUrl });
-        console.log(this.items);
       });
     }
   }
