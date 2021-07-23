@@ -22,6 +22,11 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { UserState } from 'src/app/core/ngxs-state-management/user.state'
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { PropertyDetailsComponent } from './shared/property-details/property-details.component';
+import { MainBoardComponent } from './modules/home/main-board/main-board.component';
+import { CreateDialogComponent } from './shared/create-dialog/create-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,8 @@ import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
     LoginModule,
     BrowserAnimationsModule,
     PropertyPageModule,
-    AddListingModule
+    AddListingModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
