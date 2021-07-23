@@ -22,6 +22,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
   typology: string[] = ["T0", "T1", "T2", "T3"];
   bathrooms: number[] = [1, 2, 3, 4, 5];
   floors: number[] = [1, 2, 3, 4, 5];
+  rooms: number[] = [1, 2, 3, 4, 5];
   energyCertificate: string[] = ["A", "B", "C", "D"];
   countries: string[] = ["Italy", "Ukraine", "Portugal"];
   thumbnails = [];
@@ -53,6 +54,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
   }
 
   setCoordinates(e: any) {
+
     this.sellHouseForm.Latitude = e.latitude;
     this.sellHouseForm.Longitude = e.longitude;
   }

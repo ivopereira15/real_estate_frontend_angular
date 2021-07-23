@@ -1,5 +1,9 @@
 .container-image{
-
+    
+    :nth-child(1){
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
     :nth-child(even){
         padding-left: 1px;
         padding-bottom: 1px;
@@ -10,3 +14,48 @@
     }
      
 }
+
+.header{
+    margin-top: 0px;
+    .location-icon{
+        border-top: 5px solid #09f;
+        border-left: 5px solid #09f;
+    }
+    .header-location {
+        padding-left: 0px;
+        border-top: 5px solid #09f;
+
+        h3{
+            margin-top: 10px;
+        }
+    }
+    .share-buttons{
+        position: absolute; right: 0;
+        display: flex;
+    }
+}
+
+.main-characteristics{
+    p{
+        margin-bottom: 0px;
+    }
+ 
+}
+
+.location{
+    margin-bottom: 20px;
+}
+
+::ng-deep{
+    #map {
+    height: 40vh !important;
+    width: 32vh !important;
+  }}
+
+.property-content{
+    margin-top: 20px;
+    .tab{
+        margin-bottom: 20px;
+    }
+}
+

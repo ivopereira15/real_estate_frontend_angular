@@ -42,6 +42,7 @@ export class CreateDialogComponent implements OnInit {
               { size: 'xl', centered: true, windowClass: 'modal-simple' }
               );
             modalRef.componentInstance.property = this.property;
+            console.log(this.property);
             modalRef.result.then(
               () => {},
               () => {

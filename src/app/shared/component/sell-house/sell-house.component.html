@@ -58,6 +58,17 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+
+            <div class="width-30 form">
+                <div>Room</div>
+                <mat-form-field class="width-100" appearance="outline">
+                    <mat-select [(ngModel)]="sellHouseForm.Rooms">
+                        <mat-option *ngFor="let room of rooms" [value]="rooms">
+                            {{room}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
         <!--LINE 3-->
         <div class="row width-80">
