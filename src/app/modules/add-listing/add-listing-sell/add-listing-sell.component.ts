@@ -9,6 +9,7 @@ import { AppContextService } from 'src/app/core/services/app-context.service';
 import { SellHouse } from '../../../shared/models/listing/sell-house';
 import { forkJoin } from 'rxjs';
 import { Router } from '@angular/router';
+import { Characteristics } from 'src/app/shared/models/listing/characteristics';
 
 @Component({
   selector: 'app-add-listing-sell',
@@ -71,6 +72,17 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
 
   async publishListing(sellHouseForm: SellHouse) {
     this.loading = true;
+
+    //for test
+    const characteristics: Characteristics[] = [];
+    var test = new Characteristics;
+    test.Name = "blalba";
+    test.IconName = "scdcsdc";
+    test.CountNumber = 22;
+    characteristics.push(test);
+    sellHouseForm.Characteristics = characteristics;
+
+
     // Check if logged in. If yes, POST
     const isAuthnticated = this.authService.isAuthenticated();
     if (isAuthnticated) {
@@ -79,11 +91,13 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
           // this.imageService.AddPropertyPhoto(sellHouseForm.photos, 1).subscribe()
       this.listingService.listSellHouse(sellHouseForm).subscribe(res => {
         if (res.IsValid) {
-          this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe(res => {
-            this.loading = false;
-            this.router.navigate(['/publish-success']);
+          this.loading = false;
+          this.router.navigate(['/publish-success']);
+          //   this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe(res => {
+          //   this.loading = false;
+          //   this.router.navigate(['/publish-success']);
 
-          });
+          // });
         }
       });
     }

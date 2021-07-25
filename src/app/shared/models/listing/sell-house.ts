@@ -1,3 +1,5 @@
+import { Characteristics } from "../listing/characteristics";
+
 export class SellHouse {
     public UserId: number;
     public Price: number;
@@ -14,7 +16,7 @@ export class SellHouse {
     public Address: string;
     public Description: string;
     public ImagesUrl?: File[];
-    public Characteristics?: string;
+    public Characteristics?: Characteristics[];
 
     public Latitude: number;
     public Longitude: number;
