@@ -8,6 +8,7 @@ export class SellHouse {
     public GrossAream2: number;
     public Typology: string;
     public Floor: number;
+    public Rooms: number;
     public YearOfConstruction: number;
     public NumberOfBathrooms: number;
     public EnerergyCertificate: string;

@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row header">
+            <div class="location-icon">
+                <img src="/assets/icons/location.svg" width="60" />
+            </div>
+            <div class="header-location">  
+                <h3>{{property.City}} - {{property.Country}}</h3>
+                <span>{{property.Address}}</span>
+            </div>
+        <div class="share-buttons">
+            <div >
+                <img src="/assets/icons/save.svg" width="40" />
+            </div>
+            <div >
+                <img src="/assets/icons/share.svg" width="40" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="row container-image" *ngIf="items.length > 0">
+                <div class="col-6"  *ngFor="let item of items; let i = index">
+                    <div   *ngIf="i == 0"  [ngClass]="i == 0 ? 'card-image' : 'item'">
+                        <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="70%" />
+                    </div>
+                    <div  *ngIf="i >= 1" [ngClass]="i == 0 ? 'card-image' : 'item'">
+                        <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="70%" />
+                    </div>
+                </div>
+            </div>
+            <!-- ng-image-fullscreen-view  -->
+            <ng-image-fullscreen-view [images]="items" [imageIndex]="currentIndex" [show]="showFlag"
+                (close)="closeEventHandler()" *ngIf="items.length > 0"></ng-image-fullscreen-view>
+            </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-8">
+                    <h4>Price: {{property.Price}}</h4>
+                </div>               
+            </div>
+            <div class="row main-characteristics">
+                <div class="col-2 d-flex">
+                    <img src="/assets/icons/house.svg" width="20" /> <p> {{property.GrossAream2}}</p>
+                </div>
+                <div class="col-2 d-flex">
+                    <img src="/assets/icons/bathroom.svg" width="20" /> <p> {{property.NumberOfBathrooms}}</p>
+                </div>
+                <div class="col-2 d-flex">
+                    <img src="/assets/icons/room.svg" width="20" /> <p> {{property.NumberOfBathrooms}}</p>
+                </div>
+                <div class="col-2 d-flex">
+                    <img src="/assets/icons/floor.svg" width="20" /> <p> {{property.Floor}}</p>
+                </div>                        
+            </div>
+            <div class="row property-content">
+                <div class="col-12">
+                    <div class="tab location">
+                        <app-map width="10px"   [mapPointInput]="mapPoint"></app-map>
+                    </div>
+                    <div class="tab"> 
+                        <h4>More About the House</h4>
+                        {{property.Description}}
+                    </div>
+                    <div class="tab"> 
+                        <h4>Aditional Features</h4>
+                        Table with icons
+                    </div>
+                    
+                    <div class="tab"> 
+                        <h4>Contacts</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    

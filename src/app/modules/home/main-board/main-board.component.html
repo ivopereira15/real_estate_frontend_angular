@@ -11,13 +11,12 @@
       <div class="row container-row">
         <div *ngFor="let property of promotedProperties">
           <div class="mr-5">
-            <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+            <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId]">
             </app-property-frame>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
   <!--New Listings-->
@@ -31,7 +30,7 @@
       <div class="row container-row">
         <div *ngFor="let property of newListings">
           <div class="mr-5">
-            <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+            <app-property-frame [property]="property"  [routerLink]="['/details' , property.MySqlId]">
             </app-property-frame>
           </div>
         </div>
@@ -49,7 +48,7 @@
     <div class="row container-row">
       <div *ngFor="let property of allListings">
         <div class="mr-5">
-          <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+          <app-property-frame [property]="property"  [routerLink]="['/details' , property.MySqlId]">
           </app-property-frame>
         </div>
       </div>
@@ -102,3 +101,4 @@
   </div>
 
 </div>
+<router-outlet></router-outlet>
