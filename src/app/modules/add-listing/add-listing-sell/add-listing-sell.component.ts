@@ -73,7 +73,7 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
   async publishListing(sellHouseForm: SellHouse) {
     this.loading = true;
 
-    //for test
+    //FOR IVO ------------------ for test
     const characteristics: Characteristics[] = [];
     var test = new Characteristics;
     test.Name = "blalba";
@@ -91,13 +91,11 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
           // this.imageService.AddPropertyPhoto(sellHouseForm.photos, 1).subscribe()
       this.listingService.listSellHouse(sellHouseForm).subscribe(res => {
         if (res.IsValid) {
-          this.loading = false;
-          this.router.navigate(['/publish-success']);
-          //   this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe(res => {
-          //   this.loading = false;
-          //   this.router.navigate(['/publish-success']);
+            this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe(res => {
+            this.loading = false;
+            this.router.navigate(['/publish-success']);
 
-          // });
+          });
         }
       });
     }
