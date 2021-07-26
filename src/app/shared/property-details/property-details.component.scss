@@ -47,10 +47,13 @@
 }
 
 ::ng-deep{
-    #map {
-    height: 40vh !important;
-    width: 32vh !important;
-  }}
+    .map-location{
+        #map {
+            height: 40vh !important;
+            width: 32vh !important;
+            }
+    }
+   }
 
 .property-content{
     margin-top: 20px;
