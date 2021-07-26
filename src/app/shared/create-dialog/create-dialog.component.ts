@@ -22,16 +22,19 @@ export class CreateDialogComponent implements OnInit {
   promotedProperties: PropertyBasic[];
   destroy = new Subject<any>();
   items: Array<{ image: string }> = [];
+  from: string;
   constructor(
     public modalService: NgbModal,
     public route: ActivatedRoute,
     public router: Router,
     private listingService: ListingService,
     private appContext: AppContextService) {
-
     }
   ngOnInit(): void {
+  
     this.route.params.pipe(takeUntil(this.destroy)) .subscribe(params => {
+      console.log(params);
+      this.from = params.from;
       if (params.id) {
         this.listingService.getPropertyByMySqlId(params.id).subscribe((res: any) => {
           console.log(res);
@@ -46,7 +49,11 @@ export class CreateDialogComponent implements OnInit {
             modalRef.result.then(
               () => {},
               () => {
-                this.router.navigate(['..']);
+                if (this.from){
+                  this.router.navigate(['../search']);
+                }else {
+                  this.router.navigate(['..']);
+              }
               }
             );
           }

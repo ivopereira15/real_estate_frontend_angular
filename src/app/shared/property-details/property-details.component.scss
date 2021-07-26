@@ -5,15 +5,23 @@
         max-width: 100%;
     }
     :nth-child(even){
-        padding-left: 1px;
+        padding-left: 0px;
+        padding-right: 1px;
         padding-bottom: 1px;
     }
     :nth-child(odd){
         padding-right: 1px;
+        padding-left: 0px;
         padding-bottom: 1px;
     }
-     
+
+    .card-image,
+    .item {
+        height: 400px;
+    }
+
 }
+
 
 .header{
     margin-top: 0px;
@@ -44,13 +52,14 @@
 
 .location{
     margin-bottom: 20px;
+    ::ng-deep{
+        #map {
+        height: 40vh !important;
+        width: 30vh !important;
+      }}
 }
 
-::ng-deep{
-    #map {
-    height: 40vh !important;
-    width: 32vh !important;
-  }}
+
 
 .property-content{
     margin-top: 20px;

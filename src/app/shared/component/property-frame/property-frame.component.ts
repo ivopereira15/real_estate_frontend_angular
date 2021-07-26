@@ -18,7 +18,7 @@ export class PropertyFrameComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   if(this.property.MainPhotoUrl){
+   if (this.property.MainPhotoUrl){
      this.image = this.property.MainPhotoUrl;
    }
   }

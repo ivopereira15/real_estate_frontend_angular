@@ -12,12 +12,15 @@ const routes: Routes = [
       component: CreateDialogComponent
     }
   ]},
-  {path: 'search', component: SearchBoardComponent},
-
-];
+  {path: 'search', component: SearchBoardComponent,
+  },
+  {
+    path: 'search/details/:id/:from',
+    component: CreateDialogComponent
+  }];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class HomeRoutingModule { }

@@ -47,20 +47,23 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     this.searchProperties.priceTo = 200000;
     this.subscriptions.add(
       this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
+        console.log(res);
         if (res.Result.IsValid) {
           let result = res.Result.Data;
+
           //Just first 4 properties in the row. Later to make an endpoint for that
           for (let i: number = 0; i <= 3; i++) {
             if (result[i] !== undefined) {
-              this.loadedPromtedProperties = true;
               this.promotedProperties.push(result[i]);
 
-              this.loadedNewListings = true;
               this.newListings.push(result[i]);
 
               this.loadedAllListings = true;
               this.allListings.push(result[i]);
             }
+            
+            this.loadedNewListings = true;
+            this.loadedPromtedProperties = true;
           }
 
         } else {
@@ -98,16 +101,4 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }
-
-  public openModal(): void {
-  const modalRef = this.modalService.open(
-    PropertyDetailsComponent,
-    { size: 'xl', centered: true, windowClass: 'modal-simple' }
-    );
-    // modalRef.componentInstance.id = this.chat.job.id;
-  modalRef.result.then(
-    () => {},
-    () => {}
-    );
-    }
 }

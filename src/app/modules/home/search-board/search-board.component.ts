@@ -25,6 +25,8 @@ export class SearchBoardComponent implements OnInit, OnChanges {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+   
     this.activatedRoute.queryParams.subscribe(params => {
       this.searchProperties.operationTypeId = params["purposeType"] as number;
       this.searchProperties.propertyTypeId = params["propertyType"] as number;
@@ -38,11 +40,11 @@ export class SearchBoardComponent implements OnInit, OnChanges {
       this.searchProperties.yearBuiltFrom = params["yearBuiltFrom"];
       this.searchProperties.yearBuiltTo = params["yearBuiltTo"];
       this.searchProperties.characteristics = params["characteristics"];
+
     });
     // Properties search Init
     // this.searchProperties.criteria = "15";
 
-    console.log(this.searchProperties);
     
     this.subscriptions.add(
       this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {

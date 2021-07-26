@@ -6,7 +6,8 @@
       <div class="title">Promoted</div>
       <div class="seemore">See more(1987)</div>
     </div>
-    <mat-spinner *ngIf=!loadedPromtedProperties></mat-spinner>
+    <mat-spinner *ngIf="!loadedPromtedProperties"></mat-spinner>
+    <span *ngIf="loadedPromtedProperties && promotedProperties.length === 0">No properties available</span>
     <div *ngIf=loadedPromtedProperties>
       <div class="row container-row">
         <div *ngFor="let property of promotedProperties">
@@ -26,11 +27,12 @@
       <div class="seemore">See more(1987)</div>
     </div>
     <mat-spinner *ngIf=!loadedNewListings></mat-spinner>
+    <span *ngIf="loadedNewListings && newListings.length === 0">No properties available</span>
     <div *ngIf=loadedNewListings>
       <div class="row container-row">
         <div *ngFor="let property of newListings">
           <div class="mr-5">
-            <app-property-frame [property]="property"  [routerLink]="['/details' , property.MySqlId]">
+            <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId]">
             </app-property-frame>
           </div>
         </div>
@@ -45,10 +47,10 @@
     <div class=text-all-listings>
       <div class="title-all-listings">All Listings</div>
     </div>
-    <div class="row container-row">
+    <div  class="row container-row">
       <div *ngFor="let property of allListings">
         <div class="mr-5">
-          <app-property-frame [property]="property"  [routerLink]="['/details' , property.MySqlId]">
+          <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId]">
           </app-property-frame>
         </div>
       </div>
