@@ -34,8 +34,8 @@
             </div>
         <div class="col-4">
             <div class="row">
-                <div class="col-8">
-                    <h4>Price: {{property.Price}}</h4>
+                <div class="col-8 price-value">
+                    <span>Price: {{property.Price}}</span>
                 </div>               
             </div>
             <div class="row main-characteristics">
@@ -61,9 +61,16 @@
                         <h4>More About the House</h4>
                         {{property.Description}}
                     </div>
-                    <div class="tab"> 
+                    <div class="tab"  *ngIf="characteristics.length > 0"> 
                         <h4>Aditional Features</h4>
-                        Table with icons
+                        <div class="row">
+                            <div  *ngFor="let item of characteristics; let i = index">
+                                <span class="col-12 badge badge-pill badge-light">
+                                    <img src="/assets/icons/{{item.IconName}}.svg" width="15" />
+                                    {{item.Name}}
+                                </span> 
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="tab"> 

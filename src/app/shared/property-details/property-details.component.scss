@@ -22,6 +22,9 @@
 
 }
 
+.badge-light{
+border: 1px solid #212529;
+}
 
 .header{
     margin-top: 0px;
@@ -41,6 +44,12 @@
         position: absolute; right: 0;
         display: flex;
     }
+}
+
+.price-value{
+    color: #09f;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .main-characteristics{
