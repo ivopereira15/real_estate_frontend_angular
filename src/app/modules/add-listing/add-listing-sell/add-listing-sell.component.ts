@@ -76,10 +76,25 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
     //FOR IVO ------------------ for test
     const characteristics: Characteristics[] = [];
     var test = new Characteristics;
-    test.Name = "blalba";
-    test.IconName = "scdcsdc";
+    test.Name = "Year";
+    test.IconName = "propertydate";
     test.CountNumber = 22;
     characteristics.push(test);
+    var test2 = new Characteristics;
+    test.Name = "";
+    test.IconName = "fireplate";
+    test.CountNumber = 23;
+    characteristics.push(test2);
+    var test3 = new Characteristics;
+    test.Name = "";
+    test.IconName = "balcony";
+    test.CountNumber = 24;
+    characteristics.push(test3);
+    var test4 = new Characteristics;
+    test.Name = "";
+    test.IconName = "elevator";
+    test.CountNumber = 25;
+    characteristics.push(test4);
     sellHouseForm.Characteristics = characteristics;
 
 
