@@ -33,10 +33,15 @@ export class FilterContainerComponent implements OnInit, OnDestroy {
     this.windowChangeSubscription = this.mobileUtilityService.getWindowObservable().subscribe((windowChange: IWindowData) => {
       this.isMobile = !windowChange.isBiggerAsLaptop;
     });
+    this.loadSessionStore();
   }
 
   public ngOnDestroy(): void {
     this.windowChangeSubscription.unsubscribe();
+  }
+
+  private loadSessionStore(){
+
   }
 
   purposeTypeEvent(event: any) { this.purposeType = event; }

@@ -4,7 +4,8 @@
         <div>
             <mat-grid-list cols="2" rowHeight="2:1">
                 <mat-grid-tile *ngFor="let property of promotedProperties">
-                    <app-property-frame class="padding-grid" [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
+      
+                    <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId,  'search']">
                     </app-property-frame>
                 </mat-grid-tile>
             </mat-grid-list>
