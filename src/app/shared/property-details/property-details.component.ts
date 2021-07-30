@@ -28,7 +28,6 @@ export class PropertyDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.property) {
-      console.log(this.property);
       this.property.Images.forEach(i => {
         this.items.push({ image: i.ImageUrl });
         this.mapPoint = new MapPoint();
@@ -54,9 +53,6 @@ export class PropertyDetailsComponent implements OnInit {
       test3.IconName = "balcony";
       test3.CountNumber = 24;
       this.characteristics.push(test3);
-
-
-
       console.log( this.characteristics);
     }
   }
