@@ -1,3 +1,42 @@
+.modal{
+    display: block !important; /* I added this to see the modal, you don't need this */
+}
+
+/* Important part */
+.modal-dialog{
+    overflow-y: initial !important
+}
+.property-images{
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.property-details{
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.head-characteristics{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    p{
+        color: #09f;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .charct{
+        margin-left: 5px;
+        img{
+            margin-bottom: 15px;
+            margin-right: 5px;
+        }
+    }
+
+}
+
 .container-image{
     
     :nth-child(1){
@@ -22,9 +61,21 @@
 
 }
 
-.badge-light{
-border: 1px solid #212529;
+.characteristics{
+    margin-left: 10px;
+    .badge-light{
+        border: 1px solid white;
+        background-color: #09f;
+    }
 }
+
+.contact{
+    margin-left: 10px;
+    span{
+        margin-left: 10px;
+    }
+}
+
 
 .header{
     margin-top: 0px;
@@ -55,6 +106,7 @@ border: 1px solid #212529;
 .main-characteristics{
     p{
         margin-bottom: 0px;
+        margin-left: 2px;
     }
  
 }
@@ -64,8 +116,9 @@ border: 1px solid #212529;
     ::ng-deep{
         #map {
         height: 40vh !important;
-        width: 30vh !important;
-      }}
+        width: 25vh !important;
+      }
+    }
 }
 
 ::ng-deep{

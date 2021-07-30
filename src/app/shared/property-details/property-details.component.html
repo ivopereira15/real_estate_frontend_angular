@@ -1,12 +1,12 @@
 <div class="container">
     <div class="row header">
-            <div class="location-icon">
-                <img src="/assets/icons/location.svg" width="60" />
-            </div>
-            <div class="header-location">  
-                <h3>{{property.City}} - {{property.Country}}</h3>
-                <span>{{property.Address}}</span>
-            </div>
+        <div class="location-icon">
+            <img src="/assets/icons/location.svg" width="60" />
+        </div>
+        <div class="header-location">  
+            <h3>{{property.City}} - {{property.Country}}</h3>
+            <span>{{property.Address}}</span>
+        </div>
         <div class="share-buttons">
             <div >
                 <img src="/assets/icons/save.svg" width="40" />
@@ -16,8 +16,41 @@
             </div>
         </div>
     </div>
+    <div>
+        <div class="row">
+            <div class="col price-value text-right">
+                <span>Price: {{property.Price}}</span>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col head-characteristics">
+                    <div class="d-flex charct" *ngIf="property.GrossAream2">
+                        <img src="/assets/icons/house.svg" width="20" /> <p> {{property.GrossAream2}}</p>
+                    </div>
+                    <div class="d-flex charct" *ngIf="property.NumberOfBathrooms">
+                        <img src="/assets/icons/bathroom.svg" width="20" /> <p> {{property.NumberOfBathrooms}}</p>
+                    </div>
+                    <div class="d-flex charct" *ngIf="property.NumberOfBathrooms">
+                        <img src="/assets/icons/room.svg" width="20" /> <p> {{property.NumberOfBathrooms}}</p>
+                    </div>
+                    <div class="d-flex charct" *ngIf="property.Floor">
+                        <img src="/assets/icons/floor.svg" width="20" /> <p> {{property.Floor}}</p>
+                    </div>                   
+                </div>
+        </div>
+   </div>
     <div class="row">
-        <div class="col-8">
+        <div class="col-8  property-images">
+            <div class="row container-image" *ngIf="items.length > 0">
+                <div class="col-6"  *ngFor="let item of items; let i = index">
+                    <div *ngIf="i == 0"  [ngClass]="i == 0 ? 'card-image' : 'item'">
+                        <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="100%" />
+                    </div>
+                    <div *ngIf="i >= 1" [ngClass]="i == 0 ? 'card-image' : 'item'">
+                        <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="100%" />
+                    </div>
+                </div>
+            </div>
             <div class="row container-image" *ngIf="items.length > 0">
                 <div class="col-6"  *ngFor="let item of items; let i = index">
                     <div *ngIf="i == 0"  [ngClass]="i == 0 ? 'card-image' : 'item'">
@@ -31,42 +64,33 @@
             <!-- ng-image-fullscreen-view  -->
             <ng-image-fullscreen-view [images]="items" [imageIndex]="currentIndex" [show]="showFlag"
                 (close)="closeEventHandler()" *ngIf="items.length > 0"></ng-image-fullscreen-view>
-            </div>
-        <div class="col-4">
-            <div class="row">
-                <div class="col-8 price-value">
-                    <span>Price: {{property.Price}}</span>
-                </div>               
-            </div>
-            <div class="row main-characteristics">
-                <div class="col-2 d-flex">
-                    <img src="/assets/icons/house.svg" width="20" /> <p> {{property.GrossAream2}}</p>
-                </div>
-                <div class="col-2 d-flex">
-                    <img src="/assets/icons/bathroom.svg" width="20" /> <p> {{property.NumberOfBathrooms}}</p>
-                </div>
-                <div class="col-2 d-flex">
-                    <img src="/assets/icons/room.svg" width="20" /> <p> {{property.NumberOfBathrooms}}</p>
-                </div>
-                <div class="col-2 d-flex">
-                    <img src="/assets/icons/floor.svg" width="20" /> <p> {{property.Floor}}</p>
-                </div>                        
-            </div>
+        </div>
+        <div class="col-4 property-details">
             <div class="row property-content">
                 <div class="col-12">
                     <div class="tab location">
+                        <h4>Location</h4>
                         <app-map class="map-location" width="10px"   [mapPointInput]="mapPoint"></app-map>
                     </div>
                     <div class="tab"> 
                         <h4>More About the House</h4>
-                        {{property.Description}}
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+                        Why do we use it?
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                        
+                        
+                        Where does it come from?
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                        
+                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
                     </div>
                     <div class="tab"  *ngIf="characteristics.length > 0"> 
                         <h4>Aditional Features</h4>
-                        <div class="row">
+                        <div class="row characteristics">
                             <div  *ngFor="let item of characteristics; let i = index">
                                 <span class="col-12 badge badge-pill badge-light">
-                                    <img src="/assets/icons/{{item.IconName}}.svg" width="15" />
+                                    <img src="/assets/icons/{{item.IconName}}.svg" width="16" />
                                     {{item.Name}}
                                 </span> 
                             </div>
@@ -75,6 +99,9 @@
                     
                     <div class="tab"> 
                         <h4>Contacts</h4>
+                        <div class="row contact">
+                            <img src="/assets/icons/phone_1.svg" width="20" /> <span>Numer</span>
+                        </div>
                     </div>
                 </div>
             </div>
