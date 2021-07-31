@@ -40,6 +40,7 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   initializeMap(map: Map) {
+    console.log(map);
     this.map = map;
     this.createMarker();
   }
@@ -89,6 +90,9 @@ export class MapComponent implements OnInit, OnChanges {
   private createMarker() {
     this.clearMap();
     const mapIcon = this.getDefaultIcon();
+    console.log(this.mapPoint.latitude);
+    console.log(this.mapPoint.longitude);
+
     const coordinates = latLng([this.mapPoint.latitude, this.mapPoint.longitude]);
     this.lastLayer = marker(coordinates).setIcon(mapIcon).addTo(this.map);
     this.map.setView(coordinates, this.map.getZoom());
