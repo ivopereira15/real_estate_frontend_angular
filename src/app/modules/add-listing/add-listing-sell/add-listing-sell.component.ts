@@ -6,10 +6,12 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { OperationType } from '../../../shared/models/listing/operation-type';
 import { PropertyType } from 'src/app/shared/models/listing/property-type';
 import { AppContextService } from 'src/app/core/services/app-context.service';
+import { TempTokenService } from 'src/app/core/services/shared/temp-token.service';
 import { SellHouse } from '../../../shared/models/listing/sell-house';
 import { forkJoin } from 'rxjs';
 import { Router } from '@angular/router';
 import { Characteristics } from 'src/app/shared/models/listing/characteristics';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-add-listing-sell',
@@ -43,7 +45,8 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private listingService: ListingService,
     private imageService: ImageService,
-    private appContext: AppContextService) { }
+    private appContext: AppContextService,
+    private tempTokenService: TempTokenService) { }
 
   ngOnInit(): void {
     this.subscriptions.add(
@@ -81,19 +84,19 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
     test.CountNumber = 22;
     characteristics.push(test);
     var test2 = new Characteristics;
-    test.Name = "";
-    test.IconName = "fireplate";
-    test.CountNumber = 23;
+    test2.Name = "1";
+    test2.IconName = "fireplate";
+    test2.CountNumber = 23;
     characteristics.push(test2);
     var test3 = new Characteristics;
-    test.Name = "";
-    test.IconName = "balcony";
-    test.CountNumber = 24;
+    test3.Name = "1";
+    test3.IconName = "balcony";
+    test3.CountNumber = 24;
     characteristics.push(test3);
     var test4 = new Characteristics;
-    test.Name = "";
-    test.IconName = "elevator";
-    test.CountNumber = 25;
+    test4.Name = "1";
+    test4.IconName = "elevator";
+    test4.CountNumber = 25;
     characteristics.push(test4);
     sellHouseForm.Characteristics = characteristics;
 
@@ -103,10 +106,10 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
     if (isAuthnticated) {
       sellHouseForm.UserId = this.userId;
       sellHouseForm.OperationTypeId = this.currentOperationType.Id;
-          // this.imageService.AddPropertyPhoto(sellHouseForm.photos, 1).subscribe()
+      console.log(sellHouseForm);
       this.listingService.listSellHouse(sellHouseForm).subscribe(res => {
         if (res.IsValid) {
-            this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe(res => {
+          this.imageService.AddPropertyPhoto(sellHouseForm.photos, res.Data).subscribe(res => {
             this.loading = false;
             this.router.navigate(['/publish-success']);
 
@@ -116,7 +119,20 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
     }
     if (!isAuthnticated) {
       this.loading = false;
-      this.router.navigate(['/authenitcate']);
+      // temp save
+      var tempId = Guid.create();
+      sellHouseForm.OperationTypeId = this.currentOperationType.Id;
+      console.log(sellHouseForm);
+      this.listingService.listTempSellHouse(tempId, sellHouseForm).subscribe(res => {
+        if (res.IsValid) {
+          this.imageService.AddPropertyTempPhoto(sellHouseForm.photos, res.Data).subscribe(res => {
+            this.loading = false;
+            console.log(tempId);
+            this.tempTokenService.setPublicToken(tempId);
+            this.router.navigate(['/login']);
+          });
+        }
+      });
     }
     // If not cache the request, then update
   }

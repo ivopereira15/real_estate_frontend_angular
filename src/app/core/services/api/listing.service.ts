@@ -12,6 +12,7 @@ import { SearchProperty } from '../../../shared/models/search/search-property';
 import { SearchPagination } from 'src/app/shared/models/search/search-paginations';
 import { SearchPropertyForAdminRequest } from "src/app/shared/models/listing/search-property-admin";
 import { PagedProperty } from "src/app/shared/models/listing/paged-property";
+import { Guid } from 'guid-typescript';
 
 @Injectable({
     providedIn: 'root'
@@ -40,6 +41,12 @@ export class ListingService {
     public listSellHouse(listing: SellHouse): Observable<ResultMessage<number>> {
         return this.http
             .post<ResultMessage<number>>(this.appContext.getAPIUrl() + '/organization/Listing/listSellHouse', listing, this.httpOptions);
+    }
+
+    public listTempSellHouse(tempId: Guid, listing: SellHouse): Observable<ResultMessage<number>> {
+        console.log(tempId);
+        return this.http
+            .post<ResultMessage<number>>(this.appContext.getAPIUrl() + '/organization/Listing/listSellHouse/temp/' + tempId, listing, this.httpOptions);
     }
 
     public getUserPropertiesBasic(userId: number): Observable<ResultMessage<PropertyBasic[]>> {
