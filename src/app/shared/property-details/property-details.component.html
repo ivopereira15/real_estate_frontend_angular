@@ -97,12 +97,38 @@
                             </div>
                         </div>
                     </div>
-                    
+                  
                     <div class="tab"> 
                         <h4>Contacts</h4>
-                        <div class="row contact">
-                            <img src="/assets/icons/phone_1.svg" width="20" /> <span>Numer</span>
-                        </div>
+                        <form [formGroup] = "contactForm">
+                            <div class="row contact">
+                                <div class="col-10">
+                                <label for="name">Name *</label>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <input formControlName="name" placeholder="Name" type="text" matInput required>
+                                </mat-form-field>
+                                <div *ngIf="c.controls.name.errors && submitContact" class="err-msg">
+                                    Name is required
+                                </div>
+                                <label for="email">Email *</label>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <input formControlName="email" placeholder="Email" type="text" matInput required>
+                                </mat-form-field>
+                                <div *ngIf="c.controls.email.errors && submitContact" class="err-msg">
+                                    Email invalid
+                                </div>
+                                <label for="phone">Phone *</label>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <input formControlName="phone" placeholder="Phone" type="text" matInput required>
+                                </mat-form-field>
+                                <div *ngIf="c.controls.phone.errors && submitContact" class="err-msg">
+                                    Phone invalid
+                                </div>
+                            </div>
+                            <button class="submit-contact" (click)="onSubmit()">Contact an Agent</button>
+                            </div>
+                           
+                        </form>
                     </div>
                 </div>
             </div>
