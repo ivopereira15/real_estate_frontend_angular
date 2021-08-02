@@ -50,7 +50,7 @@ export class PropertyDetailsComponent implements OnInit {
 
       const test3 = new Characteristics;
       test3.Name = "Balcony";
-      test3.IconName = "balcony";
+      test3.IconName = "Balcony";
       test3.CountNumber = 24;
       this.characteristics.push(test3);
       console.log( this.characteristics);

@@ -79,13 +79,8 @@
 
 .header{
     margin-top: 0px;
-    .location-icon{
-        border-top: 5px solid #09f;
-        border-left: 5px solid #09f;
-    }
     .header-location {
         padding-left: 0px;
-        border-top: 5px solid #09f;
 
         h3{
             margin-top: 10px;
@@ -98,6 +93,9 @@
 }
 
 .price-value{
+    padding-left: 10px;
+    border-top: 5px solid #09f;
+    border-left: 5px solid #09f;
     color: #09f;
     font-weight: bold;
     font-size: 25px;
@@ -116,7 +114,7 @@
     ::ng-deep{
         #map {
         height: 40vh !important;
-        width: 25vh !important;
+        width: 100% !important;
       }
     }
 }
