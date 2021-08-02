@@ -18,26 +18,24 @@ export class ImageService {
 
     constructor(private http: HttpClient, private appContext: AppContextService) { }
 
-    public AddPropertyPhoto(photoData: File[], dbId: number, elasticId?: number): Observable<ResultMessage<string>> {
+    public AddPropertyPhoto(photoData: File[], dbId: number): Observable<ResultMessage<string>> {
         const formData: FormData = new FormData();
-        let array = [];
-        // for (var i = 0; i < photoData.length; i++) {
-        //     formData.append("photos", photoData[i]);
-        //     //  array.push(photoData[i]);
-        // }
-        console.log(photoData);
         for (var i = 0; i < photoData.length; i++) {
             formData.append('files', photoData[i], photoData[i].name);
         }
-        // formData.append("photos", JSON.stringify(array));
-        // formData.append('propertyElasticId', elasticId.toString());
         formData.append('propertyId', dbId.toString());
-        console.log(formData);
         return this.http
             .post<any>(this.appContext.getAPIUrl() + '/Image/addUserPropertyImages', formData);
     }
 
-    // public downloadPhotoFromAzure(url: string): Observable<any> {
-    //     return this.http.get(url, { responseType: 'blob' });
-    // }
+    public AddPropertyTempPhoto(photoData: File[], dbId: number): Observable<ResultMessage<string>> {
+        const formData: FormData = new FormData();
+        for (var i = 0; i < photoData.length; i++) {
+            formData.append('files', photoData[i], photoData[i].name);
+        }
+        formData.append('propertyId', dbId.toString());
+        return this.http
+            .post<any>(this.appContext.getAPIUrl() + '/Image/addUserPropertyTempImages', formData);
+    }
+
 }

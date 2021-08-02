@@ -1,5 +1,6 @@
 export class User {
     public Id: number;
+    public TempId?: any;
     public Name: string;
     public Surname: string;
     public Password: string;
