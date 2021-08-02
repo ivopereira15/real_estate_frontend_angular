@@ -99,17 +99,7 @@
     height: 500px;
 }
 
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
-    border-radius: 0 20px 20px 0 !important;
-    flex-grow: 1 !important;
-  }
-  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
-    border-radius: 20px 0 0 20px !important;
-    flex-grow: 1 !important;
-  }
-  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-    background-color: rgb(241, 241, 241);
-  }
+
 
 // Material Override PLACE TO STYLES
 
@@ -127,3 +117,16 @@
 // }
 
 }
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-radius: 0 20px 20px 0 !important;
+    flex-grow: 1 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border-radius: 20px 0 0 20px !important;
+    flex-grow: 1 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: rgb(241, 241, 241);
+    border-radius: 20px 20px 20px 20px !important;
+  }
