@@ -79,13 +79,8 @@
 
 .header{
     margin-top: 0px;
-    .location-icon{
-        border-top: 5px solid #09f;
-        border-left: 5px solid #09f;
-    }
     .header-location {
         padding-left: 0px;
-        border-top: 5px solid #09f;
 
         h3{
             margin-top: 10px;
@@ -98,6 +93,9 @@
 }
 
 .price-value{
+    padding-left: 10px;
+    border-top: 5px solid #09f;
+    border-left: 5px solid #09f;
     color: #09f;
     font-weight: bold;
     font-size: 25px;
@@ -111,14 +109,34 @@
  
 }
 
+.submit-contact{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    height: auto;
+    background-color: rgb(0, 106, 255);
+    border-color: rgb(0, 106, 255);
+    color: rgb(255, 255, 255);
+    margin-left: 3%;
+    margin-top: 3%;
+    width: 77%;
+    border: 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .location{
     margin-bottom: 20px;
     ::ng-deep{
         #map {
         height: 40vh !important;
-        width: 25vh !important;
+        width: 100% !important;
       }
     }
+}
+
+.err-msg{
+    color:red;
 }
 
 ::ng-deep{
@@ -137,3 +155,15 @@
     }
 }
 
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-radius: 0 20px 20px 0 !important;
+    flex-grow: 1 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border-radius: 20px 0 0 20px !important;
+    flex-grow: 1 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: rgb(241, 241, 241);
+    border-radius: 20px 20px 20px 20px !important;
+  }

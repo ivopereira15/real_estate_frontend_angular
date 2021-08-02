@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit, OnChanges } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from 'src/app/core/services/shared/custom_validations';
 
 import { OperationType } from '../../models/listing/operation-type';
 import { PropertyType } from '../../models/listing/property-type';
@@ -19,16 +21,30 @@ export class SellHouseComponent implements OnInit, OnChanges {
   @Output() public publishListing: EventEmitter<any> = new EventEmitter<any>();
 
   public mapPoint: MapPoint;
-  typology: string[] = ["T0", "T1", "T2", "T3"];
+  typology: string[] = ['T0', 'T1', 'T2', 'T3'];
   bathrooms: number[] = [1, 2, 3, 4, 5];
   floors: number[] = [1, 2, 3, 4, 5];
   rooms: number[] = [1, 2, 3, 4, 5];
-  energyCertificate: string[] = ["A", "B", "C", "D"];
-  countries: string[] = ["Italy", "Ukraine", "Portugal"];
+  energyCertificate: string[] = ['A', 'B', 'C', 'D'];
+  countries: string[] = ['Italy', 'Ukraine', 'Portugal'];
   thumbnails = [];
   photos = [];
 
-  constructor() { }
+  public mainPropertyCharacteristic: FormGroup;
+
+  constructor(  public form: FormBuilder) {
+    this.mainPropertyCharacteristic = this.form.group({
+      price: ['', [Validators.required]],
+      netAream2: [],
+      priceNetAream2: [],
+      grossAream2: [],
+      propertyTypeId: [],
+      floor: [],
+      rooms: [],
+      yearOfConstruction: [],
+      numberOfBathrooms: []
+    });
+}
 
   ngOnInit(): void {
 
