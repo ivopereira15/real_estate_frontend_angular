@@ -37,6 +37,7 @@ export class PropertyDetailsComponent implements OnInit {
         name: ['', [Validators.required]],
         phone: ['', [Validators.required, CustomValidators.validatePhone]],
         email: ['', [Validators.required, Validators.email]],
+        message: ['', [Validators.required]]
       });
 
       console.log(this.c.controls.phone);

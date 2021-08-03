@@ -119,10 +119,17 @@
                                 </div>
                                 <label for="phone">Phone *</label>
                                 <mat-form-field class="full-width" appearance="outline">
-                                    <input formControlName="phone" placeholder="Phone" type="text" matInput required>
+                                    <input formControlName="phone" placeholder="Phone" type="number" matInput required>
                                 </mat-form-field>
                                 <div *ngIf="c.controls.phone.errors && submitContact" class="err-msg">
                                     Phone invalid
+                                </div>
+                                <label for="message">Message *</label>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <textarea formControlName="message" placeholder="Message" matInput required></textarea>
+                                </mat-form-field>
+                                <div *ngIf="c.controls.message.errors && submitContact" class="err-msg">
+                                    Message is required
                                 </div>
                             </div>
                             <button class="submit-contact" (click)="onSubmit()">Contact an Agent</button>
