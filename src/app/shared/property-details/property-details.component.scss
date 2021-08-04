@@ -1,10 +1,14 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .modal{
     display: block !important; /* I added this to see the modal, you don't need this */
 }
 
 /* Important part */
 .modal-dialog{
-    overflow-y: initial !important
+  
 }
 .property-images{
     height: 80vh;
@@ -153,6 +157,12 @@
     .tab{
         margin-bottom: 20px;
     }
+}
+
+.close-button{
+    margin-left: 20px;
+    background-color: transparent;
+    border: none;
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
