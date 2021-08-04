@@ -6,6 +6,7 @@ import { MapPoint } from 'src/app/shared/models/map/map-point';
 import { Characteristics } from '../models/listing/characteristics';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {CustomValidators} from 'src/app/core/services/shared/custom_validations';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-property-details',
@@ -14,6 +15,7 @@ import {CustomValidators} from 'src/app/core/services/shared/custom_validations'
 })
 export class PropertyDetailsComponent implements OnInit {
   @Input() public property: Property;
+ 
   public contactForm: FormGroup;
   public formErrors = {
     name: '',
@@ -40,10 +42,9 @@ export class PropertyDetailsComponent implements OnInit {
         message: ['', [Validators.required]]
       });
 
-      console.log(this.c.controls.phone);
     }
   ngOnInit(): void {
-
+    this.router.navigate([], { fragment: "targetBlue" });
     if (this.property) {
       this.property.Images.forEach(i => {
         this.items.push({ image: i.ImageUrl });
@@ -81,6 +82,10 @@ export class PropertyDetailsComponent implements OnInit {
 
   get c() {
     return this.contactForm as FormGroup;
+  }
+
+  close(): void {
+    this.modalService.dismissAll();
   }
 
   closeEventHandler() {

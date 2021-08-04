@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="row header">
+<div  class="container">
+    <div  class="row header">
         <div class="price-value">
             <span>{{property.Price | number: '1.0-0'}} €</span>
         </div>
@@ -10,6 +10,9 @@
             <div >
                 <img src="/assets/icons/share.svg" width="40" />
             </div>
+            <button  class="close-button" (click)="close()">
+                <img src="/assets/icons/close.svg" width="40" />
+            </button>
         </div>
     </div>
     <div class="row header">        
@@ -32,7 +35,7 @@
        
     </div>
     <div class="row">
-        <div class="col-8  property-images">
+        <div class="col-md-12 col-lg-8  property-images">
             <div class="row container-image" *ngIf="items.length > 0">
                 <div class="col-6"  *ngFor="let item of items; let i = index">
                     <div *ngIf="i == 0"  [ngClass]="i == 0 ? 'card-image' : 'item'">
@@ -57,7 +60,7 @@
             <ng-image-fullscreen-view [images]="items" [imageIndex]="currentIndex" [show]="showFlag"
                 (close)="closeEventHandler()" *ngIf="items.length > 0"></ng-image-fullscreen-view>
         </div>
-        <div class="col-4 property-details">
+        <div class="col-md-12 col-lg-4 property-details">
             <div class="row property-content">
                 <div class="col-12">
                     <div class="tab location">
@@ -99,7 +102,7 @@
                     </div>
                   
                     <div class="tab"> 
-                        <h4>Contacts</h4>
+                        <h4 id="targetBlue">Contacts</h4>
                         <form [formGroup] = "contactForm">
                             <div class="row contact">
                                 <div class="col-10">
