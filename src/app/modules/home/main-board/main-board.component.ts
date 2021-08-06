@@ -52,7 +52,7 @@ export class MainBoardComponent implements OnInit, OnDestroy {
           let result = res.Result.Data;
 
           //Just first 4 properties in the row. Later to make an endpoint for that
-          for (let i: number = 0; i <= 3; i++) {
+          for (let i: number = 2; i <= 8; i++) {
             if (result[i] !== undefined) {
               this.promotedProperties.push(result[i]);
 
