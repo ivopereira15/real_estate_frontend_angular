@@ -35,7 +35,7 @@
        
     </div>
     <div class="row">
-        <div class="col-md-12 col-lg-8  property-images">
+        <div class="col-md-12 col-lg-8 property-images" *ngIf="items.length > 0">
             <div class="row container-image" *ngIf="items.length > 0">
                 <div class="col-6"  *ngFor="let item of items; let i = index">
                     <div *ngIf="i == 0"  [ngClass]="i == 0 ? 'card-image' : 'item'">

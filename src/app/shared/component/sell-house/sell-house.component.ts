@@ -42,7 +42,8 @@ export class SellHouseComponent implements OnInit, OnChanges {
       floor: [],
       rooms: [],
       yearOfConstruction: [],
-      numberOfBathrooms: []
+      numberOfBathrooms: [],
+      enerergyCertificate: []
     });
 }
 
@@ -76,7 +77,19 @@ export class SellHouseComponent implements OnInit, OnChanges {
   }
 
   publishListingSubmit() {
+
+    this.sellHouseForm.Price =   this.mainPropertyCharacteristic.controls.price.value;
+    this.sellHouseForm.NetAream2 =   this.mainPropertyCharacteristic.controls.netAream2.value;
+    this.sellHouseForm.PriceNetAream2 =   this.mainPropertyCharacteristic.controls.price.value;
+    this.sellHouseForm.GrossAream2 =   this.mainPropertyCharacteristic.controls.grossAream2.value;
+    this.sellHouseForm.PropertyTypeId =   this.mainPropertyCharacteristic.controls.propertyTypeId.value;
+    this.sellHouseForm.Floor =   this.mainPropertyCharacteristic.controls.floor.value;
+    this.sellHouseForm.GrossAream2 =   this.mainPropertyCharacteristic.controls.grossAream2.value;
+    this.sellHouseForm.Rooms =   this.mainPropertyCharacteristic.controls.rooms.value;
+    this.sellHouseForm.NumberOfBathrooms =   this.mainPropertyCharacteristic.controls.numberOfBathrooms.value;
+    this.sellHouseForm.EnerergyCertificate =   this.mainPropertyCharacteristic.controls.enerergyCertificate.value;
     this.sellHouseForm.photos = this.photos;
+    console.log(this.sellHouseForm);
     this.publishListing.emit(this.sellHouseForm);
   }
 
