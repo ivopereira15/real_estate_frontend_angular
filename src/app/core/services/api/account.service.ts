@@ -18,7 +18,7 @@ public getJwtToken(email: string, password: string, tempId: Guid): Observable<Re
       })
     };
 
-    const requestData = { Email: email, Password: password, TempId: tempId.toString() };
+    const requestData = { Email: email, Password: password, TempId: tempId};
     console.log(requestData);
     return this.http.post<ResultMessage<string>>(this.appContext.getAPIUrl() + '/Account/token', requestData, httpOptions);
   }
