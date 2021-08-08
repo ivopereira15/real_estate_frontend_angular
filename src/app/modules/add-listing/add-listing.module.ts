@@ -9,10 +9,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { PublishSuccessComponent } from './publish-success/publish-success.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 
 @NgModule({
-  declarations: [AddListingComponent, AddListingSellComponent, AddListingRentComponent, PublishSuccessComponent, AuthenticateComponent],
+  declarations: [AddListingComponent, AddListingSellComponent, AddListingRentComponent, PublishSuccessComponent, AuthenticateComponent, RedirectComponent],
   imports: [
     CommonModule,
     SharedModule,

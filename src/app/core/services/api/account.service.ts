@@ -17,8 +17,11 @@ public getJwtToken(email: string, password: string, tempId: Guid): Observable<Re
         'Content-Type': 'application/json'
       })
     };
-
-    const requestData = { Email: email, Password: password, TempId: tempId.toString() };
+    var stringGuid;
+    if(tempId != undefined){
+      stringGuid = tempId.toString();
+    }
+    const requestData = { Email: email, Password: password, TempId: stringGuid };
     console.log(requestData);
     return this.http.post<ResultMessage<string>>(this.appContext.getAPIUrl() + '/Account/token', requestData, httpOptions);
   }

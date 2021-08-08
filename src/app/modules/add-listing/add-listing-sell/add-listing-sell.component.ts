@@ -129,7 +129,7 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
             this.loading = false;
             console.log(tempId);
             this.tempTokenService.setPublicToken(tempId);
-            this.router.navigate(['/login']);
+            this.router.navigate(['/redirect']);
           });
         }
       });
