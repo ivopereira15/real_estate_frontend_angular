@@ -1,23 +1,12 @@
+
+@import "~src/sass/_vars";
+
 html {
     scroll-behavior: smooth;
 }
 
 .modal{
     display: block !important; /* I added this to see the modal, you don't need this */
-}
-
-/* Important part */
-.modal-dialog{
-  
-}
-.property-images{
-    height: 80vh;
-    overflow-y: auto;
-}
-
-.property-details{
-    height: 80vh;
-    overflow-y: auto;
 }
 
 .head-characteristics{
@@ -177,3 +166,165 @@ html {
     background-color: rgb(241, 241, 241);
     border-radius: 20px 20px 20px 20px !important;
   }
+
+
+  @media (min-width: $dimension-breakpoint-xxs-min) {
+    .property-images{
+        overflow-y: hidden;
+    }
+    
+    .property-details{
+        overflow-y: hidden;
+    }
+
+    .container{
+        overflow-y: auto;
+    }
+}
+
+  @media (min-width: $dimension-breakpoint-xs-min) {
+    .property-images{
+        overflow-y: hidden;
+    }
+    
+    .property-details{
+        overflow-y: hidden;
+    }
+
+    .container{
+        overflow-y: auto;
+    }
+}
+
+
+
+  @media (min-width: $dimension-breakpoint-sm-min) {
+    .property-images{
+        overflow-y: hidden;
+    }
+    
+    .property-details{
+        overflow-y: hidden;
+    }
+
+    .container{
+        overflow-y: auto;
+    }
+}
+
+
+  
+  @media (min-width: $dimension-breakpoint-md-min) {
+    .property-images{
+        height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .property-details{
+        height: 80vh;
+        overflow-y: auto;
+    }
+
+    .container{
+        overflow-y: hidden;
+    }
+}
+
+
+  
+  @media (min-width: $dimension-breakpoint-lg-min) {
+    .property-images{
+        height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .property-details{
+        height: 80vh;
+        overflow-y: auto;
+    }
+
+    .container{
+        overflow-y: hidden;
+    }
+}
+
+  @media (min-width: $dimension-breakpoint-xl-min) {
+    .property-images{
+        height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .property-details{
+        height: 80vh;
+        overflow-y: auto;
+    }
+
+    .container{
+        overflow-y: hidden;
+    }
+}
+
+    @media (min-width: $dimension-breakpoint-xl-mid-min) {
+        .property-images{
+            height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .property-details{
+            height: 80vh;
+            overflow-y: auto;
+        }
+    
+        .container{
+            overflow-y: hidden;
+        }
+    }
+
+    @media (min-width: $dimension-breakpoint-xxl-min) {
+        .property-images{
+            height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .property-details{
+            height: 80vh;
+            overflow-y: auto;
+        }
+    
+        .container{
+            overflow-y: hidden;
+        }
+    }
+
+    @media (min-width: $dimension-breakpoint-xxxl-min) {
+        .property-images{
+            height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .property-details{
+            height: 80vh;
+            overflow-y: auto;
+        }
+    
+        .container{
+            overflow-y: hidden;
+        }
+    }
+
+
+    @media (min-width: $dimension-breakpoint-max-min) {
+        .property-images{
+            height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .property-details{
+            height: 80vh;
+            overflow-y: auto;
+        }
+    
+        .container{
+            overflow-y: hidden;
+        }
+    }
