@@ -8,6 +8,7 @@ import { SearchPagination } from 'src/app/shared/models/search/search-pagination
 import { SearchUser } from 'src/app/shared/models/search/search-user';
 import { UserProfileImage } from 'src/app/shared/models/images/user-profile-image';
 import { shareReplay } from 'rxjs/operators';
+import { Guid } from 'guid-typescript';
 
 @Injectable({
     providedIn: 'root'
@@ -22,7 +23,12 @@ export class UserService {
 
     constructor(private http: HttpClient, private appContext: AppContextService) { }
 
-    public createNewUser(newuser: User): Observable<ResultMessage<string>> {
+    public createNewUser(newuser: User, tempId?: Guid): Observable<ResultMessage<string>> {
+        var stringGuid;
+        if(tempId != undefined){
+          stringGuid = tempId.toString();
+          newuser.TempId = stringGuid;
+        }
         return this.http
             .post<ResultMessage<string>>(this.appContext.getAPIUrl() + '/organization/User/createNewUser', newuser, this.httpOptions);
     }

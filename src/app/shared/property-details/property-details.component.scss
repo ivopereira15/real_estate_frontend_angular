@@ -15,13 +15,17 @@ html {
     align-items: center;
 
     p{
-        color: #09f;
-        font-weight: bold;
-        font-size: 25px;
+        //color: #09f;
+        color: rgb(70, 64, 64);
+        //font-weight: bold;
+        font-size: 20px;
+        span {
+            font-size: 15px;
+        }
     }
 
     .charct{
-        margin-left: 5px;
+        margin-left: 15px;
         img{
             margin-bottom: 15px;
             margin-right: 5px;
@@ -59,14 +63,23 @@ html {
     .badge-light{
         border: 1px solid white;
         background-color: #09f;
+        color: white;
+        padding: 7px;
     }
 }
 
 .contact{
     margin-left: 10px;
+    label{
+        font-weight: bold;
+    }
     span{
         margin-left: 10px;
     }
+}
+
+mat-divider {
+   border-width: 1px;
 }
 
 
@@ -74,24 +87,52 @@ html {
     margin-top: 0px;
     .header-location {
         padding-left: 0px;
+        margin-left: 15px;
 
         h3{
-            margin-top: 10px;
+           margin-top: 10px;
         }
     }
     .share-buttons{
+        margin-top: 5px;
         position: absolute; right: 0;
         display: flex;
+        color: #09f;
+        div {
+            margin-left: 5px;
+        }
     }
+}
+
+.flex {
+    display: flex;
+    align-items: center;
 }
 
 .price-value{
     padding-left: 10px;
     border-top: 5px solid #09f;
     border-left: 5px solid #09f;
-    color: #09f;
+    // color: #09f;
+    color: black;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 35px;
+    .euro-to-meter{
+        margin-left: 15px;
+        font-weight: unset;
+        font-size: 15px;
+    }
+    .type {
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(94, 92, 92);
+        border-radius: 10px;
+        padding: 2px;
+        margin-left: 15px;
+        font-weight: unset;
+        font-size: 15px;
+        color: red;
+    }
 }
 
 .main-characteristics{
@@ -103,18 +144,18 @@ html {
 }
 
 .submit-contact{
-    font-weight: 700;
+    //font-weight: 700;
     font-size: 16px;
-    line-height: 24px;
+    //line-height: 24px;
     height: auto;
     background-color: rgb(0, 106, 255);
-    border-color: rgb(0, 106, 255);
+    //border-color: rgb(0, 106, 255);
     color: rgb(255, 255, 255);
     margin-left: 3%;
     margin-top: 3%;
     width: 77%;
-    border: 1px solid;
-    border-radius: 4px;
+    //border: 1px solid;
+    border-radius: 25px;
     cursor: pointer;
 }
 
@@ -142,7 +183,7 @@ html {
    }
 
 .property-content{
-    margin-top: 20px;
+    //margin-top: 20px;
     .tab{
         margin-bottom: 20px;
     }

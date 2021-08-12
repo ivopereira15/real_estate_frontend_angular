@@ -8,6 +8,7 @@ export class Property {
     public PriceNetAream2: number;
     public GrossAream2: number;
     public Typology: string;
+    public Rooms: number;
     public Floor: number;
     public YearOfConstruction: number;
     public NumberOfBathrooms: number;

@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MobileUtilityService } from 'src/app/core/services/shared/mobile-utility';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility';
+import { TempTokenService } from 'src/app/core/services/shared/temp-token.service';
 
 @Component({
   selector: 'app-register-private-user',
@@ -17,10 +18,11 @@ import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility
 export class RegisterPrivateUserComponent implements OnInit, OnDestroy {
 
   public locations: string[] = ['Lisboa', 'Porto'];
-  public tempId: any = null;
+  // public tempId: any = null;
   public confirmPassword = false;
   public confirmPasswordInput: string;
   public newUser: User = new User();
+  public tempId: any;
   userForm = new FormGroup({
     firstname: new FormControl('', [
       Validators.required]),
@@ -42,12 +44,13 @@ export class RegisterPrivateUserComponent implements OnInit, OnDestroy {
     @Inject(UserService) public userService: UserService,
     private activatedRoute: ActivatedRoute,
     @Inject(Router) private router: Router,
-    @Inject(MobileUtilityService) private mobileUtilityService: MobileUtilityService) { }
+    @Inject(MobileUtilityService) private mobileUtilityService: MobileUtilityService,
+    private tempTokenService: TempTokenService) { }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.tempId = params["tempId"];
-    });
+   // this.activatedRoute.queryParams.subscribe(params => {
+   //   this.tempId = params["tempId"];
+   // });
     this.windowChangeSubscription = this.mobileUtilityService.getWindowObservable().subscribe((windowChange: IWindowData) => {
       this.isMobile = !windowChange.isBiggerAsLaptop;
     });
@@ -67,20 +70,21 @@ export class RegisterPrivateUserComponent implements OnInit, OnDestroy {
   public createAccount() {
     if (this.passwordForm.valid) {
       if (this.newUser.Password === this.confirmPasswordInput) {
-        if(this.tempId !== null){
-          this.newUser.TempId = this.tempId;
-        }
-        this.userService.createNewUser(this.newUser).subscribe(
+        this.tempId = this.tempTokenService.token;
+        this.userService.createNewUser(this.newUser, this.tempId).subscribe(
           (resultMessage: ResultMessage<string>) => {
             if (resultMessage.IsValid) {
+              this.tempTokenService.destroyPublicToken();
               this.router.navigate(['/login']);
             }
           },
           (httpErrorResponse: HttpErrorResponse) => {
+            this.tempTokenService.destroyPublicToken();
             console.log(httpErrorResponse);
             // TODO add errors to array and display
           });
       } else {
+        this.tempTokenService.destroyPublicToken();
         this.passwordForm.controls.confirmPassword.setErrors({
           notmatch: true,
         });
