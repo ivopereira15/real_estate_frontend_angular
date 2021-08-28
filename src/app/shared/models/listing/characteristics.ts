@@ -1,8 +1,9 @@
 export class Characteristics {
     Id: number;
-    PropertyId: number;
+    PropertyId?: number;
     Name: string;
-    CountNumber: number;
+    CountNumber?: number;
     IconName: string;
-    Deleted: boolean;
+    Deleted?: boolean;
+    addedToProperty?: boolean;
 }

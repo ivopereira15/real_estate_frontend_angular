@@ -101,21 +101,30 @@
 
 
 
-// Material Override PLACE TO STYLES
 
-// ::ng-deep .mat-form-field-flex > .mat-form-field-infix {
-//     padding: 0.4em 0px !important;
-// }
-// ::ng-deep .mat-form-field-label-wrapper {
-//     top: -1.5em;
-// }
+}
+.row{
+    margin-right: 0px; 
+    margin-left: 0px;
 
-// ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
-//     .mat-form-field-label {
-//     transform: translateY(-1.1em) scale(0.75);
-//     width: 133.33333%;
-// }
+}
 
+
+.property-address{
+    margin-bottom: 10%;
+}
+
+.characteristics{
+    margin-left: 15px;
+    .badge-light{
+        border: 1px solid white;
+        background-color: #09f;
+        color: white;
+        padding: 7px;
+    }
+    .characteristicSelected{
+        background-color: green;
+    }
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
@@ -130,3 +139,7 @@
     background-color: rgb(241, 241, 241);
     border-radius: 20px 20px 20px 20px !important;
   }
+
+  .err-msg{
+    color:red;
+}
