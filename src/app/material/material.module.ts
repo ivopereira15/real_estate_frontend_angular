@@ -20,10 +20,11 @@ import {
   MatPaginatorModule,
   MatTableModule,
   MatProgressSpinnerModule,
-  MatGridListModule
+  MatGridListModule,
+  MatChipsModule
 } from '@angular/material';
 
-const MaterialComponents = [MatFormFieldModule,
+const MaterialModules = [MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -43,11 +44,12 @@ const MaterialComponents = [MatFormFieldModule,
     MatPaginatorModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatGridListModule];
+    MatGridListModule,
+    MatChipsModule];
 
 
 @NgModule({
-  imports: [MaterialComponents],
-  exports: [MaterialComponents]
+  imports: [MaterialModules],
+  exports: [MaterialModules]
 })
 export class MaterialModule { }

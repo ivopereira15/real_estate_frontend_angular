@@ -13,6 +13,11 @@ export class AppContextService {
         return env.ApiUrl;
     }
 
+    public getChatUrl(): string {
+        const env = this.getEnvironment();
+        return env.ChatUrl;
+    }
+
     public getEnvironment() {
             return environment.startupApiEnvironment;
     }
