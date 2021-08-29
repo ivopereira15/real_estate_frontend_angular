@@ -249,6 +249,11 @@ export class SellHouseComponent implements OnInit, OnChanges {
     this.submitProperty = true;
     
     if (this.mainPropertyCharacteristic.valid && this.photos.length > 0) {
+      let characteristicsToAdd: Characteristics[] = [];
+      this.characteristics.map((characteristics) => {
+        if(characteristics.addedToProperty)
+          characteristicsToAdd.push(characteristics)
+      })
       this.sellHouseForm.Price =   this.mainPropertyCharacteristic.controls.price.value;
       this.sellHouseForm.NetAream2 =   this.mainPropertyCharacteristic.controls.netAream2.value;
       this.sellHouseForm.PriceNetAream2 =   this.mainPropertyCharacteristic.controls.price.value;
@@ -263,6 +268,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
       this.sellHouseForm.Country =  this.mainPropertyCharacteristic.controls.country.value;
       this.sellHouseForm.photos = this.photos;
       this.sellHouseForm.Address =  this.mainPropertyCharacteristic.controls.street.value;
+      this.sellHouseForm.Characteristics = characteristicsToAdd;
       console.log(this.sellHouseForm);
       this.publishListing.emit(this.sellHouseForm);
     }

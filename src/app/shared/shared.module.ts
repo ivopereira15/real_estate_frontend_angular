@@ -18,7 +18,8 @@ import { MatButtonLoadingDirective } from './directives/button-loading.directive
 import { PropertyDetailsComponent } from './property-details/property-details.component';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 
-import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view'; // ng-image-fullscreen-view
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { ListOfCardsComponent } from './component/list-of-cards/list-of-cards.component'; // ng-image-fullscreen-view
 
 const components = [
   NavbarComponent,
@@ -28,11 +29,12 @@ const components = [
   SellHouseComponent,
   MapComponent,
   MapSearchComponent,
-  MatButtonLoadingDirective
+  MatButtonLoadingDirective,
+  ListOfCardsComponent
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent ],
+  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, NgImageFullscreenViewModule],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule],
   entryComponents: [PropertyDetailsComponent, CreateDialogComponent]

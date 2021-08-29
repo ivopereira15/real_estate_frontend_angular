@@ -1,0 +1,16 @@
+<div class="col-12 slide">
+    <div class="pull-left">
+      <img class="arrow-left" src="/assets/icons/arrow-left.svg" width="40px" (click)="scrollLeft()" />
+    </div>  
+    <div  class="container-row custom-slider-main" #widgetsContent>
+      <div *ngFor="let property of promotedProperties">
+        <div class="card-property">
+          <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId]">
+          </app-property-frame>
+        </div>
+      </div>
+    </div>
+    <div class="pull-right">
+      <img class="arrow-right" src="/assets/icons/arrow-right.svg" width="40px" (click)="scrollRight()"/>
+    </div>
+  </div>

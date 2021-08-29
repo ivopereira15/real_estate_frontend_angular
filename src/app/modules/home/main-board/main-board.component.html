@@ -8,17 +8,9 @@
     </div>
     <mat-spinner *ngIf="!loadedPromtedProperties"></mat-spinner>
     <span *ngIf="loadedPromtedProperties && promotedProperties.length === 0">No properties available</span>
-    <div *ngIf=loadedPromtedProperties>
-      <div class="row container-row">
-        <div *ngFor="let property of promotedProperties">
-          <div class="mr-5">
-            <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId]">
-            </app-property-frame>
-          </div>
-        </div>
-      </div>
+      <app-list-of-cards  [promotedProperties] = "promotedProperties"></app-list-of-cards>
     </div>
-  </div>
+
 
   <!--New Listings-->
   <div class="container-new-listings">
@@ -28,18 +20,7 @@
     </div>
     <mat-spinner *ngIf=!loadedNewListings></mat-spinner>
     <span *ngIf="loadedNewListings && newListings.length === 0">No properties available</span>
-    <div *ngIf=loadedNewListings>
-      <div class="row container-row">
-        <div *ngFor="let property of newListings">
-          <div class="mr-5">
-            <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId]">
-            </app-property-frame>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
+    <app-list-of-cards  [promotedProperties] = "newListings"></app-list-of-cards>
   </div>
 
   <!--All Listings-->
@@ -47,14 +28,7 @@
     <div class=text-all-listings>
       <div class="title-all-listings">All Listings</div>
     </div>
-    <div  class="row container-row">
-      <div *ngFor="let property of allListings">
-        <div class="mr-5">
-          <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId]">
-          </app-property-frame>
-        </div>
-      </div>
-    </div>
+    <app-list-of-cards  [promotedProperties] = "allListings"></app-list-of-cards>
   </div>
 
   <div class="cubes">

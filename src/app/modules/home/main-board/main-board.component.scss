@@ -7,8 +7,9 @@
     height: 170vh;
 }
 
-.mr-5 {
-    margin-right: 10px !important;
+.card-property {
+    width: 300px;
+    margin-right: 10px;
 }
 
 .container-row {
@@ -116,3 +117,37 @@
     margin-bottom: 10px;
 }
 
+.custom-slider-main{
+    display: flex;
+    overflow: hidden;    
+    scroll-behavior: smooth;
+}
+
+ .info-box{
+    width: 50px;
+    height:50px
+ }
+
+ .arrow-left{
+    background-image:url( "/assets/icons/arrow-left.svg");
+ }
+
+ .arrow-right{
+    background-image: url("/assets/icons/arrow-right.svg");
+}
+
+.slide {
+    display: flex;
+}
+
+.pull-left{
+    line-height: 150px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.pull-right{
+    line-height: 150px;
+    text-align: center;
+    margin-left: 10px;
+}

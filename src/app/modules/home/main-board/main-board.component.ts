@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from 'src/app/core/services/api/user.service';
 import { SearchPagination } from 'src/app/shared/models/search/search-paginations';
 import { SearchUser } from 'src/app/shared/models/search/search-user';
@@ -22,7 +22,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MainBoardComponent implements OnInit, OnDestroy {
 
   // public users: User[];
-
+  @ViewChild('widgetsContent1') widgetsContent1: ElementRef;
+  @ViewChild('widgetsContent2') widgetsContent2: ElementRef;
+  @ViewChild('widgetsContent3') widgetsContent3: ElementRef;
   searchPagination: SearchPagination<SearchUser> = new SearchPagination<SearchUser>();
   searchProperties: SearchProperty = new SearchProperty();
   subscriptions: Subscription = new Subscription();
@@ -52,7 +54,7 @@ export class MainBoardComponent implements OnInit, OnDestroy {
           let result = res.Result.Data;
 
           //Just first 4 properties in the row. Later to make an endpoint for that
-          for (let i: number = 2; i <= 8; i++) {
+          for (let i: number = 0; i <= 8; i++) {
             if (result[i] !== undefined) {
               this.promotedProperties.push(result[i]);
 
@@ -96,6 +98,14 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     //     }
     //   })
     // );
+  }
+
+  scrollLeft(){
+    this.widgetsContent2.nativeElement.scrollLeft -= 150;
+  }
+
+  scrollRight(){
+    this.widgetsContent2.nativeElement.scrollLeft += 150;
   }
 
   ngOnDestroy() {
