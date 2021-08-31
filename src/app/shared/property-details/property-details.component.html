@@ -85,11 +85,41 @@
                         
                         The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
                     </div>
-                    <div class="tab"  *ngIf="characteristics.length > 0"> 
+                    <div class="tab"  *ngIf="property.Characteristics.length > 0"> 
+                        <h4>Main Characteristics</h4>
+                        <div class="row main-characteristics">
+                            <div clas="col-2">
+                                <img src="/assets/icons/home.svg" width="22" />
+                                <span class="main-characteristics-title">Type: </span>
+                                <span>{{property.Typology}}</span>
+                            </div>
+                            <div clas="col-2">
+                                <img src="/assets/icons/energy.svg" width="22" />
+                                <span class="main-characteristics-title">Energy: </span>
+                                <span>{{property.EnerergyCertificate}}</span>
+                            </div>
+                            <div clas="col-2">
+                                <img src="/assets/icons/sun.svg" width="22" />
+                                <span class="main-characteristics-title">Sun Orientation: </span>
+                                <span class="main-characteristics-value">{{property.SunOrientation}}</span>
+                            </div>
+                            <div clas="col-2">
+                                <img src="/assets/icons/year.svg" width="22" />
+                                <span class="main-characteristics-title">Year built: </span>
+                                <span class="main-characteristics-value">{{property.YearOfConstruction}}</span>
+                            </div>
+                            <div clas="col-2" *ngIf="property.ConditionState">
+                                <img src="/assets/icons/condition-state.svg" width="22" />
+                                <span class="main-characteristics-title">Condition State: </span>
+                                <span class="main-characteristics-value">{{property.ConditionState}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab"  *ngIf="property.Characteristics.length > 0"> 
                         <h4>Aditional Features</h4>
                         <mat-divider></mat-divider>
                         <div class="row characteristics">
-                            <div  *ngFor="let item of characteristics; let i = index">
+                            <div  *ngFor="let item of property.Characteristics; let i = index">
                                 <div class="col-12 badge badge-pill badge-light">
                                     <img src="/assets/icons/{{item.IconName}}.svg" width="16" />
                                     {{item.Name}}

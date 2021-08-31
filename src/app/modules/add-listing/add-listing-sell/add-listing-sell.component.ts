@@ -75,32 +75,6 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
 
   async publishListing(sellHouseForm: SellHouse) {
     this.loading = true;
-
-    //FOR IVO ------------------ for test
-    const characteristics: Characteristics[] = [];
-    var test = new Characteristics;
-    test.Name = "Year";
-    test.IconName = "propertydate";
-    test.CountNumber = 22;
-    characteristics.push(test);
-    var test2 = new Characteristics;
-    test2.Name = "1";
-    test2.IconName = "fireplate";
-    test2.CountNumber = 23;
-    characteristics.push(test2);
-    var test3 = new Characteristics;
-    test3.Name = "1";
-    test3.IconName = "balcony";
-    test3.CountNumber = 24;
-    characteristics.push(test3);
-    var test4 = new Characteristics;
-    test4.Name = "1";
-    test4.IconName = "elevator";
-    test4.CountNumber = 25;
-    characteristics.push(test4);
-    sellHouseForm.Characteristics = characteristics;
-
-
     // Check if logged in. If yes, POST
     const isAuthnticated = this.authService.isAuthenticated();
     if (isAuthnticated) {

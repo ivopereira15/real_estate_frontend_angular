@@ -23,7 +23,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
 
   public mapPoint: MapPoint;
   submitProperty: boolean = false;
-  typology: string[] = ['T0', 'T1', 'T2', 'T3'];
+  typology: string[] = ['T0', 'T1', 'T2', 'T3', 'T4', 'T5'];
   conditionStateOption: string[] = ['Contrution in Progress', 'Old', 'New', 'Renew'];
   sunOrientationOption: string[] = ['N', 'S', 'E', 'W'];
   bathrooms: number[] = [1, 2, 3, 4, 5];
@@ -179,11 +179,6 @@ export class SellHouseComponent implements OnInit, OnChanges {
   IconName: string;
   Deleted: boolean;
   
-  choices = [
-    'Bulbasaur',
-    'Charmander',
-    'Squirtle'
-  ];
   public mainPropertyCharacteristic: FormGroup;
 
   constructor(  public form: FormBuilder) {
@@ -260,7 +255,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
       this.sellHouseForm.GrossAream2 =   this.mainPropertyCharacteristic.controls.grossAream2.value;
       this.sellHouseForm.PropertyTypeId =   this.mainPropertyCharacteristic.controls.propertyTypeId.value;
       this.sellHouseForm.Floor =   this.mainPropertyCharacteristic.controls.floor.value;
-      this.sellHouseForm.GrossAream2 =   this.mainPropertyCharacteristic.controls.grossAream2.value;
+      this.sellHouseForm.YearOfConstruction =   this.mainPropertyCharacteristic.controls.yearOfConstruction.value;
       this.sellHouseForm.Rooms =   this.mainPropertyCharacteristic.controls.rooms.value;
       this.sellHouseForm.NumberOfBathrooms =   this.mainPropertyCharacteristic.controls.numberOfBathrooms.value;
       this.sellHouseForm.EnerergyCertificate =   this.mainPropertyCharacteristic.controls.enerergyCertificate.value;
@@ -269,6 +264,8 @@ export class SellHouseComponent implements OnInit, OnChanges {
       this.sellHouseForm.photos = this.photos;
       this.sellHouseForm.Address =  this.mainPropertyCharacteristic.controls.street.value;
       this.sellHouseForm.Characteristics = characteristicsToAdd;
+      this.sellHouseForm.Description =  this.mainPropertyCharacteristic.controls.description.value;;
+      this.sellHouseForm.Typology = this.mainPropertyCharacteristic.controls.propertyTypeId.value;
       console.log(this.sellHouseForm);
       this.publishListing.emit(this.sellHouseForm);
     }

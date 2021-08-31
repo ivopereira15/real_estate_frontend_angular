@@ -1,16 +1,14 @@
-<div class="center-column align-items-center">
-    <div class="row">
-        <div class="col-md-4 on-hover-click" [routerLink]="['/add-listing/sell']">
-            <div class="sell-photo"></div>
-            <div class="sell-text">Sell Your House</div>
+<div class="row center-column justify-content-center">
+    <div class="row justify-content: center !important;">
+      
+        <div  [routerLink]="['/add-listing/sell']">
+            <app-card  cardBgImage="sell-house" cardText="Sell Your House"></app-card>
         </div>
-        <div class="col-md-4 on-hover-click" [routerLink]="['/add-listing/rent']">
-            <div class="rent-photo"></div>
-            <div class="rent-text">Rent Your House</div>
+        <div  [routerLink]="['/add-listing/rent']">
+            <app-card  cardBgImage="rent-house" cardText="Rent Your House"></app-card>
         </div>
-        <div class="col-md-4 on-hover-click">
-            <div class="rent-room-photo"></div>
-            <div class="rent-room-text">Rent Your Room</div>
+        <div >
+            <app-card  cardBgImage="rent-room" cardText="Rent Your Room"></app-card>
         </div>
     </div>
 

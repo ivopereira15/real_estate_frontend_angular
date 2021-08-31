@@ -12,19 +12,21 @@ export class Property {
     public Floor: number;
     public YearOfConstruction: number;
     public NumberOfBathrooms: number;
-    public EnergyCertificate: string;
+    public SunOrientation: string;
     public Country: string;
     public City: string;
     public Address: string;
     public Description: string;
     public ImagesUrl?: File[];
     public Characteristics?: string;
-
+    public EnerergyCertificate: string;
     public Latitude: number;
     public Longitude: number;
 
+    public ConditionState: number;
     public PropertyTypeId: number;
     public OperationTypeId: number;
+
 
     public Images: PropertyImage[];
 }

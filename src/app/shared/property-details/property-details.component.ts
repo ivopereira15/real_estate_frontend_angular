@@ -6,7 +6,7 @@ import { MapPoint } from 'src/app/shared/models/map/map-point';
 import { Characteristics } from '../models/listing/characteristics';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {CustomValidators} from 'src/app/core/services/shared/custom_validations';
-import { ViewportScroller } from '@angular/common';
+
 
 @Component({
   selector: 'app-property-details',
@@ -46,6 +46,7 @@ export class PropertyDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.router.navigate([], { fragment: "targetBlue" });
     if (this.property) {
+      console.log(this.property);
       this.property.Images.forEach(i => {
         this.items.push({ image: i.ImageUrl });
         this.mapPoint = new MapPoint();
@@ -53,25 +54,6 @@ export class PropertyDetailsComponent implements OnInit {
         this.mapPoint.longitude = this.property.Longitude;
       });
 
-
-      const test = new Characteristics;
-      test.Name = this.property.YearOfConstruction.toString();
-      test.IconName = "propertydate";
-      test.CountNumber = 22;
-      this.characteristics.push(test);
-
-      const test2 = new Characteristics;
-      test2.Name = "Fireplate";
-      test2.IconName = "fireplate";
-      test2.CountNumber = 23;
-      this.characteristics.push(test2);
-
-      const test3 = new Characteristics;
-      test3.Name = "Balcony";
-      test3.IconName = "Balcony";
-      test3.CountNumber = 24;
-      this.characteristics.push(test3);
-      console.log( this.characteristics);
     }
   }
 

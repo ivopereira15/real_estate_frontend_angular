@@ -18,10 +18,10 @@ export class SellHouse {
     public Description: string;
     public ImagesUrl?: File[];
     public Characteristics?: Characteristics[];
-
+    public SunOrientation: string;
     public Latitude: number;
     public Longitude: number;
-
+    public ConditionState: number;
     public PropertyTypeId: number;
     public OperationTypeId: number;
 
