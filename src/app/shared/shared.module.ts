@@ -20,6 +20,9 @@ import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { ListOfCardsComponent } from './component/list-of-cards/list-of-cards.component'; // ng-image-fullscreen-view
+import { NgImageSliderModule } from 'ng-image-slider';
+import { CarouselComponent } from './component/carousel/carousel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const components = [
   NavbarComponent,
@@ -30,12 +33,13 @@ const components = [
   MapComponent,
   MapSearchComponent,
   MatButtonLoadingDirective,
-  ListOfCardsComponent
+  ListOfCardsComponent,
+  CarouselComponent
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent],
-  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, NgImageFullscreenViewModule],
+  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent, CarouselComponent],
+  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, NgImageFullscreenViewModule, NgImageSliderModule, NgbModule],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule],
   entryComponents: [PropertyDetailsComponent, CreateDialogComponent]
 })
