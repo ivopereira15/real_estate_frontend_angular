@@ -1,17 +1,31 @@
 <div class="card">
   <div class="card-container">
-
     <div *ngIf="property" class="card-image">
-      <img [src]="image" width="100%" height="100%">
+      <app-carousel [items] = "items"></app-carousel>
     </div>
 
     <div *ngIf="property" class="card-container-content">
-      <div class="charachteristics">{{property.NetAream2}} m2 | {{property.Typology}} bedrooms | {{property.NumberOfBathrooms}} bathrooms</div>
+      <div class="price">{{property.Price}} €</div>
+      <div class="head-characteristics">
+        <div class="d-flex charct" *ngIf="property.GrossAream2">
+            <img src="/assets/icons/house.svg" width="15" /> <p> {{property.GrossAream2}} <span>m2</span>  </p>
+        </div>
+        <div class="d-flex charct" *ngIf="property.NumberOfBathrooms">
+            <img src="/assets/icons/bathroom.svg" width="15" /> <p> {{property.NumberOfBathrooms}} <span>ba</span></p>
+        </div>
+        <div class="d-flex charct" *ngIf="property.NumberOfBathrooms">
+            <img src="/assets/icons/room.svg" width="15" /> <p> {{property.NumberOfBathrooms}} <span>bd</span></p>
+        </div>
+        <div class="d-flex charct" *ngIf="property.Floor">
+            <img src="/assets/icons/floor.svg" width="15" /> <p> {{property.Floor}} <span>fl</span></p>
+        </div>         
+        <div class="d-flex charct">
+          <p>For Sale</p>
+        </div>          
+      </div>
       <div class="address-price-row">
         <div class="address">{{property.City}}, {{property.Country}}</div>
-        <div class="price">{{property.Price}} $</div>
       </div>
     </div>
-
   </div>
 </div>

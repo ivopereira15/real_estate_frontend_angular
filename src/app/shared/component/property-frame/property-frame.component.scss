@@ -1,7 +1,7 @@
 .card {
     width: 100%;
-    height: 200px;
-    border-radius: 15px;
+    height: 250px;
+    border-bottom: 5px solid blue;
 }
 
 .card-container {
@@ -20,11 +20,7 @@
 }
 
 .card-image {
-    height: 70%;
-    img {
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-    }
+    height: 160px;
 }
 
 .charachteristics{
@@ -33,21 +29,43 @@
     font-size: small;
     font-weight: bold;
 }
-
+.price {
+    font-weight: bold;
+    color: rgb(89, 142, 255);
+    font-size: large;
+    margin-left: 10px;
+}
 .address-price-row {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-left: 10px;
 
     .address {
         color: grey;
         font-size: small;
     }
+}
 
-    .price {
-        margin-left: auto;
-        font-weight: bold;
-        color: rgb(89, 142, 255);
-        font-size: large;
+.head-characteristics{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    height: 15px;
+
+    p{
+        color: rgb(70, 64, 64);
+        font-size: 12px;
+        span {
+            font-size: 12px;
+        }
     }
+
+    .charct{
+        margin-left: 10px;
+        img{
+            margin-bottom: 15px;
+        }
+    }
+
 }

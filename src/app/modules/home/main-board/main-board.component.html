@@ -4,7 +4,7 @@
   <div class="container-promoted">
     <div class="text">
       <div class="title">Promoted</div>
-      <div class="seemore">See more(1987)</div>
+      <div class="seemore">See more({{promotedProperties.length}})</div>
     </div>
     <mat-spinner *ngIf="!loadedPromtedProperties"></mat-spinner>
     <span *ngIf="loadedPromtedProperties && promotedProperties.length === 0">No properties available</span>
@@ -16,7 +16,7 @@
   <div class="container-new-listings">
     <div class=text>
       <div class="title">New Listings</div>
-      <div class="seemore">See more(1987)</div>
+      <div class="seemore">See more({{promotedProperties.length}})</div>
     </div>
     <mat-spinner *ngIf=!loadedNewListings></mat-spinner>
     <span *ngIf="loadedNewListings && newListings.length === 0">No properties available</span>

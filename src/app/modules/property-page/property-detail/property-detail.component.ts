@@ -43,11 +43,6 @@ export class PropertyDetailComponent implements OnInit, OnDestroy {
     @Inject(ListingService) private listingService: ListingService,
     private appContext: AppContextService,
     private route: ActivatedRoute) {
-    // this.items.push(this.image);
-    // this.items.push(this.image);
-    // this.items.push(this.image);
-    // this.items.push(this.image);
-    // this.items.push(this.image);
   }
 
   ngOnInit() {
