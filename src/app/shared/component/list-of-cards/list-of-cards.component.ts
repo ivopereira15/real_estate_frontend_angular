@@ -9,6 +9,7 @@ import { PropertyBasic } from '../../models/listing/property-basic';
 export class ListOfCardsComponent implements OnInit {
   @ViewChild('widgetsContent') widgetsContent: ElementRef;
   @Input() promotedProperties: PropertyBasic[] = [];
+  @Input() arrow?: boolean;
   constructor() { }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy, ViewChild, ElementRef, Input } from '@angular/core';
 import { UserService } from 'src/app/core/services/api/user.service';
 import { SearchPagination } from 'src/app/shared/models/search/search-paginations';
 import { SearchUser } from 'src/app/shared/models/search/search-user';
@@ -13,6 +13,8 @@ import { PropertyBasic } from 'src/app/shared/models/listing/property-basic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PropertyDetailsComponent } from 'src/app/shared/property-details/property-details.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MobileUtilityService } from 'src/app/core/services/shared/mobile-utility';
+import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility';
 
 @Component({
   selector: 'app-main-board',
@@ -25,6 +27,7 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   @ViewChild('widgetsContent1') widgetsContent1: ElementRef;
   @ViewChild('widgetsContent2') widgetsContent2: ElementRef;
   @ViewChild('widgetsContent3') widgetsContent3: ElementRef;
+  @Input() public arrow: boolean;
   searchPagination: SearchPagination<SearchUser> = new SearchPagination<SearchUser>();
   searchProperties: SearchProperty = new SearchProperty();
   subscriptions: Subscription = new Subscription();
@@ -36,13 +39,27 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   loadedPromtedProperties: boolean = false;
   loadedNewListings: boolean = false;
   loadedAllListings: boolean = false;
-
+  public isMobile: boolean = false;
+  public items: Array<
+  { icon: string, 
+    title: string,
+    description: string,
+    buttonText: string
+   }
+  > = [];
+  private windowChangeSubscription: Subscription;
   constructor(
     @Inject(UserService) private userService: UserService,
     @Inject(ListingService) private listingService: ListingService,
+    @Inject(MobileUtilityService) private mobileUtilityService: MobileUtilityService,
     public modalService: NgbModal) { }
 
   ngOnInit() {
+    this.windowChangeSubscription = this.mobileUtilityService.getWindowObservable().subscribe((windowChange: IWindowData) => {
+      this.isMobile = !windowChange.isBiggerAsLaptop;
+    });
+    this.populateItems();
+
     // Properties search Init
     this.searchProperties.criteria = "1";
     this.searchProperties.priceFrom = 1;
@@ -100,6 +117,34 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     // );
   }
 
+  populateItems(): void {
+    const item1 = {
+      icon: "apartment",
+      title: "Buy",
+      description: "Find your dream home among our list of houses",
+      buttonText: "Buy your dream house",
+    };
+
+    const item2 = {
+      icon: "location_city",
+      title: "Sell",
+      description: "Find the best seller for your home",
+      buttonText: "Sell at the best price",
+    }
+
+    const item3 = {
+      icon: "home",
+      title: "Rent",
+      description: "Explore our best options in the market",
+      buttonText: "Find a room ",
+    }
+
+    
+    this.items.push(item1);
+    this.items.push(item2);
+    this.items.push(item3);
+  }
+
   scrollLeft(){
     this.widgetsContent2.nativeElement.scrollLeft -= 150;
   }
@@ -110,5 +155,10 @@ export class MainBoardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
+  }
+
+  fireEvent(e) {
+    e.stopPropagation();
+    return false;
   }
 }

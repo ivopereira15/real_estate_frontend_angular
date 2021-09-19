@@ -1,5 +1,5 @@
-<div class="col-12 slide">
-    <div class="pull-left">
+<div class="col-12 slide justify-content-center">
+    <div class="pull-left" *ngIf="arrow">
       <img class="arrow-left" src="/assets/icons/arrow-left.svg" width="40px" (click)="scrollLeft()" />
     </div>  
     <div  class="container-row custom-slider-main" #widgetsContent>
@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <div class="pull-right">
+    <div class="pull-right" *ngIf="arrow">
       <img class="arrow-right" src="/assets/icons/arrow-right.svg" width="40px" (click)="scrollRight()"/>
     </div>
   </div>

@@ -1,36 +1,72 @@
 <div class="board-container">
 
-  <!--Promoted-->
-  <div class="container-promoted">
-    <div class="text">
-      <div class="title">Promoted</div>
-      <div class="seemore">See more({{promotedProperties.length}})</div>
-    </div>
-    <mat-spinner *ngIf="!loadedPromtedProperties"></mat-spinner>
-    <span *ngIf="loadedPromtedProperties && promotedProperties.length === 0">No properties available</span>
-      <app-list-of-cards  [promotedProperties] = "promotedProperties"></app-list-of-cards>
+  <ng-container *ngIf="isMobile">
+    <mat-tab-group>
+      <mat-tab label="Promoted">
+        <div class="container-promoted">
+          <div class="text">
+            <div class="title">Promoted</div>
+          </div>
+          <mat-spinner *ngIf="!loadedPromtedProperties"></mat-spinner>
+          <span *ngIf="loadedPromtedProperties && promotedProperties.length === 0">No properties available</span>
+          <app-list-of-cards  [promotedProperties] = "promotedProperties" [arrow]= "false"></app-list-of-cards>
+        </div>
+      </mat-tab>
+      <mat-tab label="New Listings">    
+        <div class="container-new-listings">
+          <div class=text>
+            <div class="title">New Listings</div>
+          </div>
+          <mat-spinner *ngIf=!loadedNewListings></mat-spinner>
+          <span *ngIf="loadedNewListings && newListings.length === 0">No properties available</span>
+          <app-list-of-cards  [promotedProperties] = "newListings" arrow= "false"></app-list-of-cards>
+        </div>
+      </mat-tab>
+      <mat-tab label="All Listings">
+        <div class="container-all-listings">
+          <div class=text-all-listings>
+            <div class="title-all-listings">All Listings</div>
+          </div>
+          <app-list-of-cards  [promotedProperties] = "allListings" [arrow]= "false"></app-list-of-cards>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </ng-container>
+
+  
+
+  <ng-container *ngIf="!isMobile">
+    <div class="container-promoted">
+      <div class="text">
+        <div class="title">Promoted</div>
+        <div class="seemore">See more({{promotedProperties.length}})</div>
+      </div>
+      <mat-spinner *ngIf="!loadedPromtedProperties"></mat-spinner>
+      <span *ngIf="loadedPromtedProperties && promotedProperties.length === 0">No properties available</span>
+        <app-list-of-cards  [promotedProperties] = "promotedProperties" [arrow] = "true"></app-list-of-cards>
+      </div>
+
+    <!--New Listings-->
+    <div class="container-new-listings">
+      <div class=text>
+        <div class="title">New Listings</div>
+        <div class="seemore">See more({{promotedProperties.length}})</div>
+      </div>
+      <mat-spinner *ngIf=!loadedNewListings></mat-spinner>
+      <span *ngIf="loadedNewListings && newListings.length === 0">No properties available</span>
+      <app-list-of-cards  [promotedProperties] = "newListings" arrow= "true"></app-list-of-cards>
     </div>
 
-
-  <!--New Listings-->
-  <div class="container-new-listings">
-    <div class=text>
-      <div class="title">New Listings</div>
-      <div class="seemore">See more({{promotedProperties.length}})</div>
+    <!--All Listings-->
+    <div class="container-all-listings">
+      <div class=text-all-listings>
+        <div class="title-all-listings">All Listings</div>
+      </div>
+      <app-list-of-cards  [promotedProperties] = "allListings" [arrow]= "true"></app-list-of-cards>
     </div>
-    <mat-spinner *ngIf=!loadedNewListings></mat-spinner>
-    <span *ngIf="loadedNewListings && newListings.length === 0">No properties available</span>
-    <app-list-of-cards  [promotedProperties] = "newListings"></app-list-of-cards>
-  </div>
+  </ng-container>
 
-  <!--All Listings-->
-  <div class="container-all-listings">
-    <div class=text-all-listings>
-      <div class="title-all-listings">All Listings</div>
-    </div>
-    <app-list-of-cards  [promotedProperties] = "allListings"></app-list-of-cards>
-  </div>
-
+  <ng-container *ngIf="!isMobile">
   <div class="cubes">
     <div class="card">
       <mat-card>
@@ -39,10 +75,10 @@
             apartment
           </div>
         </div>
-        <div class="title">Buy </div>
+        <div class="title">Buy</div>
         <div class="text-content">Find your dream home among our list of houses</div>
         <div class="center-button">
-          <button mat-raised-button class="search"> Buy your dream house</button>
+          <button mat-raised-button class="search">Buy your dream house</button>
         </div>
       </mat-card>
     </div>
@@ -56,7 +92,7 @@
         <div class="title">Sell</div>
         <div class="text-content">Find the best seller for your home</div>
         <div class="center-button">
-          <button mat-raised-button class="search"> Sell at the best price</button>
+          <button mat-raised-button class="search">Sell at the best price</button>
         </div>
       </mat-card>
     </div>
@@ -70,11 +106,31 @@
         <div class="title">Rent</div>
         <div class="text-content">Explore our best options in the market</div>
         <div class="center-button">
-          <button mat-raised-button class="search"> Find a room </button>
+          <button mat-raised-button class="search">Find a room</button>
         </div>
       </mat-card>
     </div>
   </div>
-
+  </ng-container>
+  <ng-container *ngIf="isMobile">
+    <ngb-carousel  (click)="fireEvent($event)">
+        <ng-template ngbSlide  *ngFor="let item of items">
+        <div class="card">
+          <mat-card>
+            <div class="icon">
+              <div class="material-icons">
+                {{item.icon}}
+              </div>
+            </div>
+            <div class="title">{{item.title}}</div>
+            <div class="text-content">{{item.description}}</div>
+            <div class="center-button">
+              <button mat-raised-button class="search">{{item.buttonText}}</button>
+            </div>
+          </mat-card>
+          </div>
+        </ng-template>
+    </ngb-carousel>
+  </ng-container>
 </div>
 <router-outlet></router-outlet>
