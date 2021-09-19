@@ -1,3 +1,4 @@
+@import "~src/sass/_vars";
 .board-container {
     display: flex;
     flex-direction: column;
@@ -150,4 +151,135 @@
     line-height: 150px;
     text-align: center;
     margin-left: 10px;
+}
+
+::ng-deep{
+   .carousel-inner {
+        margin-top: 25px;
+        text-align: center;
+    }
+    .carousel-indicators li { visibility: hidden; }
+}
+
+mat-card{
+    background: #aec2f3;
+}
+
+
+
+@media (min-width: $dimension-breakpoint-xxs-min) {
+    .cubes {
+        .text-content {
+            height: 35%;
+        }
+    }
+    mat-card{
+        height: 200px;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xs-min) {
+    .cubes {
+        .text-content {
+            height: 35%;
+        }
+    }
+    mat-card{
+        height: 200px;
+    }
+}
+
+
+
+@media (min-width: $dimension-breakpoint-sm-min) {
+    .cubes {
+        .text-content {
+            height: 35%;
+        }
+    }
+    mat-card{
+        height: 200px;
+    }
+}
+
+
+  
+@media (min-width: $dimension-breakpoint-md-min) {
+    .cubes {
+        .text-content {
+            height: auto;
+        }
+    }
+    mat-card{
+        height: 100%;
+    }
+}
+
+
+  
+@media (min-width: $dimension-breakpoint-lg-min) {
+    .cubes {
+        .text-content {
+            height: auto;
+        }
+    }
+    mat-card{
+        height: 100%;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xl-min) {
+    .cubes {
+        .text-content {
+            height: auto;
+        }
+    }
+    mat-card{
+        height: 100%;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xl-mid-min) {
+    .cubes {
+        .text-content {
+            height: auto;
+        }
+    }
+    mat-card{
+        height: 100%;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xxl-min) {
+    .cubes {
+        .text-content {
+            height: auto;
+        }
+    }
+    mat-card{
+        height: 100%;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xxxl-min) {
+    .cubes {
+        .text-content {
+            height: auto;
+        }
+    }
+    mat-card{
+        height: 100%;
+    }
+}
+
+
+@media (min-width: $dimension-breakpoint-max-min) {
+    .cubes {
+        .text-content {
+            height: auto;
+        }
+    }
+    mat-card{
+        height: 100%;
+    }
 }

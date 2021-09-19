@@ -1,5 +1,5 @@
+@import "~src/sass/_vars";
 .custom-slider-main{
-    display: flex;
     overflow: hidden;    
     scroll-behavior: smooth;
 }
@@ -34,6 +34,111 @@
 }
 
 .card-property {
-    width: 300px;
     margin-right: 10px;
+}
+
+@media (min-width: $dimension-breakpoint-xxs-min) {
+    .custom-slider-main{
+        display: grid;
+    }
+    .card-property {
+        margin-bottom: 20px;
+        width: 350px;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xs-min) {
+    .custom-slider-main{
+        display: grid;
+    }
+    .card-property {
+        margin-bottom: 20px;
+        width: 350px;
+    }
+}
+
+
+
+@media (min-width: $dimension-breakpoint-sm-min) {
+    .custom-slider-main{
+        display: grid;
+    }
+    .card-property {
+        margin-bottom: 20px;
+        width: 350px;
+    }
+}
+
+
+  
+@media (min-width: $dimension-breakpoint-md-min) {
+    .custom-slider-main{
+        display: flex;
+    }
+    .card-property {
+        margin-bottom: 20px;
+        width: 350px;
+    }
+}
+
+
+  
+@media (min-width: $dimension-breakpoint-lg-min) {
+    .custom-slider-main{
+        display: flex;
+    }
+    .card-property {
+        margin-bottom: auto;
+        width: 300px;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xl-min) {
+    .custom-slider-main{
+        display: flex;
+    }
+    .card-property {
+        margin-bottom: auto;
+        width: 300px;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xl-mid-min) {
+    .custom-slider-main{
+        display: flex;
+    }
+    .card-property {
+        margin-bottom: auto;
+        width: 300px;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xxl-min) {
+    .custom-slider-main{
+        display: flex;
+    }
+    .card-property {
+        margin-bottom: auto;
+        width: 300px;
+    }
+}
+
+@media (min-width: $dimension-breakpoint-xxxl-min) {
+    .custom-slider-main{
+        display: flex;
+    }
+    .card-property {
+        margin-bottom: auto;
+        width: 300px;
+    }}
+
+
+@media (min-width: $dimension-breakpoint-max-min) {
+    .custom-slider-main{
+        display: flex;
+    }
+    .card-property {
+        margin-bottom: auto;
+        width: 300px;
+    }
 }

@@ -23,6 +23,7 @@ import { ListOfCardsComponent } from './component/list-of-cards/list-of-cards.co
 import { NgImageSliderModule } from 'ng-image-slider';
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTabsModule } from '@angular/material';
 
 const components = [
   NavbarComponent,
@@ -39,7 +40,7 @@ const components = [
 
 @NgModule({
   declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent, CarouselComponent],
-  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, NgImageFullscreenViewModule, NgImageSliderModule, NgbModule],
+  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, NgImageFullscreenViewModule, NgImageSliderModule, NgbModule, MatTabsModule],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule],
   entryComponents: [PropertyDetailsComponent, CreateDialogComponent]
 })

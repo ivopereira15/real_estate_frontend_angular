@@ -1,23 +1,20 @@
 <app-filter-container></app-filter-container>
 <div class="row height">
-    <div class="width-50_2">
-        <div>
-            <mat-grid-list cols="2" rowHeight="2:1">
-                <mat-grid-tile *ngFor="let property of promotedProperties">
-      
-                    <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId,  'search']">
-                    </app-property-frame>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <!-- <div class="row" *ngFor="let promotedProperties of chunkArray">
-                <div *ngFor="let property of promotedProperties" class="frame">
-                    <app-property-frame [property]="property" [routerLink]="['/property-detail', property.MySqlId]">
-                    </app-property-frame>
+    <div class="col-5">
+        <div class="col-12 slide justify-content-center">
+            <div  class="container container-row custom-slider-main" #widgetsContent>
+                <div *ngFor="let property of promotedProperties">
+                    <div class="card-property">
+                        <app-property-frame [property]="property"  [routerLink]="['details' , property.MySqlId,  'search']">
+                        </app-property-frame>
+                    </div>
                 </div>
-            </div> -->
+            </div>
+
         </div>
+
     </div>
-    <div class="width-50_2">
+    <div class="col-7">
         <div class="row width-80 height-map">
             <app-map-search [mapPointInputList]="mapPoints"></app-map-search>
         </div>

@@ -7,6 +7,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MainBoardComponent } from './main-board/main-board.component';
 import { SearchBoardComponent } from './search-board/search-board.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTabsModule } from '@angular/material';
 
 
 @NgModule({
@@ -15,7 +19,9 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    LeafletModule
+    LeafletModule,
+    NgImageFullscreenViewModule, NgImageSliderModule, NgbModule,
+    MatTabsModule
   ]
 })
 export class HomeModule { }
