@@ -4,7 +4,9 @@
 }
 
 .height {
-    height: 100vh;
+    height: 780px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .height-map {
    // height: 1000px;

@@ -24,6 +24,9 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTabsModule } from '@angular/material';
+import { FilterSearchOnViewComponent } from './component/filter/filter-search-on-view/filter-search-on-view.component';
+import { PopUpFiltersComponent } from './component/filter/pop-up-filters/pop-up-filters.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const components = [
   NavbarComponent,
@@ -39,8 +42,8 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent, CarouselComponent],
-  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, NgImageFullscreenViewModule, NgImageSliderModule, NgbModule, MatTabsModule],
+  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent, CarouselComponent, FilterSearchOnViewComponent, PopUpFiltersComponent],
+  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, NgImageFullscreenViewModule, NgImageSliderModule, NgbModule, MatTabsModule, BrowserAnimationsModule ],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule],
   entryComponents: [PropertyDetailsComponent, CreateDialogComponent]
 })

@@ -181,7 +181,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
   
   public mainPropertyCharacteristic: FormGroup;
 
-  constructor(  public form: FormBuilder) {
+  constructor(public form: FormBuilder) {
     this.mainPropertyCharacteristic = this.form.group({
       price: ['', [Validators.required, CustomValidators.validateIfIsNumber]],
       netAream2: ['', [Validators.required, CustomValidators.validateIfIsNumber]],
@@ -214,7 +214,6 @@ export class SellHouseComponent implements OnInit, OnChanges {
     this.mapPoint.latitude = this.sellHouseForm.Latitude;
     this.mapPoint.longitude = this.sellHouseForm.Longitude;
 
-    console.log(11);
   }
 
   public uploadImage(image: any): void {

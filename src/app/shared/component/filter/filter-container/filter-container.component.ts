@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Inject, OnDestroy } from '@ang
 import { MobileUtilityService } from 'src/app/core/services/shared/mobile-utility';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filter-container',
@@ -26,10 +27,12 @@ export class FilterContainerComponent implements OnInit, OnDestroy {
   public characteristics: any;
 
   constructor(
+    public router: Router,
     @Inject(MobileUtilityService) private mobileUtilityService: MobileUtilityService
   ) { }
 
   ngOnInit() {
+  
     this.windowChangeSubscription = this.mobileUtilityService.getWindowObservable().subscribe((windowChange: IWindowData) => {
       this.isMobile = !windowChange.isBiggerAsLaptop;
     });
