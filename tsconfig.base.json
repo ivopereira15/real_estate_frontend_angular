@@ -1,8 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": "./src", /* Specify the root directory of input files. Use to co*/
-    "emitDecoratorMetadata": true, /* Enables experimental support for emitting type metadata for decorators. */
+    "rootDir": "./src", /* Enables experimental support for emitting type metadata for decorators. */
     "allowJs": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
