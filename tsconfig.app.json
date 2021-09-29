@@ -1,9 +1,12 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "experimentalDecorators": true,
-    "experimentalDecorators": true,
-    "outDir": "./out-tsc/app",
+    "outDir": "./dist" /* Redirect output structure to the directory. */,
+    "rootDir": "./src", /* Specify the root directory of input files. Use to co*/
+    "experimentalDecorators": true, /* Enables experimental support for ES7 decorators. */
+    "emitDecoratorMetadata": true, /* Enables experimental support for emitting type metadata for decorators. */
+    "allowJs": true,
+    "moduleResolution": "node",
     "types": []
   },
   "files": [
