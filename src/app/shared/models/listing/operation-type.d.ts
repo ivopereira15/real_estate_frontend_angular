@@ -1,4 +1,8 @@
+import { OperationTypeEnum } from '../../enums/operation-type';
+
 export class OperationType {
     Id: number;
-    Type: string;
+    Type: OperationTypeEnum;
+    TypeName: string;
+    
 }

@@ -12,6 +12,7 @@ import { forkJoin } from 'rxjs';
 import { Router } from '@angular/router';
 import { Characteristics } from 'src/app/shared/models/listing/characteristics';
 import { Guid } from 'guid-typescript';
+import { OperationTypeEnum } from 'src/app/shared/enums/operation-type';
 
 @Component({
   selector: 'app-add-listing-sell',
@@ -20,7 +21,7 @@ import { Guid } from 'guid-typescript';
 })
 export class AddListingSellComponent implements OnInit, OnDestroy {
 
-  private readonly TYPE = 'Buy'; // Sell
+  private readonly TYPE = OperationTypeEnum.Buy; // Sell
   public title = "Sell your apartment";
   loading: boolean = false;
 

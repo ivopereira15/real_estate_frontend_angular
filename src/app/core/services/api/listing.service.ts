@@ -28,14 +28,14 @@ export class ListingService {
 
     constructor(private http: HttpClient, private appContext: AppContextService) { }
 
-    public getPropertyTypes(): Observable<ResultMessage<OperationType[]>> {
+    public getPropertyTypes(): Observable<ResultMessage<PropertyType[]>> {
         return this.http
-            .get<ResultMessage<OperationType[]>>(this.appContext.getAPIUrl() + '/organization/Listing/propertyTypes');
+            .get<ResultMessage<PropertyType[]>>(this.appContext.getAPIUrl() + '/organization/Listing/propertyTypes');
     }
 
-    public getOperationTypes(): Observable<ResultMessage<PropertyType[]>> {
+    public getOperationTypes(): Observable<ResultMessage<OperationType[]>> {
         return this.http
-            .get<ResultMessage<PropertyType[]>>(this.appContext.getAPIUrl() + '/organization/Listing/operationTypes');
+            .get<ResultMessage<OperationType[]>>(this.appContext.getAPIUrl() + '/organization/Listing/operationTypes');
     }
 
     public listSellHouse(listing: SellHouse): Observable<ResultMessage<number>> {
