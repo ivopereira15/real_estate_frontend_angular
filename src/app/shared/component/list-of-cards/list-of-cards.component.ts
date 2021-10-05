@@ -15,12 +15,4 @@ export class ListOfCardsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  scrollLeft(){
-    this.widgetsContent.nativeElement.scrollLeft -= 150;
-  }
-
-  scrollRight(){
-    this.widgetsContent.nativeElement.scrollLeft += 150;
-  }
-
 }
