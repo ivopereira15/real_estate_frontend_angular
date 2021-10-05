@@ -25,8 +25,8 @@ import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './core/ngxs-state-management/search/reducer';
-import { adaptReducer } from '@state-adapt/core/lib/adapt.reducer';
-import { actionSanitizer, stateSanitizer } from '@state-adapt/core';
+
+import { actionSanitizer, adaptReducer, stateSanitizer } from '@state-adapt/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({

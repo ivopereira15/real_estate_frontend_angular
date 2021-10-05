@@ -3,11 +3,6 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { FormState, initialState } from '../../../shared/models/search/search.model';
 import { delayedFormStateRecieved, formValueChange } from './actions';
 
-// const formReducer = createReducer(
-//   initialState,
-//   on(formValueChange, (state, { type, ...update }) => ({ ...state, ...update }))
-// );
-
 
 const formReducer = createReducer(
   initialState,

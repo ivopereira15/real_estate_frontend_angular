@@ -1,6 +1,11 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { using } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { formValueChange } from '../../../../core/ngxs-state-management/search/actions';
+import { FormState, initialState } from '../../../models/search/search.model';
 
 @Component({
   selector: 'app-pop-up-filters',
@@ -11,8 +16,7 @@ export class PopUpFiltersComponent implements OnInit {
   public bedroomsQuantity: string[] = ['T0', 'T1', 'T2', 'T3', 'T4'];
   public bathroomsQuantity: string[] = ['1', '2', '3', '4', '5'];
   public conditionTypes: string[] = ['Old', 'New', 'Needs Reconstruction', 'Under Construction'];
-  public searchMoreProperties: FormGroup;
-  characteristics: any = {}
+  characteristics: any = {};
   characteristicsList: any[] = [{
     id: 1,
     val: 'Balcony'
@@ -110,46 +114,43 @@ export class PopUpFiltersComponent implements OnInit {
   @Input() public operationTypes: any;
   @Input() public mobile: any;
   @Input() public formSearch: any;
+  searchMoreProperties = this.form.group({
+    location: [initialState.location],
+    purposeType: [initialState.purposeType],
+    propertyType: [initialState.propertyType],
+    priceFrom: [initialState.priceFrom],
+    priceTo: [initialState.priceTo],
+    bedrooms: [initialState.bedrooms],
+    bathrooms: [initialState.bathrooms],
+    conditions: [initialState.conditions],
+    sizeTo: [initialState.sizeTo],
+    sizeFrom: [initialState.sizeFrom],
+    yearBuiltFrom: [initialState.yearBuiltFrom],
+    yearBuiltTo: [initialState.yearBuiltTo],
+    characteristics: new FormArray([])
+  });
+  valueChanges$: any;
+  formValues$: any;
 
   constructor(
     public form: FormBuilder,
-    public activeModal: NgbActiveModal, 
-    public cdRef: ChangeDetectorRef) {
-
-    
-  
-   }
+    public activeModal: NgbActiveModal,
+    public cdRef: ChangeDetectorRef,
+    private store: Store<{ ngrx: FormState }>) { }
 
   ngOnInit(): void {
-    this.searchMoreProperties = this.form.group({
-      purposeType: [''],
-      propertyType: [''],
-      priceFrom: [''],
-      priceTo: [''],
-      bedrooms: [''],
-      bathrooms: [],
-      conditions: [''],
-      sizeTo: [''],
-      sizeFrom: [''],
-      yearBuiltFrom: [''],
-      yearBuiltTo: [''],
-      characteristics: new FormArray([])
-    });
+
+    this.valueChanges$ = this.searchMoreProperties.valueChanges.pipe(
+      tap((values: any) => this.store.dispatch(formValueChange(values)))
+    );
+    this.formValues$ = using(
+      () => this.valueChanges$.subscribe(),
+      () => this.store.select(state => state.ngrx)
+    );
     this.addCheckboxes();
 
-    if(this.formSearch){
-      this.searchMoreProperties.controls['purposeType'].setValue(this.formSearch[0]);
-      this.searchMoreProperties.controls['propertyType'].setValue(this.formSearch[1]);
-      this.searchMoreProperties.controls['priceFrom'].setValue(this.formSearch[2]);
-      this.searchMoreProperties.controls['priceTo'].setValue(this.formSearch[3]);
-      this.searchMoreProperties.controls['bedrooms'].setValue(this.formSearch[4]);
-      this.searchMoreProperties.controls['bathrooms'].setValue(this.formSearch[5]);
-      this.searchMoreProperties.controls['conditions'].setValue(this.formSearch[6]);
-      this.searchMoreProperties.controls['sizeTo'].setValue(this.formSearch[7]);
-      this.searchMoreProperties.controls['sizeFrom'].setValue(this.formSearch[8]);
-      this.searchMoreProperties.controls['yearBuiltFrom'].setValue(this.formSearch[9]);
-      this.searchMoreProperties.controls['yearBuiltTo'].setValue(this.formSearch[10]);
-      this.searchMoreProperties.controls['characteristics'].patchValue (this.formSearch[11]);
+    if (this.formSearch){
+      this.searchMoreProperties.controls.characteristics.patchValue(this.formSearch[11]);
     }
 
   }
@@ -168,9 +169,8 @@ export class PopUpFiltersComponent implements OnInit {
 
 
   ngAfterContentChecked() {
-
     this.cdRef.detectChanges();
-     }
+  }
   public searchFunction() {
     const selectedOrderIds = this.searchMoreProperties.value.characteristics
     .map((v, i) => v ? this.characteristicsList[i].id : null)
@@ -178,20 +178,8 @@ export class PopUpFiltersComponent implements OnInit {
 
     let response: any = [];
     response = [
-      this.searchMoreProperties.controls.purposeType.value,
-      this.searchMoreProperties.controls.propertyType.value,
-      this.searchMoreProperties.controls.priceFrom.value,
-      this.searchMoreProperties.controls.priceTo.value,
-      this.searchMoreProperties.controls.bedrooms.value,
-      this.searchMoreProperties.controls.bathrooms.value,
-      this.searchMoreProperties.controls.conditions.value,
-      this.searchMoreProperties.controls.sizeTo.value,
-      this.searchMoreProperties.controls.sizeFrom.value,
-      this.searchMoreProperties.controls.yearBuiltFrom.value,
-      this.searchMoreProperties.controls.yearBuiltTo.value,
       selectedOrderIds
-    ]
-
+    ];
     this.activeModal.close(
       response
     );

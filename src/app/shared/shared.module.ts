@@ -17,16 +17,20 @@ import { MapSearchComponent } from './component/map-container/map-search/map-sea
 import { MatButtonLoadingDirective } from './directives/button-loading.directive';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
-
+import { MatTabsModule } from '@angular/material/tabs';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { ListOfCardsComponent } from './component/list-of-cards/list-of-cards.component'; // ng-image-fullscreen-view
 import { NgImageSliderModule } from 'ng-image-slider';
 import { CarouselComponent } from './component/carousel/carousel.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatTabsModule } from '@angular/material';
+
+
 import { FilterSearchOnViewComponent } from './component/filter/filter-search-on-view/filter-search-on-view.component';
 import { PopUpFiltersComponent } from './component/filter/pop-up-filters/pop-up-filters.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PatchFormGroupValuesDirective } from '../core/ngxs-state-management/search/searchPatchValue/patch-form-group-values.directive';
+import { SetValueDirective } from '../core/ngxs-state-management/search/searchPatchValue/set-value.directive';
 
 const components = [
   NavbarComponent,
@@ -38,12 +42,16 @@ const components = [
   MapSearchComponent,
   MatButtonLoadingDirective,
   ListOfCardsComponent,
-  CarouselComponent
+  CarouselComponent,
+  PatchFormGroupValuesDirective,
+  SetValueDirective
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, PropertyDetailsComponent, CreateDialogComponent, CarouselComponent, FilterSearchOnViewComponent, PopUpFiltersComponent],
-  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, NgImageFullscreenViewModule, NgImageSliderModule, NgbModule, MatTabsModule, BrowserAnimationsModule ],
+  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, 
+    PropertyDetailsComponent, CreateDialogComponent, CarouselComponent, FilterSearchOnViewComponent, PopUpFiltersComponent],
+  imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, MatDialogModule,
+    NgImageFullscreenViewModule, NgImageSliderModule, NgbModule, MatTabsModule, BrowserAnimationsModule ],
   exports: [components, MaterialModule, FormsModule, ReactiveFormsModule],
   entryComponents: [PropertyDetailsComponent, CreateDialogComponent]
 })

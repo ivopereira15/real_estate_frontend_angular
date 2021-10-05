@@ -1,21 +1,26 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
-import { switchMap, debounceTime, catchError, map, filter } from 'rxjs/operators';
+import { merge, Observable, of, Subscription, timer, using } from 'rxjs';
+import { switchMap, debounceTime, catchError, map, filter, tap } from 'rxjs/operators';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { SearchSuggestions } from 'src/app/shared/models/search/search-suggestions';
-import { SearchService } from 'src/app/core/services/api/search-service';
-import { AppContextService } from 'src/app/core/services/app-context.service';
-import { ListingService } from 'src/app/core/services/api/listing.service';
-import { OperationType } from 'src/app/shared/models/listing/operation-type';
-import { PropertyType } from 'src/app/shared/models/listing/property-type';
+
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpFiltersComponent } from '../pop-up-filters/pop-up-filters.component';
-import { MobileUtilityService } from 'src/app/core/services/shared/mobile-utility';
-import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility';
+
+import { IWindowData } from '../../../models/mobile-utility/mobile-utility';
+import { OperationType } from '../../../models/listing/operation-type';
+import { PropertyType } from '../../../models/listing/property-type';
+import { SearchSuggestions } from '../../../models/search/search-suggestions';
+import { MobileUtilityService } from '../../../../core/services/shared/mobile-utility';
+import { AppContextService } from '../../../../core/services/app-context.service';
+import { ListingService } from '../../../../core/services/api/listing.service';
+import { FormState, initialState } from '../../../models/search/search.model';
+import { Store } from '@ngrx/store';
+import { delayedFormStateRecieved, formValueChange } from '../../../../core/ngxs-state-management/search/actions';
+
 
 @Component({
   selector: 'app-filter-search-on-view',
@@ -41,7 +46,26 @@ export class FilterSearchOnViewComponent implements OnInit {
   public isMobile: boolean = false;
   operationTypes: OperationType[];
   propertyTypes: PropertyType[];
-  characteristics: any = {}
+  characteristics: any = {};
+
+
+  searchProperties = this.form.group({
+    location: [initialState.location],
+    purposeType: [initialState.purposeType],
+    propertyType: [initialState.propertyType],
+    priceFrom: [initialState.priceFrom],
+    priceTo: [initialState.priceTo],
+    bedrooms: [initialState.bedrooms],
+    bathrooms: [initialState.bathrooms],
+    conditions: [initialState.conditions],
+    sizeTo: [initialState.sizeTo],
+    sizeFrom: [initialState.sizeFrom],
+    yearBuiltFrom: [initialState.yearBuiltFrom],
+    yearBuiltTo: [initialState.yearBuiltTo],
+    characteristics: new FormArray([])
+  });
+
+
   characteristicsList: any[] = [{
     id: 1,
     val: 'Balcony'
@@ -109,7 +133,7 @@ export class FilterSearchOnViewComponent implements OnInit {
   {
     id: 17,
     val: 'HotTube'
-  },  
+  },
   {
     id: 18,
     val: 'Pantry'
@@ -136,8 +160,9 @@ export class FilterSearchOnViewComponent implements OnInit {
   }
 ];
   subscriptions: Subscription = new Subscription();
+  valueChanges$: any;
+  formValues$: any;
 
-  public searchProperties: FormGroup;
   private windowChangeSubscription: Subscription;
   constructor(
     @Inject(Router) private router: Router,
@@ -146,26 +171,12 @@ export class FilterSearchOnViewComponent implements OnInit {
     private appContext: AppContextService,
     private listingService: ListingService,
     public modalService: NgbModal,
-    public form: FormBuilder) { }
+    public form: FormBuilder,
+    private store: Store<{ ngrx: FormState }>) { }
 
   ngOnInit(): void {
     this.windowChangeSubscription = this.mobileUtilityService.getWindowObservable().subscribe((windowChange: IWindowData) => {
       this.isMobile = !windowChange.isBiggerAsLaptop;
-    });
-    this.searchProperties = this.form.group({
-      location: [''],
-      purposeType: [''],
-      propertyType: [''],
-      priceFrom: [''],
-      priceTo: [''],
-      bedrooms: [''],
-      bathrooms: [],
-      conditions: [''],
-      sizeTo: [''],
-      sizeFrom: [''],
-      yearBuiltFrom: [''],
-      yearBuiltTo: [''],
-      characteristics: new FormArray([])
     });
 
     this.addCheckboxes();
@@ -176,28 +187,31 @@ export class FilterSearchOnViewComponent implements OnInit {
         debounceTime(300), // Debounce time to not send every keystroke ...
         switchMap(value => this
           .getSuggestions(value)
-          .pipe(catchError(() => of(<SearchSuggestions>{ query: value, results: [] }))))
+          .pipe(catchError(() => of({ query: value, results: [] } as SearchSuggestions))))
       );
-      this.subscriptions.add(
+    this.subscriptions.add(
         this.listingService.getOperationTypes().subscribe((result) => {
-  
           if (result.IsValid) {
             this.operationTypes = result.Data;
           }
         }));
-  
-      this.subscriptions.add(
+    this.subscriptions.add(
         this.listingService.getPropertyTypes().subscribe((result) => {
           if (result.IsValid) {
             this.propertyTypes = result.Data;
           }
         }));
-     this.suggestions$.subscribe(e => console.log(e));
+    this.suggestions$.subscribe(e => console.log(e));
+
+    this.valueChanges$ = this.searchProperties.valueChanges.pipe(
+      tap((values: any) => this.store.dispatch(formValueChange(values)))
+    );
+    this.formValues$ = using(
+      () => this.valueChanges$.subscribe(),
+      () => this.store.select(state => state.ngrx)
+    );
   }
 
-  get c() {
-    return this.searchProperties as FormGroup;
-  }
 
   public searchFunction() {
     console.log(this.searchProperties.controls.propertyType.value);
@@ -228,6 +242,7 @@ export class FilterSearchOnViewComponent implements OnInit {
   get characteristicsFormArray() {
     return this.searchProperties.controls.characteristics as FormArray;
   }
+
   openMoreSearchOptions() {
     const modalRef = this.modalService.open(
       PopUpFiltersComponent,
@@ -239,17 +254,6 @@ export class FilterSearchOnViewComponent implements OnInit {
     .map((v, i) => v ? this.characteristicsList[i].id : null)
     .filter(v => v !== null);
     formSearch = [
-      this.searchProperties.controls.purposeType.value,
-      this.searchProperties.controls.propertyType.value,
-      this.searchProperties.controls.priceFrom.value,
-      this.searchProperties.controls.priceTo.value,
-      this.searchProperties.controls.bedrooms.value,
-      this.searchProperties.controls.bathrooms.value,
-      this.searchProperties.controls.conditions.value,
-      this.searchProperties.controls.sizeTo.value,
-      this.searchProperties.controls.sizeFrom.value,
-      this.searchProperties.controls.yearBuiltFrom.value,
-      this.searchProperties.controls.yearBuiltTo.value,
       selectedOrderIds
     ];
 
@@ -262,22 +266,9 @@ export class FilterSearchOnViewComponent implements OnInit {
 
     modalRef.result.then(
       (result) => {
-        this.searchProperties.controls['purposeType'].setValue(result[0]);
-        this.searchProperties.controls['propertyType'].setValue(result[1]);
-        this.searchProperties.controls['priceFrom'].setValue(result[2]);
-        this.searchProperties.controls['priceTo'].setValue(result[3]);
-        this.searchProperties.controls['bedrooms'].setValue(result[4]);
-        this.searchProperties.controls['bathrooms'].setValue(result[5]);
-        this.searchProperties.controls['conditions'].setValue(result[6]);
-        this.searchProperties.controls['sizeTo'].setValue(result[7]);
-        this.searchProperties.controls['sizeFrom'].setValue(result[8]);
-        this.searchProperties.controls['yearBuiltFrom'].setValue(result[9]);
-        this.searchProperties.controls['yearBuiltTo'].setValue(result[10]);
-        this.searchProperties.controls['characteristics'].patchValue (result[11]);
-        console.log(result);
+        this.searchProperties.controls.characteristics.patchValue (result[11]);        console.log(result);
       },
       () => {
-
       }
     );
   }
@@ -287,7 +278,6 @@ export class FilterSearchOnViewComponent implements OnInit {
     if (!!this.autoComplete) {
       this.autoComplete.closePanel();
     }
-    // this.router.navigate(['/search'], { queryParams: { q: value } });
   }
 
   getSuggestions(query: string): Observable<SearchSuggestions> {
@@ -306,7 +296,7 @@ export class FilterSearchOnViewComponent implements OnInit {
       .pipe(catchError((err) => {
         console.error(`An error occured while fetching suggestions: ${err}`);
 
-        return of(<SearchSuggestions>{ query: query, results: [] })
+        return of({ query, results: [] } as SearchSuggestions);
       }));
   }
 

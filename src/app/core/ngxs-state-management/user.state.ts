@@ -1,6 +1,6 @@
-import { State, Action, StateContext, Selector } from "@ngxs/store";
+import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { AddUserType } from './user.actions';
-import { IUser } from "../../shared/models/state-management/user";
+import { IUser } from '../../shared/models/state-management/user';
 
 @State<IUser>({
     name: 'user',
@@ -9,6 +9,12 @@ import { IUser } from "../../shared/models/state-management/user";
     }
 })
 export class UserState {
+
+
+    @Selector() static getUserType(state: IUser): number {
+        return state.userType;
+    }
+
     @Action(AddUserType)
     public addUserType(ctx: StateContext<IUser>, payload: AddUserType) {
         const state: IUser = ctx.getState();
@@ -19,8 +25,4 @@ export class UserState {
         });
     }
 
-
-    @Selector() static getUserType(state: IUser): number {
-        return state.userType;
-    }
 }

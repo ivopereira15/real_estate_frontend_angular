@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource, MatPaginatorIntl, PageEvent } from '@angular/material';
+import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
-import { ListingService } from 'src/app/core/services/api/listing.service';
-import { PropertyStateEnum } from 'src/app/shared/enums/property-state';
-import { PropertyBasic } from 'src/app/shared/models/listing/property-basic';
-import { SearchPropertyForAdminRequest } from 'src/app/shared/models/listing/search-property-admin';
-import { SearchPagination } from 'src/app/shared/models/search/search-paginations';
 
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { SearchPagination } from '../../../shared/models/search/search-paginations';
+import { SearchPropertyForAdminRequest } from '../../../shared/models/listing/search-property-admin';
+import { PropertyStateEnum } from '../../../shared/enums/property-state';
+import { ListingService } from '../../../core/services/api/listing.service';
+import { PropertyBasic } from '../../../shared/models/listing/property-basic';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -41,7 +42,7 @@ export class AdminDashboardComponent implements OnInit, AfterViewInit {
   onSubmit(type: number) {
     this.switchLoadingButtonOn(type);
     this.selectedType = type;
-    let term: SearchPropertyForAdminRequest = new SearchPropertyForAdminRequest();
+    const term: SearchPropertyForAdminRequest = new SearchPropertyForAdminRequest();
     term.Type = type;
     this.searchPagination.PageNumber = 1;//this.paginator.pageIndex;
     this.searchPagination.RowsPerPage = 10; //this.paginator.pageSize;

@@ -1,6 +1,5 @@
-import { createAction, props } from "@ngrx/store";
-import { FormState } from "../../../shared/models/search/search.model";
-import {Update} from '@ngrx/entity';
+import { createAction, props } from '@ngrx/store';
+import { FormState } from '../../../shared/models/search/search.model';
 
 export const formValueChange = createAction(
   '[Form] Value Change',
@@ -8,13 +7,13 @@ export const formValueChange = createAction(
 );
 
 export const delayedFormStateRecieved = createAction(
-  "[Form] Delayed Form State Received",
+  '[Form] Delayed Form State Received',
   props<FormState>()
 );
 
 
 
-  export const searchActionTypes = {
+export const searchActionTypes = {
     formValueChange,
     delayedFormStateRecieved
   };
