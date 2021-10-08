@@ -1,3 +1,4 @@
+@import "~src/sass/_vars";
 .row {
     display: flex;
     flex-direction: row;
@@ -27,8 +28,6 @@ app-map {
     }
 }
 
-
-@import "~src/sass/_vars";
 .custom-slider-main{
     overflow: hidden;    
     scroll-behavior: smooth;
