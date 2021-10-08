@@ -2,10 +2,10 @@
 <div class="column background" *ngIf="router.url.includes('/home')">
     <div class=center-filter>
         <div class="col-12">
-           
+            <div class="welcome">Find your dream house</div>
         </div>
     </div>
-    <div class="center-filter" >
+    <div class="center-filter">
         <div class="column background-filter black-background"
             [ngClass]="[isMobile ? 'full-width' : 'threefourth-width']">
             <div class="full-width">
@@ -16,4 +16,24 @@
             </div>
         </div>
     </div>
+
+    <div class="center-filter">
+        <div class="column background-filter background-color"
+            [ngClass]="[isMobile ? 'full-width' : 'threefourth-width']">
+            <div class="row">
+                <div class="full-width">
+                    <app-filter-property (purposeTypeChange)="purposeTypeEvent($event)"
+                        (propertyTypeChange)="propertyTypeEvent($event)" (priceFromChange)="priceFromEvent($event)"
+                        (priceToChange)="priceToEvent($event)" (bedroomsChange)="bedroomsEvent($event)"
+                        (bathroomsChange)="bathroomsEvent($event)" (conditionsChange)="conditionsEvent($event)"
+                        (sizeToChange)="sizeToEvent($event)" (sizeFromChange)="sizeFromEvent($event)"
+                        (yearBuiltFromChange)="yearBuiltFromEvent($event)"
+                        (yearBuiltToChange)="yearBuiltToEvent($event)"
+                        (characteristicsChange)="characteristicsEvent($event)">
+                    </app-filter-property>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
