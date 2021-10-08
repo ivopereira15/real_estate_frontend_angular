@@ -214,7 +214,6 @@ export class FilterSearchOnViewComponent implements OnInit {
 
 
   public searchFunction() {
-    console.log(this.searchProperties.controls.propertyType.value);
 
     this.router.navigate(['/search'], {
       queryParams:
