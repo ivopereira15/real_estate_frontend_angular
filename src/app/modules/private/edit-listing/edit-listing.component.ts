@@ -8,6 +8,7 @@ import { PropertyType } from 'src/app/shared/models/listing/property-type';
 import { SellHouse } from 'src/app/shared/models/listing/sell-house';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MapPoint } from '../../../shared/models/map/map-point';
+import { OperationTypeEnum } from 'src/app/shared/enums/operation-type';
 
 @Component({
   selector: 'app-edit-listing',
@@ -17,7 +18,7 @@ import { MapPoint } from '../../../shared/models/map/map-point';
 export class EditListingComponent implements OnInit, OnDestroy {
 
   public title = "Sell your apartment";
-  private readonly TYPE = 'Sell';
+  private readonly TYPE =  OperationTypeEnum.Rent;
 
 
   sellHouseForm: SellHouse;

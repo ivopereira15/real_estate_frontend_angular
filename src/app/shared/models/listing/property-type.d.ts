@@ -1,4 +1,7 @@
+import { PropertyTypeEnum } from '../../enums/property-type';
+
 export class PropertyType {
     Id: number;
-    Type: string;
+    Type: PropertyTypeEnum;
+    TypeName: string;
 }
