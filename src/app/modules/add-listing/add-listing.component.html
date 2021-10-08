@@ -1,14 +1,14 @@
 <div class="row center-column justify-content-center">
     <div class="row justify-content: center !important;">
-      
-        <div  [routerLink]="['/add-listing/sell']">
-            <app-card  cardBgImage="sell-house" cardText="Sell Your House"></app-card>
+
+        <div [routerLink]="['/add-listing/sell']">
+            <app-card cardBgImage="sell-house" cardText="Sell Your House"></app-card>
         </div>
-        <div  [routerLink]="['/add-listing/rent']">
-            <app-card  cardBgImage="rent-house" cardText="Rent Your House"></app-card>
+        <div [routerLink]="['/add-listing/rent-house']">
+            <app-card cardBgImage="rent-house" cardText="Rent Your House"></app-card>
         </div>
-        <div >
-            <app-card  cardBgImage="rent-room" cardText="Rent Your Room"></app-card>
+        <div [routerLink]="['/add-listing/rent-house-room']">
+            <app-card cardBgImage="rent-room" cardText="Rent Your Room"></app-card>
         </div>
     </div>
 

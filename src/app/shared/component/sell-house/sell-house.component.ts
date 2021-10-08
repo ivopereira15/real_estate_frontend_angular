@@ -134,7 +134,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
     Name: 'HotTube',
     IconName: 'hot-tub',
     addedToProperty: false
-  },  
+  },
   {
     Id: 18,
     Name: 'Pantry',
@@ -171,17 +171,17 @@ export class SellHouseComponent implements OnInit, OnChanges {
     IconName: 'pets',
     addedToProperty: false
   }
-];
+  ];
 
   Id: number;
   Name: string;
   CountNumber: number;
   IconName: string;
   Deleted: boolean;
-  
+
   public mainPropertyCharacteristic: FormGroup;
 
-  constructor(  public form: FormBuilder) {
+  constructor(public form: FormBuilder) {
     this.mainPropertyCharacteristic = this.form.group({
       price: ['', [Validators.required, CustomValidators.validateIfIsNumber]],
       netAream2: ['', [Validators.required, CustomValidators.validateIfIsNumber]],
@@ -190,7 +190,7 @@ export class SellHouseComponent implements OnInit, OnChanges {
       propertyTypeId: [null, Validators.required],
       floor: [],
       rooms: [],
-      yearOfConstruction:  ['', [Validators.required, CustomValidators.validateIfIsNumber, CustomValidators.validateYear]],
+      yearOfConstruction: ['', [Validators.required, CustomValidators.validateIfIsNumber, CustomValidators.validateYear]],
       numberOfBathrooms: [null, Validators.required],
       enerergyCertificate: [],
       conditionState: [null, Validators.required],
@@ -199,17 +199,17 @@ export class SellHouseComponent implements OnInit, OnChanges {
       street: [null, Validators.required],
       country: [null, Validators.required],
       name: [null, Validators.required],
-      email: [null,  [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.email]],
       telephone: ['', [Validators.required, CustomValidators.validatePhone]],
       description: [null, Validators.required],
     });
-}
+  }
 
   ngOnInit(): void {
 
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.mapPoint = new MapPoint();
     this.mapPoint.latitude = this.sellHouseForm.Latitude;
     this.mapPoint.longitude = this.sellHouseForm.Longitude;
@@ -242,29 +242,29 @@ export class SellHouseComponent implements OnInit, OnChanges {
 
   publishListingSubmit() {
     this.submitProperty = true;
-    
+
     if (this.mainPropertyCharacteristic.valid && this.photos.length > 0) {
       let characteristicsToAdd: Characteristics[] = [];
       this.characteristics.map((characteristics) => {
-        if(characteristics.addedToProperty)
+        if (characteristics.addedToProperty)
           characteristicsToAdd.push(characteristics)
       })
-      this.sellHouseForm.Price =   this.mainPropertyCharacteristic.controls.price.value;
-      this.sellHouseForm.NetAream2 =   this.mainPropertyCharacteristic.controls.netAream2.value;
-      this.sellHouseForm.PriceNetAream2 =   this.mainPropertyCharacteristic.controls.price.value;
-      this.sellHouseForm.GrossAream2 =   this.mainPropertyCharacteristic.controls.grossAream2.value;
-      this.sellHouseForm.PropertyTypeId =   this.mainPropertyCharacteristic.controls.propertyTypeId.value;
-      this.sellHouseForm.Floor =   this.mainPropertyCharacteristic.controls.floor.value;
-      this.sellHouseForm.YearOfConstruction =   this.mainPropertyCharacteristic.controls.yearOfConstruction.value;
-      this.sellHouseForm.Rooms =   this.mainPropertyCharacteristic.controls.rooms.value;
-      this.sellHouseForm.NumberOfBathrooms =   this.mainPropertyCharacteristic.controls.numberOfBathrooms.value;
-      this.sellHouseForm.EnerergyCertificate =   this.mainPropertyCharacteristic.controls.enerergyCertificate.value;
-      this.sellHouseForm.City =  this.mainPropertyCharacteristic.controls.city.value;
-      this.sellHouseForm.Country =  this.mainPropertyCharacteristic.controls.country.value;
+      this.sellHouseForm.Price = this.mainPropertyCharacteristic.controls.price.value;
+      this.sellHouseForm.NetAream2 = this.mainPropertyCharacteristic.controls.netAream2.value;
+      this.sellHouseForm.PriceNetAream2 = this.mainPropertyCharacteristic.controls.price.value;
+      this.sellHouseForm.GrossAream2 = this.mainPropertyCharacteristic.controls.grossAream2.value;
+      this.sellHouseForm.PropertyTypeId = this.mainPropertyCharacteristic.controls.propertyTypeId.value;
+      this.sellHouseForm.Floor = this.mainPropertyCharacteristic.controls.floor.value;
+      this.sellHouseForm.YearOfConstruction = this.mainPropertyCharacteristic.controls.yearOfConstruction.value;
+      this.sellHouseForm.Rooms = this.mainPropertyCharacteristic.controls.rooms.value;
+      this.sellHouseForm.NumberOfBathrooms = this.mainPropertyCharacteristic.controls.numberOfBathrooms.value;
+      this.sellHouseForm.EnerergyCertificate = this.mainPropertyCharacteristic.controls.enerergyCertificate.value;
+      this.sellHouseForm.City = this.mainPropertyCharacteristic.controls.city.value;
+      this.sellHouseForm.Country = this.mainPropertyCharacteristic.controls.country.value;
       this.sellHouseForm.photos = this.photos;
-      this.sellHouseForm.Address =  this.mainPropertyCharacteristic.controls.street.value;
+      this.sellHouseForm.Address = this.mainPropertyCharacteristic.controls.street.value;
       this.sellHouseForm.Characteristics = characteristicsToAdd;
-      this.sellHouseForm.Description =  this.mainPropertyCharacteristic.controls.description.value;;
+      this.sellHouseForm.Description = this.mainPropertyCharacteristic.controls.description.value;;
       this.sellHouseForm.Typology = this.mainPropertyCharacteristic.controls.propertyTypeId.value;
       console.log(this.sellHouseForm);
       this.publishListing.emit(this.sellHouseForm);
@@ -273,8 +273,8 @@ export class SellHouseComponent implements OnInit, OnChanges {
 
   public addToProperty(item: Characteristics): void {
     let itemFound: Characteristics;
-    itemFound = this.characteristics.find((i)=> i.Id === item.Id);
+    itemFound = this.characteristics.find((i) => i.Id === item.Id);
     itemFound.addedToProperty = !itemFound.addedToProperty;
   }
-  
+
 }

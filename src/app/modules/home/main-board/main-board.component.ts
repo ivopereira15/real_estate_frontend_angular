@@ -8,6 +8,7 @@ import { User } from 'src/app/shared/models/user/user';
 import { ThrowStmt } from '@angular/compiler';
 import { SearchProperty } from 'src/app/shared/models/search/search-property';
 import { ListingService } from 'src/app/core/services/api/listing.service';
+import { HomePageService } from 'src/app/core/services/api/home-page.service';
 import { Property } from 'src/app/shared/models/listing/property';
 import { PropertyBasic } from 'src/app/shared/models/listing/property-basic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -15,6 +16,7 @@ import { PropertyDetailsComponent } from 'src/app/shared/property-details/proper
 import { ActivatedRoute, Router } from '@angular/router';
 import { MobileUtilityService } from 'src/app/core/services/shared/mobile-utility';
 import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility';
+import { HomePage } from 'src/app/shared/models/home/home-page';
 
 @Component({
   selector: 'app-main-board',
@@ -29,16 +31,18 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   @ViewChild('widgetsContent3') widgetsContent3: ElementRef;
   @Input() public arrow: boolean;
   searchPagination: SearchPagination<SearchUser> = new SearchPagination<SearchUser>();
-  searchProperties: SearchProperty = new SearchProperty();
+  //searchProperties: SearchProperty = new SearchProperty();
   subscriptions: Subscription = new Subscription();
   // chunkArray: Array<User[]> = [];
-  promotedProperties: PropertyBasic[] = [];
-  newListings: PropertyBasic[] = [];
-  allListings: PropertyBasic[] = [];
 
-  loadedPromtedProperties: boolean = false;
-  loadedNewListings: boolean = false;
-  loadedAllListings: boolean = false;
+  hotPropertiesToBuy: PropertyBasic[] = [];
+  newApartmentsToBuy: PropertyBasic[] = [];
+  newRoomsToRent: PropertyBasic[] = [];
+
+  loadedHotPropertiesToBuy: boolean = false;
+  loadedNewApartmentsToBuy: boolean = false;
+  loadedNewRoomsToRent: boolean = false;
+
   public isMobile: boolean = false;
   public items: Array<
   { icon: string, 
@@ -50,7 +54,8 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   private windowChangeSubscription: Subscription;
   constructor(
     @Inject(UserService) private userService: UserService,
-    @Inject(ListingService) private listingService: ListingService,
+   // @Inject(ListingService) private listingService: ListingService,
+    @Inject(HomePageService) private homePageService: HomePageService,
     @Inject(MobileUtilityService) private mobileUtilityService: MobileUtilityService,
     public modalService: NgbModal) { }
 
@@ -61,34 +66,30 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     this.populateItems();
 
     // Properties search Init
-    this.searchProperties.criteria = "1";
-    this.searchProperties.priceFrom = 1;
-    this.searchProperties.priceTo = 200000;
+    // this.searchProperties.criteria = "1";
+    // this.searchProperties.priceFrom = 1;
+    // this.searchProperties.priceTo = 200000;
     this.subscriptions.add(
-      this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
+      this.homePageService.getHomePage().subscribe((res: any) => {
         console.log(res);
-        if (res.Result.IsValid) {
-          let result = res.Result.Data;
+        if (res.IsValid) {
+          let result: HomePage = res.Data;
 
-          //Just first 4 properties in the row. Later to make an endpoint for that
-          for (let i: number = 0; i <= 8; i++) {
-            if (result[i] !== undefined) {
-              this.promotedProperties.push(result[i]);
+          this.hotPropertiesToBuy = result.HotPropertiesToBuy;
+          this.loadedHotPropertiesToBuy = true;
 
-              this.newListings.push(result[i]);
+          this.newApartmentsToBuy = result.NewApartmentsToBuy;
+          this.loadedNewApartmentsToBuy = true;
 
-              this.loadedAllListings = true;
-              this.allListings.push(result[i]);
-            }
-            
-            this.loadedNewListings = true;
-            this.loadedPromtedProperties = true;
-          }
+          this.newRoomsToRent = result.NewRoomsToRent;
+          this.loadedNewRoomsToRent = true;
+          
+          
 
         } else {
-          this.loadedAllListings = true;
-          this.loadedNewListings = true;
-          this.loadedPromtedProperties = true;
+          this.loadedNewRoomsToRent = true;
+          this.loadedNewApartmentsToBuy = true;
+          this.loadedHotPropertiesToBuy = true;
         }
       })
     );
@@ -162,3 +163,7 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     return false;
   }
 }
+function HomeService(HomeService: any) {
+  throw new Error('Function not implemented.');
+}
+

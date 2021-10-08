@@ -40,7 +40,7 @@ export class ListingService {
 
     public listSellHouse(listing: SellHouse): Observable<ResultMessage<number>> {
         return this.http
-            .post<ResultMessage<number>>(this.appContext.getAPIUrl() + '/organization/Listing/listSellHouse', listing, this.httpOptions);
+            .post<ResultMessage<number>>(this.appContext.getAPIUrl() + '/organization/Listing/listProperty', listing, this.httpOptions);
     }
 
     public listTempSellHouse(tempId: Guid, listing: SellHouse): Observable<ResultMessage<number>> {

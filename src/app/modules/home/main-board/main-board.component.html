@@ -7,9 +7,9 @@
           <div class="text">
             <div class="title">Promoted</div>
           </div>
-          <mat-spinner *ngIf="!loadedPromtedProperties"></mat-spinner>
-          <span *ngIf="loadedPromtedProperties && promotedProperties.length === 0">No properties available</span>
-          <app-list-of-cards  [promotedProperties] = "promotedProperties" [arrow]= "false"></app-list-of-cards>
+          <mat-spinner *ngIf="!loadedHotPropertiesToBuy"></mat-spinner>
+          <span *ngIf="loadedHotPropertiesToBuy && hotPropertiesToBuy.length === 0">No properties available</span>
+          <app-list-of-cards  [promotedProperties] = "hotPropertiesToBuy" [arrow]= "false"></app-list-of-cards>
         </div>
       </mat-tab>
       <mat-tab label="New Listings">    
@@ -17,9 +17,9 @@
           <div class=text>
             <div class="title">New Listings</div>
           </div>
-          <mat-spinner *ngIf=!loadedNewListings></mat-spinner>
-          <span *ngIf="loadedNewListings && newListings.length === 0">No properties available</span>
-          <app-list-of-cards  [promotedProperties] = "newListings" arrow= "false"></app-list-of-cards>
+          <mat-spinner *ngIf=!loadedNewApartmentsToBuy></mat-spinner>
+          <span *ngIf="loadedNewApartmentsToBuy && newApartmentsToBuy.length === 0">No properties available</span>
+          <app-list-of-cards  [promotedProperties] = "newApartmentsToBuy" arrow= "false"></app-list-of-cards>
         </div>
       </mat-tab>
       <mat-tab label="All Listings">
@@ -27,34 +27,32 @@
           <div class=text-all-listings>
             <div class="title-all-listings">All Listings</div>
           </div>
-          <app-list-of-cards  [promotedProperties] = "allListings" [arrow]= "false"></app-list-of-cards>
+          <app-list-of-cards  [promotedProperties] = "newRoomsToRent" [arrow]= "false"></app-list-of-cards>
         </div>
       </mat-tab>
     </mat-tab-group>
   </ng-container>
 
-  
-
   <ng-container *ngIf="!isMobile">
     <div class="container-promoted">
       <div class="text">
         <div class="title">Promoted</div>
-        <div class="seemore">See more({{promotedProperties.length}})</div>
+        <div class="seemore">See more({{hotPropertiesToBuy.length}})</div>
       </div>
-      <mat-spinner *ngIf="!loadedPromtedProperties"></mat-spinner>
-      <span *ngIf="loadedPromtedProperties && promotedProperties.length === 0">No properties available</span>
-        <app-list-of-cards  [promotedProperties] = "promotedProperties" [arrow] = "true"></app-list-of-cards>
+      <mat-spinner *ngIf="!loadedHotPropertiesToBuy"></mat-spinner>
+      <span *ngIf="loadedHotPropertiesToBuy && hotPropertiesToBuy.length === 0">No properties available</span>
+        <app-list-of-cards  [promotedProperties] = "hotPropertiesToBuy" [arrow] = "true"></app-list-of-cards>
       </div>
 
     <!--New Listings-->
     <div class="container-new-listings">
       <div class=text>
         <div class="title">New Listings</div>
-        <div class="seemore">See more({{promotedProperties.length}})</div>
+        <div class="seemore">See more({{hotPropertiesToBuy.length}})</div>
       </div>
-      <mat-spinner *ngIf=!loadedNewListings></mat-spinner>
-      <span *ngIf="loadedNewListings && newListings.length === 0">No properties available</span>
-      <app-list-of-cards  [promotedProperties] = "newListings" arrow= "true"></app-list-of-cards>
+      <mat-spinner *ngIf=!loadedNewApartmentsToBuy></mat-spinner>
+      <span *ngIf="loadedNewApartmentsToBuy && newApartmentsToBuy.length === 0">No properties available</span>
+      <app-list-of-cards  [promotedProperties] = "newApartmentsToBuy" arrow= "true"></app-list-of-cards>
     </div>
 
     <!--All Listings-->
@@ -62,7 +60,7 @@
       <div class=text-all-listings>
         <div class="title-all-listings">All Listings</div>
       </div>
-      <app-list-of-cards  [promotedProperties] = "allListings" [arrow]= "true"></app-list-of-cards>
+      <app-list-of-cards  [promotedProperties] = "newRoomsToRent" [arrow]= "true"></app-list-of-cards>
     </div>
   </ng-container>
 
@@ -112,6 +110,7 @@
     </div>
   </div>
   </ng-container>
+
   <ng-container *ngIf="isMobile">
     <ngb-carousel  (click)="fireEvent($event)">
         <ng-template ngbSlide  *ngFor="let item of items">

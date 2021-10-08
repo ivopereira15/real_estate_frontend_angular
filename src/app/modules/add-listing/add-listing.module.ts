@@ -11,10 +11,13 @@ import { PublishSuccessComponent } from './publish-success/publish-success.compo
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { RedirectComponent } from './redirect/redirect.component';
 import { CardComponent } from './card/card.component';
+import { AddListingRentRoomComponent } from './add-listing-rent-room/add-listing-rent-room.component';
 
 
 @NgModule({
-  declarations: [AddListingComponent, AddListingSellComponent, AddListingRentComponent, PublishSuccessComponent, AuthenticateComponent, RedirectComponent, CardComponent],
+  declarations: [AddListingComponent, AddListingSellComponent, 
+    AddListingRentComponent, PublishSuccessComponent, AuthenticateComponent, 
+    RedirectComponent, CardComponent, AddListingRentRoomComponent],
   imports: [
     CommonModule,
     SharedModule,

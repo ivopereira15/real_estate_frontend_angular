@@ -2,8 +2,7 @@
     <div class="row">
         <div class="col-md-12 py-3">
             <ngb-carousel
-    
-            *ngIf="items"  (click)="fireEvent($event)">
+            *ngIf="items" (click)="fireEvent($event)">
             <ng-template ngbSlide *ngFor="let item of items">
                 <img [src]="item.image">
             </ng-template>

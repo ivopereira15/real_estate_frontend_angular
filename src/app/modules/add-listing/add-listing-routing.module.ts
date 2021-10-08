@@ -7,11 +7,13 @@ import { AuthGuard } from 'src/app/core/guards/auth-guard.service';
 import { PublishSuccessComponent } from './publish-success/publish-success.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { RedirectComponent } from './redirect/redirect.component';
+import { AddListingRentRoomComponent } from './add-listing-rent-room/add-listing-rent-room.component';
 
 const routes: Routes = [
   { path: 'add-listing', component: AddListingComponent, },
   { path: 'add-listing/sell', component: AddListingSellComponent },
-  { path: 'add-listing/rent', component: AddListingRentComponent },
+  { path: 'add-listing/rent-house', component: AddListingRentComponent },
+  { path: 'add-listing/rent-room', component: AddListingRentRoomComponent },
   { path: 'publish-success', component: PublishSuccessComponent, canActivate: [AuthGuard] },
   { path: 'authenitcate', component:AuthenticateComponent },
   { path: 'redirect', component: RedirectComponent }

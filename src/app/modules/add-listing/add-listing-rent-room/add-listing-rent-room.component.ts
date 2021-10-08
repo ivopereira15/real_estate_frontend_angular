@@ -1,29 +1,27 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Guid } from 'guid-typescript';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/authentication/auth.service';
-import { ListingService } from '../../../core/services/api/listing.service';
-import { ImageService } from '../../../core/services/api/image.service';
-import { Subscription } from 'rxjs/internal/Subscription';
-import { OperationType } from '../../../shared/models/listing/operation-type';
-import { PropertyType } from 'src/app/shared/models/listing/property-type';
+import { ImageService } from 'src/app/core/services/api/image.service';
+import { ListingService } from 'src/app/core/services/api/listing.service';
 import { AppContextService } from 'src/app/core/services/app-context.service';
 import { TempTokenService } from 'src/app/core/services/shared/temp-token.service';
-import { SellHouse } from '../../../shared/models/listing/sell-house';
-import { forkJoin } from 'rxjs';
-import { Router } from '@angular/router';
-import { Characteristics } from 'src/app/shared/models/listing/characteristics';
-import { Guid } from 'guid-typescript';
 import { OperationTypeEnum } from 'src/app/shared/enums/operation-type';
 import { PropertyTypeEnum } from 'src/app/shared/enums/property-type';
+import { OperationType } from 'src/app/shared/models/listing/operation-type';
+import { PropertyType } from 'src/app/shared/models/listing/property-type';
+import { SellHouse } from 'src/app/shared/models/listing/sell-house';
 
 @Component({
-  selector: 'app-add-listing-sell',
-  templateUrl: './add-listing-sell.component.html',
-  styleUrls: ['./add-listing-sell.component.scss']
+  selector: 'app-add-listing-rent-room',
+  templateUrl: './add-listing-rent-room.component.html',
+  styleUrls: ['./add-listing-rent-room.component.scss']
 })
-export class AddListingSellComponent implements OnInit, OnDestroy {
+export class AddListingRentRoomComponent implements OnInit {
 
   private readonly TYPE = OperationTypeEnum.Buy; // Sell
-  public title = "Sell your apartment";
+  public title = "Rent your Room";
   loading: boolean = false;
 
   // typology: string[] = ["T0", "T1", "T2", "T3"];
@@ -82,7 +80,7 @@ export class AddListingSellComponent implements OnInit, OnDestroy {
     if (isAuthnticated) {
       sellHouseForm.UserId = this.userId;
       sellHouseForm.OperationTypeId = this.currentOperationType.Id;
-      sellHouseForm.PropertyType = PropertyTypeEnum.Apartment;
+      sellHouseForm.PropertyType = PropertyTypeEnum.Room;
       console.log(sellHouseForm);
       this.listingService.listSellHouse(sellHouseForm).subscribe(res => {
         if (res.IsValid) {

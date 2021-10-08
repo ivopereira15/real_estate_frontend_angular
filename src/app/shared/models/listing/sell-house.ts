@@ -1,3 +1,4 @@
+import { PropertyTypeEnum } from "../../enums/property-type";
 import { Characteristics } from "../listing/characteristics";
 
 export class SellHouse {
@@ -24,6 +25,7 @@ export class SellHouse {
     public ConditionState: number;
     public PropertyTypeId: number;
     public OperationTypeId: number;
+    public PropertyType: PropertyTypeEnum;
 
     public photos: any[];
 }
