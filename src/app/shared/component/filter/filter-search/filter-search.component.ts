@@ -6,9 +6,10 @@ import { switchMap, debounceTime, catchError, map, filter } from 'rxjs/operators
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { SearchSuggestions } from 'src/app/shared/models/search/search-suggestions';
-import { SearchService } from 'src/app/core/services/api/search-service';
-import { AppContextService } from 'src/app/core/services/app-context.service';
+import { SearchSuggestions } from '../../../models/search/search-suggestions';
+import { SearchService } from '../../../../core/services/api/search-service';
+import { AppContextService } from '../../../../core/services/app-context.service';
+
 
 @Component({
   selector: 'app-filter-search',
@@ -41,7 +42,8 @@ export class FilterSearchComponent implements OnInit {
   @Input() public yearBuiltTo: any;
   @Input() public characteristics: any;
 
-  constructor(@Inject(Router) private router: Router,
+  constructor(
+    @Inject(Router) private router: Router,
     private route: ActivatedRoute,
     private searchService: SearchService,
     private dialog: MatDialog,
@@ -54,9 +56,9 @@ export class FilterSearchComponent implements OnInit {
         debounceTime(300), // Debounce time to not send every keystroke ...
         switchMap(value => this
           .getSuggestions(value)
-          .pipe(catchError(() => of(<SearchSuggestions>{ query: value, results: [] }))))
+          .pipe(catchError(() => of({ query: value, results: [] } as SearchSuggestions))))
       );
-     this.suggestions$.subscribe(e => console.log(e));
+    this.suggestions$.subscribe(e => console.log(e));
   }
 
   public searchFunction() {
@@ -106,7 +108,7 @@ export class FilterSearchComponent implements OnInit {
       .pipe(catchError((err) => {
         console.error(`An error occured while fetching suggestions: ${err}`);
 
-        return of(<SearchSuggestions>{ query: query, results: [] })
+        return of({ query, results: [] } as SearchSuggestions);
       }));
   }
 

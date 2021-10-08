@@ -4,14 +4,13 @@
 
   To learn more about this file see: https://angular.io/config/solution-tsconfig.
 */
-{
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ]
+{ 
+  "compilerOptions": {
+    "outDir": "./dist" /* Redirect output structure to the directory. */,
+    "rootDir": "./src", /* Specify the root directory of input files. Use to co*/
+    "experimentalDecorators": true, /* Enables experimental support for emitting type metadata for decorators. */
+    "allowJs": true,
+    "moduleResolution": "node",
+    "target": "es5"
+  }
 }

@@ -86,10 +86,15 @@ mat-sidenav {
     width: 200px;
 }
 mat-sidenav-content {
-    top: 56px;
+    margin-top: 10%;
 }
 mat-sidenav-container {
     height: 100vh;
 }
 
 
+mat-sidenav-container::after {
+    content: '';
+    display: block;
+    height: 50px; /* Set same as footer's height */
+  }
