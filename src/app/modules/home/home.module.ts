@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home/home.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { MainBoardComponent } from './main-board/main-board.component';
-import { SearchBoardComponent } from './search-board/search-board.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
+import { SearchBoardComponent } from './search-board/search-board.component';
 
 
 @NgModule({

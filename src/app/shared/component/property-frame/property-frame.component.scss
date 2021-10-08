@@ -70,3 +70,20 @@
     }
 
 }
+
+::ng-deep {
+    app-carousel{
+        .col-md-12{
+            padding: 0px;
+        }
+        .py-3{
+            padding-top: 0rem!important;
+        }
+        .row{
+            margin-top: 0px;
+        }
+        .carousel-inner{
+            margin-top: 0px;
+        }
+    }
+}

@@ -23,6 +23,11 @@ import { UserState } from 'src/app/core/ngxs-state-management/user.state';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './core/ngxs-state-management/search/reducer';
+
+import { actionSanitizer, adaptReducer, stateSanitizer } from '@state-adapt/core';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FontAwesomeModule,
     CoreModule,
+    StoreModule.forRoot({ ngrx: reducer, adapt: adaptReducer }),
+    StoreDevtoolsModule.instrument({
+      actionSanitizer,
+      stateSanitizer
+    }),
     NgxsModule.forRoot([UserState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({

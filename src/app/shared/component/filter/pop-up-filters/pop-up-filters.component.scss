@@ -1,0 +1,23 @@
+.submit-button{
+    margin-top: 0.8em;
+    button{
+        background: #1E90FF;
+    }
+}
+
+::ng-deep{
+.cdk-overlay-container {
+    z-index: 99999 !important;
+  }
+}
+
+  ngb-modal-window.test {
+    z-index: 1;
+}
+
+ul{
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    list-style-type: none;
+}

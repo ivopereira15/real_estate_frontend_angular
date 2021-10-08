@@ -1,11 +1,12 @@
 import { Component, Inject, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ListingService } from 'src/app/core/services/api/listing.service';
-import { UserService } from 'src/app/core/services/api/user.service';
-import { PropertyBasic } from 'src/app/shared/models/listing/property-basic';
-import { MapPoint } from 'src/app/shared/models/map/map-point';
-import { SearchProperty } from 'src/app/shared/models/search/search-property';
+import { ListingService } from '../../../core/services/api/listing.service';
+import { UserService } from '../../../core/services/api/user.service';
+import { PropertyBasic } from '../../../shared/models/listing/property-basic';
+import { MapPoint } from '../../../shared/models/map/map-point';
+import { SearchProperty } from '../../../shared/models/search/search-property';
+
 
 @Component({
   selector: 'app-search-board',
@@ -20,32 +21,31 @@ export class SearchBoardComponent implements OnInit, OnChanges {
   chunkArray: Array<PropertyBasic[]> = [];
   public mapPoints: MapPoint[];
 
-  constructor(@Inject(UserService) private userService: UserService,
+  constructor(
+    @Inject(UserService) private userService: UserService,
     @Inject(ListingService) private listingService: ListingService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-   
     this.activatedRoute.queryParams.subscribe(params => {
-      this.searchProperties.operationTypeId = params["purposeType"] as number;
-      this.searchProperties.propertyTypeId = params["propertyType"] as number;
-      this.searchProperties.priceFrom = params["priceFrom"];
-      this.searchProperties.priceTo = params["priceTo"];
-      this.searchProperties.bedrooms = params["bedrooms"];
-      this.searchProperties.bathrooms = params["bathrooms"];
-      this.searchProperties.conditions = params["conditions"];
-      this.searchProperties.sizeTo = params["sizeTo"];
-      this.searchProperties.sizeFrom = params["sizeFrom"];
-      this.searchProperties.yearBuiltFrom = params["yearBuiltFrom"];
-      this.searchProperties.yearBuiltTo = params["yearBuiltTo"];
-      this.searchProperties.characteristics = params["characteristics"];
+      this.searchProperties.operationTypeId = params.purposeType as number;
+      this.searchProperties.propertyTypeId = params.propertyType as number;
+      this.searchProperties.priceFrom = params.priceFrom;
+      this.searchProperties.priceTo = params.priceTo;
+      this.searchProperties.bedrooms = params.bedrooms;
+      this.searchProperties.bathrooms = params.bathrooms;
+      this.searchProperties.conditions = params.conditions;
+      this.searchProperties.sizeTo = params.sizeTo;
+      this.searchProperties.sizeFrom = params.sizeFrom;
+      this.searchProperties.yearBuiltFrom = params.yearBuiltFrom;
+      this.searchProperties.yearBuiltTo = params.yearBuiltTo;
+      this.searchProperties.characteristics = params.characteristics;
 
     });
     // Properties search Init
-    // this.searchProperties.criteria = "15";
+    // this.searchProperties.criteria = '15';
 
-    
     this.subscriptions.add(
       this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
         if (res.Result.IsValid) {

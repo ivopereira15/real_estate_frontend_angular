@@ -85,5 +85,5 @@ export class PropertyDetailsComponent implements OnInit {
     }
 
   }
-
+//https://itnext.io/creating-forms-inside-modals-with-ng-bootstrap-221e4f1f5648
 }
