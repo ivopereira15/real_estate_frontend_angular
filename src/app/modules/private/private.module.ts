@@ -8,10 +8,15 @@ import { MyListingsComponent } from './my-listings/my-listings.component';
 import { EditListingComponent } from './edit-listing/edit-listing.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { MessagesComponent } from './messages/messages.component';
+import { ChatComponent } from './messages/chat/chat.component';
+import { MessageComponent } from './messages/message/message.component';
 
 
 @NgModule({
-  declarations: [UserBoardComponent, MyListingsComponent, EditListingComponent, AdminDashboardComponent, MessagesComponent],
+  declarations: [UserBoardComponent, 
+    MyListingsComponent, EditListingComponent,
+     AdminDashboardComponent, MessagesComponent, 
+     ChatComponent, MessageComponent],
   imports: [
     CommonModule,
     PrivateRoutingModule,

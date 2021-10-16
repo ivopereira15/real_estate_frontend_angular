@@ -1,4 +1,5 @@
 export class OnlineUser {
-    public connectionId: string = '';
-    public userName: string = '';
+    public MySqlId: number;
+    public SignalRConnectionIds: string[];
+    public ChatRoomIds: string[];
   }

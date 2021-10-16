@@ -5,7 +5,9 @@ import { Property } from '../models/listing/property';
 import { MapPoint } from 'src/app/shared/models/map/map-point';
 import { Characteristics } from '../models/listing/characteristics';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {CustomValidators} from 'src/app/core/services/shared/custom_validations';
+import { CustomValidators } from 'src/app/core/services/shared/custom_validations';
+import { EmailService } from '../../core/services/api/email.service';
+import { EmailInput } from 'src/app/shared/models/email/email-input';
 
 
 @Component({
@@ -15,7 +17,7 @@ import {CustomValidators} from 'src/app/core/services/shared/custom_validations'
 })
 export class PropertyDetailsComponent implements OnInit {
   @Input() public property: Property;
- 
+
   public contactForm: FormGroup;
   public formErrors = {
     name: '',
@@ -34,15 +36,15 @@ export class PropertyDetailsComponent implements OnInit {
     public modalService: NgbModal,
     public route: ActivatedRoute,
     public router: Router,
-    public form: FormBuilder) {
-      this.contactForm = this.form.group({
-        name: ['', [Validators.required]],
-        phone: ['', [Validators.required, CustomValidators.validatePhone]],
-        email: ['', [Validators.required, Validators.email]],
-        message: ['', [Validators.required]]
-      });
-
-    }
+    public form: FormBuilder,
+    public emailService: EmailService) {
+    this.contactForm = this.form.group({
+      name: ['', [Validators.required]],
+      phone: ['', [Validators.required, CustomValidators.validatePhone]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required]]
+    });
+  }
   ngOnInit(): void {
     this.router.navigate([], { fragment: "targetBlue" });
     if (this.property) {
@@ -79,11 +81,19 @@ export class PropertyDetailsComponent implements OnInit {
     this.submitContact = true;
 
     if (this.contactForm.valid) {
-      // sucess
+      let email = new EmailInput();
+      email.FirstUserEmail = this.contactForm.value.email;
+      //email.SecondUserEmail = this.contactForm.value.email; 
+      //email.FirstUserId = this.contactForm.value.email;
+      email.SecondUserId = this.property.UserId;
+      email.Message = this.contactForm.value.message;
+
+      this.emailService.sendEmail(email).subscribe();
+
     } else {
       // error
     }
 
   }
-//https://itnext.io/creating-forms-inside-modals-with-ng-bootstrap-221e4f1f5648
+  //https://itnext.io/creating-forms-inside-modals-with-ng-bootstrap-221e4f1f5648
 }

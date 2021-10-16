@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OnlineUser } from 'src/app/shared/models/chat/online-user';
-import { DirectMessage } from 'src/app/shared/models/chat/direct-message';
 import { Store } from '@ngxs/store';
 import { DirectMessagesService } from 'src/app/core/services/chat/chat.service';
 import { AuthService } from 'src/app/core/authentication/auth.service';
+import { Message } from '../../../shared/models/chat/message';
 
 @Component({
   selector: 'app-messages',
@@ -13,12 +13,12 @@ import { AuthService } from 'src/app/core/authentication/auth.service';
 })
 export class MessagesComponent implements OnInit {
   public async: any;
-  onlineUser: OnlineUser = { connectionId: '', userName: '' };
+  //onlineUser: OnlineUser = { connectionId: '', userName: '' };
   selectedOnlineUserName = '';
   isAuthorized = false;
   message = '';
   onlineUsers: OnlineUser[] = [];
-  directMessages$: Observable<DirectMessage[]>;
+  directMessages$: Observable<Message[]>;
   // connected$: Observable<boolean>;
   connected = false;
   constructor(
@@ -51,37 +51,37 @@ export class MessagesComponent implements OnInit {
     this.selectedOnlineUserName = onlineuserUserName;
   }
 
-  sendMessage(): void {
-    console.log(
-      'DMC: send message to:' + this.selectedOnlineUserName + ':' + this.message
-    );
+  // sendMessage(): void {
+  //   console.log(
+  //     'DMC: send message to:' + this.selectedOnlineUserName + ':' + this.message
+  //   );
 
-    const message = {
-      payload: {
-        message: this.message,
-        userNameTarget: this.selectedOnlineUserName,
-      },
-    };
+  //   const message = {
+  //     payload: {
+  //       message: this.message,
+  //       userNameTarget: this.selectedOnlineUserName,
+  //     },
+  //   };
  
-    this.chatService.sendDirectMessage(this.message, this.onlineUser);
-    //  this.store.dispatch(directMessagesAction.sendDirectMessageAction(message));
-  }
+  //   this.chatService.sendDirectMessage(this.message, this.onlineUser);
+  //   //  this.store.dispatch(directMessagesAction.sendDirectMessageAction(message));
+  // }
 
-  getUserInfoName(directMessage: DirectMessage): string {
-    if (directMessage.fromOnlineUser) {
-      return directMessage.fromOnlineUser.userName;
-    }
+  // getUserInfoName(directMessage: DirectMessage): string {
+  //   if (directMessage.fromOnlineUser) {
+  //     return directMessage.fromOnlineUser.userName;
+  //   }
 
-    return '';
-  }
+  //   return '';
+  // }
 
   disconnect(): void {
-    this.chatService.leave();
+    //this.chatService.leave();
     // this.store.dispatch(directMessagesAction.leaveAction());
   }
 
   connect(): void {
-    this.chatService.join();
+    //this.chatService.join();
     //  this.store.dispatch(directMessagesAction.joinAction());
   }
 
