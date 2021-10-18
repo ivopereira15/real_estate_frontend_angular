@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ChatService } from '../../../../core/services/api/chat.service';
+import { DirectMessagesService } from '../../../../core/services/chat/chat.service';
+import { AppContextService } from '../../../../core/services/app-context.service';
 import { ChatRoom } from '../../../../shared/models/chat/chat-room';
 import { Message } from '../../../../shared/models/chat/message';
 import { OnlineUser } from '../../../../shared/models/chat/online-user';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-chat',
@@ -16,16 +20,21 @@ export class ChatComponent implements OnInit {
   public name: string;
   public newRoom: string;
   public messages: Message[] = [];
-  public rooms: ChatRoom[] = [];
+  //public rooms: ChatRoom[] = [];
   public currentRoomId: string;
   public users: OnlineUser[] = [];
 
   private unsubscribeOnDestroy = new Subject<void>();
+  directMessages$: Observable<Message[]>;
+  chatRooms: ChatRoom[];
 
   public constructor(
     //  private chatService: ChatService,
     //  private userService: UsersService,
     //  private roomService: RoomService,
+    private chatService: ChatService, private appContext: AppContextService,
+    private chatHubService: DirectMessagesService,
+    private store: Store
   ) {
     let dfdf = new Message();
     dfdf.MessageText = "dfdf"
@@ -33,6 +42,18 @@ export class ChatComponent implements OnInit {
   }
 
   public ngOnInit() {
+    let userId = this.appContext.getUserId();
+    console.log(userId);
+    this.chatService.getChatRoomsForUser(userId).subscribe(
+      (res: any) => {
+        console.log(res);
+        if (res !== []) {
+          this.chatRooms = res;
+          console.log(res);
+        }
+      }
+    );
+    //--------------------------------------------
     this.getProfile();
     // this.chatService
     //   .getMessage()
@@ -52,7 +73,9 @@ export class ChatComponent implements OnInit {
 
   public send(): void {
     if (this.text && this.text.trim() !== '') {
-     // this.chatService.sendMessage(this.text, this.name, this.currentRoomId);
+
+      this.chatHubService.sendPrivateMessage("someid", this.text, "df");
+     // this.store.dispatch(directMessagesAction.sendDirectMessageAction(this.text));
       this.text = '';
     }
   }

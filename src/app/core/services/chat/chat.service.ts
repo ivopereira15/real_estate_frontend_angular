@@ -38,9 +38,9 @@ export class DirectMessagesService {
 
     }
 
-    sendDirectMessage(message: string, user: OnlineUser): string {
+    sendPrivateMessage(receiverMySqlId: string, message: string, chatRoomId: string): string {
         if (this.hubConnection) {
-           //this.hubConnection.invoke('SendDirectMessage', message, user.userName);
+            this.hubConnection.invoke('SendPrivateMessage', receiverMySqlId, message, chatRoomId);
             var result = new Message();
             //result.fromOnlineUser = user;
             result.MessageText = message;

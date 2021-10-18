@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OnlineUser } from 'src/app/shared/models/chat/online-user';
-import { Store } from '@ngxs/store';
-import { DirectMessagesService } from 'src/app/core/services/chat/chat.service';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { Message } from '../../../shared/models/chat/message';
 
@@ -21,21 +19,20 @@ export class MessagesComponent implements OnInit {
   directMessages$: Observable<Message[]>;
   // connected$: Observable<boolean>;
   connected = false;
-  constructor(
-    private authService: AuthService,
-    private store: Store,
-    private chatService: DirectMessagesService
-  ) {
-    this.chatService.onlineUsersObservable.subscribe((res) => {
-      console.log(res);
-      this.onlineUsers = res;
-    });
-    this.directMessages$ = this.chatService.directMessagesObservable;
 
-    this.chatService.connectedObservable.subscribe((result) => {
-      console.log(result);
-      this.connected = result;
-    })
+  constructor(
+    private authService: AuthService
+  ) {
+    // this.chatService.onlineUsersObservable.subscribe((res) => {
+    //   console.log(res);
+    //   this.onlineUsers = res;
+    // });
+    // this.directMessages$ = this.chatService.directMessagesObservable;
+
+    // this.chatService.connectedObservable.subscribe((result) => {
+    //   console.log(result);
+    //   this.connected = result;
+    // })
   }
 
   ngOnInit(): void {
@@ -46,10 +43,10 @@ export class MessagesComponent implements OnInit {
     console.log('IsAuthorized:' + this.isAuthorized);
   }
 
-  selectChat(onlineuserUserName: string): void {
-    console.log('DMC: selectedOnlineUserName' + onlineuserUserName);
-    this.selectedOnlineUserName = onlineuserUserName;
-  }
+  // selectChat(onlineuserUserName: string): void {
+  //   console.log('DMC: selectedOnlineUserName' + onlineuserUserName);
+  //   this.selectedOnlineUserName = onlineuserUserName;
+  // }
 
   // sendMessage(): void {
   //   console.log(
@@ -75,14 +72,14 @@ export class MessagesComponent implements OnInit {
   //   return '';
   // }
 
-  disconnect(): void {
-    //this.chatService.leave();
-    // this.store.dispatch(directMessagesAction.leaveAction());
-  }
+  // disconnect(): void {
+  //   //this.chatService.leave();
+  //   // this.store.dispatch(directMessagesAction.leaveAction());
+  // }
 
-  connect(): void {
-    //this.chatService.join();
-    //  this.store.dispatch(directMessagesAction.joinAction());
-  }
+  // connect(): void {
+  //   //this.chatService.join();
+  //   //  this.store.dispatch(directMessagesAction.joinAction());
+  // }
 
 }

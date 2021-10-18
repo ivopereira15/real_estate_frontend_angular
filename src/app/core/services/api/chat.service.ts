@@ -15,6 +15,6 @@ export class ChatService {
 
     public getChatRoomsForUser(userId: number): Observable<ResultMessage<ChatRoom[]>> {
         return this.http
-            .get<ResultMessage<ChatRoom[]>>(this.appContext.getChatUrl() + '/Chat/' + userId);
+            .get<ResultMessage<ChatRoom[]>>(this.appContext.getChatUrl() + '/api/Chat/mySqlId?mySqlId=' + userId);
     }
 }

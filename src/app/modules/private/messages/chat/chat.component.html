@@ -4,11 +4,11 @@
         <div class="rooms">
           <ul class="rooms__list">
             <li
-              *ngFor="let room of rooms"
-              (click)="getRoom(room._id); joinRoom(room._id)"
+              *ngFor="let room of chatRooms"
+              (click)="getRoom(room.Id); joinRoom(room.Id)"
             >
               <i class="material-icons room-icon">star_rate</i>
-              <span>{{ room.title }}</span>
+              <span>{{ room.firstUserEmail }}</span>
             </li>
           </ul>
         </div>
