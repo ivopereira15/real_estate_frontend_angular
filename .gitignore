@@ -4,4 +4,4 @@ node_modules
 /dist
 /tmp
 /out-tsc
-/src/app/shared/helpers
+/app/shared/helpers
