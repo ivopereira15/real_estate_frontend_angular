@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { apiKey } from '../../../shared/helpers/keys';
 
-const GOOGLE_MAPS_API_KEY = 'AIzaSyCaKbVhcX_22R_pRKDYuNA7vox-PtGaDkI';
+const GOOGLE_MAPS_API_KEY = apiKey.key;
 
 export type Maps = typeof google.maps;
 
