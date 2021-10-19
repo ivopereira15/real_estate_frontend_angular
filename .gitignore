@@ -6,4 +6,4 @@ node_modules
 /out-tsc
 
 # ignore an entire directory
-/helpers
+/src/app/shared/helpers
