@@ -4,4 +4,6 @@ node_modules
 /dist
 /tmp
 /out-tsc
-/app/shared/helpers
+
+# ignore an entire directory
+/helpers
