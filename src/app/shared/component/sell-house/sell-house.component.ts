@@ -1,27 +1,36 @@
-import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit, OnChanges, ChangeDetectorRef, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from 'src/app/core/services/shared/custom_validations';
+import { ApiService, Maps } from '../../../core/services/api/location.service';
+import { CustomValidators } from '../../../core/services/shared/custom_validations';
+
 import { Characteristics } from '../../models/listing/characteristics';
 
 import { OperationType } from '../../models/listing/operation-type';
 import { PropertyType } from '../../models/listing/property-type';
 import { SellHouse } from '../../models/listing/sell-house';
 import { MapPoint } from '../../models/map/map-point';
-
+const place = null as google.maps.places.PlaceResult;
+type Components = typeof place.address_components;
 @Component({
   selector: 'app-sell-house',
   templateUrl: './sell-house.component.html',
   styleUrls: ['./sell-house.component.scss']
 })
-export class SellHouseComponent implements OnInit, OnChanges {
 
+
+export class SellHouseComponent implements OnInit, OnChanges {
+  @ViewChild('search')
+  public searchElementRef: ElementRef;
   @Input() public sellHouseForm: SellHouse;
   @Input() public operationTypes: OperationType[];
   @Input() public propertyTypes: PropertyType[];
   @Input() public title: string;
   @Output() public publishListing: EventEmitter<any> = new EventEmitter<any>();
+   public setMapCoordinates: any;
+
 
   public mapPoint: MapPoint;
+
   submitProperty: boolean = false;
   typology: string[] = ['T0', 'T1', 'T2', 'T3', 'T4', 'T5'];
   conditionStateOption: string[] = ['Contrution in Progress', 'Old', 'New', 'Renew'];
@@ -181,7 +190,11 @@ export class SellHouseComponent implements OnInit, OnChanges {
 
   public mainPropertyCharacteristic: FormGroup;
 
-  constructor(public form: FormBuilder) {
+  constructor(
+    public form: FormBuilder,
+    apiService: ApiService,
+    private ngZone: NgZone,
+    ) {
     this.mainPropertyCharacteristic = this.form.group({
       price: ['', [Validators.required, CustomValidators.validateIfIsNumber]],
       netAream2: ['', [Validators.required, CustomValidators.validateIfIsNumber]],
@@ -203,11 +216,66 @@ export class SellHouseComponent implements OnInit, OnChanges {
       telephone: ['', [Validators.required, CustomValidators.validatePhone]],
       description: [null, Validators.required],
     });
-  }
 
+    apiService.api.then(maps => {
+      this.initAutocomplete(maps);
+
+    });
+  }
   ngOnInit(): void {
 
   }
+
+  initAutocomplete(maps: Maps) {
+    if (maps){
+      const autocomplete = new maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          this.onPlaceChange(autocomplete.getPlace());
+        });
+      });
+    }
+  }
+
+  onPlaceChange(place: google.maps.places.PlaceResult) {
+    const location = this.locationFromPlace(place);
+    console.log(location);
+    if (location.coordinates){
+      this.setCoordinates(location.coordinates);
+      this.setMapCoordinates = location.coordinates;
+    }
+
+  }
+
+  public locationFromPlace(place: google.maps.places.PlaceResult) {
+    const components = place.address_components;
+    if (components === undefined) {
+      return null;
+    }
+
+    const areaLevel3 = getShort(components, 'administrative_area_level_3');
+    const locality = getLong(components, 'locality');
+
+    const cityName = locality || areaLevel3;
+    const countryName = getLong(components, 'country');
+    const countryCode = getShort(components, 'country');
+    const stateCode = getShort(components, 'administrative_area_level_1');
+    const name = place.name !== cityName ? place.name : null;
+
+    const coordinates = {
+      latitude: place.geometry.location.lat(),
+      longitude: place.geometry.location.lng(),
+    };
+
+    const bounds = place.geometry.viewport.toJSON();
+
+    // placeId is in place.place_id, if needed
+    return { name, cityName, countryName, countryCode, stateCode, bounds, coordinates };
+  }
+
+
+
+
 
   ngOnChanges() {
     this.mapPoint = new MapPoint();
@@ -243,11 +311,12 @@ export class SellHouseComponent implements OnInit, OnChanges {
     this.submitProperty = true;
 
     if (this.mainPropertyCharacteristic.valid && this.photos.length > 0) {
-      let characteristicsToAdd: Characteristics[] = [];
+      const characteristicsToAdd: Characteristics[] = [];
       this.characteristics.map((characteristics) => {
-        if (characteristics.addedToProperty)
+        if (characteristics.addedToProperty) {
           characteristicsToAdd.push(characteristics)
-      })
+        }
+      });
       this.sellHouseForm.Price = this.mainPropertyCharacteristic.controls.price.value;
       this.sellHouseForm.NetAream2 = this.mainPropertyCharacteristic.controls.netAream2.value;
       this.sellHouseForm.PriceNetAream2 = this.mainPropertyCharacteristic.controls.price.value;
@@ -276,4 +345,18 @@ export class SellHouseComponent implements OnInit, OnChanges {
     itemFound.addedToProperty = !itemFound.addedToProperty;
   }
 
+}
+
+function getComponent(components: any, name: string) {
+  return components.filter(component => component.types[0] === name)[0];
+}
+
+function getLong(components: any, name: string) {
+  const component = getComponent(components, name);
+  return component && component.long_name;
+}
+
+function getShort(components: any, name: string) {
+  const component = getComponent(components, name);
+  return component && component.short_name;
 }

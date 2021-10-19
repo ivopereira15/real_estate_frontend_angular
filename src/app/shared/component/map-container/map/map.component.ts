@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { latLng, MapOptions, Map, tileLayer, Marker, icon, LeafletMouseEvent, marker } from 'leaflet';
-import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from 'src/app/app.constants';
-import { NominatimResponse } from 'src/app/shared/models/map/nominatim-response.model';
+import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from '../../../../app.constants';
+
 import { MapPoint } from '../../../models/map/map-point';
+import { NominatimResponse } from '../../../models/map/nominatim-response.model';
 
 @Component({
   selector: 'app-map',
@@ -12,6 +13,15 @@ import { MapPoint } from '../../../models/map/map-point';
 export class MapComponent implements OnInit, OnChanges {
 
   @Input() public mapPointInput: MapPoint;
+
+
+  _setMapCoordinates: MapPoint;
+  get setMapCoordinates(): MapPoint {
+      return this._setMapCoordinates;
+  }
+  @Input() set setMapCoordinates(value: MapPoint) {
+      this.setPoint(value);
+  }
   @Output() public coordinates: EventEmitter<MapPoint> =
     new EventEmitter<MapPoint>();
 
@@ -33,7 +43,7 @@ export class MapComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if (this.map && this.mapPointInput && this.mapPointInput.latitude && this.mapPointInput.longitude) {
-      this.updateMapPoint(this.mapPointInput.latitude, this.mapPointInput.longitude, "update");
+      this.updateMapPoint(this.mapPointInput.latitude, this.mapPointInput.longitude, 'update');
       this.createMarker();
     }
 
@@ -45,22 +55,6 @@ export class MapComponent implements OnInit, OnChanges {
     this.createMarker();
   }
 
-  // getAddress(result: NominatimResponse) {
-  //   this.updateMapPoint(result.latitude, result.longitude, result.displayName);
-  //   this.createMarker();
-  // }
-
-  // refreshSearchList(results: NominatimResponse[]) {
-  //   this.results = results;
-  // }
-
-  onMapClick(e: LeafletMouseEvent) {
-    console.log(e);
-    this.clearMap();
-    this.updateMapPoint(e.latlng.lat, e.latlng.lng);
-    this.createMarker();
-    this.coordinates.emit(this.mapPoint);
-  }
 
   private initializeMapOptions() {
     this.options = {
@@ -68,7 +62,7 @@ export class MapComponent implements OnInit, OnChanges {
       layers: [
         tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'OSM' })
       ]
-    }
+    };
   }
 
   private initializeDefaultMapPoint() {
@@ -86,12 +80,20 @@ export class MapComponent implements OnInit, OnChanges {
       name: name ? name : this.mapPoint.name
     };
   }
+  
+  private setPoint(map: any){
+    this.clearMap();
+    console.log(map);
+    const mapIcon = this.getDefaultIcon();
+
+    const coordinates = latLng([map.latitude, map.longitude]);
+    this.lastLayer = marker(coordinates).setIcon(mapIcon).addTo(this.map);
+    this.map.setView(coordinates, this.map.getZoom());
+  }
 
   private createMarker() {
     this.clearMap();
     const mapIcon = this.getDefaultIcon();
-    console.log(this.mapPoint.latitude);
-    console.log(this.mapPoint.longitude);
 
     const coordinates = latLng([this.mapPoint.latitude, this.mapPoint.longitude]);
     this.lastLayer = marker(coordinates).setIcon(mapIcon).addTo(this.map);
@@ -107,7 +109,8 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   private clearMap() {
-    if (this.map.hasLayer(this.lastLayer)) { this.map.removeLayer(this.lastLayer); }
-  }
+    if (this.map.hasLayer(this.lastLayer)) {
+      this.map.removeLayer(this.lastLayer); }
+    }
 
 }

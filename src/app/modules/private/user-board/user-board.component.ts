@@ -116,7 +116,6 @@ export class UserBoardComponent implements OnInit, OnDestroy {
     }
     console.log(this.user.Active);
     if (validated) {
-      console.log('sdsdsdsd');
       this.userService.updateUser(this.user).subscribe();
     }
 

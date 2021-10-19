@@ -48,7 +48,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent, 
+  declarations: [components, FooterComponent, GeocodingComponent, FilterSearchComponent,
     PropertyDetailsComponent, CreateDialogComponent, CarouselComponent, FilterSearchOnViewComponent, PopUpFiltersComponent],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule, ReactiveFormsModule, LeafletModule, MatDialogModule,
     NgImageFullscreenViewModule, NgImageSliderModule, NgbModule, MatTabsModule, BrowserAnimationsModule ],
