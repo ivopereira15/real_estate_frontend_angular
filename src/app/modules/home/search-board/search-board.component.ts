@@ -50,9 +50,6 @@ export class SearchBoardComponent implements OnInit, OnChanges {
       this.listingService.searchProperties(this.searchProperties).subscribe((res: any) => {
         if (res.Result.IsValid) {
           this.promotedProperties = res.Result.Data;
-          // test
-          this.promotedProperties.push(res.Result.Data);
-          this.promotedProperties.push(res.Result.Data);
 
           var i, j, array, chunk = 2;
           for (i = 0, j = 8; i < j; i += chunk) {
@@ -60,10 +57,10 @@ export class SearchBoardComponent implements OnInit, OnChanges {
             this.chunkArray.push(array);
           }
           this.mapPoints = this.promotedProperties.map(x => {
-            let mapP = new MapPoint();
+            const mapP = new MapPoint();
             mapP.latitude = x.Latitude;
             mapP.longitude = x.Longitude;
-            // mapP.name = x.Id.toString(); // TODO change this to Name?
+
             return mapP;
           });
         }

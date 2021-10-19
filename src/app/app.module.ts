@@ -28,6 +28,7 @@ import { reducer } from './core/ngxs-state-management/search/reducer';
 
 import { actionSanitizer, adaptReducer, stateSanitizer } from '@state-adapt/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ApiService } from './core/services/api/location.service';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

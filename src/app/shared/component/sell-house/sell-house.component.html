@@ -48,7 +48,7 @@
                 <div class="width-30 form">
                     <div for="street">Street and Nª</div>
                     <mat-form-field class="full-width" appearance="outline">
-                        <input matInput formControlName="street" placeholder="Street" required>
+                        <input matInput formControlName="street" placeholder="Street" required autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
                     </mat-form-field>
                     <div *ngIf="c.controls.street.errors && submitProperty" class="err-msg">
                         Street is required
@@ -62,7 +62,7 @@
                         Or set the location with the marker:
                     </div>
                 </div>
-                <app-map (coordinates)="setCoordinates($event)" [mapPointInput]="mapPoint"></app-map>
+                <app-map (coordinates)="setCoordinates($event)" [setMapCoordinates]="setMapCoordinates" [mapPointInput]="mapPoint"></app-map>
             </div>
         </div>
         <div class="row width-80">
