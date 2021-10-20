@@ -24,6 +24,8 @@ export class ChatComponent implements OnInit {
   public currentRoomId: string;
   public users: OnlineUser[] = [];
 
+  selectedRoom: ChatRoom;
+
   private unsubscribeOnDestroy = new Subject<void>();
   directMessages$: Observable<Message[]>;
   chatRooms: ChatRoom[];
@@ -36,9 +38,6 @@ export class ChatComponent implements OnInit {
     private chatHubService: DirectMessagesService,
     private store: Store
   ) {
-    let dfdf = new Message();
-    dfdf.MessageText = "dfdf"
-    this.messages.push(dfdf);
   }
 
   public ngOnInit() {
@@ -50,6 +49,7 @@ export class ChatComponent implements OnInit {
         if (res !== []) {
           this.chatRooms = res;
           console.log(res);
+          this.selectRoom(this.chatRooms[0].id);
         }
       }
     );
@@ -61,8 +61,6 @@ export class ChatComponent implements OnInit {
     //   .subscribe((data: Message) => {
     //     this.messages.push(data);
     //   });
-    this.getRooms();
-    this.getRoomsFromSocket();
     this.getUsersList();
   }
 
@@ -71,45 +69,18 @@ export class ChatComponent implements OnInit {
     this.unsubscribeOnDestroy.complete();
   }
 
+  public selectRoom(roomId: string) {
+    this.selectedRoom = this.chatRooms.find(x => x.id == roomId);
+    this.messages = this.selectedRoom.messages;
+  }
+
   public send(): void {
     if (this.text && this.text.trim() !== '') {
-
-      this.chatHubService.sendPrivateMessage("someid", this.text, "df");
-     // this.store.dispatch(directMessagesAction.sendDirectMessageAction(this.text));
+      console.log(this.text);
+      this.chatHubService.sendPrivateMessage("1", this.text, this.selectedRoom.id);
+      // this.store.dispatch(directMessagesAction.sendDirectMessageAction(this.text));
       this.text = '';
     }
-  }
-
-  public getRoomsFromSocket(): void {
-    // this.chatService.getRooms()
-    //   .pipe(takeUntil(this.unsubscribeOnDestroy))
-    //   .subscribe((res: ChatRoom) => {
-    //     const updatedRooms = [res, ...this.rooms];
-    //     this.rooms = updatedRooms;
-    //   });
-  }
-
-
-  public getRooms(): void {
-    // this.roomService.getRooms()
-    //   .pipe(takeUntil(this.unsubscribeOnDestroy))
-    //   .subscribe((res: ChatRoom[]) => {
-    //     this.rooms = res;
-    //   });
-  }
-
-  public joinRoom(room): void {
-    // this.chatService.joinRoom(room);
-    // this.currentRoomId = room;
-  }
-
-  public getRoom(id): void {
-    // this.roomService.getRoom(id)
-    //   .pipe(takeUntil(this.unsubscribeOnDestroy))
-    //   .subscribe((res: ChatRoom) => {
-    //     this.messages = res.messages;
-    //     this.title = res.title;
-    //   });
   }
 
   public getProfile(): void {
