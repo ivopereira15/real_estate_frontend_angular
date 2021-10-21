@@ -30,6 +30,7 @@ export class MyListingsComponent implements OnInit, OnDestroy {
       this.listingService.getUserPropertiesBasic(this.userId).subscribe((result) => {
         if (result.IsValid) {
           this.listedProperties = result.Data;
+          console.log(this.listedProperties);
         }
       })
     );
