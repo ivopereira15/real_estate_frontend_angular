@@ -2,12 +2,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Property } from '../models/listing/property';
-import { MapPoint } from 'src/app/shared/models/map/map-point';
+
 import { Characteristics } from '../models/listing/characteristics';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from 'src/app/core/services/shared/custom_validations';
+
 import { EmailService } from '../../core/services/api/email.service';
-import { EmailInput } from 'src/app/shared/models/email/email-input';
+import { MapPoint } from '../models/map/map-point';
+import { CustomValidators } from '../../core/services/shared/custom_validations';
+import { EmailInput } from '../models/email/email-input';
+
 
 
 @Component({
@@ -25,7 +28,7 @@ export class PropertyDetailsComponent implements OnInit {
     phone: ''
   };
 
-  submitContact: boolean = false;
+  submitContact = false;
   currentIndex: any = -1;
   showFlag: any = false;
   items: Array<{ image: string }> = [];
@@ -46,7 +49,7 @@ export class PropertyDetailsComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.router.navigate([], { fragment: "targetBlue" });
+    this.router.navigate([], { fragment: 'targetBlue' });
     if (this.property) {
       console.log(this.property);
       this.property.Images.forEach(i => {
@@ -54,7 +57,8 @@ export class PropertyDetailsComponent implements OnInit {
         this.mapPoint = new MapPoint();
         this.mapPoint.latitude = this.property.Latitude;
         this.mapPoint.longitude = this.property.Longitude;
-      });
+        console.log(this.mapPoint)
+      });;
 
     }
   }
@@ -81,10 +85,9 @@ export class PropertyDetailsComponent implements OnInit {
     this.submitContact = true;
 
     if (this.contactForm.valid) {
-      let email = new EmailInput();
+      const email = new EmailInput();
       email.FirstUserEmail = this.contactForm.value.email;
-      //email.SecondUserEmail = this.contactForm.value.email; 
-      //email.FirstUserId = this.contactForm.value.email;
+
       email.SecondUserId = this.property.UserId;
       email.Message = this.contactForm.value.message;
 
@@ -95,5 +98,4 @@ export class PropertyDetailsComponent implements OnInit {
     }
 
   }
-  //https://itnext.io/creating-forms-inside-modals-with-ng-bootstrap-221e4f1f5648
 }

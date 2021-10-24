@@ -1,35 +1,39 @@
-<form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
-  <div class="center">
-    <div class="column background-filter login">
-      <div class="welcome-header">
-        Welcome to ImoRentals
-      </div>
-     <mat-divider></mat-divider>
-      <div class="bold-text">Email</div>
-      <div>
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Email</mat-label>
-          <input [(ngModel)]="email" matInput formControlName="email" placeholder="Type you email">
-          <mat-error>
-            Email required
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="bold-text">Password</div>
-      <div>
-        <mat-form-field class="full-width password" appearance="outline">
-          <mat-label>Passowrd</mat-label>
-          <input [(ngModel)]="password" matInput type="password" formControlName="password"
-            placeholder="Type your password">
-          <mat-error>
-            Password required
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <button mat-raised-button type="submit" [loading]="loadingButton" class="login-btn"> Login </button>
-      <button mat-raised-button class="forgot-btn"> Forgot you password? </button>
-      <div class="middle">Or</div>
-      <button mat-raised-button (click)="goToResigter()" class="register-btn"> Register </button>
+<div class="body-page">
+<div class="container form-container">
+  <div class="row pop-up-form justify-content-center">
+    <div class="col-sm-4" *ngIf="!isMobile">
+      <img class="image-form" src="/assets/images/login_home.jpg" width="100%" />
+    </div>
+    <div class="col-sm-8">
+      <form (ngSubmit)="login()" [formGroup]="loginForm" class="form-right-side" novalidate>
+        <div class="row form-title">
+          Welcome to ImoRentals
+        </div>
+        <div class="row">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="email" matInput formControlName="email" placeholder="Type you email">
+            <mat-error>
+              Email required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="form-field password" appearance="outline">
+            <mat-label>Passowrd</mat-label>
+            <input [(ngModel)]="password" matInput type="password" formControlName="password"
+              placeholder="Type your password">
+            <mat-error>
+              Password required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <button mat-raised-button type="submit" [loading]="loadingButton" class="button submit-button"> Login </button>
+          <button mat-raised-button (click)="goToResigter()" class="button second-button"> Register </button>  
+          <button mat-raised-button class="button primary-button"> Forgot you password? </button>
+        </div>
+      </form>
     </div>
   </div>
-</form>
+</div>

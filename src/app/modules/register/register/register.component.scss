@@ -1,37 +1,10 @@
-.register {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    flex-direction: column;
+.buttons-row{
+    margin-bottom:20px;
 }
-
 .div-btn {
-    display: flex;
-    justify-content: center;
-    width: 50%;
+    width: 200px;
 }
 
-.register-btn {
+.button{
     width: 95%;
-    height: 50px;
-    border-radius: 25px;
-    font-size: larger;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: black;
-    color:white;
-}
-
-.register-btn-professional {
-    width: 95%;
-    height: 50px;
-    border-radius: 25px;
-    font-size: larger;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rgb(110, 52, 226);
-    color:white
-}
-
-.register-column {
-    padding: 25px;
-    width: 40%;
 }

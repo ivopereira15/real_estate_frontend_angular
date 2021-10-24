@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ListingService } from 'src/app/core/services/api/listing.service';
-import { OperationType } from 'src/app/shared/models/listing/operation-type';
-import { PropertyType } from 'src/app/shared/models/listing/property-type';
+import { ListingService } from '../../../../core/services/api/listing.service';
+import { OperationType } from '../../../models/listing/operation-type';
+import { PropertyType } from '../../../models/listing/property-type';
+
 
 @Component({
   selector: 'app-filter-property',

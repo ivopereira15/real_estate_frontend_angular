@@ -38,8 +38,7 @@ export class MapSearchComponent implements OnInit, OnChanges {
 
         this.mapPointInputList.forEach(a => {
           if (a && a.latitude && a.longitude) {
-            //this.updateMapPoint(a.latitude, a.longitude, "update");
-            this.createMarker("update", a.latitude, a.longitude);
+            this.createMarker('update', a.latitude, a.longitude);
           }
         });
       }

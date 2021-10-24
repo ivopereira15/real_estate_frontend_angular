@@ -1,3 +1,5 @@
+@import '~bootstrap/scss/bootstrap';
+@import "~src/sass/_vars";
 .column {
     display: flex;
     flex-direction: column;
@@ -6,7 +8,6 @@
 .row {
     display: flex;
     flex-direction: row;
-    margin: 5px;
 }
 
 .row-nomargin {
@@ -21,6 +22,7 @@
     height: 100vh;
     margin-top: -10%;
 }
+
 
 .center-column {
     display: flex;
@@ -198,7 +200,151 @@ left: calc(50% - 10px) !important;
 }
 
 
+.pop-up-form{
+    border-radius: 10px 10px;
+    box-shadow: 0 8px 20px 0 rgba(0,0,0,.15);
+}
 
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+.form-title{
+    color: #8a8a8a;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 36px;
+}
+
+
+.form-right-side{
+    margin: 57px 65px 0px 65px !important
+}
+.form-field{
+    width: 100%;
+}
+.form-label{
+    color: #8a8a8a;
+}
+
+.button{    
+    height: 50px;
+    border-radius: 25px !important;
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:white;
+    margin-right: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+.primary-button{
+    background-color: #999999;
+}
+
+.second-button{
+    background-color: #505050;
+}
+
+.submit-button{
+    background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(192, 57, 43), rgb(142, 68, 173)) repeat scroll 0% 0%;
+}
+
+.body-page{
+    min-height: 900px;
+    margin-bottom: 20%;
+    margin-top: 10%;
+}
+
+.characteristics{
+    margin-left: 10px;
+    .badge-light{
+        border: 1px solid white;
+        background-color: #999999;
+        color: white;
+        padding: 7px;
+    }
+}
+
+.main-characteristics{
+    p{
+        margin-bottom: 0px;
+        margin-left: 2px;
+    }
+    margin-left: 10px;
+    span{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .main-characteristics-title{
+        font-weight: bold;
+    }
+}
+
+
+@media (min-width: $dimension-breakpoint-xxs-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xs-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-sm-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-md-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-lg-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-mid-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxl-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxxl-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  
+  @media (min-width: $dimension-breakpoint-max-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }

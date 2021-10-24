@@ -1,14 +1,14 @@
 import { Component, OnInit, Inject, OnDestroy, ViewChild, ElementRef, Input } from '@angular/core';
-import { UserService } from 'src/app/core/services/api/user.service';
-import { SearchPagination } from 'src/app/shared/models/search/search-paginations';
-import { SearchUser } from 'src/app/shared/models/search/search-user';
 import { Subscription } from 'rxjs';
-import { HomePageService } from 'src/app/core/services/api/home-page.service';
-import { PropertyBasic } from 'src/app/shared/models/listing/property-basic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MobileUtilityService } from 'src/app/core/services/shared/mobile-utility';
-import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility';
-import { HomePage } from 'src/app/shared/models/home/home-page';
+import { SearchPagination } from '../../../shared/models/search/search-paginations';
+import { PropertyBasic } from '../../../shared/models/listing/property-basic';
+import { SearchUser } from '../../../shared/models/search/search-user';
+import { UserService } from '../../../core/services/api/user.service';
+import { HomePageService } from '../../../core/services/api/home-page.service';
+import { MobileUtilityService } from '../../../core/services/shared/mobile-utility';
+import { IWindowData } from '../../../shared/models/mobile-utility/mobile-utility';
+import { HomePage } from '../../../shared/models/home/home-page';
 
 @Component({
   selector: 'app-main-board',
@@ -23,7 +23,6 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   @ViewChild('widgetsContent3') widgetsContent3: ElementRef;
   @Input() public arrow: boolean;
   searchPagination: SearchPagination<SearchUser> = new SearchPagination<SearchUser>();
-  //searchProperties: SearchProperty = new SearchProperty();
   subscriptions: Subscription = new Subscription();
   // chunkArray: Array<User[]> = [];
 
@@ -31,13 +30,13 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   newApartmentsToBuy: PropertyBasic[] = [];
   newRoomsToRent: PropertyBasic[] = [];
 
-  loadedHotPropertiesToBuy: boolean = false;
-  loadedNewApartmentsToBuy: boolean = false;
-  loadedNewRoomsToRent: boolean = false;
+  loadedHotPropertiesToBuy = false;
+  loadedNewApartmentsToBuy = false;
+  loadedNewRoomsToRent = false;
 
-  public isMobile: boolean = false;
+  public isMobile = false;
   public items: Array<
-  { icon: string, 
+  { icon: string,
     title: string,
     description: string,
     buttonText: string
@@ -46,7 +45,6 @@ export class MainBoardComponent implements OnInit, OnDestroy {
   private windowChangeSubscription: Subscription;
   constructor(
     @Inject(UserService) private userService: UserService,
-   // @Inject(ListingService) private listingService: ListingService,
     @Inject(HomePageService) private homePageService: HomePageService,
     @Inject(MobileUtilityService) private mobileUtilityService: MobileUtilityService,
     public modalService: NgbModal) { }
@@ -57,15 +55,11 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     });
     this.populateItems();
 
-    // Properties search Init
-    // this.searchProperties.criteria = "1";
-    // this.searchProperties.priceFrom = 1;
-    // this.searchProperties.priceTo = 200000;
     this.subscriptions.add(
       this.homePageService.getHomePage().subscribe((res: any) => {
         console.log(res);
         if (res.IsValid) {
-          let result: HomePage = res.Data;
+          const result: HomePage = res.Data;
 
           this.hotPropertiesToBuy = result.HotPropertiesToBuy;
           this.loadedHotPropertiesToBuy = true;
@@ -75,8 +69,6 @@ export class MainBoardComponent implements OnInit, OnDestroy {
 
           this.newRoomsToRent = result.NewRoomsToRent;
           this.loadedNewRoomsToRent = true;
-          
-          
 
         } else {
           this.loadedNewRoomsToRent = true;
@@ -89,8 +81,8 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     // Test stuff search
     // this.searchPagination.PageNumber = 1;
     // this.searchPagination.RowsPerPage = 10;
-    // this.searchPagination.OrderBy = "Email";
-    // let testUser = { email: "", username: "", name: "" } as SearchUser;
+    // this.searchPagination.OrderBy = 'Email';
+    // let testUser = { email: '', username: '', name: '' } as SearchUser;
     // this.searchPagination.RestrictionCriteria = testUser;
 
     // this.subscriptions.add(
@@ -112,27 +104,27 @@ export class MainBoardComponent implements OnInit, OnDestroy {
 
   populateItems(): void {
     const item1 = {
-      icon: "apartment",
-      title: "Buy",
-      description: "Find your dream home among our list of houses",
-      buttonText: "Buy your dream house",
+      icon: 'apartment',
+      title: 'Buy',
+      description: 'Find your dream home among our list of houses',
+      buttonText: 'Buy your dream house',
     };
 
     const item2 = {
-      icon: "location_city",
-      title: "Sell",
-      description: "Find the best seller for your home",
-      buttonText: "Sell at the best price",
-    }
+      icon: 'location_city',
+      title: 'Sell',
+      description: 'Find the best seller for your home',
+      buttonText: 'Sell at the best price',
+    };
 
     const item3 = {
-      icon: "home",
-      title: "Rent",
-      description: "Explore our best options in the market",
-      buttonText: "Find a room ",
-    }
+      icon: 'home',
+      title: 'Rent',
+      description: 'Explore our best options in the market',
+      buttonText: 'Find a room ',
+    };
 
-    
+
     this.items.push(item1);
     this.items.push(item2);
     this.items.push(item3);
@@ -155,7 +147,5 @@ export class MainBoardComponent implements OnInit, OnDestroy {
     return false;
   }
 }
-function HomeService(HomeService: any) {
-  throw new Error('Function not implemented.');
-}
+
 

@@ -12,8 +12,15 @@ import { NominatimResponse } from '../../../models/map/nominatim-response.model'
 })
 export class MapComponent implements OnInit, OnChanges {
 
-  @Input() public mapPointInput: MapPoint;
 
+  _mapPointInput: MapPoint;
+  get mapPointInput(): MapPoint {
+      return this._mapPointInput;
+  }
+
+  @Input() set mapPointInput(value: MapPoint) {
+     this._mapPointInput = value;
+  }
 
   _setMapCoordinates: MapPoint;
   get setMapCoordinates(): MapPoint {
@@ -29,7 +36,7 @@ export class MapComponent implements OnInit, OnChanges {
   mapPoint: MapPoint;
   options: MapOptions;
   lastLayer: any;
-  fullHeight: boolean = false;
+  fullHeight = false;
 
   results: NominatimResponse[];
 
@@ -42,17 +49,19 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.map && this.mapPointInput && this.mapPointInput.latitude && this.mapPointInput.longitude) {
-      this.updateMapPoint(this.mapPointInput.latitude, this.mapPointInput.longitude, 'update');
-      this.createMarker();
-    }
-
   }
 
   initializeMap(map: Map) {
-    console.log(map);
     this.map = map;
-    this.createMarker();
+    const mapName = 'Hello';
+    const latitude = DEFAULT_LATITUDE;
+    const longitude = DEFAULT_LONGITUDE;
+    if (this.mapPointInput){
+      this.createMarker(mapName, this.mapPointInput.latitude, this.mapPointInput.longitude);
+    } else {
+      this.createMarker(mapName, latitude, longitude);
+    }
+
   }
 
 
@@ -73,17 +82,8 @@ export class MapComponent implements OnInit, OnChanges {
     };
   }
 
-  private updateMapPoint(latitude: number, longitude: number, name?: string) {
-    this.mapPoint = {
-      latitude,
-      longitude,
-      name: name ? name : this.mapPoint.name
-    };
-  }
-  
   private setPoint(map: any){
     this.clearMap();
-    console.log(map);
     const mapIcon = this.getDefaultIcon();
 
     const coordinates = latLng([map.latitude, map.longitude]);
@@ -91,11 +91,9 @@ export class MapComponent implements OnInit, OnChanges {
     this.map.setView(coordinates, this.map.getZoom());
   }
 
-  private createMarker() {
-    this.clearMap();
+  private createMarker(name: string, latitude: number, longitude: number) {
     const mapIcon = this.getDefaultIcon();
-
-    const coordinates = latLng([this.mapPoint.latitude, this.mapPoint.longitude]);
+    const coordinates = latLng([latitude, longitude]);
     this.lastLayer = marker(coordinates).setIcon(mapIcon).addTo(this.map);
     this.map.setView(coordinates, this.map.getZoom());
   }

@@ -1,11 +1,10 @@
 @import "~src/sass/_vars";
-.board-container {
+.body-page {
     display: flex;
     flex-direction: column;
     padding-top: 2%;
     padding-left: 5%;
     padding-right: 5%;
-    height: 170vh;
 }
 
 .card-property {

@@ -1,84 +1,86 @@
-<div class="register-private-user">
-  <!--FIRST WINDOW-->
-  <div class="column width-75" [ngClass]="[isMobile ? 'border-box-mobile' : 'border-box']" *ngIf="!confirmPassword">
-    <form class="custom-form" (ngSubmit)="next()" [formGroup]="userForm" novalidate>
-      <div class="row register-header">
-        Create your Account
-      </div>
-      <mat-divider></mat-divider>
-      <div class="bold-text">First Name</div>
-      <div class="row full-width">
-        <div class="width-100">
-          <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
-            <mat-label>First Name</mat-label>
-            <input matInput formControlName="firstname" required [(ngModel)]="newUser.Name">
-            <mat-error>
-              First Name is required
-            </mat-error>
-          </mat-form-field>
+
+  <div class="row pop-up-form justify-content-center" *ngIf="!confirmPassword">
+    <div class="col-sm-4" *ngIf="!isMobile">
+      <img class="image-form" src="/assets/images/create_account_form.jpg" width="100%" />
+    </div>
+    <div class="col-sm-8" >
+      <form (ngSubmit)="next()" [formGroup]="userForm" class="form-right-side" novalidate>
+        <div class="row form-title">
+          Create your Account
         </div>
-      </div>
-      <div class="bold-text">Last Name</div>
-      <div class="row full-width">
-        <div class="width-100">
-          <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
-            <mat-label>Last Name</mat-label>
-            <input matInput formControlName="lastname" required [(ngModel)]="newUser.Surname">
-            <mat-error>
-              Last Name is required
-            </mat-error>
-          </mat-form-field>
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstname" required [(ngModel)]="newUser.Name">
+              <mat-error>
+                First Name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-      </div>
-      <div class="bold-text">Email</div>
-      <div class="row full-width">
-        <div class="width-100">
-          <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
-            <mat-label>Email</mat-label>
-            <input type="email" matInput formControlName="email" required [(ngModel)]="newUser.Email">
-            <mat-error>
-              Email is required
-            </mat-error>
-          </mat-form-field>
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastname" required [(ngModel)]="newUser.Surname">
+              <mat-error>
+                Last Name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <button class="full-width register-btn" mat-raised-button type="submit"> Continue
-        </button>
-      </div>
-      <div class="row small-text">
-        By submitting, I accept ImoRental's <a href="">terms of use</a>.
-      </div>
-    </form>
+        <div class="row ">
+          <div class="col-12">
+            <mat-form-field class="form-field" appearance="outline" hideRequiredMarker>
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" required [(ngModel)]="newUser.Email">
+              <mat-error>
+                Email is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <button class="button submit-button" mat-raised-button type="submit"> Continue
+          </button>
+        </div>
+        <div class="row small-text">
+          By submitting, I accept ImoRental's  <a href=""> terms of use</a>.
+        </div>
+      </form>
+    </div>
   </div>
-  <!--NEXT WINDOW-->
-  <div class="column width-75" [ngClass]="[isMobile ? 'border-box-mobile' : 'border-box']" *ngIf="confirmPassword">
-    <form class="custom-form" (ngSubmit)="createAccount()" [formGroup]="passwordForm" novalidate>
-      <div class="row register-header">
-        Choose your password
-      </div>
-      <div class="row">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Password</mat-label>
-          <input type="password" matInput formControlName="password" required [(ngModel)]="newUser.Password">
-          <mat-error>
-            Password required
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Confirm password</mat-label>
-          <input type="password" matInput formControlName="confirmPassword" required [(ngModel)]="confirmPasswordInput">
-          <mat-error *ngIf="passwordForm.controls.confirmPassword.hasError('notmatch')">
-            Passwords don't match
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <button class="full-width register-btn" mat-raised-button color="primary"> Create account
-        </button>
-      </div>
-    </form>
+
+
+  <div class="row pop-up-form justify-content-center" *ngIf="confirmPassword">
+    <div class="col-sm-4" *ngIf="!isMobile">
+      <img class="image-form" src="/assets/images/create_account_form.jpg" width="100%" />
+    </div>
+    <div class="col-sm-8">
+      <form  class="form-right-side" (ngSubmit)="createAccount()" [formGroup]="passwordForm" novalidate>
+        <div class="row">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" required [(ngModel)]="newUser.Password">
+            <mat-error>
+              Password required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Confirm password</mat-label>
+            <input type="password" matInput formControlName="confirmPassword" required [(ngModel)]="confirmPasswordInput">
+            <mat-error *ngIf="passwordForm.controls.confirmPassword.hasError('notmatch')">
+              Passwords don't match
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <button class="button submit-button" mat-raised-button type="submit"> Create account
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>

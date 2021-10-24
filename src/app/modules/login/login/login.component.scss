@@ -1,61 +1,78 @@
-.login {
-    margin-top: 70px;
+@import "~src/sass/_vars";
+.form-field {
+    width: 100%;
+    padding-right: 5px;
+}
+
+.small-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+
+
+
+
+.col-6{
+    padding-right: 0px;
+    padding-left: 0px; 
+}
+
+
+.register-private-user {
+    display: flex;    
+}
+
+.custom-form{
+    padding: 20px !important;
+    border-radius: 15px;
+    box-shadow: 0 10px 60px -6px #777, 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
+
+
+.border-box-mobile {
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+}
+
+.border-box-no-height {
     padding: 15px;
     width: 30%;
-    //height: 34%;
-    > div,
-    button {
-        margin: 5px;
-    }
 }
 
-.welcome-header{
+.register-header {
     justify-content: center;
-    //font-weight: bold;
     font-size: 20px;
-    margin-bottom: 20px !important;
-    //font-weight: bold;
-    display: flex;
+    margin-bottom: 15px;
 }
 
-.password{
-    margin-bottom: 15px;
+mat-divider {
+    margin-bottom: 7px;
+}
+
+.small-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 10px;
 }
 
 .bold-text{
     font-weight: bold;
     margin-left: 5px;
-    margin-bottom: unset !important;
-}
-
-.middle {
-    display: flex;
-    justify-content: center;
-}
-
-.login-btn {
-    background-color: #0361ec;
-    color: white;
-    border-radius: 25px;
-}
-
-.forgot-btn {
-    background-color: #3f81e4;
-    color:  white;
-    border-radius: 25px;
-}
-
-.register-btn {
-    background-color:rgb(110, 52, 226);
-    color:  white;
-    border-radius: 25px;
-}
-
-.link-new-user {
-    margin-top: 10px;
-    margin-left: 10px;
-    color: #1c4cc5;
-    text-decoration: underline;
 }
 
 // Material Override PLACE TO STYLES
@@ -73,3 +90,99 @@
     transform: translateY(-1.1em) scale(0.75);
     width: 133.33333%;
 }
+
+
+.image-form{
+    background-repeat: no-repeat;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px
+}
+
+.col-sm-4{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.col-sm-8{
+    padding-right: 0px;
+    padding-left: 0px;
+    border-right: 5px solid red;
+    border-image: linear-gradient(to top, #1c4cc5, #ff4081) 1 stretch;
+}
+
+
+.col-12{
+    padding-right: 0px;
+    padding-left: 0px; 
+}
+
+@media (min-width: $dimension-breakpoint-xxs-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xs-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-sm-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-md-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-lg-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-mid-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxl-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxxl-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  
+  @media (min-width: $dimension-breakpoint-max-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
