@@ -24,6 +24,7 @@ import { AddListingRentRoomComponent } from './add-listing-rent-room/add-listing
     SharedModule,
     AddListingRoutingModule,
     LeafletModule
-  ]
+  ],
+  exports: [CardComponent],
 })
 export class AddListingModule { }

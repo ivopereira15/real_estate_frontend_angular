@@ -27,7 +27,10 @@ export class MapComponent implements OnInit, OnChanges {
       return this._setMapCoordinates;
   }
   @Input() set setMapCoordinates(value: MapPoint) {
+    if (value){
       this.setPoint(value);
+    }
+
   }
   @Output() public coordinates: EventEmitter<MapPoint> =
     new EventEmitter<MapPoint>();
@@ -56,7 +59,7 @@ export class MapComponent implements OnInit, OnChanges {
     const mapName = 'Hello';
     const latitude = DEFAULT_LATITUDE;
     const longitude = DEFAULT_LONGITUDE;
-    if (this.mapPointInput){
+    if (this.mapPointInput.latitude && this.mapPointInput.longitude){
       this.createMarker(mapName, this.mapPointInput.latitude, this.mapPointInput.longitude);
     } else {
       this.createMarker(mapName, latitude, longitude);
@@ -107,7 +110,7 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   private clearMap() {
-    if (this.map.hasLayer(this.lastLayer)) {
+    if (this.lastLayer && this.map.hasLayer(this.lastLayer)) {
       this.map.removeLayer(this.lastLayer); }
     }
 

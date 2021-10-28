@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { latLng, MapOptions, Map, tileLayer, Marker, icon, LeafletMouseEvent, marker } from 'leaflet';
-import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from 'src/app/app.constants';
-import { NominatimResponse } from 'src/app/shared/models/map/nominatim-response.model';
+import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from '../../../../app.constants';
+
 import { MapPoint } from '../../../models/map/map-point';
+import { NominatimResponse } from '../../../models/map/nominatim-response.model';
 
 @Component({
   selector: 'app-map-search',
@@ -19,7 +20,7 @@ export class MapSearchComponent implements OnInit, OnChanges {
   // mapPoint: MapPoint;
   options: MapOptions;
   lastLayer: any;
-  fullHeight: boolean = false;
+  fullHeight = false;
 
   results: NominatimResponse[];
 

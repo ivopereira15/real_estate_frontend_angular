@@ -9,7 +9,6 @@
 
 .title-personal-info {
     margin-top: 10px;
-    //margin-left: 15px;
     margin-bottom: 15px;
     font-weight: bold;
     font-size: 25px;
@@ -76,7 +75,6 @@
 .main-title {
     margin-top: 20px;
     margin-bottom: 10px;
-    margin-left: 15px;
     font-weight: bold;
 }
 
@@ -129,10 +127,6 @@ img {
     color: red;
   }
 
-.margin-right {
-    margin-left: 15px;
-}
-
 .fas.fa-times-circle {
     font-size: 30px;
     color: black;
@@ -172,53 +166,6 @@ img {
     }
 }
 
-// mat-radio-group {
-//     padding-top: 5px !important;
-//     padding-left: 5px !important;;
-//     padding-right: 5px !important;
-//     background-color: rgb(250, 242, 242) !important;
-//     border-radius: 10px !important;
-
-//     mat-radio-button {
-//         margin-left: 5px !important;
-//     }
-// }
-
-// ::ng-deep mat-radio-button.level-1 .mat-radio-inner-circle {
-//     background-color: yellow !important;
-// }
-// ::ng-deep mat-radio-button.level-1 .mat-radio-outer-circle {
-//     border-color: yellow !important;
-// }
-
-// ::ng-deep mat-radio-button.level-2 .mat-radio-inner-circle {
-//     background-color: rgb(255, 208, 0) !important;
-// }
-// ::ng-deep mat-radio-button.level-2 .mat-radio-outer-circle {
-//     border-color: rgb(255, 208, 0) !important;
-// }
-
-// ::ng-deep mat-radio-button.level-3 .mat-radio-inner-circle {
-//     background-color: rgb(255, 174, 0) !important;
-// }
-// ::ng-deep mat-radio-button.level-3 .mat-radio-outer-circle {
-//     border-color: rgb(255, 174, 0) !important;
-// }
-
-// ::ng-deep mat-radio-button.level-4 .mat-radio-inner-circle {
-//     background-color: rgb(255, 123, 0) !important;
-// }
-// ::ng-deep mat-radio-button.level-4 .mat-radio-outer-circle {
-//     border-color: rgb(255, 123, 0) !important;
-// }
-
-// ::ng-deep mat-radio-button.level-5 .mat-radio-inner-circle {
-//     background-color: rgb(255, 72, 0) !important;
-// }
-// ::ng-deep mat-radio-button.level-5 .mat-radio-outer-circle {
-//     border-color: rgb(255, 72, 0) !important;
-// }
-
 // Material Override PLACE TO STYLES
 
 ::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
@@ -233,4 +180,19 @@ img {
     margin-bottom: -1.25em !important;
  }
 
+.menu-buttons-content{
+    .menu-button{
+        width: 100%;
+    }
+}
 
+.personal-fields{
+    padding: 0px;
+}
+
+.personal-info{
+    padding-right: 0px;
+    padding-left: 0px;
+    border-right: 5px solid red;
+    border-image: linear-gradient(to top, #1c4cc5, #ff4081) 1 stretch;
+}

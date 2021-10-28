@@ -1,3 +1,4 @@
+@import "~src/sass/_vars";
 .background {
     //background: linear-gradient(to right, rgb(28, 76, 197), #ff4081);
     background-image: url('../../../../../assets//images/houselogo.jpg');
@@ -47,3 +48,65 @@
 .btn {
     margin: 5px;
 }
+
+@media (min-width: $dimension-breakpoint-xxs-min) {
+    .search-bar{
+        margin-top: 0px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xs-min) {
+    .search-bar{
+        margin-top: 0px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-sm-min) {
+    .search-bar{
+        margin-top: 0px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-md-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-lg-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-mid-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxl-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxxl-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  
+  @media (min-width: $dimension-breakpoint-max-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+

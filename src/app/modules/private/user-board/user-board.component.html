@@ -1,56 +1,59 @@
-<div class="row top-margin">
-  <div class="width-15"></div>
-  <div class="width-70">
-  </div>
-</div>
 <div class="column width-100" *ngIf="loading">
   <div class="row row-margin hv100">
     <mat-spinner></mat-spinner>
   </div>
 </div>
-<div class="board-container" *ngIf="!loading">
+<div class="container body-page">
+<div class="row board-container" *ngIf="!loading">
   <!--USER LIST-->
-  <div class="left-container width-15" *ngIf="user.Type === 1">
-    <div class="button-wrapper">
-      <button mat-raised-button color="primary" class="button-main-menu width-100"
+  <div class="col-sm-4 menu-buttons-content" *ngIf="user.Type === 1">
+
+    <div class="col-sm-8">
+      <button mat-raised-button class="button primary-button menu-button"
         [routerLink]="['/messages']">Messages</button>
     </div>
-    <div class="button-wrapper">
-      <button mat-raised-button color="primary" class="button-main-menu width-100" [routerLink]="['/my-listings']">My
-        Listings</button>
+    <div class="col-sm-8">
+      <button mat-raised-button class="button primary-button menu-button" [routerLink]="['/my-listings']">
+        My Listings</button>
     </div>
   </div>
   <!--ADMIN LIST-->
-  <div class="left-container width-15" *ngIf="user.Type === 3">
-    <div class="button-wrapper">
-      <button mat-raised-button color="primary" class="button-main-menu width-100"
+  <div class="col-sm-4 menu-buttons-content" *ngIf="user.Type === 3">
+    <div class="col-sm-8">
+      <button mat-raised-button class="button primary-button menu-button"
         [routerLink]="['/admin-dashboard']">Dashboard Properties</button>
     </div>
-    <div class="button-wrapper">
-      <button mat-raised-button color="primary" class="button-main-menu width-100"
+    <div class="col-sm-8">
+      <button mat-raised-button class="button primary-button menu-button"
         [routerLink]="['/admin-dashboard']">Dashboard Users</button>
     </div>
   </div>
 
-  <div class="column width-70">
+  <div class="col-sm-8">
+    
     <!--USER INFO-->
-    <div class="row row-margin background-filter">
-      <div class="column padding width-80">
+    <div class="row background-filter personal-info">
+      <div class="col-sm-8">
+
         <div class="row title-personal-info">Personal information</div>
 
         <!--REAL First Name and Last Name-->
         <div class="main-title">First & Last Name</div>
         <div class="column padding-left" *ngIf="toogleName">
           <div class="row">
-            <div class="common-text" *ngIf="user.Name">{{user.Name}}&nbsp;</div>
-            <div class="common-text" *ngIf="user.Surname">{{user.Surname}}</div>
-            <div class="common-text" *ngIf="user.Name==undefined && user.Surname==undefined">Not provided</div>
-            <button mat-raised-button class="edit-button margin-left" (click)="toogle_name()">Edit</button>
+            <div class="col-sm-6 personal-fields">
+              <div class="common-text" *ngIf="user.Name">{{user.Name}}&nbsp;</div>
+              <div class="common-text" *ngIf="user.Surname">{{user.Surname}}</div>
+              <div class="common-text" *ngIf="user.Name==undefined && user.Surname==undefined">Not provided</div>
+            </div>
+            <div class="col-sm-6">
+              <button mat-raised-button class="button edit-button" (click)="toogle_name()">Edit</button>
+            </div>  
           </div>
         </div>
         <!--EDIT First Name and Last Name TODO ngif-->
         <div class="row" *ngIf="!toogleName">
-          <div class="cell">
+          <div class="col-sm-6">
             <mat-form-field class="form-field" appearance="outline">
               <mat-label>First Name</mat-label>
               <input matInput [(ngModel)]="user.Name" [ngModelOptions]="{standalone: true}" required>
@@ -58,8 +61,6 @@
                 First Name is required
               </mat-error>
             </mat-form-field>
-          </div>
-          <div class="cell">
             <mat-form-field class="form-field" appearance="outline">
               <mat-label>Last Name</mat-label>
               <input matInput [(ngModel)]="user.Surname" [ngModelOptions]="{standalone: true}" required>
@@ -68,75 +69,66 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <div class="margin-left">
-            <button mat-raised-button class="save-button" (click)="save()">Save</button>
-            <button mat-raised-button class="edit-button" (click)="toogle_name()">Cancel</button>
+          <div class="col-sm-6">
+            <button mat-raised-button class="button submit-button" (click)="save()">Save</button>
+            <button mat-raised-button class="button cancel-button" (click)="toogle_name()">Cancel</button>
           </div>
         </div>
         <!--EDIT ADDRESS-->
 
         <div class="main-title">Address</div>
-        <div class="padding-left" *ngIf="!toogleAddress">
-          <div class="row">
-            <div class="cell">
+        <div class="row" *ngIf="!toogleAddress">
+            <div class="col-sm-6">
               <mat-form-field class="form-field" appearance="outline">
                 <mat-label>City</mat-label>
                 <input matInput [(ngModel)]="user.City" [ngModelOptions]="{standalone: true}" required>
               </mat-form-field>
-            </div>
-            <div class="cell">
               <mat-form-field class="form-field" appearance="outline">
                 <mat-label>Country</mat-label>
                 <input matInput [(ngModel)]="user.Country" [ngModelOptions]="{standalone: true}" required>
               </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="cell width-50_2">
               <mat-form-field class="form-field width-100" appearance="outline">
                 <mat-label>Address</mat-label>
                 <input matInput [(ngModel)]="user.Address" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
             </div>
-            <!-- <div class="cell">
-            <mat-form-field class="form-field" appearance="outline">
-              <mat-label>Tax Number</mat-label>
-              <input matInput [(ngModel)]="user.TaxNumber" [ngModelOptions]="{standalone: true}" required>
-              <mat-error>
-                Last Name is required
-              </mat-error>
-            </mat-form-field>
-          </div> -->
-            <div class="margin-left">
-              <button mat-raised-button class="save-button" (click)="save()">Save</button>
-              <button mat-raised-button class="edit-button" (click)="toogle_address()">Cancel</button>
+            <div class="col-sm-6">
+              <button mat-raised-button class="button submit-button" (click)="save()">Save</button>
+              <button mat-raised-button class="button cancel-button" (click)="toogle_address()">Cancel</button>
             </div>
-          </div>
         </div>
         <!--EDIT ADDRESS-->
         <div class="padding-left" *ngIf="toogleAddress">
           <div class="row">
-            <div class="common-text" *ngIf="user.City">{{user.City}}&nbsp;</div>
-            <div class="common-text" *ngIf="user.Country">{{user.Country}}&nbsp;</div>
-            <div class="common-text" *ngIf="user.Address">{{user.Address}}</div>
-            <div class="common-text" *ngIf="user.City==undefined && user.Country==undefined && user.Address==undefined">
-              Not provided</div>
-            <button mat-raised-button color="warn" class="edit-button margin-left"
+            <div class="col-sm-6 personal-fields"> 
+              <div class="common-text" *ngIf="user.City">{{user.City}}&nbsp;</div>
+              <div class="common-text" *ngIf="user.Country">{{user.Country}}&nbsp;</div>
+              <div class="common-text" *ngIf="user.Address">{{user.Address}}</div>
+              <div class="common-text" *ngIf="user.City==undefined && user.Country==undefined && user.Address==undefined">
+                Not provided</div>
+            </div>
+            <div class="col-sm-6">
+              <button mat-raised-button color="warn" class="button edit-button"
               (click)="toogle_address()">Edit</button>
+            </div>      
           </div>
         </div>
         <!--REAL Email-->
         <div class="main-title">Email</div>
-        <div class="column padding-left" *ngIf="toogleEmail">
-          <div class="row">
-            <div class="common-text" *ngIf="user.Email">{{user.Email}}&nbsp;</div>
-            <div class="common-text" *ngIf="user.Email==undefined">Not provided</div>
-            <button mat-raised-button class="edit-button margin-left" (click)="toogle_email()">Edit</button>
+          <div class="padding-left" *ngIf="toogleEmail">
+            <div class="row">
+              <div class="col-sm-6 personal-fields"> 
+                <div class="common-text" *ngIf="user.Email">{{user.Email}}&nbsp;</div>
+                <div class="common-text" *ngIf="user.Email==undefined">Not provided</div>
+              </div>
+            <div class="col-sm-6">
+              <button mat-raised-button class="button edit-button" (click)="toogle_email()">Edit</button>
+            </div>
           </div>
         </div>
         <!--EDIT Email-->
         <div class="row" *ngIf="!toogleEmail">
-          <div class="cell">
+          <div class="col-sm-6">
             <mat-form-field class="form-field" appearance="outline">
               <mat-label>Email</mat-label>
               <input matInput [(ngModel)]="user.Email" [ngModelOptions]="{standalone: true}" required>
@@ -145,23 +137,27 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <div class="margin-left">
-            <button mat-raised-button class="save-button" (click)="save()">Save</button>
-            <button mat-raised-button class="edit-button" (click)="toogle_email()">Cancel</button>
+          <div class="col-sm-6">
+            <button mat-raised-button class="button submit-button" (click)="save()">Save</button>
+            <button mat-raised-button class="button cancel-button" (click)="toogle_email()">Cancel</button>
           </div>
         </div>
         <!--REAL Phone number-->
         <div class="main-title">Phone number</div>
         <div class="column padding-left" *ngIf="tooglePhoneNumber">
           <div class="row">
-            <div class="common-text" *ngIf="user.PhoneNumber">{{user.PhoneNumber}}&nbsp;</div>
-            <div class="common-text" *ngIf="user.PhoneNumber==undefined">Not provided</div>
-            <button mat-raised-button class="edit-button margin-left" (click)="toogle_phoneNumber()">Edit</button>
+            <div class="col-sm-6 personal-fields"> 
+              <div class="common-text" *ngIf="user.PhoneNumber">{{user.PhoneNumber}}&nbsp;</div>
+              <div class="common-text" *ngIf="user.PhoneNumber==undefined">Not provided</div>
+            </div>
+            <div class="col-sm-6">
+              <button mat-raised-button class="button edit-button" (click)="toogle_phoneNumber()">Edit</button>
+            </div>
           </div>
         </div>
         <!--EDIT Phone number-->
         <div class="row" *ngIf="!tooglePhoneNumber">
-          <div class="cell">
+          <div class="col-sm-6">
             <mat-form-field class="form-field" appearance="outline">
               <mat-label>Email</mat-label>
               <input matInput [(ngModel)]="user.PhoneNumber" [ngModelOptions]="{standalone: true}" required>
@@ -170,23 +166,27 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <div class="margin-left">
-            <button mat-raised-button class="save-button" (click)="save()">Save</button>
-            <button mat-raised-button class="edit-button" (click)="toogle_phoneNumber()">Cancel</button>
+          <div class="col-sm-6">
+            <button mat-raised-button class="button submit-button" (click)="save()">Save</button>
+            <button mat-raised-button class="button cancel-button" (click)="toogle_phoneNumber()">Cancel</button>
           </div>
         </div>
         <!--REAL Password-->
         <div class="main-title">Password</div>
         <div class="column padding-left" *ngIf="tooglePassword">
           <div class="row">
-            <div class="common-text">****************</div>
-            <button mat-raised-button class="edit-button margin-left" (click)="toogle_password()">Edit</button>
+            <div class="col-sm-6 personal-fields">
+              <div class="common-text">****************</div> 
+            </div>
+            <div class="col-sm-6">
+              <button mat-raised-button class="button edit-button" (click)="toogle_password()">Edit</button>
+            </div>
           </div>
         </div>
         <!--EDIT Password-->
         <div *ngIf="!tooglePassword">
           <div class="row">
-            <div class="cell">
+            <div class="col-sm-6">
               <mat-form-field class="form-field" appearance="outline">
                 <mat-label>Old Password</mat-label>
                 <input matInput [(ngModel)]="user.Password" [ngModelOptions]="{standalone: true}" required>
@@ -194,10 +194,6 @@
                   Password is required
                 </mat-error>
               </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="cell">
               <mat-form-field class="form-field" appearance="outline">
                 <mat-label>New Password</mat-label>
                 <input matInput [(ngModel)]="user.Password" [ngModelOptions]="{standalone: true}" required>
@@ -206,9 +202,9 @@
                 </mat-error>
               </mat-form-field>
             </div>
-            <div class="margin-left">
-              <button mat-raised-button class="save-button" (click)="save()">Save</button>
-              <button mat-raised-button class="edit-button" (click)="toogle_password()">Cancel</button>
+            <div class="col-sm-6">
+              <button mat-raised-button class="button submit-button" (click)="save()">Save</button>
+              <button mat-raised-button class="button cancel-button" (click)="toogle_password()">Cancel</button>
             </div>
           </div>
         </div>
@@ -216,14 +212,14 @@
         <div class="main-title">Delete Account</div>
         <div class="column padding-left-delete">
           <div class="row">
-            <button mat-raised-button class="delete-button">Delete</button>
+            <button mat-raised-button class="button delete-button">Delete</button>
           </div>
         </div>
       </div>
-      <div class="image width-20">
-        <div class="row title-personal-info photo-padding">Your photo</div>
+      <div class="col-sm-2">
+        <div class="row col-sm-6 title-personal-info photo-padding">Your photo</div>
         <div><img [src]="image" width="160" height="160"></div>
-        <div>
+        <div class="col-sm-6">
           <input type="file" hidden #uploader accept="image/*" (change)="uploadImage($event)">
           <span class="material-icons" (click)="uploader.click()">
             photo_camera
@@ -232,4 +228,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

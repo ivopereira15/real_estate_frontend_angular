@@ -1,17 +1,20 @@
 .navbar {
-    // background: linear-gradient(to right, rgb(28, 76, 197), #ff4081);
-    background: black;
+    background: white;
     height: 60px;
+    -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -ms-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
 }
 
 .high-tech-navbar {
-    // background: linear-gradient(to right, rgb(28, 76, 197), #ff4081);
-    background: black;
+    background: white;
 }
 .navbar-brand,
 .nav-link,
 .nav-icon {
-    color: white;
+    color: black;
 }
 
 .login {
@@ -47,7 +50,7 @@
     width: 120px;
     height: 35px;
     font-size: 15px;
-    //background-color: rgb(131, 241, 245);
+    border: 1px solid black;
     background-color: white;
     border-radius: 25px;
     margin-left: 5px;
@@ -92,9 +95,56 @@ mat-sidenav-container {
     height: 100vh;
 }
 
+::ng-deep{
+    .nav-mat-drawer-container {
+        .mat-drawer{
+            background-color: white;
+           
+        }
+        .mat-list-item{
+            color: black;
+        }
 
-mat-sidenav-container::after {
-    content: '';
-    display: block;
-    height: 50px; /* Set same as footer's height */
-  }
+    }
+
+    .nav-inverse-mat-drawer-container {
+        .mat-drawer{
+            background-color: black;
+          
+        }
+        .mat-list-item{
+            color: white
+        }
+    }
+}
+
+
+
+.navbar-inverse{
+    background: black;
+    color: white;
+    -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -ms-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+    .navbar-brand,
+    .nav-link,
+    .nav-icon {
+        color: white;
+    }
+
+    .white-icon {
+        background-color: black;
+    }
+}
+
+.title-begin{
+    background-color: rgb(192, 57, 43);
+    background-image: linear-gradient(0deg, rgb(192, 57, 43), rgb(142, 68, 173));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+}

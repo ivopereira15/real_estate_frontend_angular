@@ -1,4 +1,6 @@
 @import "~src/sass/_vars";
+$hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
+$returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 .body-page {
     display: flex;
     flex-direction: column;
@@ -67,9 +69,22 @@
     display: flex;
 
     .card {
-        width: 30%;
-        // border-radius: 15px;
+        border: none;
+        border-right: 5px solid red;
+        box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
+        border-image: linear-gradient(to top, #1c4cc5, #ff4081) 1 stretch;
     }
+
+    .card:hover {
+        transform: scale(1.02) translate(0px, -8px);
+        transition: all 300ms ease-in-out 0s;
+      
+        .button-text, .button-text:focus, .button-text:visited, .button-text:disabled {
+          background-color: white;
+          border-color: black;
+          color: black;
+        }
+      }
 
     .title, .center-button  {
         display: flex;
@@ -158,33 +173,39 @@
         text-align: center;
     }
     .carousel-indicators li { visibility: hidden; }
+    .mat-tab-group.mat-primary .mat-ink-bar{
+        background-color: rgb(192, 57, 43);
+        background-image: linear-gradient(0deg, rgb(192, 57, 43), rgb(142, 68, 173));
+    }
 }
-
-mat-card{
-    background: #aec2f3;
-}
-
 
 
 @media (min-width: $dimension-breakpoint-xxs-min) {
     .cubes {
+        .card {
+            width: 100%;
+        }
+
         .text-content {
             height: 35%;
         }
     }
     mat-card{
-        height: 200px;
+        height: 400px;
     }
 }
 
 @media (min-width: $dimension-breakpoint-xs-min) {
     .cubes {
+        .card {
+            width: 100%;
+        }
         .text-content {
             height: 35%;
         }
     }
     mat-card{
-        height: 200px;
+        height: 400px;
     }
 }
 
@@ -192,12 +213,15 @@ mat-card{
 
 @media (min-width: $dimension-breakpoint-sm-min) {
     .cubes {
+        .card {
+            width: 100%;
+        }
         .text-content {
             height: 35%;
         }
     }
     mat-card{
-        height: 200px;
+        height: 400px;
     }
 }
 
@@ -205,6 +229,9 @@ mat-card{
   
 @media (min-width: $dimension-breakpoint-md-min) {
     .cubes {
+        .card {
+            width: 32%;
+        }
         .text-content {
             height: auto;
         }
@@ -218,6 +245,9 @@ mat-card{
   
 @media (min-width: $dimension-breakpoint-lg-min) {
     .cubes {
+        .card {
+            width: 32%;
+        }
         .text-content {
             height: auto;
         }
@@ -229,6 +259,9 @@ mat-card{
 
 @media (min-width: $dimension-breakpoint-xl-min) {
     .cubes {
+        .card {
+            width: 32%;
+        }
         .text-content {
             height: auto;
         }
@@ -240,6 +273,9 @@ mat-card{
 
 @media (min-width: $dimension-breakpoint-xl-mid-min) {
     .cubes {
+        .card {
+            width: 32%;
+        }
         .text-content {
             height: auto;
         }
@@ -251,6 +287,9 @@ mat-card{
 
 @media (min-width: $dimension-breakpoint-xxl-min) {
     .cubes {
+        .card {
+            width: 32%;
+        }
         .text-content {
             height: auto;
         }
@@ -262,6 +301,9 @@ mat-card{
 
 @media (min-width: $dimension-breakpoint-xxxl-min) {
     .cubes {
+        .card {
+            width: 32%;
+        }
         .text-content {
             height: auto;
         }
@@ -274,6 +316,9 @@ mat-card{
 
 @media (min-width: $dimension-breakpoint-max-min) {
     .cubes {
+        .card {
+            width: 32%;
+        }
         .text-content {
             height: auto;
         }

@@ -43,7 +43,7 @@ export class FilterSearchOnViewComponent implements OnInit {
   public bathroomsQuantity: string[] = ['1', '2', '3', '4', '5'];
   public conditionTypes: string[] = ['Old', 'New', 'Needs Reconstruction', 'Under Construction'];
   public innerWidth: any;
-  public isMobile: boolean = false;
+  public isMobile = false;
   operationTypes: OperationType[];
   propertyTypes: PropertyType[];
   characteristics: any = {};
@@ -214,22 +214,20 @@ export class FilterSearchOnViewComponent implements OnInit {
 
 
   public searchFunction() {
-
     this.router.navigate(['/search'], {
       queryParams:
       {
-        purposeType: this.searchProperties.controls.purposeType.value,
+        operationTypeId: this.searchProperties.controls.purposeType.value,
         propertyType:   this.searchProperties.controls.propertyType.value,
         priceFrom:   this.searchProperties.controls.priceFrom.value,
         priceTo:  this.searchProperties.controls.priceTo.value,
         bedrooms:   this.searchProperties.controls.bedrooms.value,
         bathrooms:  this.searchProperties.controls.bathrooms.value,
         conditions:  this.searchProperties.controls.conditions.value,
-        sizeTo:   this.searchProperties.controls.sizeTo.value,
-        sizeFrom:   this.searchProperties.controls.sizeFrom.value,
+        sizeTo:   Number(this.searchProperties.controls.sizeTo.value),
+        sizeFrom:   Number(this.searchProperties.controls.sizeFrom.value),
         yearBuiltFrom:   this.searchProperties.controls.yearBuiltFrom.value,
-        yearBuiltTo:  this.searchProperties.controls.yearBuiltTo.value,
-        characteristics:   this.searchProperties.controls.characteristics.value,
+        yearBuiltTo:  this.searchProperties.controls.yearBuiltTo.value
       }
     });
   }
@@ -256,8 +254,6 @@ export class FilterSearchOnViewComponent implements OnInit {
       selectedOrderIds
     ];
 
-
-    console.log(formSearch);
     modalRef.componentInstance.propertyTypes = this.propertyTypes;
     modalRef.componentInstance.operationTypes = this.operationTypes;
     modalRef.componentInstance.mobile =  this.isMobile;

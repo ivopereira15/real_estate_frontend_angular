@@ -1,9 +1,9 @@
 <!--DESKTOP NAVIGATION-->
-<div *ngIf="!isMobile">
+<div *ngIf="!isMobile" >
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <h3>ImoRentals</h3>
+        <h3 ><span class="title-begin">Imo</span>Rentals</h3>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,14 +52,15 @@
 </div>
 <!--MOBILE-->
 <div *ngIf="isMobile">
-  <mat-toolbar class="high-tech-navbar">
+  <mat-toolbar   [ngClass]="{'high-tech-navbar': isOnTop, 'navbar-inverse': !isOnTop}">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon class="nav-icon">menu</mat-icon>
     </button>
-    <h1 class="navbar-brand">ImoRentals</h1>
+    <h3 ><span class="title-begin">Imo</span>Rentals</h3>
+  
   </mat-toolbar>
 
-  <mat-sidenav-container>
+  <mat-sidenav-container  [ngClass]="{'nav-mat-drawer-container': isOnTop, 'nav-inverse-mat-drawer-container': !isOnTop}">
     <mat-sidenav #snav>
       <mat-nav-list>
         <a mat-list-item [routerLink]="['/admin']">Buy</a>

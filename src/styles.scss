@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~src/sass/_vars";
+
 .column {
     display: flex;
     flex-direction: column;
@@ -246,6 +247,20 @@ left: calc(50% - 10px) !important;
     background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(192, 57, 43), rgb(142, 68, 173)) repeat scroll 0% 0%;
 }
 
+.delete-button{
+    background: rgba(0, 0, 0, 0) linear-gradient(to right, 
+    #ff1800, rgb(142, 68, 173)) repeat scroll 0% 0%;
+    
+}
+
+.cancel-button{
+    background: rgba(0, 0, 0, 0) linear-gradient(to right, #918a8a, #383738) repeat scroll 0% 0%;
+}
+
+.edit-button{
+    background:  rgba(0, 0, 0, 0) linear-gradient(to right, #2a4dc9, #8e44ad) repeat scroll 0% 0%
+}
+
 .body-page{
     min-height: 900px;
     margin-bottom: 20%;
@@ -276,6 +291,17 @@ left: calc(50% - 10px) !important;
         font-weight: bold;
     }
 }
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    border-bottom: 5px solid red;
+    border-image: linear-gradient(to right, #1c4cc5, #ff4081) 1 stretch;
+  }
+
+
 
 
 @media (min-width: $dimension-breakpoint-xxs-min) {
@@ -348,3 +374,4 @@ left: calc(50% - 10px) !important;
         max-width: 66.6666666667%;
     }
   }
+
