@@ -1,3 +1,4 @@
+@import "~src/sass/_vars";
 .background {
     //background: linear-gradient(to right, rgb(28, 76, 197), #ff4081);
     background-image: url('../../../../../assets//images/houselogo.jpg');
@@ -20,16 +21,16 @@
 
 .black-background {
     margin-top: 100px;
-    background: black;
+    background: #8b8b8b;
     padding-top: 7px;
     padding-bottom: 7px;
-    border-radius: 25px !important;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .background-color {
-    background-color: white;
+    background-color: #c7c7c7;
     margin-bottom: 70px;
-    border-radius: 25px !important;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .center-filter {
@@ -47,3 +48,65 @@
 .btn {
     margin: 5px;
 }
+
+@media (min-width: $dimension-breakpoint-xxs-min) {
+    .search-bar{
+        margin-top: 0px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xs-min) {
+    .search-bar{
+        margin-top: 0px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-sm-min) {
+    .search-bar{
+        margin-top: 0px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-md-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-lg-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-mid-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxl-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxxl-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+  
+  
+  @media (min-width: $dimension-breakpoint-max-min) {
+    .search-bar{
+        margin-top: 60px;
+    }
+  }
+

@@ -13,6 +13,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SearchBoardComponent } from './search-board/search-board.component';
 
 
+
 @NgModule({
   declarations: [HomeComponent, MainBoardComponent, SearchBoardComponent],
   imports: [

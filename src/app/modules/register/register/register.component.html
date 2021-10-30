@@ -1,14 +1,14 @@
-<div class="register">
-  <div class="register-column">
-    <div class="row full-width">
+<div class="body-page">
+  <div class="col-12">
+    <div class="row justify-content-center buttons-row">
       <div class="div-btn">
-        <button class="register-btn" mat-raised-button (click)="goToPrivateUser()">Private User</button>
+        <button class="primary-button button" mat-raised-button (click)="goToPrivateUser()">Private User</button>
       </div>
       <div class="div-btn">
-        <button class="register-btn-professional" mat-raised-button (click)="goToCompany()">Professional</button>
+        <button class="second-button button" mat-raised-button (click)="goToCompany()">Professional</button>
       </div>
     </div>
-    <div class="full-width">
+    <div class="container form-container">
       <app-register-private-user *ngIf="privateUser"></app-register-private-user>
       <app-register-company *ngIf="!privateUser"></app-register-company>
     </div>

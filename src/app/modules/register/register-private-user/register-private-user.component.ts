@@ -1,14 +1,16 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { User } from 'src/app/shared/models/user/user';
-import { UserService } from 'src/app/core/services/api/user.service';
-import { ResultMessage } from 'src/app/shared/models/result-message/result-message';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MobileUtilityService } from 'src/app/core/services/shared/mobile-utility';
+
 import { Subscription } from 'rxjs/internal/Subscription';
-import { IWindowData } from 'src/app/shared/models/mobile-utility/mobile-utility';
-import { TempTokenService } from 'src/app/core/services/shared/temp-token.service';
+import { User } from '../../../shared/models/user/user';
+import { UserService } from '../../../core/services/api/user.service';
+import { MobileUtilityService } from '../../../core/services/shared/mobile-utility';
+import { TempTokenService } from '../../../core/services/shared/temp-token.service';
+import { ResultMessage } from '../../../shared/models/result-message/result-message';
+import { IWindowData } from '../../../shared/models/mobile-utility/mobile-utility';
+
 
 @Component({
   selector: 'app-register-private-user',
@@ -18,7 +20,6 @@ import { TempTokenService } from 'src/app/core/services/shared/temp-token.servic
 export class RegisterPrivateUserComponent implements OnInit, OnDestroy {
 
   public locations: string[] = ['Lisboa', 'Porto'];
-  // public tempId: any = null;
   public confirmPassword = false;
   public confirmPasswordInput: string;
   public newUser: User = new User();
@@ -37,20 +38,17 @@ export class RegisterPrivateUserComponent implements OnInit, OnDestroy {
     confirmPassword: new FormControl('', [
       Validators.required])
   });
-  public isMobile: boolean = false;
+  public isMobile = false;
   private windowChangeSubscription: Subscription;
 
   constructor(
     @Inject(UserService) public userService: UserService,
-    private activatedRoute: ActivatedRoute,
     @Inject(Router) private router: Router,
     @Inject(MobileUtilityService) private mobileUtilityService: MobileUtilityService,
     private tempTokenService: TempTokenService) { }
 
   ngOnInit() {
-   // this.activatedRoute.queryParams.subscribe(params => {
-   //   this.tempId = params["tempId"];
-   // });
+
     this.windowChangeSubscription = this.mobileUtilityService.getWindowObservable().subscribe((windowChange: IWindowData) => {
       this.isMobile = !windowChange.isBiggerAsLaptop;
     });

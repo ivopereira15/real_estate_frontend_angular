@@ -62,9 +62,6 @@ export class FilterSearchComponent implements OnInit {
   }
 
   public searchFunction() {
-    console.log(this.purposeType);
-    console.log(this.propertyType);
-    console.log(this.priceFrom);
     this.router.navigate(['/search'], {
       queryParams:
       {
@@ -89,7 +86,6 @@ export class FilterSearchComponent implements OnInit {
     if (!!this.autoComplete) {
       this.autoComplete.closePanel();
     }
-    // this.router.navigate(['/search'], { queryParams: { q: value } });
   }
 
   getSuggestions(query: string): Observable<SearchSuggestions> {

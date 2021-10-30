@@ -2,16 +2,16 @@
 <div class="container-center">
     <div class="container-center-column">
         <!--TITLE-->
-        <div class="row width-80">
+        <div class="col-12">
             <div class="title">
                 {{title}}
             </div>
         </div>
-        <div class="row width-80">
+        <div class="col-12">
             Please enter the required information:
         </div>
         <!--LINE 1-->
-        <div class="row width-80">
+        <div class="col-12">
          <form [formGroup] = "mainPropertyCharacteristic">
         <div *ngIf="c.status === 'INVALID' && submitProperty" class="err-msg">
             Please fix all the fields with errors
@@ -24,9 +24,8 @@
         <div class="property-address row width-100">
             <div class="row width-100">
                 <div class="width-30 form">
-                    <div for="country">Country</div>
-                    <mat-form-field class="full-width" matLine appearance="outline">
-                        <mat-select formControlName="country" >
+                    <mat-form-field  class="full-width" matLine appearance="outline">
+                        <mat-select placeholder="Country" formControlName="country" >
                             <mat-option *ngFor="let country of countries" [value]="country">
                                 {{country}}
                             </mat-option>
@@ -37,7 +36,6 @@
                     </div>
                 </div>
                 <div class="width-30 form">
-                    <div for="city">City</div>
                     <mat-form-field class="full-width" appearance="outline">
                         <input type="text" matInput placeholder="City" formControlName="city">
                     </mat-form-field>
@@ -46,7 +44,6 @@
                     </div>
                 </div>
                 <div class="width-30 form">
-                    <div for="street">Street and Nª</div>
                     <mat-form-field class="full-width" appearance="outline">
                         <input matInput formControlName="street" placeholder="Street" required autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
                     </mat-form-field>
@@ -72,7 +69,6 @@
         </div>
         <div class="row width-100">
             <div class="width-30 form">
-                <label for="price">Price</label>
                 <mat-form-field class="full-width" appearance="outline">
                     <input formControlName="price" placeholder="Price" type="number" matInput required>
                 </mat-form-field>
@@ -81,7 +77,6 @@
                 </div>
             </div>
             <div class="width-30 form">
-                <label for="netAream2">Area m2*</label>
                 <mat-form-field class="full-width" appearance="outline">
                     <input type="number" matInput placeholder="Area m*" formControlName="netAream2" required>
                 </mat-form-field>
@@ -90,7 +85,6 @@
                 </div>
             </div>
             <div class="width-30 form">
-                <label  for="priceNetAream2">Price/m2</label>
                 <mat-form-field class="full-width" appearance="outline">
                     <input type="number" matInput placeholder="Price/m2" formControlName = "priceNetAream2" disabled>
                 </mat-form-field>
@@ -98,7 +92,6 @@
         </div>
         <div class="row width-100">
             <div class="width-30 form">
-                <label for="grossAream2">Gross Area m2</label>
                 <mat-form-field class="full-width" appearance="outline">
                     <input type="number" matInput placeholder="Gross Area m2" formControlName="grossAream2">
                 </mat-form-field>
@@ -107,9 +100,8 @@
                 </div>
             </div>
             <div class="width-30 form">
-                <label for="propertyTypeId">Typology*</label>
                 <mat-form-field class="width-100" appearance="outline">
-                    <mat-select formControlName="propertyTypeId" required>
+                    <mat-select placeholder="Property Type" formControlName="propertyTypeId" required>
                         <mat-option *ngFor="let type of propertyTypes" [value]="type.Id">
                             {{type.Type}}
                         </mat-option>
@@ -120,9 +112,8 @@
                 </div>
             </div>
             <div class="width-30 form">
-                <label for="floor">Floor</label>
                 <mat-form-field class="width-100" appearance="outline">
-                    <mat-select formControlName="floor">
+                    <mat-select placeholder="Floors" formControlName="floor">
                         <mat-option *ngFor="let floor of floors" [value]="floor">
                             {{floor}}
                         </mat-option>
@@ -130,9 +121,8 @@
                 </mat-form-field>
             </div>
             <div class="width-30 form">
-                <label for="rooms">Room</label>
                 <mat-form-field class="width-100" appearance="outline">
-                    <mat-select formControlName="rooms">
+                    <mat-select placeholder="Nº Room" formControlName="rooms">
                         <mat-option *ngFor="let room of rooms" [value]="rooms">
                             {{room}}
                         </mat-option>
@@ -142,7 +132,6 @@
         </div>
         <div class="row width-100">
             <div class="width-30 form">
-                <label for="yearOfConstruction">Year of construction</label>
                 <mat-form-field class="full-width form" appearance="outline">
                     <input type="number" placeholder="Year of construction" matInput formControlName="yearOfConstruction">
                 </mat-form-field>
@@ -151,9 +140,8 @@
                 </div>
             </div>
             <div class="width-30 form">
-                <label for="numberOfBathrooms">Nº Bathrooms</label>
                 <mat-form-field class="width-100 form" appearance="outline">
-                    <mat-select formControlName="numberOfBathrooms" required>
+                    <mat-select placeholder="Nº Bathroom" formControlName="numberOfBathrooms" required>
                         <mat-option *ngFor="let bathroom of bathrooms" [value]="bathroom">
                             {{bathroom}}
                         </mat-option>
@@ -164,9 +152,8 @@
                 </div>
             </div>
             <div class="width-30 form">
-                <label for="enerergyCertificate">Energy Certificate</label>
                 <mat-form-field class="width-100 form" appearance="outline">
-                    <mat-select formControlName="enerergyCertificate">
+                    <mat-select placeholder="Certificate" formControlName="enerergyCertificate">
                         <mat-option *ngFor="let certificate of energyCertificate" [value]="certificate">
                             {{certificate}}
                         </mat-option>
@@ -176,9 +163,8 @@
         </div>
         <div class="row width-100">
             <div class="width-30 form">
-                <label for="conditionState">Condition State</label>
                 <mat-form-field class="width-100 form" appearance="outline">
-                    <mat-select formControlName="conditionState" required>
+                    <mat-select placeholder="Condition" formControlName="conditionState" required>
                         <mat-option *ngFor="let condition of conditionStateOption" [value]="condition">
                             {{condition}}
                         </mat-option>
@@ -189,9 +175,8 @@
                 </div>
             </div>
             <div class="width-30 form">
-                <label for="sunOrientation">Sun Orientation</label>
                 <mat-form-field class="width-100 form" appearance="outline">
-                    <mat-select formControlName="sunOrientation">
+                    <mat-select placeholder="Sun Orientation" formControlName="sunOrientation">
                         <mat-option *ngFor="let sunOrt of sunOrientationOption" [value]="sunOrt">
                             {{sunOrt}}
                         </mat-option>
@@ -286,7 +271,7 @@
             </div>
         </div>
         <div class="row">
-            <button class="list" mat-raised-button (click)="publishListingSubmit()">Publish listing</button>
+            <button class="button submit-button" mat-raised-button (click)="publishListingSubmit()">Publish listing</button>
         </div>
         </form>
         </div>

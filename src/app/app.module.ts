@@ -19,7 +19,7 @@ import { AddListingModule } from './modules/add-listing/add-listing.module';
 
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { UserState } from 'src/app/core/ngxs-state-management/user.state';
+
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -29,6 +29,7 @@ import { reducer } from './core/ngxs-state-management/search/reducer';
 import { actionSanitizer, adaptReducer, stateSanitizer } from '@state-adapt/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ApiService } from './core/services/api/location.service';
+import { UserState } from './core/ngxs-state-management/user.state';
 
 @NgModule({
   declarations: [

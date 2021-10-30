@@ -84,7 +84,7 @@ export class PopUpFiltersComponent implements OnInit {
   {
     id: 17,
     val: 'HotTube'
-  },  
+  },
   {
     id: 18,
     val: 'Pantry'

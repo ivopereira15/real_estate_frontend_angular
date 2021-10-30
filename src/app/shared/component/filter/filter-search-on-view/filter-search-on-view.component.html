@@ -27,23 +27,19 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <div class="col-3 search-buttons">
-        <div class="more-button">
-          <button mat-raised-button class="search" (click)="openMoreSearchOptions()">
+      <div class="search-buttons">
+          <button mat-raised-button class="button primary-button" (click)="openMoreSearchOptions()">
             <div class="material-icons">
               fact_check
             </div>
             More
           </button>
-        </div>
-        <div class="submit-button">
-          <button mat-raised-button class="search" (click)="searchFunction()">
+          <button mat-raised-button class="button submit-button" (click)="searchFunction()">
             <div class="material-icons">
               search
             </div>
             Search
           </button>
-        </div>
       </div>
 </div>
 </form>

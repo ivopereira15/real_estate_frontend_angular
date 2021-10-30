@@ -1,9 +1,6 @@
+@import "~src/sass/_vars";
 .register-private-user {
-    display: flex;
-    justify-content: center;
-    margin-top: -10%;
-    height: 80vh;
-    
+    display: flex;    
 }
 
 .custom-form{
@@ -12,14 +9,7 @@
     box-shadow: 0 10px 60px -6px #777, 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
-.form-field {
-    width: 95%;
-}
 
-.border-box {
-    margin-top: 80px;
-    padding: 15px;
-}
 
 .border-box-mobile {
     margin-top: 20px;
@@ -34,7 +24,6 @@
 
 .register-header {
     justify-content: center;
-    //font-weight: bold;
     font-size: 20px;
     margin-bottom: 15px;
 }
@@ -56,15 +45,6 @@ mat-divider {
     margin-left: 5px;
 }
 
-.register-btn {
-    height: 50px;
-    border-radius: 25px;
-    font-size: larger;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #0361ec;
-    color: white;
-}
-
 // Material Override PLACE TO STYLES
 
 ::ng-deep .mat-form-field-flex > .mat-form-field-infix {
@@ -80,3 +60,99 @@ mat-divider {
     transform: translateY(-1.1em) scale(0.75);
     width: 133.33333%;
 }
+
+
+.image-form{
+    background-repeat: no-repeat;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px
+}
+
+.col-sm-4{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.col-sm-8{
+    padding-right: 0px;
+    padding-left: 0px;
+    border-right: 5px solid red;
+    border-image: linear-gradient(to top, #1c4cc5, #ff4081) 1 stretch;
+}
+
+
+.col-12{
+    padding-right: 0px;
+    padding-left: 0px; 
+}
+
+@media (min-width: $dimension-breakpoint-xxs-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xs-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-sm-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-md-min) {
+    .col-sm-8{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-lg-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xl-mid-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxl-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  @media (min-width: $dimension-breakpoint-xxxl-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }
+  
+  
+  @media (min-width: $dimension-breakpoint-max-min) {
+    .col-sm-8{
+        flex: 0 0 66.6666666667%;
+        max-width: 66.6666666667%;
+    }
+  }

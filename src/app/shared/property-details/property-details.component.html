@@ -41,7 +41,7 @@
             <div class="row container-image" *ngIf="items.length > 0">
                 <div class="col-md-12 col-lg-6"  *ngFor="let item of items; let i = index">
                     <div *ngIf="i == 0"  [ngClass]="i == 0 ? 'card-image' : 'item'">
-                        <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="100%" />
+                        <img [src]="item.image" class="property-image" (click)="showLightbox(i)" width="100%" height="100%" />
                     </div>
                     <div *ngIf="i >= 1" [ngClass]="i == 0 ? 'card-image' : 'item'">
                         <img [src]="item.image" (click)="showLightbox(i)" width="100%" height="100%" />
@@ -134,28 +134,24 @@
                         <form [formGroup] = "contactForm">
                             <div class="row contact">
                                 <div class="col-10">
-                                <label for="name">Name *</label>
                                 <mat-form-field class="full-width" appearance="outline">
                                     <input formControlName="name" placeholder="Name" type="text" matInput required>
                                 </mat-form-field>
                                 <div *ngIf="c.controls.name.errors && submitContact" class="err-msg">
                                     Name is required
                                 </div>
-                                <label for="email">Email *</label>
                                 <mat-form-field class="full-width" appearance="outline">
                                     <input formControlName="email" placeholder="Email" type="text" matInput required>
                                 </mat-form-field>
                                 <div *ngIf="c.controls.email.errors && submitContact" class="err-msg">
                                     Email invalid
                                 </div>
-                                <label for="phone">Phone *</label>
                                 <mat-form-field class="full-width" appearance="outline">
                                     <input formControlName="phone" placeholder="Phone" type="number" matInput required>
                                 </mat-form-field>
                                 <div *ngIf="c.controls.phone.errors && submitContact" class="err-msg">
                                     Phone invalid
                                 </div>
-                                <label for="message">Message *</label>
                                 <mat-form-field class="full-width" appearance="outline">
                                     <textarea formControlName="message" placeholder="Message" matInput required></textarea>
                                 </mat-form-field>
@@ -163,9 +159,8 @@
                                     Message is required
                                 </div>
                             </div>
-                            <button mat-raised-button class="submit-contact" (click)="onSubmit()">Contact an Agent</button>
+                            <button mat-raised-button class="button submit-button" (click)="onSubmit()">Contact an Agent</button>
                             </div>
-                           
                         </form>
                     </div>
                 </div>

@@ -89,7 +89,7 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   display:flex;
 }
 .card-wrap {
-    margin: 10px;
+  margin: 10px;
   transform: perspective(800px);
   transform-style: preserve-3d;
   cursor: pointer;
@@ -126,6 +126,7 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
         rgba(black, 0.66) 0 30px 30px 0,
         inset #424242 0 0 0 5px,
         inset #ff4f81 0 0 0 6px;
+        
     }
   }
 }
