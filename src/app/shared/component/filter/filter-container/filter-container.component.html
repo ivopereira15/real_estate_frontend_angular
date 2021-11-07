@@ -14,12 +14,12 @@
                 <app-filter-search [purposeType]="purposeType" [propertyType]="propertyType" [priceFrom]="priceFrom"
                     [priceTo]="priceTo" [bedrooms]="bedrooms" [bathrooms]="bathrooms" [conditions]="conditions"
                     [sizeTo]="sizeTo" [sizeFrom]="sizeFrom" [yearBuiltFrom]="yearBuiltFrom" [yearBuiltTo]="yearBuiltTo"
-                    [characteristics]="characteristics"></app-filter-search>
+                    [characteristics]="characteristics" [mobile]="isMobile"></app-filter-search>
             </div>
         </div>
     </div>
 
-    <div class="center-filter">
+    <div class="center-filter" *ngIf="!isMobile">
         <div class="column background-filter background-color"
             [ngClass]="[isMobile ? 'full-width' : 'threefourth-width']">
             <div class="row">
@@ -37,6 +37,5 @@
             </div>
         </div>
     </div>
-
 </div>
 </div>

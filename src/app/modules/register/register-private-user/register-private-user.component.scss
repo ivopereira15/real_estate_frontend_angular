@@ -79,7 +79,18 @@ mat-divider {
     border-right: 5px solid red;
     border-image: linear-gradient(to top, #1c4cc5, #ff4081) 1 stretch;
 }
-
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-radius: 0 20px 20px 0 !important;
+    flex-grow: 1 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border-radius: 20px 0 0 20px !important;
+    flex-grow: 1 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: white;
+    border-radius: 20px 20px 20px 20px !important;
+  }
 
 .col-12{
     padding-right: 0px;

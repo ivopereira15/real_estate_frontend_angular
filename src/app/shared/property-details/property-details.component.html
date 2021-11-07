@@ -134,9 +134,10 @@
                         <form [formGroup] = "contactForm">
                             <div class="row contact">
                                 <div class="col-10">
-                                <mat-form-field class="full-width" appearance="outline">
+                                <mat-form-field class="form-field" appearance="outline">
                                     <input formControlName="name" placeholder="Name" type="text" matInput required>
                                 </mat-form-field>
+                                
                                 <div *ngIf="c.controls.name.errors && submitContact" class="err-msg">
                                     Name is required
                                 </div>

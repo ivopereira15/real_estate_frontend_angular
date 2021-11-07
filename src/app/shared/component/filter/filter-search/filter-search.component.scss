@@ -22,15 +22,20 @@
     align-items: center;
   }
 
+  .buttons{
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+  }
+
 ::ng-deep .mat-form-field-wrapper {
     padding: unset;
 }
 
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-    background-color: white;
-    border-radius: 5px 5px 5px 5px;
-  }
 
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white !important;
+  border-radius: 25px;
+}
 // Material Override PLACE TO STYLES
 
 ::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}

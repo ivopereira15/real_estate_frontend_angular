@@ -13,7 +13,7 @@
     </mat-autocomplete>
 
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-4 buttons">
       <button mat-raised-button class="search button submit-button" (click)="searchFunction()">
         <div class="material-icons">
           search
@@ -21,4 +21,12 @@
         Search
       </button>
   </div>
+  <div class="col-sm-4" *ngIf="mobile">
+    <button mat-raised-button class="search button submit-button" (click)="openMoreSearchOptions()">
+      <div class="material-icons">
+        fact_check
+      </div>
+      Filters
+    </button>
+</div>
 </div>

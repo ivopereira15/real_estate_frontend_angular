@@ -206,10 +206,7 @@ export class FilterSearchOnViewComponent implements OnInit {
     this.valueChanges$ = this.searchProperties.valueChanges.pipe(
       tap((values: any) => this.store.dispatch(formValueChange(values)))
     );
-    this.formValues$ = using(
-      () => this.valueChanges$.subscribe(),
-      () => this.store.select(state => state.ngrx)
-    );
+
   }
 
 
