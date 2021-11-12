@@ -5,7 +5,7 @@
           <ul class="rooms__list">
             <li
               *ngFor="let room of chatRooms"
-              (click)="getRoom(room.Id); joinRoom(room.Id)"
+              (click)="selectRoom(room.id)"
             >
               <i class="material-icons room-icon">star_rate</i>
               <span>{{ room.firstUserEmail }}</span>
@@ -18,7 +18,7 @@
               <app-message
                 *ngFor="let message of messages"
                 [name]="message.username"
-                [text]="message.MessageText"
+                [text]="message.messageText"
               ></app-message>
             </div>
             <!-- <div class="force-overflow"></div> -->

@@ -10,13 +10,14 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { MessagesComponent } from './messages/messages.component';
 import { ChatComponent } from './messages/chat/chat.component';
 import { MessageComponent } from './messages/message/message.component';
+import { CardComponent } from './my-listings/card/card.component';
 
 
 @NgModule({
   declarations: [UserBoardComponent, 
     MyListingsComponent, EditListingComponent,
      AdminDashboardComponent, MessagesComponent, 
-     ChatComponent, MessageComponent],
+     ChatComponent, MessageComponent, CardComponent],
   imports: [
     CommonModule,
     PrivateRoutingModule,

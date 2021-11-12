@@ -43,7 +43,7 @@ export class DirectMessagesService {
             this.hubConnection.invoke('SendPrivateMessage', receiverMySqlId, message, chatRoomId);
             var result = new Message();
             //result.fromOnlineUser = user;
-            result.MessageText = message;
+            result.messageText = message;
             const currentValue = this.directMessagesSubject.value;
             const updatedValue = [...currentValue, result];
             this.directMessagesSubject.next(updatedValue);
@@ -92,8 +92,8 @@ export class DirectMessagesService {
         this.hubConnection = new signalR.HubConnectionBuilder()
             .withUrl(`${this.appContext.getChatUrl()}/chat${tokenValue}`,
                 {
-                   skipNegotiation: true,
-                   transport: signalR.HttpTransportType.WebSockets
+                    skipNegotiation: true,
+                    transport: signalR.HttpTransportType.WebSockets
 
                 }
             ).withAutomaticReconnect()
@@ -111,6 +111,10 @@ export class DirectMessagesService {
             // this.store.dispatch(
             //     new chatActions.ReceivedNewOnlineUserAction(onlineUser)
             // );
+        });
+
+        this.hubConnection.on('onError', (res: any) => {
+            console.log(res);
         });
 
         // this.hubConnection.on('NewOnlineUser', (onlineUser: OnlineUser) => {
